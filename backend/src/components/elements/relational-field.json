@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_elements_relational_fields",
+  "info": {
+    "displayName": "Relational field",
+    "icon": "arrow-right",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "pages": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::page.page"
+    }
+  }
+}

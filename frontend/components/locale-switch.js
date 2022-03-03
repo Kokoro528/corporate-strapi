@@ -8,6 +8,7 @@ import { MdExpandMore } from "react-icons/md"
 import WorldIcon from "./icons/world"
 
 import { useOnClickOutside } from "../utils/hooks"
+import { getLocalizedPage,localizePath } from "utils/localize"
 
 const LocaleSwitch = ({ pageContext }) => {
   const isMounted = useRef(false)

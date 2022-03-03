@@ -22,8 +22,8 @@ const NextImage = ({ media, ...props }) => {
     <Image
       loader={loader}
       layout="responsive"
-      width={width}
-      height={height}
+      width={width || 0}
+      height={height || 0}
       objectFit="contain"
       src={url}
       alt={alternativeText || ""}
@@ -32,7 +32,7 @@ const NextImage = ({ media, ...props }) => {
 }
 
 Image.propTypes = {
-  media: mediaPropTypes.isRequired,
+  media: mediaPropTypes,
   className: PropTypes.string,
 }
 

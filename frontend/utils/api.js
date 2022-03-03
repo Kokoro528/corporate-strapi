@@ -232,11 +232,29 @@ export async function getPageData({ slug, locale, preview }) {
                     }
                     title
                   }
+                  ... on ComponentSectionsSolutionList {
+                    id
+                    # title
+                    solutions {
+                      data {
+                        id
+                        attributes {
+                          # title
+                          caseBackground {
+                            ... on ComponentSectionsRichText {
+                              id
+                              content
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
           }
-        }      
+        }
       `,
       variables: {
         slug,
@@ -349,3 +367,5 @@ export async function getGlobalData(locale) {
   const global = await globalRes.json()
   return global.data.global
 }
+
+

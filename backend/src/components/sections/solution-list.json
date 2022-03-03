@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_sections_solution_lists",
+  "info": {
+    "displayName": "Solution list",
+    "icon": "border-all",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "solutions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::solution.solution"
+    }
+  }
+}
