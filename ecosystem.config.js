@@ -18,6 +18,12 @@ module.exports = {
         OBS_BUCKET_NAME: 'strapi',
       },
     },
+    {
+      name: 'frontend',
+      cwd: '/root/corporate-strapi/frontend',
+      script: 'npm',
+      args: 'start',
+    }
   ],
 };
  
