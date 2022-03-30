@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_sections_rich_content_sections",
+  "info": {
+    "displayName": "Rich Content Section",
+    "icon": "align-justify"
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "richtext"
+    },
+    "subtitle": {
+      "type": "string"
+    }
+  }
+}
