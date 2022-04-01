@@ -20,11 +20,11 @@ const TestimonialsGroup = ({ data }) => {
       {/* Current testimonial card */}
       <div className="max-w-5xl w-8/12 sm:w-8/12 bg-white shadow-md sm:shadow-xl mx-auto flex flex-col sm:flex-row mt-10 text-left">
         <div className="w-full md:w-4/12 flex-shrink-0">
-          <NextImage   media={selectedTestimonial.picture} />
+          <NextImage media={selectedTestimonial.picture} />
         </div>
         <div className="px-4 py-4 sm:px-12 sm:pt-12 sm:pb-4 flex flex-col justify-between">
           <div>
-            <NextImage  
+            <NextImage
               width="120"
               height="33"
               media={selectedTestimonial.logo}
@@ -75,7 +75,7 @@ const TestimonialsGroup = ({ data }) => {
       {/* Logos list */}
       <div className="flex flex-row flex-wrap items-center gap-6 sm:gap-20 justify-center mt-10 px-6 sm:px-0 ">
         {data.logos.map((logo) => (
-          <NextImage   key={logo.id} width="120" height="33" media={logo.logo} />
+          <NextImage key={logo.id} width="120" height="33" media={logo.logo} />
         ))}
       </div>
     </section>
