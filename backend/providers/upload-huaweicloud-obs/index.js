@@ -30,10 +30,10 @@ module.exports = {
 
 
         return {
-            upload(file, customParams= {}) {
+             upload(file, customParams= {}) {
                 // upload the file in the provider
                 console.log("file", file)
-                console.log("buffer", Buffer.from(file.buffer, "binary"))
+                 
                 const uploadParams = {
                     Bucket: providerOptions.params.bucket,
                     Key: getPath(file),
@@ -52,6 +52,7 @@ module.exports = {
                                console.error('Error-->' + err);
                         }else{
                                if(result.CommonMsg.Status < 300){
+                                file.url = `https://${providerOptions.params.bucket}.${providerOptions.server}/${getPath(file)}`  
                                       console.log('RequestId-->' + result.InterfaceResult.RequestId);
                                       console.log('ETag-->' + result.InterfaceResult.ETag);
                                       console.log('VersionId-->' + result.InterfaceResult.VersionId);

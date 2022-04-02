@@ -16,6 +16,7 @@ module.exports = {
         HUAWEICLOUD_ACCESS_SECRET: 'buToFjirTliTiVgUAa7RXMxfwk9KOY7W4zk9591T', // Find it in Amazon S3 Dashboard
         AWS_REGION: 'aws-region',
         OBS_BUCKET_NAME: 'strapi',
+        OBS_SERVER: 'obs.cn-east-3.myhuaweicloud.com',
       },
     },
     {
@@ -23,9 +24,7 @@ module.exports = {
       cwd: '/root/corporate-strapi/frontend',
       script: 'npm',
       args: 'start',
-      env: {
-          NODE_ENV: 'development',
-      }
+
     }
   ],
 };
