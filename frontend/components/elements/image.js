@@ -16,8 +16,8 @@ const NextImage = ({ media, ...props }) => {
   // The image has a fixed width and height
   if (props.width && props.height) {
     return (
-      <Image loader={loader} src={url} alt={alternativeText || ""} {...props} width={width || 0} 
-      height={height || 0}/>
+      <Image loader={loader} src={url} alt={alternativeText || ""} {...props} width={props.height || 0} 
+      height={props.height || 0}/>
     )
   }
 
