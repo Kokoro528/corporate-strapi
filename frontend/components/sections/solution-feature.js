@@ -2,6 +2,7 @@ import Markdown from "react-markdown"
 import { getButtonAppearance } from "utils/button"
 import ButtonLink from "../elements/button-link"
 import NextImage from "../elements/image"
+import Video from "../elements/video"
 import FeatureColumnGroup from "./feature-columns-group"
 import classNames from "classnames"
 

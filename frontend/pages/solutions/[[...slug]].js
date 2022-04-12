@@ -37,6 +37,7 @@ const DynamicPage = ({ sections,  metadata, preview, global, pageContext }) => {
       {/* Add meta tags for SEO*/}
       {/* <Seo metadata={metadataWithDefaults} /> */}
       {/* Display content sections */}
+      
       <Sections sections={sections} preview={preview} />
     </Layout>
   )
@@ -75,14 +76,12 @@ export async function getStaticProps(context) {
   const { params, locale, locales, defaultLocale, preview = null } = context
 
   const globalLocale = await getGlobalData(locale)
-  console.log("asd", globalLocale)
   // Fetch pages. Include drafts if preview mode is on
   const pageData = await getSolutionData({
     // slug: (!params.slug ? [""] : params.slug).join("/"),
     locale,
     preview,
   })
-  console.log("sdl", pageData)
   if (pageData == null) {
     // Giving the page no props will trigger a 404 page
     return { props: {} }
