@@ -43,36 +43,36 @@ const DynamicPage = ({ sections, metadata, preview, global, pageContext }) => {
   )
 }
 
-export async function getStaticPaths(context) {
-  // Get all pages from Strapi
-  const pages = await context.locales.reduce(
-    async (currentPagesPromise, locale) => {
-      const currentPages = await currentPagesPromise
-      const localePages = await fetchAPI("/pages", {
-        locale,
-        fields: ["slug", "locale"],
-      })
-      return [...currentPages, ...localePages.data]
-    },
-    Promise.resolve([])
-  )
+// export async function getStaticPaths(context) {
+//   // Get all pages from Strapi
+//   const pages = await context.locales.reduce(
+//     async (currentPagesPromise, locale) => {
+//       const currentPages = await currentPagesPromise
+//       const localePages = await fetchAPI("/pages", {
+//         locale,
+//         fields: ["slug", "locale"],
+//       })
+//       return [...currentPages, ...localePages.data]
+//     },
+//     Promise.resolve([])
+//   )
 
-  const paths = pages.map((page) => {
-    const { slug, locale } = page.attributes
-    // Decompose the slug that was saved in Strapi
-    const slugArray = !slug ? false : slug.split("/")
+//   const paths = pages.map((page) => {
+//     const { slug, locale } = page.attributes
+//     // Decompose the slug that was saved in Strapi
+//     const slugArray = !slug ? false : slug.split("/")
 
-    return {
-      params: { slug: slugArray },
-      // Specify the locale to render
-      locale,
-    }
-  })
+//     return {
+//       params: { slug: slugArray },
+//       // Specify the locale to render
+//       locale,
+//     }
+//   })
 
-  return { paths, fallback: true }
-}
+//   return { paths, fallback: true }
+// }
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   const { params, locale, locales, defaultLocale, preview = null } = context
 
   const globalLocale = await getGlobalData(locale)
