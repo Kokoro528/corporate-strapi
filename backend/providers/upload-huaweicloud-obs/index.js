@@ -30,14 +30,14 @@ module.exports = {
 
 
         return {
-             upload(file, customParams= {}) {
+            upload(file, customParams= {}) {
                 // upload the file in the provider
                 console.log("file", file)
                  
                 const uploadParams = {
                     Bucket: providerOptions.params.bucket,
                     Key: getPath(file),
-                    // Body: Buffer.from(file.buffer, "binary"),
+                    // Body: Buffer.from(file.buffer),
                     Body: file.getStream(),
                     // SourceFile: file.tmpWorkingDirectory,
                     // TODO(fix): this currently breaks uploads
@@ -46,24 +46,30 @@ module.exports = {
                     ContentType: file.mime,
                     ...customParams,
                 };
-                obsClient.putObject(
+                return new Promise((resolve, reject) => {
+                    obsClient.putObject(
                     uploadParams, (err, result) => {
                         if(err){
                                console.error('Error-->' + err);
+                               reject(err);
                         }else{
                                if(result.CommonMsg.Status < 300){
-                                file.url = `https://${providerOptions.params.bucket}.${providerOptions.server}/${getPath(file)}`  
+                                file.url = `https://${providerOptions.params.bucket}.${providerOptions.server}/${getPath(file)}` 
+                                console.log("looo", JSON.stringify(result)) 
                                       console.log('RequestId-->' + result.InterfaceResult.RequestId);
                                       console.log('ETag-->' + result.InterfaceResult.ETag);
                                       console.log('VersionId-->' + result.InterfaceResult.VersionId);
                                       console.log('StorageClass-->' + result.InterfaceResult.StorageClass);
+                                      resolve();
                                }else{
                                 console.log('Status-->' + result.CommonMsg.Status);
                                       console.log('Code-->' + result.CommonMsg.Code);
                                       console.log('Message-->' + result.CommonMsg.Message);
+                                      reject(err);
                                }
                         }
                  }
+                )}
                 )
             },
             delete(file, customParams={}) {

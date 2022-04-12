@@ -20,7 +20,7 @@ const TestimonialsGroup = ({ data }) => {
       {/* Current testimonial card */}
       <div className="max-w-5xl w-8/12 sm:w-8/12 bg-white shadow-md sm:shadow-xl mx-auto flex flex-col sm:flex-row mt-10 text-left">
         <div className="w-full md:w-4/12 flex-shrink-0">
-          <NextImage media={selectedTestimonial.picture} />
+          <NextImage layout="fill" media={selectedTestimonial.picture} />
         </div>
         <div className="px-4 py-4 sm:px-12 sm:pt-12 sm:pb-4 flex flex-col justify-between">
           <div>

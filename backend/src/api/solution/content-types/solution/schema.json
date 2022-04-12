@@ -16,54 +16,6 @@
     }
   },
   "attributes": {
-    "caseDetails": {
-      "type": "dynamiczone",
-      "components": [
-        "sections.bottom-actions",
-        "sections.feature-columns-group",
-        "sections.feature-rows-group",
-        "sections.hero",
-        "sections.large-video",
-        "sections.lead-form",
-        "sections.pricing",
-        "sections.rich-text",
-        "sections.testimonials-group"
-      ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "caseBackground": {
-      "type": "dynamiczone",
-      "components": [
-        "sections.bottom-actions",
-        "sections.feature-columns-group",
-        "sections.feature-rows-group",
-        "sections.hero",
-        "sections.large-video",
-        "sections.lead-form",
-        "sections.pricing",
-        "sections.rich-text",
-        "sections.testimonials-group"
-      ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "caseValue": {
-      "type": "component",
-      "repeatable": true,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "sections.feature-rows-group"
-    },
     "title": {
       "pluginOptions": {
         "i18n": {
@@ -71,6 +23,18 @@
         }
       },
       "type": "string"
+    },
+    "contentSections": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "dynamiczone",
+      "components": [
+        "sections.rich-text",
+        "sections.solution-feature"
+      ]
     }
   }
 }

@@ -13,7 +13,7 @@ const MyApp = ({ Component, pageProps }) => {
   if (global == null) {
     return <ErrorPage statusCode={404} />
   }
-
+  
   const { metadata, favicon, metaTitleSuffix } = global.attributes
 
   return (
@@ -32,7 +32,7 @@ const MyApp = ({ Component, pageProps }) => {
         description={metadata.metaDescription}
         openGraph={{
           images: Object.values(
-            metadata.shareImage.data.attributes.formats
+            metadata.shareImage.data?.attributes.formats
           ).map((image) => {
             return {
               url: getStrapiMedia(image.url),
@@ -56,10 +56,13 @@ const MyApp = ({ Component, pageProps }) => {
 // have getStaticProps. So [[...slug]] pages still get SSG.
 // Hopefully we can replace this with getStaticProps once this issue is fixed:
 // https://github.com/vercel/next.js/discussions/10949
-MyApp.getServerSideProps = async (appContext) => {
+MyApp.getInitialProps = async (appContext) => {
   // Calls page's `getInitialProps` and fills `appProps.pageProps`
-  const appProps = await App.getServerSideProps(appContext)
+  // console.log("locale", appContext)
+  const appProps = await App.getInitialProps(appContext)
+  // console.log("locale", appContext.router.locale)
   const globalLocale = await getGlobalData(appContext.router.locale)
+  console.log("globalLocale", globalLocale?.attributes?.metadata.shareImage )
   return {
     ...appProps,
     pageProps: {

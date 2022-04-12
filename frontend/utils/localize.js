@@ -4,7 +4,6 @@ export async function getLocalizedPage(targetLocale, pageContext) {
   const localization = pageContext.localizations.data.find(
     (localization) => localization.attributes.locale === targetLocale
   )
-  console.log("localizationID",localization.id)
   const localePage = await fetchAPI(`/pages/${localization.id}`)
   return localePage
 }

@@ -4,6 +4,7 @@ module.exports = {
     defaultLocale: 'zh',
   },
   images: {
-      domains: ['localhost'],
+      domains: ['localhost', 'strapi.obs.cn-east-3.myhuaweicloud.com'],
+      // domains: ['localhost']
     },
 }

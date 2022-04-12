@@ -35,7 +35,7 @@ const DynamicPage = ({ sections, metadata, preview, global, pageContext }) => {
   return (
     <Layout global={global} pageContext={pageContext}>
       {/* Add meta tags for SEO*/}
-      <Seo metadata={metadataWithDefaults} />
+      {/* <Seo metadata={metadataWithDefaults} /> */}
       {/* Display content sections */}
       <Sections sections={sections} preview={preview} />
     </Layout>
@@ -81,7 +81,6 @@ export async function getStaticProps(context) {
     locale,
     preview,
   })
-
   if (pageData == null) {
     // Giving the page no props will trigger a 404 page
     return { props: {} }
@@ -105,7 +104,7 @@ export async function getStaticProps(context) {
       preview,
       sections: contentSections,
       metadata,
-      global: globalLocale.data,
+      global: globalLocale,
       pageContext: {
         ...pageContext,
         localizedPaths,

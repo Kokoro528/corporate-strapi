@@ -1,9 +1,9 @@
 import PropTypes from "prop-types"
 
 const SolutionList = ({ data }) => {
-  console.log(data)
+  // console.log(data)
   const solutions = data.solutions.data
-  console.log(solutions)
+  // console.log(solutions)
   // const {solutions}= data;
   // return null;
 
@@ -15,7 +15,7 @@ const SolutionList = ({ data }) => {
             <NextImage   media={feature.icon} />
           </div> */}
           <h3 className="font-bold mt-4 mb-4">{id}</h3>
-          <p>{attributes.caseBackground[0].content}</p>
+          {/* <p>{attributes.caseBackground[0].content}</p> */}
         </div>
       ))}
     </div>

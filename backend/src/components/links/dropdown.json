@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_links_dropdowns",
+  "info": {
+    "displayName": "Dropdown",
+    "icon": "angle-double-down",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string"
+    },
+    "nestedLink": {
+      "type": "component",
+      "repeatable": true,
+      "component": "links.link"
+    },
+    "url": {
+      "type": "string"
+    }
+  }
+}

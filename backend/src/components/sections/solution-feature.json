@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_sections_solution_features",
+  "info": {
+    "displayName": "Solution feature",
+    "icon": "american-sign-language-interpreting",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "media": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "bulletPoints": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.feature-column"
+    }
+  }
+}

@@ -1,10 +1,11 @@
 {
   "dependencies": {
-    "@strapi/plugin-graphql": "^4.0.0",
-    "@strapi/plugin-i18n": "4.1.5",
-    "@strapi/plugin-users-permissions": "4.1.5",
+    "@strapi/plugin-graphql": "4.1.7",
+    "@strapi/plugin-i18n": "4.1.7",
+    "@strapi/plugin-users-permissions": "4.1.7",
+    "@strapi/provider-upload-aws-s3": "^4.1.7",
     "@strapi/provider-upload-huaweicloud-obs": "file:providers/upload-huaweicloud-obs",
-    "@strapi/strapi": "4.1.5",
+    "@strapi/strapi": "4.1.7",
     "esdk-obs-nodejs": "^3.21.6",
     "lodash.set": "^4.3.2",
     "pg": "8.6.0",
