@@ -25,13 +25,12 @@ const Navbar = ({ navbar, pageContext }) => {
           <div className="flex flex-row items-center">
             <Link href="/">
               <a className="h-8 w-32">
-                <NextImage   media={navbar.logo} />
+                <NextImage media={navbar.logo} />
               </a>
             </Link>
             {/* List of links on desktop */}
             <ul className="hidden list-none md:flex flex-row gap-4 items-baseline ml-10">
               {navbar.links.map((navLink) => (
-                
                 <li key={navLink.id}>
                   <CustomLink link={navLink} locale={router.locale}>
                     <div className="hover:text-gray-900 px-2 py-1">

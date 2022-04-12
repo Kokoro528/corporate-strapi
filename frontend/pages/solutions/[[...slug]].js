@@ -10,7 +10,7 @@ import { getLocalizedPaths } from "utils/localize"
 // optional catch all routes feature. See the related docs:
 // https://nextjs.org/docs/routing/dynamic-routes#optional-catch-all-routes
 
-const DynamicPage = ({ sections,  metadata, preview, global, pageContext }) => {
+const DynamicPage = ({ sections, metadata, preview, global, pageContext }) => {
   const router = useRouter()
 
   // Check if the required data was provided
@@ -24,9 +24,9 @@ const DynamicPage = ({ sections,  metadata, preview, global, pageContext }) => {
   }
 
   // Merge default site SEO settings with page specific SEO settings
-//   if (metadata.shareImage?.data == null) {
-//     delete metadata.shareImage
-//   }
+  //   if (metadata.shareImage?.data == null) {
+  //     delete metadata.shareImage
+  //   }
   const metadataWithDefaults = {
     ...global.attributes.metadata,
     ...metadata,
@@ -37,7 +37,7 @@ const DynamicPage = ({ sections,  metadata, preview, global, pageContext }) => {
       {/* Add meta tags for SEO*/}
       {/* <Seo metadata={metadataWithDefaults} /> */}
       {/* Display content sections */}
-      
+
       <Sections sections={sections} preview={preview} />
     </Layout>
   )
@@ -88,11 +88,12 @@ export async function getStaticProps(context) {
   }
 
   // We have the required page data, pass it to the page component
-  const { contentSections, 
-    // metadata, 
-    localizations, 
+  const {
+    contentSections,
+    // metadata,
+    localizations,
     // slug
- } = pageData.attributes
+  } = pageData.attributes
 
   const pageContext = {
     locale,
@@ -108,7 +109,7 @@ export async function getStaticProps(context) {
     props: {
       preview,
       sections: contentSections,
-    //   metadata,
+      //   metadata,
       global: globalLocale,
       pageContext: {
         ...pageContext,

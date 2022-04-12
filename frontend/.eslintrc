@@ -7,10 +7,11 @@
     "prettier"
   ],
   "rules": {
+    "@next/next/no-document-import-in-page": "off",
     "prettier/prettier": [
       "error",
       {
-	"endOfLine": "auto",
+        "endOfLine": "auto",
         "printWidth": 80,
         "singleQuote": false,
         "trailingComma": "es5",

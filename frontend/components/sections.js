@@ -23,8 +23,7 @@ const sectionComponents = {
   ComponentSectionsPricing: Pricing,
   ComponentSectionsLeadForm: LeadForm,
   ComponentSectionsSolutionList: SolutionList,
-  ComponentSectionsSolutionFeature: SolutionFeature
-  
+  ComponentSectionsSolutionFeature: SolutionFeature,
 }
 
 // Display a section individually
