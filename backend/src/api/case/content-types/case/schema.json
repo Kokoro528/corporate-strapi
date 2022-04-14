@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "solutions",
+  "collectionName": "cases",
   "info": {
-    "singularName": "solution",
-    "pluralName": "solutions",
-    "displayName": "Solution",
+    "singularName": "case",
+    "pluralName": "cases",
+    "displayName": "Case",
     "description": ""
   },
   "options": {
@@ -17,25 +17,15 @@
   },
   "attributes": {
     "contentSections": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
       "type": "dynamiczone",
       "components": [
-        "sections.rich-text",
-        "sections.solution-feature",
         "sections.hero"
-      ]
-    },
-    "title": {
+      ],
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "type": "string"
+      }
     }
   }
 }

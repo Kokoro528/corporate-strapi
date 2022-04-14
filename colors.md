@@ -102,3 +102,38 @@
 50: "RGBA(217.0,213.0,248.0)",
 -100: "RGBA(236.0,234.0,252.0)",
 -200: "RGBA(255.0,255.0,255.0)",
+
+
+query GetCases(
+        $publicationState: PublicationState!
+        $locale: I18NLocaleCode!
+      ) {
+  cases(
+          publicationState: $publicationState
+          locale: $locale
+        ) {
+    data {
+      id
+      attributes {
+        contentSections  {
+            __typename
+            ... on ComponentSectionsHero {
+                  id
+                  buttons {
+                    id
+                    newTab
+                    text
+                    type
+                    url
+                  }
+                  title
+                  description
+                  label
+                  smallTextWithLink
+                  
+                }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_sections_hero_2s",
+  "info": {
+    "displayName": "Hero 2",
+    "icon": "bowling-ball"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "label": {
+      "type": "string"
+    },
+    "smallTextWithLinks": {
+      "type": "richtext"
+    }
+  }
+}

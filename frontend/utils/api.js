@@ -317,6 +317,23 @@ export async function getSolutionData({locale, preview}) {
                   id
                   content
                 }
+                ... on ComponentSectionsHero {
+                  id
+                  buttons {
+                    id
+                    newTab
+                    text
+                    type
+                    url
+                  }
+                  title
+                  description
+                  label
+                  smallTextWithLink
+                  picture {
+                    ...FileParts
+                  }
+                }
                 ... on ComponentSectionsSolutionFeature {
                   id
                   title

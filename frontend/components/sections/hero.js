@@ -23,6 +23,7 @@ const Hero = ({ data }) => {
               key={button.id}
             />
           ))}
+          
         </div>
         {/* Small rich text */}
         <div className="text-base md:text-sm mt-4 sm:mt-3 rich-text-hero">

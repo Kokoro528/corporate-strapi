@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_elements_headers",
+  "info": {
+    "displayName": "Header",
+    "icon": "cog",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    }
+  }
+}

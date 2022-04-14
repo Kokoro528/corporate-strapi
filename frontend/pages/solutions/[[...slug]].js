@@ -2,6 +2,7 @@ import ErrorPage from "next/error"
 import { getSolutionData, fetchAPI, getGlobalData } from "utils/api"
 import Sections from "@/components/sections"
 import Seo from "@/components/elements/seo"
+import Header from "@/components/elements/header"
 import { useRouter } from "next/router"
 import Layout from "@/components/layout"
 import { getLocalizedPaths } from "utils/localize"
@@ -10,7 +11,7 @@ import { getLocalizedPaths } from "utils/localize"
 // optional catch all routes feature. See the related docs:
 // https://nextjs.org/docs/routing/dynamic-routes#optional-catch-all-routes
 
-const DynamicPage = ({ sections, metadata, preview, global, pageContext }) => {
+const DynamicPage = ({ sections, metadata, preview, global, pageContext, title }) => {
   const router = useRouter()
 
   // Check if the required data was provided
@@ -37,7 +38,7 @@ const DynamicPage = ({ sections, metadata, preview, global, pageContext }) => {
       {/* Add meta tags for SEO*/}
       {/* <Seo metadata={metadataWithDefaults} /> */}
       {/* Display content sections */}
-
+      <Header title={title} ></Header>
       <Sections sections={sections} preview={preview} />
     </Layout>
   )
@@ -92,7 +93,7 @@ export async function getServerSideProps(context) {
     contentSections,
     // metadata,
     localizations,
-    // slug
+    title
   } = pageData.attributes
 
   const pageContext = {
@@ -109,6 +110,7 @@ export async function getServerSideProps(context) {
     props: {
       preview,
       sections: contentSections,
+      title,
       //   metadata,
       global: globalLocale,
       pageContext: {
