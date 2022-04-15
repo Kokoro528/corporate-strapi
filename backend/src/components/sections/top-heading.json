@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_sections_top_headings",
+  "info": {
+    "displayName": "Top Heading",
+    "icon": "archway"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "text"
+    },
+    "backgroundImage": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

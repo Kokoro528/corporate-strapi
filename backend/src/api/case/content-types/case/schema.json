@@ -17,15 +17,25 @@
   },
   "attributes": {
     "contentSections": {
-      "type": "dynamiczone",
-      "components": [
-        "sections.hero"
-      ],
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "type": "dynamiczone",
+      "components": [
+        "sections.hero",
+        "sections.rich-text",
+        "sections.top-heading"
+      ]
+    },
+    "title": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
     }
   }
 }
