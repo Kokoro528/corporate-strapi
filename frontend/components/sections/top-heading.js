@@ -1,6 +1,6 @@
 import classNames from "classnames"
 
-export default ({ data }) => {
+const TopHeading =  ({ data }) => {
     const style = {
         backgroundImage:"url(" + data.backgroundImage.data.attributes.url + ")",
         backgroundPosition: 'center',
@@ -20,5 +20,7 @@ export default ({ data }) => {
     </section>
   )
 }
+
+export default TopHeading;
 
 
