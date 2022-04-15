@@ -268,6 +268,109 @@ export async function getPageData({ slug, locale, preview }) {
   return pagesData.data.pages.data[0]
 }
 
+
+export async function getCaseData({locale, preview}) {
+  const gqlEndpoint = getStrapiURL("/graphql")
+  const caseRes = await fetch(gqlEndpoint, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      query: `
+      fragment FileParts on UploadFileEntityResponse {
+        data {
+          id
+          attributes {
+            alternativeText
+            width
+            height
+            mime
+            url
+            formats
+          }
+        }
+      }
+      query GetCases(
+        $publicationState: PublicationState!
+        $locale: I18NLocaleCode!
+      ) {        
+        cases(
+          publicationState: $publicationState
+          locale: $locale
+        ) {
+          data {
+            id
+            attributes {
+              locale
+              localizations {
+                data {
+                  id
+                  attributes {
+                    locale
+                  }
+                }
+              }
+              title
+              contentSections {
+                __typename
+                ... on ComponentSectionsRichText {
+                  id
+                  content
+                }
+                ... on ComponentSectionsTopHeading {
+                  id
+                  title
+                  backgroundImage {
+                    ...FileParts
+                  }
+                }
+                ... on ComponentSectionsHero {
+                  id
+                  buttons {
+                    id
+                    newTab
+                    text
+                    type
+                    url
+                  }
+                  title
+                  description
+                  label
+                  smallTextWithLink
+                  picture {
+                    ...FileParts
+                  }
+                }
+                
+              }
+            
+              
+            }
+          }
+        }
+      }      
+      `,
+      variables: {
+        publicationState: preview ? "PREVIEW" : "LIVE",
+        locale,
+      },
+    })
+  })
+
+  
+  
+
+  const casesData = await caseRes.json()
+  // Make sure we found something, otherwise return null
+  if (casesData.data?.cases == null || casesData.data?.cases.length === 0) {
+    return null
+  }
+
+  // Return the first item since there should only be one result per slug
+  return casesData.data.cases.data[0]
+}
+
 export async function getSolutionData({locale, preview}) {
   const gqlEndpoint = getStrapiURL("/graphql")
   const solutionRes = await fetch(gqlEndpoint, {

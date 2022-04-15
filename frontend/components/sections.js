@@ -10,6 +10,7 @@ import Pricing from "./sections/pricing"
 import LeadForm from "./sections/lead-form"
 import SolutionList from "@/components/sections/solution-list"
 import SolutionFeature from "./sections/solution-feature"
+import TopHeading from "./sections/top-heading"
 
 // Map Strapi sections to section components
 const sectionComponents = {
@@ -24,6 +25,7 @@ const sectionComponents = {
   ComponentSectionsLeadForm: LeadForm,
   ComponentSectionsSolutionList: SolutionList,
   ComponentSectionsSolutionFeature: SolutionFeature,
+  ComponentSectionsTopHeading: TopHeading
 }
 
 // Display a section individually
