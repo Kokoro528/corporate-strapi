@@ -29,7 +29,7 @@ const MobileNavMenu = ({ navbar, closeSelf }) => {
             {navbar.links.map((navLink) => (
               <li key={navLink.id} className="block w-full">
                 <CustomLink link={navLink}>
-                  <div className="hover:text-gray-900 py-6 flex flex-row justify-between items-center">
+                  <div className="hover:text-primary-900 py-6 flex flex-row justify-between items-center">
                     <span>{navLink.text}</span>
                     <MdChevronRight className="h-8 w-auto" />
                   </div>

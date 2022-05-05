@@ -132,7 +132,7 @@ const DynamicPage = ({
 //     }
 //   })
 
-//   return { paths, fallback: true }
+//   return { paths, fallback: 'blocking' }
 // }
 
 export async function getServerSideProps(context) {

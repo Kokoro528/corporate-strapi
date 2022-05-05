@@ -33,7 +33,7 @@ const Navbar = ({ navbar, pageContext }) => {
               {navbar.links.map((navLink) => (
                 <li key={navLink.id}>
                   <CustomLink link={navLink} locale={router.locale}>
-                    <div className="hover:text-gray-900 px-2 py-1">
+                    <div className="hover:text-primary-900 px-2 py-1">
                       {navLink.text}
                     </div>
                   </CustomLink>

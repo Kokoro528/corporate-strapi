@@ -25,9 +25,9 @@ const DynamicPage = ({
   // const arr = router.asPath.split("/")
 
   // Check if the required data was provided
-  if (!router.isFallback) {
-    return <ErrorPage statusCode={404} />
-  }
+  // if (!router.isFallback) {
+  //   return <ErrorPage statusCode={404} />
+  // }
 
   // Loading screen (only possible in preview mode)
   if (router.isFallback) {
@@ -85,7 +85,7 @@ const DynamicPage = ({
 
 export async function getServerSideProps(context) {
   const { params, locale, locales, defaultLocale, preview = null } = context
-  // console.log("papa", context);s
+  
 
   const globalLocale = await getGlobalData(locale)
   // Fetch pages. Include drafts if preview mode is on
@@ -93,7 +93,6 @@ export async function getServerSideProps(context) {
     // slug: (!params.slug ? [""] : params.slug).join("/"),
     locale,
     preview,
-    id: params.rest,
   })
   if (pageData == null) {
     // Giving the page no props will trigger a 404 page
@@ -106,7 +105,7 @@ export async function getServerSideProps(context) {
     // metadata,
     localizations,
     title,
-  } = pageData.solutions.find((e) => e.id == params.rest)?.attributes
+  } = pageData.find((e) => e.id == params.rest)?.attributes
 
   const pageContext = {
     locale,

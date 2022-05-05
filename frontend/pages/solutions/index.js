@@ -25,9 +25,9 @@ const DynamicPage = ({
   const router = useRouter()
 
   // Check if the required data was provided
-  if (!router.isFallback) {
-    return <ErrorPage statusCode={404} />
-  }
+  // if (!router.isFallback) {
+  //   return <ErrorPage statusCode={404} />
+  // }
 
   // Loading screen (only possible in preview mode)
   if (router.isFallback) {

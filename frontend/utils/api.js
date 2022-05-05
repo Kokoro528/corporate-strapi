@@ -476,12 +476,12 @@ export async function getSolutionData({locale, preview}) {
 
   const solutionsData = await solutionRes.json()
   // Make sure we found something, otherwise return null
-  if (solutionsData.data?.solutions == null || solutionsData.data?.solutions.length === 0) {
+  if (solutionsData.data?.solutions == null ) {
     return null
   }
 
   // Return the first item since there should only be one result per slug
-  return solutionsData.data.solutions
+  return solutionsData.data.solutions.data
   
   
 
