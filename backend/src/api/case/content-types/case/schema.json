@@ -36,6 +36,17 @@
         }
       },
       "type": "string"
+    },
+    "seo": {
+      "displayName": "Seo",
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "meta.seo"
     }
   }
 }

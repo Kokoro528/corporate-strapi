@@ -324,6 +324,14 @@ export async function getCaseData({locale, preview}) {
                   backgroundImage {
                     ...FileParts
                   }
+                  abstract
+                  buttons {
+                    id
+                    newTab
+                    text
+                    type
+                    url
+                  }
                 }
                 ... on ComponentSectionsHero {
                   id
@@ -363,12 +371,12 @@ export async function getCaseData({locale, preview}) {
 
   const casesData = await caseRes.json()
   // Make sure we found something, otherwise return null
-  if (casesData.data?.cases == null || casesData.data?.cases.length === 0) {
+  if (casesData.data?.cases == null ) {
     return null
   }
 
   // Return the first item since there should only be one result per slug
-  return casesData.data.cases.data[0]
+  return casesData.data.cases.data
 }
 
 export async function getSolutionData({locale, preview}) {
@@ -473,7 +481,7 @@ export async function getSolutionData({locale, preview}) {
   }
 
   // Return the first item since there should only be one result per slug
-  return solutionsData.data.solutions.data[0]
+  return solutionsData.data.solutions
   
   
 

@@ -11,7 +11,14 @@ import { getLocalizedPaths } from "utils/localize"
 // optional catch all routes feature. See the related docs:
 // https://nextjs.org/docs/routing/dynamic-routes#optional-catch-all-routes
 
-const DynamicPage = ({ sections, metadata, preview, global, pageContext, title }) => {
+const DynamicPage = ({
+  sections,
+  metadata,
+  preview,
+  global,
+  pageContext,
+  title,
+}) => {
   const router = useRouter()
 
   // Check if the required data was provided
@@ -38,7 +45,7 @@ const DynamicPage = ({ sections, metadata, preview, global, pageContext, title }
       {/* Add meta tags for SEO*/}
       {/* <Seo metadata={metadataWithDefaults} /> */}
       {/* Display content sections */}
-      <Header title={title} ></Header>
+      <Header title={title}></Header>
       <Sections sections={sections} preview={preview} />
     </Layout>
   )
@@ -77,7 +84,7 @@ export async function getServerSideProps(context) {
   const { params, locale, locales, defaultLocale, preview = null } = context
 
   const globalLocale = await getGlobalData(locale)
-  // Fetch pages. Include drafts if preview mode is on
+  // Fetch pages. Include drafts ifgetCase preview mode is on
   const pageData = await getCaseData({
     // slug: (!params.slug ? [""] : params.slug).join("/"),
     locale,
@@ -93,8 +100,8 @@ export async function getServerSideProps(context) {
     contentSections,
     // metadata,
     localizations,
-    title
-  } = pageData.attributes
+    title,
+  } = pageData.find((e) => e.id == params.rest)?.attributes
 
   const pageContext = {
     locale,

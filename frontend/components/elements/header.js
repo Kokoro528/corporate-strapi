@@ -1,7 +1,7 @@
 import Markdown from "react-markdown"
 import classNames from "classnames"
 
-const Header = ({  title  }) => {
+const Header = ({ title }) => {
   return (
     <div
       className={classNames(
@@ -10,17 +10,16 @@ const Header = ({  title  }) => {
         "sticky top-0 z-50",
         {
           // Apply theme based on notification type
-        //   "bg-blue-600": type === "info",
-        //   "bg-orange-600": type === "warning",
-        //   "bg-red-600": type === "alert",
-        "bg-primary-800": true
-
+          //   "bg-blue-600": type === "info",
+          //   "bg-orange-600": type === "warning",
+          //   "bg-red-600": type === "alert",
+          "bg-primary-800": true,
         }
       )}
     >
       <div className="container flex flex-row justify-between items-center ">
         {/* <div className="rich-text-banner flex-1"> */}
-          {title}
+        {title}
         {/* </div> */}
         {/* <button onClick={closeSelf} className="px-1 py-1 flex-shrink-0">
           <MdClose className="h-6 w-auto" color="#fff" />
@@ -30,4 +29,4 @@ const Header = ({  title  }) => {
   )
 }
 
-export default Header;
+export default Header

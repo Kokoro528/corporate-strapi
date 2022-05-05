@@ -8,7 +8,6 @@ import TestimonialsGroup from "@/components/sections/testimonials-group"
 import RichText from "./sections/rich-text"
 import Pricing from "./sections/pricing"
 import LeadForm from "./sections/lead-form"
-import SolutionList from "@/components/sections/solution-list"
 import SolutionFeature from "./sections/solution-feature"
 import TopHeading from "./sections/top-heading"
 
@@ -23,9 +22,8 @@ const sectionComponents = {
   ComponentSectionsRichText: RichText,
   ComponentSectionsPricing: Pricing,
   ComponentSectionsLeadForm: LeadForm,
-  ComponentSectionsSolutionList: SolutionList,
   ComponentSectionsSolutionFeature: SolutionFeature,
-  ComponentSectionsTopHeading: TopHeading
+  ComponentSectionsTopHeading: TopHeading,
 }
 
 // Display a section individually

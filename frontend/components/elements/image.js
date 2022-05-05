@@ -4,9 +4,10 @@ import PropTypes from "prop-types"
 import { mediaPropTypes } from "utils/types"
 
 const NextImage = ({ media, ...props }) => {
-  if (!media || !media.data )  {
+  if (!media || !media.data) {
     return null
   }
+  // console.log("bb", media)
   const { url, alternativeText, width, height } = media.data.attributes
 
   const loader = ({ src, width }) => {

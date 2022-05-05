@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_elements_third_party_q_rcodes",
+  "info": {
+    "displayName": "Third Party QRcodes",
+    "icon": "braille"
+  },
+  "options": {},
+  "attributes": {
+    "icon": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "qrcode": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "title": {
+      "type": "string"
+    }
+  }
+}

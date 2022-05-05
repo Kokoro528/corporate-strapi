@@ -6,11 +6,5 @@
     "description": ""
   },
   "options": {},
-  "attributes": {
-    "pages": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::page.page"
-    }
-  }
+  "attributes": {}
 }

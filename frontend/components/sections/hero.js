@@ -23,7 +23,6 @@ const Hero = ({ data }) => {
               key={button.id}
             />
           ))}
-          
         </div>
         {/* Small rich text */}
         <div className="text-base md:text-sm mt-4 sm:mt-3 rich-text-hero">
@@ -31,7 +30,7 @@ const Hero = ({ data }) => {
         </div>
       </div>
       {/* Right column for the image */}
-      <div className="flex-shrink-0 w-full md:w-6/12 mt-6 md:mt-0">
+      <div className="flex-shrink-0 w-full md:w-8/12 mt-6 md:mt-0">
         <NextImage media={data.picture} />
       </div>
     </main>
