@@ -34,7 +34,7 @@ const CaseList = ({ data }) => {
         <Link href={`/cases/${id}`} key={"case-" + id} passHref>
           <div className="flex-1 text-lg" key={id}>
             <div className="">
-              <NextImage media={getPictureSrc(attributes)} />
+              <NextImage media={getPictureSrc(attributes) } />
             </div>
             <h3 className="font-bold mt-4 mb-4">{attributes.title}</h3>
             {/* <p>{attributes.title}</p> */}

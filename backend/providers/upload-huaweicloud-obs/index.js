@@ -25,15 +25,13 @@ module.exports = {
             let prefix = providerOptions.prefix || "";
             prefix = prefix.trim() === "/" ? "" : prefix.trim(); // prefix only if not root
             const path = file.path ? `${file.path}/` : "";
-            return `${prefix}${path}${file.hash}${file.ext}`;
+            return `${prefix}${path}${file.name}`;
         }
 
 
         return {
             upload(file, customParams= {}) {
                 // upload the file in the provider
-                console.log("file", file)
-                 
                 const uploadParams = {
                     Bucket: providerOptions.params.bucket,
                     Key: getPath(file),
@@ -55,7 +53,7 @@ module.exports = {
                         }else{
                                if(result.CommonMsg.Status < 300){
                                 file.url = `https://${providerOptions.params.bucket}.${providerOptions.server}/${getPath(file)}` 
-                                console.log("looo", JSON.stringify(result)) 
+                                
                                       console.log('RequestId-->' + result.InterfaceResult.RequestId);
                                       console.log('ETag-->' + result.InterfaceResult.ETag);
                                       console.log('VersionId-->' + result.InterfaceResult.VersionId);
