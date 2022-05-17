@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_panels_product_panels",
+  "info": {
+    "displayName": "additional panel",
+    "icon": "ankh",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "products": {
+      "type": "component",
+      "repeatable": true,
+      "component": "links.link-with-icon"
+    },
+    "moreInfo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "links.link"
+    }
+  }
+}

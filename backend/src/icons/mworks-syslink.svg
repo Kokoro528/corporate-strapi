@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25.729" height="16.716" viewBox="0 0 25.729 16.716">
+  <defs>
+    <linearGradient id="linear-gradient" x1="-320.158" y1="-0.113" x2="-319.098" y2="-1.061" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ced0d1"/>
+      <stop offset="0.184" stop-color="#cecece" stop-opacity="0.996"/>
+      <stop offset="0.281" stop-color="#cecac7" stop-opacity="0.988"/>
+      <stop offset="0.358" stop-color="#cfc3ba" stop-opacity="0.973"/>
+      <stop offset="0.425" stop-color="#d0b8a8" stop-opacity="0.949"/>
+      <stop offset="0.484" stop-color="#d2ab90" stop-opacity="0.922"/>
+      <stop offset="0.539" stop-color="#d49a73" stop-opacity="0.886"/>
+      <stop offset="0.589" stop-color="#d78751" stop-opacity="0.847"/>
+      <stop offset="0.635" stop-color="#da712b" stop-opacity="0.8"/>
+      <stop offset="0.823" stop-color="#da712b" stop-opacity="0.8"/>
+      <stop offset="0.883" stop-color="#da712b" stop-opacity="0.851"/>
+      <stop offset="0.99" stop-color="#da712b" stop-opacity="0.984"/>
+      <stop offset="1" stop-color="#da712b"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="-1.963" y1="-0.093" x2="-0.92" y2="-1.05" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ced0d1"/>
+      <stop offset="0.264" stop-color="#d5ab8f"/>
+      <stop offset="0.458" stop-color="#dc905c"/>
+      <stop offset="0.7" stop-color="#db8147"/>
+      <stop offset="1" stop-color="#da712b"/>
+    </linearGradient>
+  </defs>
+  <g id="组_631" data-name="组 631" transform="translate(-1240.509 -959.254)">
+    <path id="路径_315" data-name="路径 315" d="M1245.772,975.856l-5.263-8.341,4.421.034,5.263,8.341Z" fill="#ced0d1"/>
+    <path id="路径_316" data-name="路径 316" d="M1256.421,975.937l-10.527-16.682,4.421.034,10.527,16.682Z" opacity="0.5" fill="url(#linear-gradient)"/>
+    <path id="路径_317" data-name="路径 317" d="M1245.9,959.254l-5.386,8.26,4.421.034,5.384-8.26Z" fill="#da712b"/>
+    <path id="路径_318" data-name="路径 318" d="M1250.195,975.889l10.767-16.52-4.421-.034-10.768,16.52Z" fill="url(#linear-gradient-2)"/>
+    <path id="路径_319" data-name="路径 319" d="M1260.971,959.364l5.266,8.341-4.421-.034-5.263-8.341Z" fill="#da712b"/>
+    <path id="路径_320" data-name="路径 320" d="M1260.854,975.965l5.384-8.26-4.421-.034-5.384,8.26Z" fill="#ced0d1"/>
+  </g>
+</svg>

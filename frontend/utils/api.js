@@ -565,6 +565,21 @@ export async function getGlobalData(locale) {
                     }
                   }
                 }
+                products{
+                  products{
+                    url
+                    title
+                    newTab
+                    icon {
+                      ...FileParts
+                    }
+                  }
+                  moreInfo {
+                    text
+                    url
+                    newTab
+                  }
+                }
               }
             }
           }

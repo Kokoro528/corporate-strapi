@@ -2,9 +2,13 @@ import { useState } from "react"
 import Navbar from "./elements/navbar"
 import Footer from "./elements/footer"
 import NotificationBanner from "./elements/notification-banner"
+import Products from "./global/products"
+import Context from "./context"
+
 
 const Layout = ({ children, global, pageContext }) => {
   const { navbar, footer, notificationBanner } = global.attributes
+  
 
   const [bannerIsShown, setBannerIsShown] = useState(true)
   return (
@@ -18,7 +22,13 @@ const Layout = ({ children, global, pageContext }) => {
           />
         )}
         <Navbar navbar={navbar} pageContext={pageContext} />
-        <div>{children}</div>
+        
+        <div>
+        
+        <Context.Provider value={{global, pageContext}}>
+          {children}
+        </Context.Provider>
+        </div>
       </div>
       {/* Aligned to the bottom */}
       <Footer footer={footer} />

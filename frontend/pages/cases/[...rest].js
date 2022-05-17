@@ -6,6 +6,8 @@ import Header from "@/components/elements/header"
 import { useRouter } from "next/router"
 import Layout from "@/components/layout"
 import { getLocalizedPaths } from "utils/localize"
+import Products from "@/components/global/products"
+
 
 // The file is called [[...slug]].js because we're using Next's
 // optional catch all routes feature. See the related docs:
@@ -81,7 +83,8 @@ const DynamicPage = ({
 // }
 
 export async function getServerSideProps(context) {
-  const { params, locale, locales, defaultLocale, preview = null } = context
+  const { params, locale, locales, defaultLocale, preview = null, resolvedUrl } = context
+  console.log("jj",context.resolvedUrl)
 
   const globalLocale = await getGlobalData(locale)
   // Fetch pages. Include drafts ifgetCase preview mode is on
@@ -123,6 +126,7 @@ export async function getServerSideProps(context) {
       pageContext: {
         ...pageContext,
         localizedPaths,
+        resolvedUrl
       },
     },
   }

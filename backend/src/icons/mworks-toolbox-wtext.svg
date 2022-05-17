@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="154.391" height="22" viewBox="0 0 154.391 22">
+  <defs>
+    <linearGradient id="linear-gradient" x1="-678.132" y1="382.028" x2="-677.463" y2="383.226" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#cfd1d2"/>
+      <stop offset="0.124" stop-color="#cdcecf" stop-opacity="0.996"/>
+      <stop offset="0.214" stop-color="#cac5c6" stop-opacity="0.984"/>
+      <stop offset="0.293" stop-color="#c4b6b7" stop-opacity="0.969"/>
+      <stop offset="0.366" stop-color="#bca1a2" stop-opacity="0.941"/>
+      <stop offset="0.435" stop-color="#b18686" stop-opacity="0.91"/>
+      <stop offset="0.501" stop-color="#a46465" stop-opacity="0.867"/>
+      <stop offset="0.563" stop-color="#943d3d" stop-opacity="0.82"/>
+      <stop offset="0.586" stop-color="#8e2d2d" stop-opacity="0.8"/>
+      <stop offset="0.823" stop-color="#8e2d2d" stop-opacity="0.8"/>
+      <stop offset="0.907" stop-color="#8e2d2d" stop-opacity="0.878"/>
+      <stop offset="1" stop-color="#8e2d2d"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="-796.418" y1="267.441" x2="-795.466" y2="268.458" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#cfd1d2"/>
+      <stop offset="0.085" stop-color="#cdcdce" stop-opacity="0.996"/>
+      <stop offset="0.17" stop-color="#c9c2c2" stop-opacity="0.98"/>
+      <stop offset="0.254" stop-color="#c1afb0" stop-opacity="0.961"/>
+      <stop offset="0.338" stop-color="#b79495" stop-opacity="0.925"/>
+      <stop offset="0.422" stop-color="#a97373" stop-opacity="0.886"/>
+      <stop offset="0.505" stop-color="#994a4a" stop-opacity="0.835"/>
+      <stop offset="0.557" stop-color="#8e2d2d" stop-opacity="0.8"/>
+      <stop offset="0.823" stop-color="#8e2d2d" stop-opacity="0.8"/>
+      <stop offset="0.907" stop-color="#8e2d2d" stop-opacity="0.878"/>
+      <stop offset="1" stop-color="#8e2d2d"/>
+    </linearGradient>
+  </defs>
+  <g id="组_634" data-name="组 634" transform="translate(-1240 -1005.047)">
+    <text id="MWorks.Toolbox" transform="translate(1272.392 1023.047)" fill="#4d4d4d" font-size="16.525" font-family="SegoeUI, Segoe UI"><tspan x="0" y="0">MWorks.</tspan><tspan y="0" fill="#a54a66">Toolbox</tspan></text>
+    <g id="组_633" data-name="组 633">
+      <path id="路径_321" data-name="路径 321" d="M1252.531,1024.576l-4.688-8.92h-4.533l4.769,8.92Z" opacity="0.5" fill="url(#linear-gradient)"/>
+      <path id="路径_322" data-name="路径 322" d="M1257.175,1011.817l3.423,12.759h-4.533l-3.342-12.759Z" opacity="0.5" fill="url(#linear-gradient-2)"/>
+      <path id="路径_323" data-name="路径 323" d="M1262.213,1007.686l-6.149,16.89h4.533l6.148-16.89Z" fill="#cfd1d2"/>
+      <path id="路径_324" data-name="路径 324" d="M1252.723,1011.817l-4.644,12.759h4.452l4.643-12.759Z" fill="#a54a66"/>
+      <path id="路径_325" data-name="路径 325" d="M1243.311,1015.656l-3.31,8.92h4.533l3.31-8.92Z" fill="#a54a66"/>
+    </g>
+  </g>
+</svg>

@@ -36,12 +36,12 @@ html {
 
 @media (min-width: 768px) {
   .title {
-    @apply text-5xl;
+    @apply text-4xl;
   }
 }
 
 .subtitle {
-  @apply text-3xl leading-snug font-semibold;
+  @apply text-2xl leading-snug font-semibold;
 }
 
 @media (min-width: 768px) {

@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_layout_product_panels",
+  "info": {
+    "displayName": "productPanel",
+    "icon": "align-right"
+  },
+  "options": {},
+  "attributes": {
+    "product": {
+      "type": "component",
+      "repeatable": true,
+      "component": "links.link-with-icon"
+    },
+    "getMoreInfo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "links.link"
+    }
+  }
+}

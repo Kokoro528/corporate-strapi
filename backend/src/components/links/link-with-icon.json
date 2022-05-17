@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_links_link_with_icons",
+  "info": {
+    "displayName": "Link With Icon",
+    "icon": "arrow-circle-right",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "url": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "newTab": {
+      "type": "boolean"
+    },
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}

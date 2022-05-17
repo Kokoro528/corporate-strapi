@@ -10,6 +10,7 @@ import Pricing from "./sections/pricing"
 import LeadForm from "./sections/lead-form"
 import SolutionFeature from "./sections/solution-feature"
 import TopHeading from "./sections/top-heading"
+import Context from "./context"
 
 // Map Strapi sections to section components
 const sectionComponents = {
@@ -26,6 +27,16 @@ const sectionComponents = {
   ComponentSectionsTopHeading: TopHeading,
 }
 
+// const ContextSection = () => {
+//   return (
+//     <Context.Consumer>
+//       {({pageContext}) => {
+
+//       }}
+//     </Context.Consumer>
+//   )
+// }
+
 // Display a section individually
 const Section = ({ sectionData }) => {
   // Prepare the component
@@ -36,7 +47,13 @@ const Section = ({ sectionData }) => {
   }
 
   // Display the section
-  return <SectionComponent data={sectionData} />
+  return (<Context.Consumer>
+    {({global, pageContext}) =>
+      <SectionComponent data={sectionData} global={global} pageContext={pageContext}/>
+    }
+  </Context.Consumer>)
+
+
 }
 
 const PreviewModeBanner = () => {

@@ -22,8 +22,6 @@ const NextImage = ({ media, ...props }) => {
         src={url}
         alt={alternativeText || ""}
         {...props}
-        width={props.height || 0}
-        height={props.height || 0}
       />
     )
   }

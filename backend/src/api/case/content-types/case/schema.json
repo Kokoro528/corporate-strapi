@@ -28,7 +28,7 @@
         "sections.rich-text",
         "sections.top-heading"
       ],
-      "required": true
+      "required": false
     },
     "title": {
       "pluginOptions": {
