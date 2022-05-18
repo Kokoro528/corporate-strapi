@@ -459,6 +459,17 @@ export async function getSolutionData({locale, preview}) {
                     description
                   }
                 }
+                ... on ComponentSectionsMediaFeatures {
+                  id
+                  title
+                  subtitle
+                  features {
+                    media{
+                      ...FileParts
+                    }
+                    description
+                  }
+                }
               }
             
               

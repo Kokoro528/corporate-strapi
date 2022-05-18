@@ -3,12 +3,23 @@
   "info": {
     "name": "feature",
     "displayName": "Feature",
-    "icon": "traffic-light"
+    "icon": "traffic-light",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "name": {
       "type": "string"
+    },
+    "media": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

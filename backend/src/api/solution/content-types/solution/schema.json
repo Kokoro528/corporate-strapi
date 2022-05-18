@@ -24,9 +24,10 @@
       },
       "type": "dynamiczone",
       "components": [
+        "sections.hero",
+        "sections.media-features",
         "sections.rich-text",
-        "sections.solution-feature",
-        "sections.hero"
+        "sections.solution-feature"
       ]
     },
     "title": {

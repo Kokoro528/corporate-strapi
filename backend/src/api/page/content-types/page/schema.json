@@ -50,7 +50,8 @@
         "sections.rich-text",
         "sections.pricing",
         "sections.lead-form",
-        "sections.solution-list"
+        "sections.solution-list",
+        "sections.media-features"
       ],
       "pluginOptions": {
         "i18n": {

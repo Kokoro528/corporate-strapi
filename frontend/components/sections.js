@@ -11,6 +11,7 @@ import LeadForm from "./sections/lead-form"
 import SolutionFeature from "./sections/solution-feature"
 import TopHeading from "./sections/top-heading"
 import Context from "./context"
+import FeatureGroup from "./sections/feature-group"
 
 // Map Strapi sections to section components
 const sectionComponents = {
@@ -21,6 +22,7 @@ const sectionComponents = {
   ComponentSectionsBottomActions: BottomActions,
   ComponentSectionsTestimonialsGroup: TestimonialsGroup,
   ComponentSectionsRichText: RichText,
+  ComponentSectionsMediaFeatures: FeatureGroup,
   ComponentSectionsPricing: Pricing,
   ComponentSectionsLeadForm: LeadForm,
   ComponentSectionsSolutionFeature: SolutionFeature,
