@@ -85,7 +85,6 @@ const DynamicPage = ({
 
 export async function getServerSideProps(context) {
   const { params, locale, locales, defaultLocale, preview = null } = context
-  
 
   const globalLocale = await getGlobalData(locale)
   // Fetch pages. Include drafts if preview mode is on

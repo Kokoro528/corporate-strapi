@@ -47,13 +47,17 @@ const Section = ({ sectionData }) => {
   }
 
   // Display the section
-  return (<Context.Consumer>
-    {({global, pageContext}) =>
-      <SectionComponent data={sectionData} global={global} pageContext={pageContext}/>
-    }
-  </Context.Consumer>)
-
-
+  return (
+    <Context.Consumer>
+      {({ global, pageContext }) => (
+        <SectionComponent
+          data={sectionData}
+          global={global}
+          pageContext={pageContext}
+        />
+      )}
+    </Context.Consumer>
+  )
 }
 
 const PreviewModeBanner = () => {

@@ -7,7 +7,7 @@ const NextImage = ({ media, ...props }) => {
   if (!media || !media.data) {
     return null
   }
-  
+
   const { url, alternativeText, width, height } = media.data.attributes
 
   const loader = ({ src, width }) => {
@@ -17,12 +17,7 @@ const NextImage = ({ media, ...props }) => {
   // The image has a fixed width and height
   if (props.width && props.height) {
     return (
-      <Image
-        loader={loader}
-        src={url}
-        alt={alternativeText || ""}
-        {...props}
-      />
+      <Image loader={loader} src={url} alt={alternativeText || ""} {...props} />
     )
   }
 

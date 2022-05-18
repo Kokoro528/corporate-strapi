@@ -47,7 +47,7 @@ const SolutionFeature = ({ data }) => {
               >
                 {/* Text section */}
                 <div className="w-full lg:w-6/12 lg:pr-6 text-lg ">
-                  <h3 className="subtitle">{feature.title}</h3>
+                  <h3 className="text-[30px] ">{feature.title}</h3>
                   <p className="my-6">{feature.description}</p>
                   {/* <CustomLink link={feature.link}>
               <div className="text-blue-600 with-arrow hover:underline">

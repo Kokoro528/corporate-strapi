@@ -1,9 +1,8 @@
 import React from "react"
 
-const Context =  React.createContext({
-    pageContext: {},
-    global:{}
-});
+const Context = React.createContext({
+  pageContext: {},
+  global: {},
+})
 
-
-export default Context;
+export default Context
