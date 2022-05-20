@@ -48,6 +48,20 @@
         }
       },
       "component": "meta.seo"
+    },
+    "category": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "enumeration",
+      "enum": [
+        "vehicle",
+        "energy",
+        "aviation",
+        "aerospace"
+      ]
     }
   }
 }

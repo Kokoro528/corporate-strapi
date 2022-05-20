@@ -90,6 +90,14 @@
         }
       },
       "component": "panels.product-panel"
+    },
+    "enums": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "json"
     }
   }
 }

@@ -8,7 +8,7 @@ import classNames from "classnames"
 
 const SolutionFeature = ({ data }) => {
   return (
-    <section className=" flex flex-col  items-center justify-between py-12  bg-primary-50">
+    <section className=" flex flex-col  items-center justify-between py-6  bg-primary-50">
       {/* Left column for content */}
 
       {/* <div className="flex-1 sm:pr-8"> */}
@@ -16,7 +16,7 @@ const SolutionFeature = ({ data }) => {
       {/* <p className="uppercase tracking-wide font-semibold">{data.label}</p> */}
       {/* Big title */}
       <div className="container">
-        <h1 className="title mt-2 sm:mt-0 mb-4 sm:mb-2 text-center">
+        <h1 className="title mt-2 sm:mt-0 mb-4 sm:mb-2 text-center text-lg">
           {data.title}
         </h1>
         {/* Description paragraph */}
@@ -32,7 +32,7 @@ const SolutionFeature = ({ data }) => {
           ))} */}
           {/* <FeatureColumnGroup data={data.bulletPoints} /> */}
 
-          <div className="container flex flex-col gap-12 py-12">
+          <div className=" flex flex-col gap-12 py-12">
             {data.bulletPoints.map((feature, index) => (
               <div
                 className={classNames(
@@ -47,7 +47,7 @@ const SolutionFeature = ({ data }) => {
               >
                 {/* Text section */}
                 <div className="w-full lg:w-6/12 lg:pr-6 text-lg ">
-                  <h3 className="text-[30px] font-semibold ">{feature.title}</h3>
+                  <h3 className="text-[30px] font-semibold leading-relaxed ">{feature.title}</h3>
                   <p className="my-6">{feature.description}</p>
                   {/* <CustomLink link={feature.link}>
               <div className="text-blue-600 with-arrow hover:underline">
@@ -59,7 +59,7 @@ const SolutionFeature = ({ data }) => {
                 <div className="w-full sm:9/12 lg:w-8/12 max-h-full">
                   {/* Images */}
                   {feature.icon.data.attributes.mime.startsWith("image") && (
-                    <div className="w-full h-100">
+                    <div className="w-full ">
                       <NextImage layout="fill" media={feature.icon} />
                     </div>
                   )}
