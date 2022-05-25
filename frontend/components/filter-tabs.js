@@ -12,7 +12,7 @@ const FilterTabs = ({ getFilteredContents, children, enumColumn }) => {
                 <ul className="nav nav-tabs flex flex-col md:flex-row flex-wrap list-none border-b-0 pl-0 mb-4" id="tabs-tabFill"
                     role="tablist">
                     {Object.keys(enums).map(e => (
-                        <li className="nav-item flex-auto text-center" role="presentation">
+                        <li className="nav-item flex-auto text-center" role="presentation" key={e}>
                             <button type="button" onClick={() => {
                                 router.push({query: {type: e}})
                             }} class="nav-link
