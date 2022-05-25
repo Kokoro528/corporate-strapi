@@ -24,6 +24,7 @@ export async function fetchAPI(path, urlParamsObject = {}, options = {}) {
 
   // Build request URL
   const queryString = qs.stringify(urlParamsObject)
+  console.log("queryString", queryString)
   const requestUrl = `${getStrapiURL(
     `/api${path}${queryString ? `?${queryString}` : ""}`
   )}`
@@ -93,6 +94,9 @@ export async function getPageData({ slug, locale, preview }) {
                   }
                 }
                 slug
+                cardImage{
+                  ...FileParts
+                }
                 metadata {
                   metaTitle
                   metaDescription
@@ -268,8 +272,21 @@ export async function getPageData({ slug, locale, preview }) {
   return pagesData.data.pages.data[0]
 }
 
+export async function getCollectionList(pluralName) {
+  const endpoint = getStrapiURL(`/api/${pluralName}`)
+  const caseList = await fetch(endpoint, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    }
 
-export async function getCaseData({locale, preview}) {
+  })
+  const casesData = await caseList.json()
+  console.log("casesData", casesData)
+}
+
+
+export async function getCaseData({locale, preview, category}) {
   const gqlEndpoint = getStrapiURL("/graphql")
   const caseRes = await fetch(gqlEndpoint, {
     method: "POST",
@@ -294,10 +311,12 @@ export async function getCaseData({locale, preview}) {
       query GetCases(
         $publicationState: PublicationState!
         $locale: I18NLocaleCode!
+        $category: String
       ) {        
         cases(
           publicationState: $publicationState
           locale: $locale
+          filters: { category: { eq: $category } }
         ) {
           data {
             id
@@ -362,6 +381,7 @@ export async function getCaseData({locale, preview}) {
       variables: {
         publicationState: preview ? "PREVIEW" : "LIVE",
         locale,
+        category
       },
     })
   })
@@ -591,6 +611,7 @@ export async function getGlobalData(locale) {
                     newTab
                   }
                 }
+                enums
               }
             }
           }

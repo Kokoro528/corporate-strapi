@@ -36,7 +36,8 @@
           "localized": true
         }
       },
-      "type": "string"
+      "type": "string",
+      "unique": true
     },
     "seo": {
       "displayName": "Seo",
@@ -62,6 +63,31 @@
         "aviation",
         "aerospace"
       ]
+    },
+    "slug": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "articlePicture": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }

@@ -1942,6 +1942,11 @@ pify@^2.3.0:
   resolved "https://registry.npmmirror.com/pify/-/pify-2.3.0.tgz"
   integrity sha512-udgsAY+fTnvv7kI7aaxbqwWNb0AHiB0qBO89PZKPkoTmGOgdbrHDKD+0B2X4uTfJ/FT1R09r9gTsjUjNJotuog==
 
+pinyin-pro@^3.10.0:
+  version "3.10.0"
+  resolved "https://registry.npmmirror.com/pinyin-pro/-/pinyin-pro-3.10.0.tgz#d286b1cd9d160456efbad4f13fe38c5409c3fd06"
+  integrity sha512-JNm8Nb9mc38PbLk4a68tW1DKd2jBIhO+bOal1vl988rqvNyaU1E6HgdDLVO1ARJGvdvcsTVvdRi9OWE/h6cYrA==
+
 postcss-attribute-case-insensitive@^4.0.1:
   version "4.0.2"
   resolved "https://registry.npmmirror.com/postcss-attribute-case-insensitive/-/postcss-attribute-case-insensitive-4.0.2.tgz"

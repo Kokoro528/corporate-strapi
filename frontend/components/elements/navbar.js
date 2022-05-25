@@ -16,6 +16,13 @@ const Navbar = ({ navbar, pageContext }) => {
   const router = useRouter()
   const [mobileMenuIsShown, setMobileMenuIsShown] = useState(false)
 
+  const routerContains = (navLink) => {
+    const pathSlug = router.asPath.substring(1);
+    const navLinkSlug = navLink.url.substring(1);
+    // console.log("newRadicals", pathSlug, navLinkSlug, pathSlug.includes(navLinkSlug))
+    return pathSlug.includes(navLinkSlug) && navLinkSlug !== "" || pathSlug === "" && navLinkSlug===""
+  }
+
   return (
     <>
       {/* The actual navbar */}
@@ -33,7 +40,7 @@ const Navbar = ({ navbar, pageContext }) => {
               {navbar.links.map((navLink) => (
                 <li key={navLink.id}>
                   <CustomLink link={navLink} locale={router.locale}>
-                    <div className="hover:text-primary-900 px-2 py-1">
+                    <div className={`${routerContains(navLink)?`border-b-4 border-primary-400`: ''} hover:text-primary-900 px-2 py-1 `}>
                       {navLink.text}
                     </div>
                   </CustomLink>

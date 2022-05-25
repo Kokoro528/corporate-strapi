@@ -1,5 +1,5 @@
 import ErrorPage from "next/error"
-import { getCaseData, fetchAPI, getGlobalData } from "utils/api"
+import { getCaseData, getCollectionList, fetchAPI, getGlobalData, getPageData } from "utils/api"
 import Sections from "@/components/sections"
 import Seo from "@/components/elements/seo"
 import Header from "@/components/elements/header"
@@ -8,16 +8,15 @@ import Layout from "@/components/layout"
 import { getLocalizedPaths } from "utils/localize"
 import Link from "next/link"
 import NextImage from "@/components/elements/image"
+import FilterTabs from "@/components/filter-tabs"
 
-const CaseList = ({ data }) => {
+const CaseList = ({ data, page }) => {
   // console.log(data)
   const cases = data
-  // console.log(solutions)
-  // const {solutions}= data;
-  // return null;
+
 
   const getPictureSrc = (attr) => {
-    let res = {}
+    let res = null;
     attr.contentSections.forEach((element) => {
       if (!!element.backgroundImage) {
         const attributes = element.backgroundImage.data.attributes.formats.small
@@ -28,17 +27,22 @@ const CaseList = ({ data }) => {
     return res
   }
 
+  // const getDefaultSrc = (attr) => {
+  //   let res = {}
+  //   attr.
+  // }
+
   return (
     <div className="container grid grid-cols-1 gap-4  sm: grid-cols-3 md:grid-cols-4">
       {cases.map(({ id, attributes }) => (
-        <Link href={`/cases/${id}`} key={"case-" + id} passHref>
+        <Link href={`/cases/${attributes.title}`} key={"case-" + id} passHref>
           <div className="flex-1 text-lg" key={id}>
             <div className="">
-              <NextImage media={getPictureSrc(attributes)} />
+              <NextImage media={getPictureSrc(attributes) || page.attributes.cardImage} />
             </div>
             <h3 className="font-bold mt-4 mb-4">{attributes.title}</h3>
             {/* <p>{attributes.title}</p> */}
-          </div>
+          </div> 
         </Link>
       ))}
     </div>
@@ -67,6 +71,7 @@ const CaseList = ({ data }) => {
 
 const DynamicPage = ({
   data,
+  page,
   metadata,
   preview,
   global,
@@ -79,7 +84,6 @@ const DynamicPage = ({
   //   if (!router.isFallback) {
   //     return <ErrorPage statusCode={404} />
   //   }
-
   // Loading screen (only possible in preview mode)
   if (router.isFallback) {
     return <div className="container">Loading...</div>
@@ -101,54 +105,44 @@ const DynamicPage = ({
       {/* Display content sections */}
       {/* <Header title={title} ></Header> */}
       {/* <Sections sections={sections} preview={preview} /> */}
-      <CaseList data={data}></CaseList>
+
+      <FilterTabs enumColumn={"caseColumn"}>
+        <CaseList data={data} page={page}></CaseList>
+      </FilterTabs>
+
     </Layout>
   )
 }
 
-// export async function getStaticPaths(context) {
-//   // Get all pages from Strapi
-//   const pages = await context.locales.reduce(
-//     async (currentPagesPromise, locale) => {
-//       const currentPages = await currentPagesPromise
-//       const localePages = await fetchAPI("/pages", {
-//         locale,
-//         fields: ["slug", "locale"],
-//       })
-//       return [...currentPages, ...localePages.data]
-//     },
-//     Promise.resolve([])
-//   )
 
-//   const paths = pages.map((page) => {
-//     const { slug, locale } = page.attributes
-//     // Decompose the slug that was saved in Strapi
-//     const slugArray = !slug ? false : slug.split("/")
-
-//     return {
-//       params: { slug: slugArray },
-//       // Specify the locale to render
-//       locale,
-//     }
-//   })
-
-//   return { paths, fallback: 'blocking' }
-// }
 
 export async function getServerSideProps(context) {
-  const { params, locale, locales, defaultLocale, preview = null } = context
 
+  const {params, query, locale, locales, defaultLocale, preview = null, category = null } = context
   const globalLocale = await getGlobalData(locale)
   // Fetch pages. Include drafts if preview mode is on
   const pageData = await getCaseData({
     // slug: (!params.slug ? [""] : params.slug).join("/"),
+    category: query?.type,
     locale,
     preview,
   })
+  const PageData = await getPageData({
+    slug: "cases",
+    locale,
+    preview,
+  })
+  console.log("PageData", PageData)
   if (pageData == null) {
     // Giving the page no props will trigger a 404 page
     return { props: {} }
   }
+  // // const pageData1 = await getCollectionList("cases")
+  // // console.log("pageData1", pageData1)
+  // if (pageData == null) {
+  //   // Giving the page no props will trigger a 404 page
+  //   return { props: {} }
+  // }
 
   // We have the required page data, pass it to the page component
   //   const {
@@ -162,7 +156,7 @@ export async function getServerSideProps(context) {
     locale,
     locales,
     defaultLocale,
-    // slug,
+
     // localizations,
   }
 
@@ -173,6 +167,7 @@ export async function getServerSideProps(context) {
       preview,
       //   sections: contentSections,
       data: pageData,
+      page: PageData,
       //   title,
       //   metadata,
       global: globalLocale,

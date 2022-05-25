@@ -48,41 +48,14 @@ const DynamicPage = ({
       {/* Add meta tags for SEO*/}
       {/* <Seo metadata={metadataWithDefaults} /> */}
       {/* Display content sections */}
-      <Header title={title}></Header>
+      {/* <Header title={title}></Header> */}
       {/* <Sections sections={sections} preview={preview} /> */}
       <SolutionList data={data}></SolutionList>
     </Layout>
   )
 }
 
-// export async function getStaticPaths(context) {
-//   // Get all pages from Strapi
-//   const pages = await context.locales.reduce(
-//     async (currentPagesPromise, locale) => {
-//       const currentPages = await currentPagesPromise
-//       const localePages = await fetchAPI("/pages", {
-//         locale,
-//         fields: ["slug", "locale"],
-//       })
-//       return [...currentPages, ...localePages.data]
-//     },
-//     Promise.resolve([])
-//   )
 
-//   const paths = pages.map((page) => {
-//     const { slug, locale } = page.attributes
-//     // Decompose the slug that was saved in Strapi
-//     const slugArray = !slug ? false : slug.split("/")
-
-//     return {
-//       params: { slug: slugArray },
-//       // Specify the locale to render
-//       locale,
-//     }
-//   })
-
-//   return { paths, fallback: true }
-// }
 
 export async function getServerSideProps(context) {
   const { params, locale, locales, defaultLocale, preview = null } = context

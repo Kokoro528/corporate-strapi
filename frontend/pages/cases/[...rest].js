@@ -52,34 +52,6 @@ const DynamicPage = ({
   )
 }
 
-// export async function getStaticPaths(context) {
-//   // Get all pages from Strapi
-//   const pages = await context.locales.reduce(
-//     async (currentPagesPromise, locale) => {
-//       const currentPages = await currentPagesPromise
-//       const localePages = await fetchAPI("/pages", {
-//         locale,
-//         fields: ["slug", "locale"],
-//       })
-//       return [...currentPages, ...localePages.data]
-//     },
-//     Promise.resolve([])
-//   )
-
-//   const paths = pages.map((page) => {
-//     const { slug, locale } = page.attributes
-//     // Decompose the slug that was saved in Strapi
-//     const slugArray = !slug ? false : slug.split("/")
-
-//     return {
-//       params: { slug: slugArray },
-//       // Specify the locale to render
-//       locale,
-//     }
-//   })
-
-//   return { paths, fallback: true }
-// }
 
 export async function getServerSideProps(context) {
   const {
@@ -90,7 +62,7 @@ export async function getServerSideProps(context) {
     preview = null,
     resolvedUrl,
   } = context
-  console.log("jj", context.resolvedUrl)
+  // console.log("jj", context.resolvedUrl)
 
   const globalLocale = await getGlobalData(locale)
   // Fetch pages. Include drafts ifgetCase preview mode is on
@@ -110,7 +82,7 @@ export async function getServerSideProps(context) {
     // metadata,
     localizations,
     title,
-  } = pageData.find((e) => e.id == params.rest)?.attributes
+  } = pageData.find((e) => e.attributes.title == params.rest)?.attributes
 
   const pageContext = {
     locale,

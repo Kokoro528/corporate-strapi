@@ -9,7 +9,9 @@
     "esdk-obs-nodejs": "^3.21.6",
     "lodash.set": "^4.3.2",
     "pg": "8.6.0",
+    "pinyin-pro": "^3.10.0",
     "sqlite3": "5.0.2",
+    "strapi-plugin-deepl": "^0.3.6",
     "strapi-plugin-meilisearch": "^0.6.2"
   },
   "name": "backend",
