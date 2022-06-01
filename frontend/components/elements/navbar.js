@@ -12,9 +12,12 @@ import NextImage from "./image"
 import CustomLink from "./custom-link"
 import LocaleSwitch from "../locale-switch"
 
-const Navbar = ({ navbar, pageContext }) => {
+import Subnav from "../collations/subnav-container"
+
+const Navbar = ({ navbar, pageContext, global }) => {
   const router = useRouter()
   const [mobileMenuIsShown, setMobileMenuIsShown] = useState(false)
+  const [selectedNavItem, setSelectedNavItem] = useState("/")
 
   const routerContains = (navLink) => {
     const pathSlug = router.asPath.substring(1);
@@ -26,7 +29,7 @@ const Navbar = ({ navbar, pageContext }) => {
   return (
     <>
       {/* The actual navbar */}
-      <nav className="border-gray-200 border-b-2 py-6 sm:py-2">
+      <nav className="navbar navbar-expand-lg shadow-lg py-2 bg-gray-50 relative flex items-center w-full justify-between border-gray-200 border-b-2 py-6 sm:py-2">
         <div className="container flex flex-row items-center justify-between">
           {/* Content aligned to the left */}
           <div className="flex flex-row items-center">
@@ -36,16 +39,29 @@ const Navbar = ({ navbar, pageContext }) => {
               </a>
             </Link>
             {/* List of links on desktop */}
-            <ul className="hidden list-none md:flex flex-row gap-4 items-baseline ml-10">
+            <ul className="hidden hoverable list-none md:flex flex-row gap-4 items-baseline ml-10">
+              
               {navbar.links.map((navLink) => (
-                <li key={navLink.id}>
-                  <CustomLink link={navLink} locale={router.locale}>
-                    <div className={`${routerContains(navLink)?`border-b-4 border-primary-400`: ''} hover:text-primary-900 px-2 py-1 `}>
+                <li className=" " key={navLink.id} onMouseOver={() => {
+                      setSelectedNavItem(navLink.url)
+                    }}>
+                  <CustomLink link={navLink} locale={router.locale}  >
+                    <div id={navLink.text} 
+                    data-bs-toggle="dropdown"
+                    data-bs-target={"#suvNav"+navLink.text}
+                    
+                    className={` ${routerContains(navLink)?`border-b-4 border-primary-400`: ''} px-2 py-1  block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out flex items-center whitespace-nowrap`}>
                       {navLink.text}
+                      
                     </div>
                   </CustomLink>
+                  
                 </li>
               ))}
+              <Subnav  parentId={selectedNavItem.substring(1)} 
+                  enums={global?.attributes.enums}
+                  navbar={navbar}
+                  pluralName={selectedNavItem}/>
             </ul>
           </div>
           <div className="flex">

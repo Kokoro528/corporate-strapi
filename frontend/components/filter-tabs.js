@@ -8,7 +8,9 @@ const FilterTabs = ({ getFilteredContents, children, enumColumn }) => {
             const enums = global.attributes.enums[enumColumn]
             console.log("enums", Object.keys(enums))
             console.log("pageContext", pageContext)
-            return (<div className="container">
+            return (
+            <nav>
+               <div className="container">
                 <ul className="nav nav-tabs flex flex-col md:flex-row flex-wrap list-none border-b-0 pl-0 mb-4" id="tabs-tabFill"
                     role="tablist">
                     {Object.keys(enums).map(e => (
@@ -46,7 +48,10 @@ const FilterTabs = ({ getFilteredContents, children, enumColumn }) => {
                     {/* })} */}
 
                 </div>
-            </div>)
+            </div> 
+                
+                </nav>
+                )
         }}
     </Context.Consumer>
 

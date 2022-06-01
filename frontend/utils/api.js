@@ -273,6 +273,7 @@ export async function getPageData({ slug, locale, preview }) {
 }
 
 export async function getCollectionList(pluralName) {
+  if (!pluralName) return {};
   const endpoint = getStrapiURL(`/api/${pluralName}`)
   const caseList = await fetch(endpoint, {
     method: "GET",
@@ -283,11 +284,15 @@ export async function getCollectionList(pluralName) {
   })
   const casesData = await caseList.json()
   console.log("casesData", casesData)
+  return casesData
 }
 
-
-export async function getCaseData({locale, preview, category}) {
+export async function getCaseData({locale, preview, category, title}) {
   const gqlEndpoint = getStrapiURL("/graphql")
+  const param =  `${(!!category || !!title) ? (`filters: { ${(!!category?`category: { eq: $category }`: ``)}
+  ${(!!title?  `title: {eq: $title}`: ``)}}`): ''}`
+
+  const vars = `${!!category ? '$category: String': ''} \n ${!!title ? '$title: String': ''}`
   const caseRes = await fetch(gqlEndpoint, {
     method: "POST",
     headers: {
@@ -311,12 +316,12 @@ export async function getCaseData({locale, preview, category}) {
       query GetCases(
         $publicationState: PublicationState!
         $locale: I18NLocaleCode!
-        $category: String
+        ${vars}
       ) {        
         cases(
           publicationState: $publicationState
           locale: $locale
-          filters: { category: { eq: $category } }
+          ${param}
         ) {
           data {
             id
@@ -331,6 +336,7 @@ export async function getCaseData({locale, preview, category}) {
                 }
               }
               title
+              category
               contentSections {
                 __typename
                 ... on ComponentSectionsRichText {
@@ -381,7 +387,8 @@ export async function getCaseData({locale, preview, category}) {
       variables: {
         publicationState: preview ? "PREVIEW" : "LIVE",
         locale,
-        category
+        category,
+        title
       },
     })
   })

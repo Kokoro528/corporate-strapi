@@ -64,10 +64,13 @@ export async function getServerSideProps(context) {
   } = context
   // console.log("jj", context.resolvedUrl)
 
+  console.log("adada", params)
+
   const globalLocale = await getGlobalData(locale)
   // Fetch pages. Include drafts ifgetCase preview mode is on
   const pageData = await getCaseData({
     // slug: (!params.slug ? [""] : params.slug).join("/"),
+    title: (params.rest? params.rest[0]: null),
     locale,
     preview,
   })
@@ -76,13 +79,15 @@ export async function getServerSideProps(context) {
     return { props: {} }
   }
 
+  
+
   // We have the required page data, pass it to the page component
   const {
     contentSections,
     // metadata,
     localizations,
     title,
-  } = pageData.find((e) => e.attributes.title == params.rest)?.attributes
+  } = pageData.find((e) => e.attributes.title === params.rest[0])?.attributes
 
   const pageContext = {
     locale,

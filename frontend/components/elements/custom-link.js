@@ -2,13 +2,14 @@ import Link from "next/link"
 import PropTypes from "prop-types"
 import { linkPropTypes } from "utils/types"
 
-const CustomLink = ({ link, children }) => {
+const CustomLink = (props) => {
+  const {link, children} = props;
   const isInternalLink = link.url.startsWith("/")
 
   // For internal links, use the Next.js Link component
   if (isInternalLink) {
     return (
-      <Link href={link.url}>
+      <Link href={link.url} {...props}>
         <a>{children}</a>
       </Link>
     )
@@ -22,6 +23,7 @@ const CustomLink = ({ link, children }) => {
         target="_blank"
         rel="noopener noreferrer"
         className="text-primary-500"
+        {...props}
       >
         {children}
       </a>
@@ -29,7 +31,7 @@ const CustomLink = ({ link, children }) => {
   }
 
   return (
-    <a href={link.url} target="_self" className="text-primary-500">
+    <a href={link.url} target="_self" className="text-primary-500" {...props}>
       {children}
     </a>
   )

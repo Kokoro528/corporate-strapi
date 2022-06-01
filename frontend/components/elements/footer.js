@@ -25,7 +25,7 @@ const Footer = ({ footer }) => {
                 {footerColumn.links.map((link) => (
                   <li
                     key={link.id}
-                    className="text-gray-700 py-1 px-1 -mx-1 hover:text-gray-900"
+                    className="text-gray-700 -mx-1 hover:text-gray-900"
                   >
                     <CustomLink link={link}>{link.text}</CustomLink>
                   </li>

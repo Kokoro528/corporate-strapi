@@ -106,7 +106,7 @@ const DynamicPage = ({
       {/* <Header title={title} ></Header> */}
       {/* <Sections sections={sections} preview={preview} /> */}
 
-      <FilterTabs enumColumn={"caseColumn"}>
+      <FilterTabs enumColumn={"cases"}>
         <CaseList data={data} page={page}></CaseList>
       </FilterTabs>
 
@@ -122,21 +122,22 @@ export async function getServerSideProps(context) {
   const globalLocale = await getGlobalData(locale)
   // Fetch pages. Include drafts if preview mode is on
   const pageData = await getCaseData({
-    // slug: (!params.slug ? [""] : params.slug).join("/"),
     category: query?.type,
     locale,
     preview,
+
   })
   const PageData = await getPageData({
     slug: "cases",
     locale,
     preview,
   })
-  console.log("PageData", PageData)
+
   if (pageData == null) {
     // Giving the page no props will trigger a 404 page
     return { props: {} }
   }
+  // console.log("spi", pageData )
   // // const pageData1 = await getCollectionList("cases")
   // // console.log("pageData1", pageData1)
   // if (pageData == null) {

@@ -19,8 +19,9 @@ const Layout = ({ children, global, pageContext }) => {
             closeSelf={() => setBannerIsShown(false)}
           />
         )}
-        <Navbar navbar={navbar} pageContext={pageContext} />
-
+        {/* <Context.Provider value={{ global, pageContext }}> */}
+          <Navbar navbar={navbar} pageContext={pageContext} global={global} />
+        {/* </Context.Provider> */}
         <div>
           <Context.Provider value={{ global, pageContext }}>
             {children}

@@ -6,6 +6,7 @@ import { DefaultSeo } from "next-seo"
 import { getStrapiMedia } from "utils/media"
 import { getGlobalData } from "utils/api"
 import "@/styles/index.css"
+// import "@/styles/nav.css"
 
 const MyApp = ({ Component, pageProps }) => {
   // Extract the data we need
@@ -24,6 +25,7 @@ const MyApp = ({ Component, pageProps }) => {
           rel="shortcut icon"
           href={getStrapiMedia(favicon.data.attributes.url)}
         />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
       </Head>
       {/* Global site metadata */}
       <DefaultSeo
