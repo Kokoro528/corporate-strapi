@@ -52,7 +52,7 @@ if (enums && parentId && enums[parentId]){
                 role="tablist border-r-1">
                 {
                 Object.keys(enums[parentId]).map(category => (
-                  <li class="nav-item flex-grow text-center" role="presentation" onMouseOver={
+                  <li class="nav-item flex-grow text-center" key={`tab-${category}`} role="presentation" onMouseOver={
                     (e) => {
                       // e.preventDefault();
                       setSelectedSideTab(category)
@@ -155,7 +155,7 @@ if (enums && parentId && enums[parentId]){
         </div>
         <div className="col grid grid-cols-2 gap-4 p-4" id="tabs-tabContentVertical">
                 {selectedSideTab && selectedSideTab.length && data.filter(e => e.attributes.category === selectedSideTab).map(e => (
-                        <li>
+                        <li key={`${pluralName}-${category}-${e.id}`}>
                           <CustomLink link={{url:`${pluralName}/${e.attributes.title}`}}>
                             {e.attributes.title}
                           </CustomLink>
