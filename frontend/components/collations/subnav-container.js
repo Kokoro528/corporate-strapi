@@ -155,7 +155,7 @@ if (enums && parentId && enums[parentId]){
         </div>
         <div className="col grid grid-cols-2 gap-4 p-4" id="tabs-tabContentVertical">
                 {selectedSideTab && selectedSideTab.length && data.filter(e => e.attributes.category === selectedSideTab).map(e => (
-                        <li key={`${pluralName}-${category}-${e.id}`}>
+                        <li key={`${e.attributes.category}-${pluralName}-${e.id}`}>
                           <CustomLink link={{url:`${pluralName}/${e.attributes.title}`}}>
                             {e.attributes.title}
                           </CustomLink>
