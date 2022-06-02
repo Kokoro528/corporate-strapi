@@ -7,8 +7,8 @@ const Subnav = (props) => {
   const { parentId, pluralName, enums, globals} = props
   const [data, setData] = useState([])
   const [selectedSideTab, setSelectedSideTab] = useState(null)
-  console.log(enums, "enums")
-  console.log(pluralName, "pluralName")
+  // console.log(enums, "enums")
+  // console.log(pluralName, "pluralName")
 
   
 
@@ -30,7 +30,7 @@ const Subnav = (props) => {
     }
     fetchCollection()
     
-  }, [ pluralName])
+  }, [ parentId])
 
 // const tab = 
 // useCallback(() => {

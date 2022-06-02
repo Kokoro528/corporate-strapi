@@ -72,7 +72,7 @@ html {
   z-index: 1000;
 }
 
-/* .mega-menu {
-  display: block;
+.mega-menu {
+  /* display: block; */
   z-index: 100;
-} */
+}

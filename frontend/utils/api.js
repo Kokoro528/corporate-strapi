@@ -289,10 +289,13 @@ export async function getCollectionList(pluralName) {
 
 export async function getCaseData({locale, preview, category, title}) {
   const gqlEndpoint = getStrapiURL("/graphql")
+  
   const param =  `${(!!category || !!title) ? (`filters: { ${(!!category?`category: { eq: $category }`: ``)}
   ${(!!title?  `title: {eq: $title}`: ``)}}`): ''}`
+  
 
   const vars = `${!!category ? '$category: String': ''} \n ${!!title ? '$title: String': ''}`
+  console.log('ap',param, vars)
   const caseRes = await fetch(gqlEndpoint, {
     method: "POST",
     headers: {

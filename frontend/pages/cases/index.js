@@ -38,7 +38,7 @@ const CaseList = ({ data, page }) => {
         <Link href={`/cases/${attributes.title}`} key={"case-" + id} passHref>
           <div className="flex-1 text-lg" key={id}>
             <div className="">
-              <NextImage media={getPictureSrc(attributes) || page.attributes.cardImage} />
+              <NextImage media={page.attributes.cardImage} />
             </div>
             <h3 className="font-bold mt-4 mb-4">{attributes.title}</h3>
             {/* <p>{attributes.title}</p> */}
@@ -98,6 +98,9 @@ const DynamicPage = ({
     ...metadata,
   }
 
+  const category = router.query.type;
+  
+
   return (
     <Layout global={global} pageContext={pageContext}>
       {/* Add meta tags for SEO*/}
@@ -106,8 +109,9 @@ const DynamicPage = ({
       {/* <Header title={title} ></Header> */}
       {/* <Sections sections={sections} preview={preview} /> */}
 
-      <FilterTabs enumColumn={"cases"}>
-        <CaseList data={data} page={page}></CaseList>
+      <FilterTabs enumColumn={"cases"} menubar={global?.attributes?.navbar.links.find(e => e.url.includes(
+        "cases"))}>
+        <CaseList data={data?.filter(e => (category?e.attributes.category === category: true))} page={page}></CaseList>
       </FilterTabs>
 
     </Layout>
@@ -118,32 +122,30 @@ const DynamicPage = ({
 
 export async function getServerSideProps(context) {
 
-  const {params, query, locale, locales, defaultLocale, preview = null, category = null } = context
+  const {params, query, locale, locales, defaultLocale, preview = null } = context
   const globalLocale = await getGlobalData(locale)
   // Fetch pages. Include drafts if preview mode is on
-  const pageData = await getCaseData({
-    category: query?.type,
-    locale,
-    preview,
+  // const pageData = await getCaseData({
+  //   category: query?.type,
+  //   locale,
+  //   preview,
 
-  })
+  // })
+  
   const PageData = await getPageData({
     slug: "cases",
     locale,
     preview,
   })
 
+  
+  // console.log("spi", pageData )
+  const pageData = await getCollectionList("cases")
+  console.log("pageData", pageData)
   if (pageData == null) {
     // Giving the page no props will trigger a 404 page
     return { props: {} }
   }
-  // console.log("spi", pageData )
-  // // const pageData1 = await getCollectionList("cases")
-  // // console.log("pageData1", pageData1)
-  // if (pageData == null) {
-  //   // Giving the page no props will trigger a 404 page
-  //   return { props: {} }
-  // }
 
   // We have the required page data, pass it to the page component
   //   const {
@@ -167,7 +169,7 @@ export async function getServerSideProps(context) {
     props: {
       preview,
       //   sections: contentSections,
-      data: pageData,
+      data: pageData.data,
       page: PageData,
       //   title,
       //   metadata,
