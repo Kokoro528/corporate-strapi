@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import { linkPropTypes } from "utils/types"
 
 const CustomLink = (props) => {
-  const {link, children} = props;
+  const { link, children } = props
   const isInternalLink = link.url.startsWith("/")
 
   // For internal links, use the Next.js Link component

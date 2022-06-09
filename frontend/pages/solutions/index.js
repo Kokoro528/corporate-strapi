@@ -55,8 +55,6 @@ const DynamicPage = ({
   )
 }
 
-
-
 export async function getServerSideProps(context) {
   const { params, locale, locales, defaultLocale, preview = null } = context
 

@@ -40,8 +40,7 @@ const sectionComponents = {
   "sections.media-features": FeatureGroup,
   "sections.pricing": Pricing,
   "sections.solution-list": SolutionList,
-  "sections.top-heading": TopHeading
-
+  "sections.top-heading": TopHeading,
 }
 
 // const ContextSection = () => {
@@ -57,7 +56,8 @@ const sectionComponents = {
 // Display a section individually
 const Section = ({ sectionData }) => {
   // Prepare the component
-  const SectionComponent = sectionComponents[sectionData.__typename || sectionData.__component]
+  const SectionComponent =
+    sectionComponents[sectionData.__typename || sectionData.__component]
 
   if (!SectionComponent) {
     return null

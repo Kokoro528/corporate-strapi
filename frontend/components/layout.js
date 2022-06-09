@@ -20,7 +20,7 @@ const Layout = ({ children, global, pageContext }) => {
           />
         )}
         {/* <Context.Provider value={{ global, pageContext }}> */}
-          <Navbar navbar={navbar} pageContext={pageContext} global={global} />
+        <Navbar navbar={navbar} pageContext={pageContext} global={global} />
         {/* </Context.Provider> */}
         <div>
           <Context.Provider value={{ global, pageContext }}>

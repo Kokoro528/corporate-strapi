@@ -52,7 +52,6 @@ const DynamicPage = ({
   )
 }
 
-
 export async function getServerSideProps(context) {
   const {
     params,
@@ -64,12 +63,11 @@ export async function getServerSideProps(context) {
   } = context
   // console.log("jj", context.resolvedUrl)
 
-
   const globalLocale = await getGlobalData(locale)
   // Fetch pages. Include drafts ifgetCase preview mode is on
   const pageData = await getSingleDoc({
     // slug: (!params.slug ? [""] : params.slug).join("/"),
-    title: (params.rest? params.rest[0]: null),
+    title: params.rest ? params.rest[0] : null,
     pluralName: "cases",
     locale,
     preview,
@@ -79,7 +77,6 @@ export async function getServerSideProps(context) {
     return { props: {} }
   }
 
-  
   // We have the required page data, pass it to the page component
   const {
     contentSections,

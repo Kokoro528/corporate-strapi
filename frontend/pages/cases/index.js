@@ -1,5 +1,11 @@
 import ErrorPage from "next/error"
-import { getCaseData, getCollectionList, fetchAPI, getGlobalData, getPageData } from "utils/api"
+import {
+  getCaseData,
+  getCollectionList,
+  fetchAPI,
+  getGlobalData,
+  getPageData,
+} from "utils/api"
 import Sections from "@/components/sections"
 import Seo from "@/components/elements/seo"
 import Header from "@/components/elements/header"
@@ -14,9 +20,8 @@ const CaseList = ({ data, page }) => {
   // console.log(data)
   const cases = data
 
-
   const getPictureSrc = (attr) => {
-    let res = null;
+    let res = null
     attr.contentSections.forEach((element) => {
       if (!!element.backgroundImage) {
         const attributes = element.backgroundImage.data.attributes.formats.small
@@ -40,12 +45,15 @@ const CaseList = ({ data, page }) => {
       {cases.map(({ id, attributes }) => (
         <Link href={`/cases/${attributes.title}`} key={"case-" + id} passHref>
           <div className="flex-1 text-lg" key={id}>
-            <div >
-              <NextImage media={getPictureSrc(attributes)} className="hover:opacity-40" />
+            <div>
+              <NextImage
+                media={getPictureSrc(attributes)}
+                className="hover:opacity-40"
+              />
             </div>
             <h3 className="font-bold mt-4 mb-4">{attributes.title}</h3>
             {/* <p>{attributes.title}</p> */}
-          </div> 
+          </div>
         </Link>
       ))}
     </div>
@@ -101,8 +109,7 @@ const DynamicPage = ({
     ...metadata,
   }
 
-  const category = router.query.type;
-  
+  const category = router.query.type
 
   return (
     <Layout global={global} pageContext={pageContext}>
@@ -112,20 +119,32 @@ const DynamicPage = ({
       {/* <Header title={title} ></Header> */}
       {/* <Sections sections={sections} preview={preview} /> */}
 
-      <FilterTabs enumColumn={"cases"} menubar={global?.attributes?.navbar.links.find(e => e.url.includes(
-        "cases"))}>
-        <CaseList data={data?.filter(e => (category?e.attributes.category === category: true))} page={page}></CaseList>
+      <FilterTabs
+        enumColumn={"cases"}
+        menubar={global?.attributes?.navbar.links.find((e) =>
+          e.url.includes("cases")
+        )}
+      >
+        <CaseList
+          data={data?.filter((e) =>
+            category ? e.attributes.category === category : true
+          )}
+          page={page}
+        ></CaseList>
       </FilterTabs>
-
     </Layout>
   )
 }
 
-
-
 export async function getServerSideProps(context) {
-
-  const {params, query, locale, locales, defaultLocale, preview = null } = context
+  const {
+    params,
+    query,
+    locale,
+    locales,
+    defaultLocale,
+    preview = null,
+  } = context
   const globalLocale = await getGlobalData(locale)
   // Fetch pages. Include drafts if preview mode is on
   // const pageData = await getCaseData({
@@ -134,14 +153,13 @@ export async function getServerSideProps(context) {
   //   preview,
 
   // })
-  
+
   const PageData = await getPageData({
     slug: "cases",
     locale,
     preview,
   })
 
-  
   // console.log("spi", pageData )
   const pageData = await getCollectionList("cases")
   if (pageData == null) {

@@ -47,7 +47,9 @@ const SolutionFeature = ({ data }) => {
               >
                 {/* Text section */}
                 <div className="w-full lg:w-6/12 lg:pr-6 text-lg ">
-                  <h3 className="text-[30px] font-semibold leading-relaxed ">{feature.title}</h3>
+                  <h3 className="text-[30px] font-semibold leading-relaxed ">
+                    {feature.title}
+                  </h3>
                   <p className="my-6">{feature.description}</p>
                   {/* <CustomLink link={feature.link}>
               <div className="text-blue-600 with-arrow hover:underline">
@@ -60,7 +62,7 @@ const SolutionFeature = ({ data }) => {
                   {/* Images */}
                   {feature.icon.data.attributes.mime.startsWith("image") && (
                     <div className="w-full ">
-                      <NextImage  media={feature.icon} />
+                      <NextImage media={feature.icon} />
                     </div>
                   )}
                   {/* Videos */}
