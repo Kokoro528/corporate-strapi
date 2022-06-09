@@ -12,7 +12,7 @@ import FilterTabs from "@/components/filter-tabs"
 
 const CaseList = ({ data, page }) => {
   // console.log(data)
-  const cases = data
+  const libraries = data
 
 
   const getPictureSrc = (attr) => {
@@ -36,12 +36,12 @@ const CaseList = ({ data, page }) => {
   // }
 
   return (
-    <div className="container grid grid-cols-1 gap-4  sm: grid-cols-3 md:grid-cols-3">
-      {cases.map(({ id, attributes }) => (
-        <Link href={`/cases/${attributes.title}`} key={"case-" + id} passHref>
+    <div className="container grid grid-cols-1 gap-4  sm: grid-cols-3 md:grid-cols-4">
+      {libraries.map(({ id, attributes }) => (
+        <Link href={`/libraries/${attributes.title}`} key={"case-" + id} passHref>
           <div className="flex-1 text-lg" key={id}>
-            <div >
-              <NextImage media={getPictureSrc(attributes)} className="hover:opacity-40" />
+            <div className="">
+              <NextImage media={getPictureSrc(attributes)} />
             </div>
             <h3 className="font-bold mt-4 mb-4">{attributes.title}</h3>
             {/* <p>{attributes.title}</p> */}
@@ -112,8 +112,8 @@ const DynamicPage = ({
       {/* <Header title={title} ></Header> */}
       {/* <Sections sections={sections} preview={preview} /> */}
 
-      <FilterTabs enumColumn={"cases"} menubar={global?.attributes?.navbar.links.find(e => e.url.includes(
-        "cases"))}>
+      <FilterTabs enumColumn={"libraries"} menubar={global?.attributes?.navbar.links.find(e => e.url.includes(
+        "libraries"))}>
         <CaseList data={data?.filter(e => (category?e.attributes.category === category: true))} page={page}></CaseList>
       </FilterTabs>
 
@@ -136,14 +136,14 @@ export async function getServerSideProps(context) {
   // })
   
   const PageData = await getPageData({
-    slug: "cases",
+    slug: "libraries",
     locale,
     preview,
   })
 
   
   // console.log("spi", pageData )
-  const pageData = await getCollectionList("cases")
+  const pageData = await getCollectionList("libraries")
   if (pageData == null) {
     // Giving the page no props will trigger a 404 page
     return { props: {} }

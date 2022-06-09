@@ -70,7 +70,7 @@ export async function getServerSideProps(context) {
   const pageData = await getSingleDoc({
     // slug: (!params.slug ? [""] : params.slug).join("/"),
     title: (params.rest? params.rest[0]: null),
-    pluralName: "cases",
+    pluralName: "libraries",
     locale,
     preview,
   })
@@ -87,7 +87,7 @@ export async function getServerSideProps(context) {
     localizations,
     title,
   } = pageData[0]?.attributes
-  // console.log("contectionSections", contentSections)
+  
 
   const pageContext = {
     locale,

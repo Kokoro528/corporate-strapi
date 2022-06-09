@@ -1,17 +1,25 @@
 import { func } from "prop-types"
 import { object } from "prop-types"
-import { useCallback, useEffect, useState } from "react"
+import { useCallback, useEffect, useState, useMemo } from "react"
 import { getCollectionList } from "utils/api"
 import CustomLink from "../elements/custom-link"
 const Subnav = (props) => {
-  const { parentId, pluralName, enums, globals} = props
+  const { parentId, pluralName, enums, navLink, globals} = props
   const [data, setData] = useState([])
   const [selectedSideTab, setSelectedSideTab] = useState(null)
+  const [displayList, setDisplayList] = useState(null)
   // console.log(enums, "enums")
-  // console.log(pluralName, "pluralName")
+  
+  console.log(pluralName, parentId, "pluralName")
 
+  // const getSelectedNavLink = () => {
+  //   return navbar.links.find(link => link.url === pluralName)
+  // }
   
 
+  // useMemo(() => {
+  //   setDisplayList(getSelectedNavLink().nestedLinks)
+  // }, [pluralName])
 
   useEffect(() => {
     const fetchCollection = async () => {
@@ -28,20 +36,21 @@ const Subnav = (props) => {
       }
 
     }
+    console.log("nestedLinks", selectedSideTab, pluralName)
     fetchCollection()
     
-  }, [ parentId])
+  }, [ ])
 
 // const tab = 
 // useCallback(() => {
 
 // })
 
-if (enums && parentId && enums[parentId]){
+if (navLink.nestedLinks && navLink.nestedLinks.length){
    return (
   <div className="
-        mega-menu w-full -mt-1 hidden shadow-lg bg-white absolute left-0 top-full
-        " aria-labelledby={`subNav${parentId}`} >
+        mega-menu w-full -mt-3 hidden bg-white absolute left-0 top-full
+        " aria-labelledby={`subNav${navLink.text}`} >
     <div className="container z-40">
       <div className="row my-4">
         <div class="col-md-6 col-xl-3 mb-3 mb-xl-0">
@@ -51,14 +60,14 @@ if (enums && parentId && enums[parentId]){
               <ul class="nav nav-tabs flex flex-col flex-wrap list-none border-b-0 pl-0 mr-4" id="tabs-tabVertical"
                 role="tablist border-r-1">
                 {
-                Object.keys(enums[parentId]).map(category => (
-                  <li class="nav-item flex-grow text-center" key={`tab-${category}`} role="presentation" onMouseOver={
+                navLink.nestedLinks.map(e1 => (
+                  <li class="nav-item flex-grow text-center" key={`tab-${e1.url}`} role="presentation" onMouseOver={
                     (e) => {
                       // e.preventDefault();
-                      setSelectedSideTab(category)
+                      setSelectedSideTab(e1.url.substring(e1.url.indexOf('=')+1))
                     }
                   }>
-                    <a href={`${pluralName}?type=${category}`} className="
+                    <a href={e1.url} className="
           
           block
           font-medium
@@ -73,13 +82,11 @@ if (enums && parentId && enums[parentId]){
           focus:border-transparent
           active
         " 
-        key={`tab${parentId}-${category}`}
-        id={`tabs-${category}-tabVertical`} 
-        // data-bs-toggle="pill" data-bs-target={`#tabs-${category}Vertical`} 
-        role="tab"
-                      aria-controls={`tabs-${category}Vertical`} >
+        key={`tab${parentId}-${e1.url.substring(1)}`}
+        >
+        
                         {/* {JSON.stringify(enums)} */}
-                      {enums[parentId][category]}
+                      {e1.text}
                     </a>
                   </li>))}
 
@@ -87,71 +94,6 @@ if (enums && parentId && enums[parentId]){
               
             </div>
           </div>
-          {/* <div class="pt-2">
-                    <p class="text-uppercase font-weight-bold">
-                      Explicabo voluptas
-                    </p>
-                    <a href="" class="text-dark">
-                      <div class="row mb-4 border-bottom pb-2">
-                        <div class="col-3">
-                          <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp"
-                            class="img-fluid shadow-1-strong rounded" alt="Hollywood Sign on The Hill" />
-                        </div>
-                        <div class="col-9">
-                          <p class="mb-2">
-                            <strong>Lorem ipsum dolor sit
-                              amet</strong>
-                          </p>
-                          <p><u>15.07.2020</u></p>
-                        </div>
-                      </div>
-                    </a>
-                    <a href="" class="text-dark">
-                      <div class="row mb-4 border-bottom pb-2">
-                        <div class="col-3">
-                          <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/042.webp"
-                            class="img-fluid shadow-1-strong rounded" alt="Palm Springs" />
-                        </div>
-                        <div class="col-9">
-                          <p class="mb-2">
-                            <strong>Lorem ipsum dolor sit
-                              amet</strong>
-                          </p>
-                          <p><u>15.07.2020</u></p>
-                        </div>
-                      </div>
-                    </a>
-                    <a href="" class="text-dark">
-                      <div class="row mb-4 border-bottom pb-2">
-                        <div class="col-3">
-                          <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/043.webp"
-                            class="img-fluid shadow-1-strong rounded" alt="Los Angeles Skyscrapers" />
-                        </div>
-                        <div class="col-9">
-                          <p class="mb-2">
-                            <strong>Lorem ipsum dolor sit
-                              amet</strong>
-                          </p>
-                          <p><u>15.07.2020</u></p>
-                        </div>
-                      </div>
-                    </a>
-                    <a href="" class="text-dark">
-                      <div class="row mb-4 border-bottom pb-2">
-                        <div class="col-3">
-                          <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp"
-                            class="img-fluid shadow-1-strong rounded" alt="Skyscrapers" />
-                        </div>
-                        <div class="col-9">
-                          <p class="mb-2">
-                            <strong>Lorem ipsum dolor sit
-                              amet</strong>
-                          </p>
-                          <p><u>15.07.2020</u></p>
-                        </div>
-                      </div>
-                    </a>
-                  </div> */}
         </div>
         <div className="col grid grid-cols-2 gap-4 p-4" id="tabs-tabContentVertical">
                 {selectedSideTab && selectedSideTab.length && data.filter(e => e.attributes.category === selectedSideTab).map(e => (
@@ -162,18 +104,7 @@ if (enums && parentId && enums[parentId]){
                           
                         </li>
                 )) }
-                {/* {Object.keys(enums[pluralName]).map(category => {
-                  return (
-                    <div key={`tabpanel${parentId}-${category}`} className={"tab-pane fade show " + selectedSideTab === category?"active": ""} id={`tabs-${category}Vertical`} role="tabpanel"
-                      aria-labelledby={`tabs-${category}-tabVertical`}>
-                      {data.map(e => {
-                        <li>
-                          {e.attributes.title}
-                        </li>
-                      })}
-                    </div>
-                  )
-                })} */}
+
 
 
               </div>

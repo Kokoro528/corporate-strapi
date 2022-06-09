@@ -12,6 +12,7 @@ import SolutionFeature from "./sections/solution-feature"
 import TopHeading from "./sections/top-heading"
 import Context from "./context"
 import FeatureGroup from "./sections/feature-group"
+import SolutionList from "./collations/solution-list"
 
 // Map Strapi sections to section components
 const sectionComponents = {
@@ -27,6 +28,20 @@ const sectionComponents = {
   ComponentSectionsLeadForm: LeadForm,
   ComponentSectionsSolutionFeature: SolutionFeature,
   ComponentSectionsTopHeading: TopHeading,
+
+  // If getting dynamic zone using RESTful API
+  "sections.rich-text": RichText,
+  "sections.bottom-actions": BottomActions,
+  "sections.feature-columns-group": FeatureColumnsGroup,
+  "sections.feature-rows-group": FeatureRowsGroup,
+  "sections.hero": Hero,
+  "sections.large-video": LargeVideo,
+  "sections.lead-form": LeadForm,
+  "sections.media-features": FeatureGroup,
+  "sections.pricing": Pricing,
+  "sections.solution-list": SolutionList,
+  "sections.top-heading": TopHeading
+
 }
 
 // const ContextSection = () => {
@@ -42,7 +57,7 @@ const sectionComponents = {
 // Display a section individually
 const Section = ({ sectionData }) => {
   // Prepare the component
-  const SectionComponent = sectionComponents[sectionData.__typename]
+  const SectionComponent = sectionComponents[sectionData.__typename || sectionData.__component]
 
   if (!SectionComponent) {
     return null
@@ -93,7 +108,7 @@ const Sections = ({ sections, preview }) => {
       {sections.map((section) => (
         <Section
           sectionData={section}
-          key={`${section.__typename}${section.id}`}
+          key={`${section.__typename || section.__component}${section.id}`}
         />
       ))}
     </div>

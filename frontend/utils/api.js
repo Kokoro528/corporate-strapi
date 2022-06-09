@@ -274,7 +274,7 @@ export async function getPageData({ slug, locale, preview }) {
 
 export async function getCollectionList(pluralName) {
   if (!pluralName) return {};
-  const endpoint = getStrapiURL(`/api/${pluralName}`)
+  const endpoint = getStrapiURL(`/api/${pluralName}?populate=*`)
   const caseList = await fetch(endpoint, {
     method: "GET",
     headers: {
@@ -283,10 +283,27 @@ export async function getCollectionList(pluralName) {
 
   })
   const casesData = await caseList.json()
-  console.log("casesData", casesData)
   return casesData
 }
 
+export async function getSingleDoc({pluralName, title}) {
+  if (!pluralName) return {};
+  console.log("sda")
+  const url = `/api/${pluralName}?populate=*${title?`&filters[title][$eq]=${title}`:''}`
+  const endpoint = getStrapiURL(url)
+  const caseList = await fetch(endpoint, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    }
+
+  })
+
+  // console.log(caseList)
+  const casesData = await caseList.json()
+  
+  return casesData.data
+}
 export async function getCaseData({locale, preview, category, title}) {
   const gqlEndpoint = getStrapiURL("/graphql")
   
@@ -580,7 +597,12 @@ export async function getGlobalData(locale) {
                   links {
                     id
                     text
-                    url                   
+                    url
+                    nestedLinks {
+                      text
+                      url
+                      newTab
+                    }
                   }
                   button {
                     id

@@ -22,18 +22,18 @@ const FeatureRowsGroup = ({ data }) => {
           <div className="w-full lg:w-6/12 lg:pr-6 text-lg">
             <h3 className="title">{feature.title}</h3>
             <p className="my-6">{feature.description}</p>
-            <CustomLink link={feature.link}>
+            {feature.link && <CustomLink link={feature.link}>
               <div className="text-blue-600 with-arrow hover:underline">
-                {feature.link.text}
+                {feature.link?.text}
               </div>
-            </CustomLink>
+            </CustomLink>}
           </div>
           {/* Media section */}
           <div className="w-full sm:9/12 lg:w-4/12 max-h-full">
             {/* Images */}
             {feature.media.data.attributes.mime.startsWith("image") && (
               <div className="w-full h-auto">
-                <NextImage layout="fill" media={feature.media} />
+                <NextImage  media={feature.media} />
               </div>
             )}
             {/* Videos */}

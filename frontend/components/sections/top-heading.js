@@ -4,7 +4,7 @@ import { getButtonAppearance } from "utils/button"
 
 const TopHeading = ({ data }) => {
   const style = {
-    backgroundImage: "url(" + data.backgroundImage.data.attributes.url + ")",
+    backgroundImage: "url(" + data?.backgroundImage?.data.attributes.url + ")",
     backgroundPosition: "center",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",

@@ -37,6 +37,7 @@ const NextImage = ({ media, ...props }) => {
       objectFit="contain"
       src={url}
       alt={alternativeText || ""}
+      {...props}
     />
   )
 }

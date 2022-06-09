@@ -10,7 +10,7 @@
     "text": {
       "type": "string"
     },
-    "nestedLink": {
+    "nestedLinks": {
       "type": "component",
       "repeatable": true,
       "component": "links.link"

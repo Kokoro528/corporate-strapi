@@ -60,7 +60,7 @@ const SolutionFeature = ({ data }) => {
                   {/* Images */}
                   {feature.icon.data.attributes.mime.startsWith("image") && (
                     <div className="w-full ">
-                      <NextImage layout="fill" media={feature.icon} />
+                      <NextImage  media={feature.icon} />
                     </div>
                   )}
                   {/* Videos */}
