@@ -1,4 +1,4 @@
-const { colors } = require(`tailwindcss/defaultTheme`)
+const colors = require('tailwindcss/colors')
 
 module.exports = {
   mode: "jit", // see https://tailwindcss.com/docs/just-in-time-mode
@@ -8,6 +8,7 @@ module.exports = {
     extend: {
       colors: {
         // primary: colors.indigo,
+        orange: colors.orange,
         primary: {
           // 900: "RGB(41,104,166)",
           // 800: "RGB(55,111,166)",
@@ -39,7 +40,8 @@ module.exports = {
           200: "RGB(179.0,173.0,239.0)",
           100: "RGB(198.0,193.0,244.0)",
           50: "RGB(217.0,213.0,248.0)",
-        }
+        },
+        
       },
       container: {
         center: true,

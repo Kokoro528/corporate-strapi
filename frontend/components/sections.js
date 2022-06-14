@@ -13,6 +13,9 @@ import TopHeading from "./sections/top-heading"
 import Context from "./context"
 import FeatureGroup from "./sections/feature-group"
 import SolutionList from "./collations/solution-list"
+import ModelStructure from "./sections/model-structure"
+import SimpleFeatures from "./sections/simple-features"
+import RichContent from "./sections/rich-content-section"
 
 // Map Strapi sections to section components
 const sectionComponents = {
@@ -41,6 +44,9 @@ const sectionComponents = {
   "sections.pricing": Pricing,
   "sections.solution-list": SolutionList,
   "sections.top-heading": TopHeading,
+  "sections.model-structure": ModelStructure,
+  "sections.simple-features": SimpleFeatures,
+  "sections.rich-content-section": RichContent,
 }
 
 // const ContextSection = () => {

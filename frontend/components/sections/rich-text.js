@@ -10,13 +10,13 @@ const RichText = ({ data, pageContext, global }) => {
     products = global.attributes.products
   }
   return (
-    <div className="container justify-center">
+    <div className="container">
       {pageContext.resolvedUrl?.includes("cases/") && (
         <div className="itembar-right">
           <Products {...products} />
         </div>
       )}
-      <div className="prose prose-lg py-12">
+      <div className="prose prose-lg py-12 flex flex-col justify-items-center">
         <Markdown remarkPlugins={[remarkGfm, remarkImages]}>
           {data.content}
         </Markdown>

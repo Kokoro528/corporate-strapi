@@ -5,6 +5,7 @@
 html {
   font-size: 13px;
   @apply text-gray-900;
+  counter-reset: card; 
 }
 
 @media screen and (min-width: 640px) {
@@ -31,7 +32,7 @@ html {
 }
 
 .title {
-  @apply text-4xl leading-snug font-semibold;
+  @apply text-4xl leading-snug font-semibold text-orange-600;
 }
 
 @media (min-width: 768px) {
@@ -81,3 +82,15 @@ html {
   transition: 1000ms !important;
 }
 
+.background-with-number {
+  
+  /* counter-increment: card;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1'> <text x='0' y='15' fill='alice-blue' font-size='20'>"  counter(card)  "</text> </svg>");  */
+  
+}
+.background-with-number::after {
+ /* @apply text-secondary-100; */
+  
+    
+  
+}

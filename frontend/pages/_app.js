@@ -70,7 +70,7 @@ MyApp.getServerSideProps = async (appContext) => {
   const appProps = await App.getServerSideProps(appContext)
   // console.log("locale", appContext.router.locale)
   const globalLocale = await getGlobalData(appContext.router.locale)
-  // console.log("globalLocale", globalLocale?.attributes?.metadata.shareImage )
+  // ("globalLocale", globalLocale?.attributes?.metadata.shareImage )
   return {
     ...appProps,
     pageProps: {

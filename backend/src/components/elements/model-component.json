@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_elements_model_components",
+  "info": {
+    "displayName": "Model Component",
+    "icon": "dice-two"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "chineseTitle": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

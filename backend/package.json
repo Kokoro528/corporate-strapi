@@ -6,13 +6,16 @@
     "@strapi/provider-upload-aws-s3": "^4.1.7",
     "@strapi/provider-upload-huaweicloud-obs": "file:providers/upload-huaweicloud-obs",
     "@strapi/strapi": "4.1.7",
+    "add": "^2.0.6",
     "esdk-obs-nodejs": "^3.21.6",
     "lodash.set": "^4.3.2",
     "pg": "8.6.0",
     "pinyin-pro": "^3.10.0",
     "sqlite3": "5.0.2",
     "strapi-plugin-deepl": "^0.3.6",
-    "strapi-plugin-meilisearch": "^0.6.2"
+    "strapi-plugin-meilisearch": "^0.6.2",
+    "strapi-plugin-populate-deep": "^0.1.2",
+    "yarn": "^1.22.19"
   },
   "name": "backend",
   "private": true,

@@ -84,7 +84,6 @@ export async function getServerSideProps(context) {
     localizations,
     title,
   } = pageData[0]?.attributes
-  // console.log("contectionSections", contentSections)
 
   const pageContext = {
     locale,

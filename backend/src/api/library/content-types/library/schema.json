@@ -32,8 +32,20 @@
       },
       "type": "dynamiczone",
       "components": [
+        "sections.bottom-actions",
+        "sections.feature-columns-group",
+        "sections.feature-rows-group",
+        "sections.hero",
+        "sections.hero-2",
+        "sections.large-video",
+        "sections.lead-form",
+        "sections.media-features",
+        "sections.model-structure",
+        "sections.pricing",
+        "sections.rich-content-section",
         "sections.rich-text",
-        "sections.rich-content-section"
+        "sections.simple-features",
+        "sections.solution-feature"
       ]
     },
     "category": {

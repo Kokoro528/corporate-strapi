@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_sections_model_structures",
+  "info": {
+    "displayName": "Model Structure",
+    "icon": "align-left",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "modelComponents": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.model-component"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

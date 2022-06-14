@@ -41,7 +41,7 @@ const Navbar = ({ navbar, pageContext, global }) => {
               </a>
             </Link>
             {/* List of links on desktop */}
-            <ul className="hidden  list-none md:flex flex-row gap-4 items-baseline ml-10">
+            <ul className="hidden  list-none sm:flex md:flex flex-row md:gap-4 items-baseline ml-10">
               {navbar.links.map((navLink) => (
                 <li
                   className=" hoverable"
@@ -76,11 +76,11 @@ const Navbar = ({ navbar, pageContext, global }) => {
           </div>
           <div className="flex">
             {/* Locale Switch Mobile */}
-            {pageContext.localizedPaths && (
+            {/* {pageContext.localizedPaths && (
               <div className="md:hidden">
                 <LocaleSwitch pageContext={pageContext} />
               </div>
-            )}
+            )} */}
             {/* Hamburger menu on mobile */}
             <button
               onClick={() => setMobileMenuIsShown(true)}
@@ -99,11 +99,11 @@ const Navbar = ({ navbar, pageContext, global }) => {
               </div>
             )}
             {/* Locale Switch Desktop */}
-            {pageContext.localizedPaths && (
+            {/* {pageContext.localizedPaths && (
               <div className="hidden md:block">
                 <LocaleSwitch pageContext={pageContext} />
               </div>
-            )}
+            )} */}
           </div>
         </div>
       </nav>
@@ -112,6 +112,7 @@ const Navbar = ({ navbar, pageContext, global }) => {
       {mobileMenuIsShown && (
         <MobileNavMenu
           navbar={navbar}
+          router={router}
           closeSelf={() => setMobileMenuIsShown(false)}
         />
       )}

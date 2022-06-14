@@ -33,9 +33,8 @@ const Subnav = (props) => {
         console.log("err: suanle")
       }
     }
-    console.log("nestedLinks", selectedSideTab, pluralName)
     fetchCollection()
-  }, [])
+  }, [pluralName, parentId])
 
   // const tab =
   // useCallback(() => {

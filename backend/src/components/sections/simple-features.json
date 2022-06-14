@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_sections_simple_features",
+  "info": {
+    "displayName": "Simple Features",
+    "icon": "candy-cane"
+  },
+  "options": {},
+  "attributes": {
+    "features": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.simple-feature"
+    },
+    "title": {
+      "type": "string"
+    }
+  }
+}
