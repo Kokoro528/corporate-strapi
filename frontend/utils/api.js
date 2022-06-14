@@ -288,7 +288,6 @@ export async function getCollectionList(pluralName) {
 
 export async function getSingleDoc({pluralName, title}) {
   if (!pluralName) return {};
-  console.log("sda")
   const url = `/api/${pluralName}?populate=deep${title?`&filters[title][$eq]=${title}`:''}`
   const endpoint = getStrapiURL(url)
   const caseList = await fetch(endpoint, {
@@ -299,7 +298,6 @@ export async function getSingleDoc({pluralName, title}) {
 
   })
 
-  console.log(caseList)
   const casesData = await caseList.json()
   
   return casesData.data

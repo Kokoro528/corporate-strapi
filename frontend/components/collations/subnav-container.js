@@ -3,14 +3,13 @@ import { object } from "prop-types"
 import { useCallback, useEffect, useState, useMemo } from "react"
 import { getCollectionList } from "utils/api"
 import CustomLink from "../elements/custom-link"
+import classNames from "classnames"
 const Subnav = (props) => {
   const { parentId, pluralName, enums, navLink, globals } = props
   const [data, setData] = useState([])
   const [selectedSideTab, setSelectedSideTab] = useState(null)
   const [displayList, setDisplayList] = useState(null)
   // console.log(enums, "enums")
-
-  console.log(pluralName, parentId, "pluralName")
 
   // const getSelectedNavLink = () => {
   //   return navbar.links.find(link => link.url === pluralName)
@@ -34,7 +33,7 @@ const Subnav = (props) => {
       }
     }
     fetchCollection()
-  }, [pluralName, parentId])
+  }, [])
 
   // const tab =
   // useCallback(() => {
