@@ -109,7 +109,7 @@ const DynamicPage = ({
     ...metadata,
   }
 
-  const category = router.query.type
+  const category = router.query.category
 
   return (
     <Layout global={global} pageContext={pageContext}>

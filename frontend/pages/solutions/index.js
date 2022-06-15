@@ -29,6 +29,7 @@ const DynamicPage = ({
   //   return <ErrorPage statusCode={404} />
   // }
 
+  const category = router.query.category
   // Loading screen (only possible in preview mode)
   if (router.isFallback) {
     return <div className="container">Loading...</div>

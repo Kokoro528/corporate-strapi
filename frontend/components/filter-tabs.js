@@ -39,7 +39,7 @@ const FilterTabs = ({ children, enumColumn, menubar }) => {
                     key={e}
                   >
                     <a
-                      href={`?type=${e}`}
+                      href={`?category=${e}`}
                       // onClick={() => {router.push({query: {type: e}})}}
                       className="nav-link
       w-full
