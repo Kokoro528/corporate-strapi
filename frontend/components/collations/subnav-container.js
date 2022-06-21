@@ -49,7 +49,7 @@ const Subnav = (props) => {
     console.log("ajsjdjs")
     return <ProductSubcontainer />
   }
-  // when nestedLinks are documents divided by categories. 
+  // when nestedLinks are documents divided by categories.
   if (navLink.nestedLinks.length) {
     if (navLink.nestedLinks[0].url.includes("=")) {
       return (
@@ -117,7 +117,9 @@ const Subnav = (props) => {
                   data
                     .filter((e) => e.attributes.category === selectedSideTab)
                     .map((e) => (
-                      <li key={`${e.attributes.category}-${pluralName}-${e.id}`}>
+                      <li
+                        key={`${e.attributes.category}-${pluralName}-${e.id}`}
+                      >
                         <CustomLink
                           link={{ url: `${pluralName}/${e.attributes.title}` }}
                         >
@@ -130,8 +132,7 @@ const Subnav = (props) => {
           </div>
         </div>
       )
-    }
-    else {
+    } else {
       return (
         <div
           className="
@@ -140,14 +141,13 @@ const Subnav = (props) => {
           aria-labelledby={`subNav${navLink.text}`}
         >
           <div className="container z-40">
-          <div
-            className="grid grid-cols-2 gap-4 p-4"
-            id="tabs-tabContentVertical"
-          >
-            {selectedSideTab &&
-              selectedSideTab.length &&
-              data
-                .map((e) => (
+            <div
+              className="grid grid-cols-2 gap-4 p-4"
+              id="tabs-tabContentVertical"
+            >
+              {selectedSideTab &&
+                selectedSideTab.length &&
+                data.map((e) => (
                   <li key={`${e.attributes.title}-${pluralName}-${e.id}`}>
                     <CustomLink
                       link={{ url: `${pluralName}/${e.attributes.title}` }}
@@ -156,16 +156,12 @@ const Subnav = (props) => {
                     </CustomLink>
                   </li>
                 ))}
+            </div>
           </div>
         </div>
-        </div>
-        
-
       )
     }
   }
-
-
 }
 
 export default Subnav

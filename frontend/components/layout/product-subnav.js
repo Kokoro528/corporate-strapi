@@ -7,17 +7,16 @@ import classNames from "classnames"
 import NextImage from "../elements/image"
 
 const ProductSubcontainer = (props) => {
-
   const [data, setData] = useState({})
 
   useEffect(() => {
     const fetchCollection = async () => {
       try {
-        const res = await getSingleType({ singularName: "product-subcontainer" })
+        const res = await getSingleType({
+          singularName: "product-subcontainer",
+        })
         console.log()
         setData(res.attributes)
-
-
       } catch (err) {
         console.log("err: suanle")
       }
@@ -27,57 +26,41 @@ const ProductSubcontainer = (props) => {
 
   console.log("data", data)
 
-  const Mworks = cardWrapper(
-    () => (<p>
-      {data?.Mworks?.description}
-    </p>)
+  const Mworks = cardWrapper(() => <p>{data?.Mworks?.description}</p>)
 
-  )
-
-  const GetStarted = cardWrapper(
-    () => (
-
-      <ul>
-        {data?.getStarted?.links.map(link => {
-          return (
-            <li>
-              <CustomLink
-                link={link}>
-                {link.text}
-              </CustomLink>
-            </li>
-          )
-
-        })}
-
-
-
-      </ul>
-    )
-
-  )
-
-  const ProductList = cardWrapper(
-    () => (
-    <div className="grid grid-flow-col grid-cols-3 grid-rows-2">
-      {
-      data?.products?.map(e => {
+  const GetStarted = cardWrapper(() => (
+    <ul>
+      {data?.getStarted?.links.map((link, i) => {
         return (
-          <div className=" flex flex-col  items-start py-4 px-4 flex-1">
-          <CustomLink link={e.link}>
-            <>
-            <div className="w-20 h-20">
-              <NextImage media={e.link.icon} />
-            </div>
-            <p className="text-sm ">{e.link.title}</p>  
-            </>           
-          </CustomLink>
-        </div>)})
-        }
-        </div>)
+          <li key={`subnav-link-${i}`}>
+            <CustomLink link={link}>{link.text}</CustomLink>
+          </li>
         )
-      
-        
+      })}
+    </ul>
+  ))
+
+  const ProductList = cardWrapper(() => (
+    <div className="grid grid-flow-col grid-cols-3 grid-rows-2">
+      {data?.products?.map((e, i) => {
+        return (
+          <div
+            key={`subnav-product-${i}`}
+            className=" flex flex-col  items-start py-4 px-4 flex-1"
+          >
+            <CustomLink link={e.link}>
+              <>
+                <div className="w-20 h-20">
+                  <NextImage media={e.link.icon} />
+                </div>
+                <p className="text-sm ">{e.link.title}</p>
+              </>
+            </CustomLink>
+          </div>
+        )
+      })}
+    </div>
+  ))
 
   return (
     <div
@@ -95,7 +78,9 @@ const ProductSubcontainer = (props) => {
             <Mworks {...data.Mworks} />
             <GetStarted {...data.getStarted} />
           </div>
-          <div className="col-span-2 "><ProductList {...data.products} /></div>
+          <div className="col-span-2 ">
+            <ProductList {...data.products} />
+          </div>
           {/* {
             data?.map((e) => (
                 <li key={`${e.attributes.title}-${pluralName}-${e.id}`}>
@@ -106,24 +91,24 @@ const ProductSubcontainer = (props) => {
                   </CustomLink>
                 </li>
               ))} */}
-              
-
         </div>
       </div>
     </div>
   )
-
 }
 
-export default ProductSubcontainer;
+export default ProductSubcontainer
 
-const cardWrapper = Component => (prop) => {
-  return (<div className="flex flex-col px-2 py-3 divide-y divide-slate-200 ">
-    <h1 className="font-bold text-slate-200 ">{prop.title}</h1>
-    <div className="my-3">
-      <Component />
-    </div>
-
-  </div>)
-
+const cardWrapper = (Component) => {
+  const MyComp = (prop) => {
+    return (
+      <div className="flex flex-col px-2 py-3 divide-y divide-slate-200 ">
+        <h1 className="font-bold text-slate-200 ">{prop.title}</h1>
+        <div className="my-3">
+          <Component />
+        </div>
+      </div>
+    )
+  }
+  return MyComp
 }

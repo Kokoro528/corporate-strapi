@@ -50,7 +50,7 @@ const sectionComponents = {
   "sections.model-structure": ModelStructure,
   "sections.simple-features": SimpleFeatures,
   "sections.rich-content-section": RichContent,
-  "sections.cards": InfoCards
+  "sections.cards": InfoCards,
 }
 
 // const ContextSection = () => {
