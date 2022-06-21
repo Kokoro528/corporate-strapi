@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_layout_product_centers",
+  "info": {
+    "displayName": "Product Center",
+    "icon": "code"
+  },
+  "options": {},
+  "attributes": {
+    "whatisMworks": {
+      "displayName": "Description Snapshot",
+      "type": "component",
+      "repeatable": false,
+      "component": "panels.description-snapshot"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_panels_product_cards",
+  "info": {
+    "displayName": "Product Card",
+    "icon": "book-reader",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "link": {
+      "type": "component",
+      "repeatable": false,
+      "component": "links.link-with-icon"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="315.79" height="57" viewBox="0 0 315.79 57">
+  <defs>
+    <linearGradient id="linear-gradient" x1="-0.363" y1="0.279" x2="1.363" y2="0.721" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#cfd1d2"/>
+      <stop offset="0.073" stop-color="#c4c9ce" stop-opacity="0.988"/>
+      <stop offset="0.203" stop-color="#a7b6c5" stop-opacity="0.953"/>
+      <stop offset="0.375" stop-color="#7896b6" stop-opacity="0.898"/>
+      <stop offset="0.581" stop-color="#386ba1" stop-opacity="0.824"/>
+      <stop offset="0.596" stop-color="#3368a0" stop-opacity="0.82"/>
+      <stop offset="0.773" stop-color="#3368a0" stop-opacity="0.902"/>
+      <stop offset="0.883" stop-color="#3368a0" stop-opacity="0.969"/>
+      <stop offset="1" stop-color="#3368a0"/>
+    </linearGradient>
+  </defs>
+  <g id="组_196" data-name="组 196" transform="translate(-1146.345 -648.474)">
+    <g id="组_195" data-name="组 195">
+      <g id="组_193" data-name="组 193">
+        <text id="MWorks_2022" data-name="MWorks 2022" transform="translate(1205.135 694.474)" fill="#fff" font-size="42.17" font-family="SegoeUI, Segoe UI"><tspan x="0" y="0">MWorks 2022</tspan></text>
+      </g>
+      <g id="组_194" data-name="组 194">
+        <path id="路径_94" data-name="路径 94" d="M1156.844,665.634l5.066,28.841h7.74l-5.065-28.841Z" opacity="0.5" fill="url(#linear-gradient)"/>
+        <path id="路径_95" data-name="路径 95" d="M1154.085,694.475l10.5-28.841h-7.741l-10.5,28.841Z" fill="#cfd1d2"/>
+        <path id="路径_96" data-name="路径 96" d="M1169.65,694.475l7-19.237,7,19.237h7.74l-10.5-28.841h-8.488l-10.5,28.841Z" fill="#3c7bbf"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -11,11 +11,11 @@ const RichContent = ({ data, pageContext, global }) => {
     products = global.attributes.products
   }
   return (
-    <div className="container justify-center mt-4">
-      <h1 className="title mt-5">{data.title}</h1>
-      <h1>{data.subtitle}</h1>
-      <div className="prose prose-lg py-12 flex flex-col justify-items-center mx-6">
-        <Markdown remarkPlugins={[remarkGfm, remarkImages]}>
+    <div className="container flex flex-col items-center mt-4">
+      {data.title && <h1 className="title mt-5">{data.title}</h1>}
+      {data.subtitle && <h1>{data.subtitle}</h1>}
+      <div className="prose max-w-none py-12 flex flex-col  ">
+        <Markdown className="" remarkPlugins={[remarkGfm, remarkImages]}>
           {data.content}
         </Markdown>
         <div className="flex-shrink-0 w-full mt-6 md:mt-0">

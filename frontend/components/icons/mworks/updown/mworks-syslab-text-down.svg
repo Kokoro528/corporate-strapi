@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="91" height="67.609" viewBox="0 0 91 67.609">
+  <defs>
+    <linearGradient id="linear-gradient" y1="0.5" x2="1" y2="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#f3922c"/>
+      <stop offset="0.062" stop-color="#e88529"/>
+      <stop offset="0.277" stop-color="#c95e20"/>
+      <stop offset="0.474" stop-color="#b3421a"/>
+      <stop offset="0.647" stop-color="#a53117"/>
+      <stop offset="0.777" stop-color="#a12c16"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" y1="0.5" x2="1" y2="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#94c9ee"/>
+      <stop offset="0.153" stop-color="#7db2dd"/>
+      <stop offset="0.545" stop-color="#477eb6"/>
+      <stop offset="0.84" stop-color="#265e9e"/>
+      <stop offset="1" stop-color="#1a5295"/>
+    </linearGradient>
+  </defs>
+  <g id="组_11" data-name="组 11" transform="translate(-1270.187 -437.889)">
+    <text id="MWorks.Syslab" transform="translate(1270.187 501.498)" fill="#4d4d4d" font-size="13.683" font-family="SegoeUI, Segoe UI"><tspan x="0" y="0">MWorks.</tspan><tspan y="0" fill="#c45400">Syslab</tspan></text>
+    <g id="组_10" data-name="组 10">
+      <path id="路径_17" data-name="路径 17" d="M1297.02,475.776a54.588,54.588,0,0,1,35.148,0l4.663-7.368a63.1,63.1,0,0,0-44.475,0Z" fill="url(#linear-gradient)"/>
+      <path id="路径_18" data-name="路径 18" d="M1310.068,437.889h9.051l-22.1,37.887-4.7-7.425,17.768-30.462" fill="url(#linear-gradient-2)"/>
+      <path id="路径_19" data-name="路径 19" d="M1319.1,437.889l17.768,30.462-4.7,7.425-22.1-37.887h9.051" fill="url(#linear-gradient-2)"/>
+    </g>
+  </g>
+</svg>

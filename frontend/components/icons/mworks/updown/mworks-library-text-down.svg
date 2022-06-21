@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="139" height="95.651" viewBox="0 0 139 95.651">
+  <defs>
+    <linearGradient id="linear-gradient" x1="-5.783" y1="-27.372" x2="-5.143" y2="-28.604" gradientUnits="objectBoundingBox">
+      <stop offset="0.251" stop-color="#dcdddd" stop-opacity="0.898"/>
+      <stop offset="0.324" stop-color="#b6c0be" stop-opacity="0.922"/>
+      <stop offset="0.424" stop-color="#899e9a" stop-opacity="0.945"/>
+      <stop offset="0.529" stop-color="#64827c" stop-opacity="0.965"/>
+      <stop offset="0.636" stop-color="#486c65" stop-opacity="0.98"/>
+      <stop offset="0.747" stop-color="#345d54" stop-opacity="0.992"/>
+      <stop offset="0.865" stop-color="#27534b" stop-opacity="0.996"/>
+      <stop offset="1" stop-color="#245148"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="-5.783" y1="-26.155" x2="-5.143" y2="-27.386" xlink:href="#linear-gradient"/>
+  </defs>
+  <g id="组_205" data-name="组 205" transform="translate(-1521.566 -1316.977)">
+    <g id="组_204" data-name="组 204">
+      <path id="路径_111" data-name="路径 111" d="M1583.031,1356.271l35.878-19.647v12.621l-35.878,19.647Z" opacity="0.6" fill="url(#linear-gradient)"/>
+      <path id="路径_112" data-name="路径 112" d="M1583.031,1336.624l35.878-19.647V1329.6l-35.878,19.647Z" opacity="0.6" fill="url(#linear-gradient-2)"/>
+      <rect id="矩形_112" data-name="矩形 112" width="35.878" height="12.621" transform="translate(1618.909 1368.892) rotate(180)" fill="#cfd1d2"/>
+      <rect id="矩形_113" data-name="矩形 113" width="35.878" height="12.621" transform="translate(1618.909 1349.245) rotate(180)" fill="#40968a"/>
+      <rect id="矩形_114" data-name="矩形 114" width="57.372" height="12.6" transform="translate(1618.909 1329.577) rotate(180)" fill="#40968a"/>
+      <rect id="矩形_115" data-name="矩形 115" width="12.66" height="51.879" transform="translate(1574.197 1368.856) rotate(180)" fill="#40968a"/>
+    </g>
+    <text id="MWorks.Library" transform="translate(1521.566 1407.627)" fill="#4d4d4d" font-size="20.206" font-family="SegoeUI, Segoe UI"><tspan x="0" y="0">MWorks.</tspan><tspan y="0" fill="#40968a">Library</tspan></text>
+  </g>
+</svg>

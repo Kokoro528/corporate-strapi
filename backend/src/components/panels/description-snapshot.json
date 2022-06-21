@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_panels_description_snapshots",
+  "info": {
+    "displayName": "Description Snapshot",
+    "icon": "allergies",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

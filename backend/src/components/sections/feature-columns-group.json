@@ -3,7 +3,8 @@
   "info": {
     "name": "FeatureColumnsGroup",
     "displayName": "Feature columns group",
-    "icon": "star-of-life"
+    "icon": "star-of-life",
+    "description": ""
   },
   "options": {},
   "attributes": {

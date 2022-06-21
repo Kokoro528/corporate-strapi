@@ -1,5 +1,5 @@
 import ErrorPage from "next/error"
-import { getPageData, fetchAPI, getGlobalData } from "utils/api"
+import { getPageData, fetchAPI, getGlobalData, getSingleDoc } from "utils/api"
 import Sections from "@/components/sections"
 import Seo from "@/components/elements/seo"
 import { useRouter } from "next/router"
@@ -81,6 +81,14 @@ export async function getStaticProps(context) {
     locale,
     preview,
   })
+  // const pageData = await getSingleDoc({
+  //   slug: (!params.slug ? [""] : params.slug).join("/"),
+  //   pluralName: "pages",
+  //   locale,
+  //   preview,
+  // }
+  // )
+  console.log("pageData", "slug", (!params.slug ? [""] : params.slug).join("/"),pageData)
   if (pageData == null) {
     // Giving the page no props will trigger a 404 page
     return { props: {} }

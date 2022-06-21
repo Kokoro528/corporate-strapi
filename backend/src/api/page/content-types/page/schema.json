@@ -51,7 +51,9 @@
         "sections.pricing",
         "sections.rich-text",
         "sections.solution-list",
-        "sections.testimonials-group"
+        "sections.testimonials-group",
+        "sections.cards",
+        "sections.rich-content-section"
       ],
       "pluginOptions": {
         "i18n": {
@@ -69,14 +71,15 @@
       "regex": "^$|^[a-zA-Z/-]+$"
     },
     "cardImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
       ],
-      "type": "media",
-      "multiple": false,
       "pluginOptions": {
         "i18n": {
           "localized": true

@@ -1,9 +1,8 @@
 import qs from "qs"
 
 export function getStrapiURL(path) {
-  return `${
-    process.env.NEXT_PUBLIC_STRAPI_API_URL || "http://localhost:1337"
-  }${path}`
+  return `${process.env.NEXT_PUBLIC_STRAPI_API_URL || "http://localhost:1337"
+    }${path}`
 }
 
 /**
@@ -108,6 +107,35 @@ export async function getPageData({ slug, locale, preview }) {
                 }
                 contentSections {
                   __typename
+                  ... on ComponentSectionsMediaFeatures {
+                    id
+                    title
+                    subtitle
+                    features {
+                      media {
+                        ...FileParts
+                      }
+                      description    
+                    }
+                  }
+                  ... on ComponentSectionsCards {
+                    Cards {
+                      id
+                      title
+                      description
+                      logo {
+                        ...FileParts
+                      }
+                      buttons {
+                        id
+                        newTab
+                        text
+                        type
+                        url
+                      }
+                    }
+                    
+                  }
                   ... on ComponentSectionsBottomActions {
                     id
                     title
@@ -131,6 +159,7 @@ export async function getPageData({ slug, locale, preview }) {
                     title
                     description
                     label
+                    smallTextWithLink
                     picture {
                       ...FileParts
                     }
@@ -209,6 +238,15 @@ export async function getPageData({ slug, locale, preview }) {
                     id
                     content
                   }
+                  ... on ComponentSectionsRichContentSection {
+                    id
+                    content
+                    subtitle
+                    title
+                    media {
+                      ... FileParts
+                    }
+                  }
                   ... on ComponentSectionsPricing {
                     id
                     title
@@ -286,9 +324,9 @@ export async function getCollectionList(pluralName) {
   return casesData
 }
 
-export async function getSingleDoc({pluralName, title}) {
+export async function getSingleDoc({ pluralName, title, slug }) {
   if (!pluralName) return {};
-  const url = `/api/${pluralName}?populate=deep${title?`&filters[title][$eq]=${title}`:''}`
+  const url = `/api/${pluralName}?populate=deep${slug ? `&filters[slug][$eq]=${slug}` : ''}${title ? `&filters[title][$eq]=${title}` : ''}`
   const endpoint = getStrapiURL(url)
   const caseList = await fetch(endpoint, {
     method: "GET",
@@ -299,18 +337,37 @@ export async function getSingleDoc({pluralName, title}) {
   })
 
   const casesData = await caseList.json()
-  
+
   return casesData.data
 }
-export async function getCaseData({locale, preview, category, title}) {
-  const gqlEndpoint = getStrapiURL("/graphql")
-  
-  const param =  `${(!!category || !!title) ? (`filters: { ${(!!category?`category: { eq: $category }`: ``)}
-  ${(!!title?  `title: {eq: $title}`: ``)}}`): ''}`
-  
 
-  const vars = `${!!category ? '$category: String': ''} \n ${!!title ? '$title: String': ''}`
-  console.log('ap',param, vars)
+export async function getSingleType({ singularName}) {
+  if (!singularName) return {};
+  const url = `/api/${singularName}?populate=deep`
+  const endpoint = getStrapiURL(url)
+  const caseList = await fetch(endpoint, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    }
+
+  })
+
+  const casesData = await caseList.json()
+
+  return casesData.data
+}
+
+
+export async function getCaseData({ locale, preview, category, title }) {
+  const gqlEndpoint = getStrapiURL("/graphql")
+
+  const param = `${(!!category || !!title) ? (`filters: { ${(!!category ? `category: { eq: $category }` : ``)}
+  ${(!!title ? `title: {eq: $title}` : ``)}}`) : ''}`
+
+
+  const vars = `${!!category ? '$category: String' : ''} \n ${!!title ? '$title: String' : ''}`
+  console.log('ap', param, vars)
   const caseRes = await fetch(gqlEndpoint, {
     method: "POST",
     headers: {
@@ -411,12 +468,12 @@ export async function getCaseData({locale, preview, category, title}) {
     })
   })
 
-  
-  
+
+
 
   const casesData = await caseRes.json()
   // Make sure we found something, otherwise return null
-  if (casesData.data?.cases == null ) {
+  if (casesData.data?.cases == null) {
     return null
   }
 
@@ -424,7 +481,7 @@ export async function getCaseData({locale, preview, category, title}) {
   return casesData.data.cases.data
 }
 
-export async function getSolutionData({locale, preview}) {
+export async function getSolutionData({ locale, preview }) {
   const gqlEndpoint = getStrapiURL("/graphql")
   const solutionRes = await fetch(gqlEndpoint, {
     method: "POST",
@@ -532,14 +589,14 @@ export async function getSolutionData({locale, preview}) {
 
   const solutionsData = await solutionRes.json()
   // Make sure we found something, otherwise return null
-  if (solutionsData.data?.solutions == null ) {
+  if (solutionsData.data?.solutions == null) {
     return null
   }
 
   // Return the first item since there should only be one result per slug
   return solutionsData.data.solutions.data
-  
-  
+
+
 
 }
 

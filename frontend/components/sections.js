@@ -16,6 +16,7 @@ import SolutionList from "./collations/solution-list"
 import ModelStructure from "./sections/model-structure"
 import SimpleFeatures from "./sections/simple-features"
 import RichContent from "./sections/rich-content-section"
+import InfoCards from "./sections/info-cards"
 
 // Map Strapi sections to section components
 const sectionComponents = {
@@ -26,11 +27,13 @@ const sectionComponents = {
   ComponentSectionsBottomActions: BottomActions,
   ComponentSectionsTestimonialsGroup: TestimonialsGroup,
   ComponentSectionsRichText: RichText,
+  ComponentSectionsRichContentSection: RichContent,
   ComponentSectionsMediaFeatures: FeatureGroup,
   ComponentSectionsPricing: Pricing,
   ComponentSectionsLeadForm: LeadForm,
   ComponentSectionsSolutionFeature: SolutionFeature,
   ComponentSectionsTopHeading: TopHeading,
+  ComponentSectionsCards: InfoCards,
 
   // If getting dynamic zone using RESTful API
   "sections.rich-text": RichText,
@@ -47,6 +50,7 @@ const sectionComponents = {
   "sections.model-structure": ModelStructure,
   "sections.simple-features": SimpleFeatures,
   "sections.rich-content-section": RichContent,
+  "sections.cards": InfoCards
 }
 
 // const ContextSection = () => {

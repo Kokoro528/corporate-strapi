@@ -9,7 +9,7 @@ const FeatureGroup = ({ data }) => {
         {data.subtitle}
       </h3>
       <div className="flex flex-col ">
-        {data.features.map((feature) => (
+        {data.features?.map((feature) => (
           <div
             className="flex flex-col self-stretch justify-center justify-self-center align-self-center w-1/2   text-lg p-3"
             key={feature.id}

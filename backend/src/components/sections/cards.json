@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_sections_cards",
+  "info": {
+    "displayName": "Cards",
+    "icon": "address-card"
+  },
+  "options": {},
+  "attributes": {
+    "Cards": {
+      "displayName": "Info Card",
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.info-card"
+    }
+  }
+}

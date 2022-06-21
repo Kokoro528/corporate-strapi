@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_elements_production_descriptions",
+  "info": {
+    "displayName": "productionDescription",
+    "icon": "adjust"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "clickForMore": {
+      "type": "component",
+      "repeatable": false,
+      "component": "links.link"
+    }
+  }
+}
