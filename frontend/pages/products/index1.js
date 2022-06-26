@@ -45,7 +45,7 @@ const CaseList = ({ data, page }) => {
       {products.map(({ id, attributes }) => (
         <Link
           href={`/products/${attributes.title}`}
-          key={"case-" + id}
+          key={"products-" + id}
           passHref
         >
           <div className="flex-1 text-lg" key={id}>
@@ -126,12 +126,12 @@ const DynamicPage = ({
           e.url.includes("products")
         )}
       >
-        <CaseList
+        {/* <CaseList
           data={data?.filter((e) =>
             category ? e.attributes.category === category : true
           )}
           page={page}
-        ></CaseList>
+        ></CaseList> */}
       </FilterTabs>
     </Layout>
   )
@@ -162,11 +162,11 @@ export async function getServerSideProps(context) {
   })
 
   // console.log("spi", pageData )
-  const pageData = await getCollectionList("products")
-  if (pageData == null) {
-    // Giving the page no props will trigger a 404 page
-    return { props: {} }
-  }
+  // const pageData = await getCollectionList("products")
+  // if (pageData == null) {
+  //   // Giving the page no props will trigger a 404 page
+  //   return { props: {} }
+  // }
 
   // We have the required page data, pass it to the page component
   //   const {
@@ -190,7 +190,7 @@ export async function getServerSideProps(context) {
     props: {
       preview,
       //   sections: contentSections,
-      data: pageData.data,
+      // data: pageData.data,
       page: PageData,
       //   title,
       //   metadata,

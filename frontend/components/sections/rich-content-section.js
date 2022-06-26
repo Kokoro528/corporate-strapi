@@ -14,12 +14,12 @@ const RichContent = ({ data, pageContext, global }) => {
     <div className="container flex flex-col items-center mt-4">
       {data.title && <h1 className="title mt-5">{data.title}</h1>}
       {data.subtitle && <h1>{data.subtitle}</h1>}
-      <div className="prose max-w-none py-12 flex flex-col  ">
+      <div className="prose max-w-screen-lg py-12 flex flex-col  ">
         <Markdown className="" remarkPlugins={[remarkGfm, remarkImages]}>
           {data.content}
         </Markdown>
         <div className="flex-shrink-0 w-full mt-6 md:mt-0">
-          <NextImage media={data.media} />
+          <NextImage media={data.media} width={1022} height={600} />
         </div>
       </div>
     </div>

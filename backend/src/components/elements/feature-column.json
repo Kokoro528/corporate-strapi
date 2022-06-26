@@ -12,9 +12,6 @@
       "type": "string",
       "required": true
     },
-    "description": {
-      "type": "text"
-    },
     "icon": {
       "type": "media",
       "multiple": false,
@@ -22,6 +19,9 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "description": {
+      "type": "richtext"
     }
   }
 }

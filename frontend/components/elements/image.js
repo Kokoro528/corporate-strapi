@@ -5,7 +5,9 @@ import { mediaPropTypes } from "utils/types"
 
 const NextImage = ({ media, ...props }) => {
   if (!media || !media.data) {
-    return null
+    return (
+      <img className="bg-gradient-to-r from-cyan-500 to-blue-500 h-full w-full" />
+    )
   }
 
   const { url, alternativeText, width, height } = media.data.attributes
@@ -17,7 +19,14 @@ const NextImage = ({ media, ...props }) => {
   // The image has a fixed width and height
   if (props.width && props.height) {
     return (
-      <Image loader={loader} src={url} alt={alternativeText || ""} {...props} />
+      <Image
+        loader={loader}
+        src={url}
+        alt={alternativeText || ""}
+        width={width || props.width}
+        height={height || props.height}
+        {...props}
+      />
     )
   }
 
@@ -32,8 +41,8 @@ const NextImage = ({ media, ...props }) => {
     <Image
       loader={loader}
       layout="responsive"
-      width={width || 0}
-      height={height || 0}
+      width={props.width || width || 0}
+      height={props.height || height || 0}
       objectFit="contain"
       src={url}
       alt={alternativeText || ""}

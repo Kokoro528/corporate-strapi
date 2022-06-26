@@ -341,6 +341,24 @@ export async function getSingleDoc({ pluralName, title, slug }) {
   return casesData.data
 }
 
+export async function getFormField({locale}) {
+
+  const url = `/api/form-field?populate=deep&locale=${locale}`
+  const endpoint = getStrapiURL(url)
+  const response = await fetch(endpoint, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    }
+
+  })
+
+  const res = await response.json()
+
+  return res.data
+  
+}
+
 export async function getSingleType({ singularName}) {
   if (!singularName) return {};
   const url = `/api/${singularName}?populate=deep`

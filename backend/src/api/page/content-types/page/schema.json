@@ -53,7 +53,8 @@
         "sections.solution-list",
         "sections.testimonials-group",
         "sections.cards",
-        "sections.rich-content-section"
+        "sections.rich-content-section",
+        "sections.top-heading"
       ],
       "pluginOptions": {
         "i18n": {

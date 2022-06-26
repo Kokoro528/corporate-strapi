@@ -6,9 +6,9 @@ import { backgroundImage } from "../../utils/text-background"
 
 const SimpleFeatures = ({ data }) => {
   return (
-    <div className="container">
-      <h1 className="title font-lg xl:font-xl">{data.title}</h1>
-      <div className="grid mx-6 md:grid-cols-2  grid-cols-1  gap-12 py-12">
+    <div className="container  ">
+      <h1 className="title text-center font-lg xl:font-xl">{data.title}</h1>
+      <div className="grid mx-6 md:grid-cols-2  grid-cols-1 max-w-screen-lg gap-12 py-12 mx-auto">
         {data.features.map((feature, index) => (
           <div
             className={classNames(

@@ -5,12 +5,20 @@ import Seo from "@/components/elements/seo"
 import { useRouter } from "next/router"
 import Layout from "@/components/layout"
 import { getLocalizedPaths } from "utils/localize"
+import FilterTabs from "@/components/filter-tabs"
 
 // The file is called [[...slug]].js because we're using Next's
 // optional catch all routes feature. See the related docs:
 // https://nextjs.org/docs/routing/dynamic-routes#optional-catch-all-routes
 
-const DynamicPage = ({ sections, metadata, preview, global, pageContext }) => {
+const DynamicPage = ({
+  sections,
+  metadata,
+  preview,
+  global,
+  pageContext,
+  slug,
+}) => {
   const router = useRouter()
 
   // Check if the required data was provided
@@ -31,13 +39,28 @@ const DynamicPage = ({ sections, metadata, preview, global, pageContext }) => {
     ...global.attributes.metadata,
     ...metadata,
   }
+  // console.log("asjdalk", router, slug)
 
   return (
     <Layout global={global} pageContext={pageContext}>
       {/* Add meta tags for SEO*/}
       {/* <Seo metadata={metadataWithDefaults} /> */}
       {/* Display content sections */}
-      <Sections sections={sections} preview={preview} />
+      <FilterTabs
+        // enumColumn={"cases"}
+        menubar={global?.attributes?.navbar.links.find((e) =>
+          e.url.includes(slug.split("/")[0])
+        )}
+      >
+        {/* <CaseList
+          data={data?.filter((e) =>
+            category ? e.attributes.category === category : true
+          )}
+          page={page}
+        ></CaseList> */}
+
+        <Sections sections={sections} preview={preview} />
+      </FilterTabs>
     </Layout>
   )
 }
@@ -118,6 +141,7 @@ export async function getStaticProps(context) {
       sections: contentSections,
       metadata,
       global: globalLocale,
+      slug: slug,
       pageContext: {
         ...pageContext,
         localizedPaths,

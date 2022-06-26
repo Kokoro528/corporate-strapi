@@ -42,11 +42,9 @@ const Subnav = (props) => {
   // })
 
   if (!navLink.nestedLinks || !navLink.nestedLinks.length) {
-    console.log("asdf")
     return null
   }
   if (navLink.url === "/products") {
-    console.log("ajsjdjs")
     return <ProductSubcontainer />
   }
   // when nestedLinks are documents divided by categories.
@@ -112,21 +110,24 @@ const Subnav = (props) => {
                 className="col grid grid-cols-2 gap-4 p-4"
                 id="tabs-tabContentVertical"
               >
-                {selectedSideTab &&
-                  selectedSideTab.length &&
-                  data
-                    .filter((e) => e.attributes.category === selectedSideTab)
-                    .map((e) => (
-                      <li
-                        key={`${e.attributes.category}-${pluralName}-${e.id}`}
+                {data
+                  .filter(
+                    (e) =>
+                      e.attributes.category ===
+                      (selectedSideTab ||
+                        navLink.nestedLinks[0].url?.substring(
+                          navLink.nestedLinks[0].url.indexOf("=") + 1
+                        ))
+                  )
+                  .map((e) => (
+                    <li key={`${e.attributes.category}-${pluralName}-${e.id}`}>
+                      <CustomLink
+                        link={{ url: `${pluralName}/${e.attributes.title}` }}
                       >
-                        <CustomLink
-                          link={{ url: `${pluralName}/${e.attributes.title}` }}
-                        >
-                          {e.attributes.title}
-                        </CustomLink>
-                      </li>
-                    ))}
+                        {e.attributes.title}
+                      </CustomLink>
+                    </li>
+                  ))}
               </div>
             </div>
           </div>

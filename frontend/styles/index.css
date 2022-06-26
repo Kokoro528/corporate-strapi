@@ -4,8 +4,12 @@
 
 html {
   font-size: 13px;
-  @apply text-gray-900;
+  @apply text-gray-900 ;
   counter-reset: card; 
+}
+
+p, div, h1, h2, h3, h4, h5, h6 {
+  @apply tracking-wider;
 }
 
 @media screen and (min-width: 640px) {
