@@ -68,7 +68,6 @@ const DynamicPage = ({
 }
 
 export async function getStaticPaths(context) {
-  
   // Get all pages from Strapi
   const pages = await context.locales.reduce(
     async (currentPagesPromise, locale) => {
@@ -84,11 +83,12 @@ export async function getStaticPaths(context) {
 
   const paths = pages.map((page) => {
     const { slug, locale } = page.attributes
-    // Decompose the slug that was saved in Strapi 
-    
-    const slugArray = !slug || !slug.includes("products") ? false : slug.split('/')
+    // Decompose the slug that was saved in Strapi
+
+    const slugArray =
+      !slug || !slug.includes("products") ? false : slug.split("/")
     slugArray && slugArray.shift()
-    
+
     console.log("slugArray", slugArray)
     return {
       params: { slug: slugArray },
@@ -103,10 +103,8 @@ export async function getStaticPaths(context) {
 export async function getStaticProps(context) {
   const { params, locale, locales, defaultLocale, preview = null } = context
 
-  
-
   const globalLocale = await getGlobalData(locale)
-  // const session = await unstable_getServerSession(context.req, context.res, options) 
+  // const session = await unstable_getServerSession(context.req, context.res, options)
   // Fetch pages. Include drafts if preview mode is on
   const pageData = await getPageData({
     slug: (!params.slug ? [""] : params.slug).join("/"),

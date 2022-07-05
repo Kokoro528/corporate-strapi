@@ -61,7 +61,6 @@ export async function getServerSideProps(context) {
     preview = null,
     resolvedUrl,
   } = context
-  
 
   const globalLocale = await getGlobalData(locale)
   // Fetch pages. Include drafts ifgetCase preview mode is on

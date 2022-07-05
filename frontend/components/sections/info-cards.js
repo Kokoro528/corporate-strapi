@@ -26,9 +26,11 @@ const InfoCards = ({ data }) => {
             )}
             key={card.id}
           >
-            {card.logo && card.logo.data && <div className="w-32 h-32">
-               <NextImage media={card.logo} />
-            </div> }
+            {card.logo && card.logo.data && (
+              <div className="w-32 h-32">
+                <NextImage media={card.logo} />
+              </div>
+            )}
             <h2 className="text-2xl font-bold text-indigo-700">{card.title}</h2>
             <p
               className={classNames("my-4 text-md", {

@@ -65,11 +65,11 @@ const FilterTabs = ({ children, enumColumn, menubar }) => {
                     </li>
                   ))}
                 </ul>
-                <div class="md:hidden sm:flex justify-center z-50">
+                <div className="md:hidden sm:flex justify-center z-50">
                   <div>
-                    <div class="dropdown relative">
+                    <div className="dropdown relative">
                       <a
-                        class="
+                        className="
           dropdown-toggle
           px-6
           py-2.5
@@ -102,7 +102,7 @@ const FilterTabs = ({ children, enumColumn, menubar }) => {
                           focusable="false"
                           data-prefix="fas"
                           data-icon="caret-down"
-                          class="w-2 ml-2"
+                          className="w-2 ml-2"
                           role="img"
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 320 512"
@@ -114,7 +114,7 @@ const FilterTabs = ({ children, enumColumn, menubar }) => {
                         </svg>
                       </a>
                       <ul
-                        class="
+                        className="
           dropdown-menu
           min-w-max
           absolute
@@ -136,9 +136,10 @@ const FilterTabs = ({ children, enumColumn, menubar }) => {
         "
                         aria-labelledby="dropdownMenuButton2"
                       >
-                        {menubar.nestedLinks.map(e => (<li>
-                          <a
-                            class="
+                        {menubar.nestedLinks.map((e) => (
+                          <li key={`nestedLink-${e.text}`}>
+                            <a
+                              className="
               dropdown-item
               text-sm
               py-2
@@ -151,16 +152,16 @@ const FilterTabs = ({ children, enumColumn, menubar }) => {
               text-gray-700
               hover:bg-gray-100
             "
-                            href={e.url}
-                          >{e.text}</a
-                          >
-                        </li>))}
+                              href={e.url}
+                            >
+                              {e.text}
+                            </a>
+                          </li>
+                        ))}
                       </ul>
                     </div>
                   </div>
                 </div>
-
-
               </div>
             )}
             <div className="tab-content" id={"tabs-tabContent"}>

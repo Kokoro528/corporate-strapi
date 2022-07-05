@@ -99,10 +99,8 @@ export async function getStaticPaths(context) {
 export async function getStaticProps(context) {
   const { params, locale, locales, defaultLocale, preview = null } = context
 
-  
-
   const globalLocale = await getGlobalData(locale)
-  // const session = await unstable_getServerSession(context.req, context.res, options) 
+  // const session = await unstable_getServerSession(context.req, context.res, options)
   // Fetch pages. Include drafts if preview mode is on
   const pageData = await getPageData({
     slug: (!params.slug ? [""] : params.slug).join("/"),

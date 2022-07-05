@@ -38,6 +38,4 @@ export default preview
 
 // You can view Preview pages with URLs like this:
 // http://localhost:3000/api/preview?secret=<preview-secret>&slug=<slug>
-// where <preview-secret> 
-
-
+// where <preview-secret>

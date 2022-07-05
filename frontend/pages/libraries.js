@@ -18,7 +18,7 @@ import FilterTabs from "@/components/filter-tabs"
 import { unstable_getServerSession } from "next-auth"
 import { options } from "pages/api/auth/[...nextauth]"
 import fetcher from "utils/fetcher"
-import useSWR,{ SWRConfig } from "swr"
+import useSWR, { SWRConfig } from "swr"
 import { useState, useEffect } from "react"
 
 const CaseList = ({ data, page, router }) => {
@@ -48,7 +48,11 @@ const CaseList = ({ data, page, router }) => {
   return (
     <div className="container grid grid-cols-1 gap-4  sm: grid-cols-3 md:grid-cols-3">
       {cases?.map(({ id, attributes }) => (
-        <Link href={`${router.pathname}/${attributes.title}`} key={"case-" + id} passHref>
+        <Link
+          href={`${router.pathname}/${attributes.title}`}
+          key={"case-" + id}
+          passHref
+        >
           <div className="flex-1 text-lg" key={id}>
             <div>
               <NextImage
@@ -95,13 +99,27 @@ const DynamicPage = ({
   title,
 }) => {
   const router = useRouter()
-//   if (!router.asPath.includes("cases") && !router.asPath.includes("libraries") && !router.asPath.includes("solutions"))
-//   return null
+  //   if (!router.asPath.includes("cases") && !router.asPath.includes("libraries") && !router.asPath.includes("solutions"))
+  //   return null
+
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch("/api/collection" + router.asPath)
+      const json = await res.json()
+      console.log("kok", router.asPath, json.data)
+      if (json.data) {
+        setData(json.data)
+      }
+    }
+    fetchData()
+  }, [])
 
   // Check if the required data was provided
-      // if ( !data || !data.length) {
-      //   return <ErrorPage statusCode={404} />
-      // }
+  // if ( !data || !data.length) {
+  //   return <ErrorPage statusCode={404} />
+  // }
   // Loading screen (only possible in preview mode)
   if (router.isFallback) {
     return <div className="container">Loading...</div>
@@ -119,23 +137,6 @@ const DynamicPage = ({
   const category = router.query.category
 
   // const { data, error } = useSWR(`/api/collection`)
-  const [data, setData] = useState([])
-  console.log("cece")
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch("/api/collection" + router.asPath)
-      const json = await res.json()
-      console.log("kok", router.asPath, json.data)
-      if (json.data) {
-        
-        setData(json.data)
-      }
-    }
-    fetchData()
-  }, [])
- 
-  
 
   // useEffect(() => {
   //   // setLoading(true)
@@ -155,7 +156,7 @@ const DynamicPage = ({
 
   return (
     // <SWRConfig value= {{}}>
-      <Layout global={global} pageContext={pageContext}>
+    <Layout global={global} pageContext={pageContext}>
       {/* Add meta tags for SEO*/}
       {/* <Seo metadata={metadataWithDefaults} /> */}
       {/* Display content sections */}
@@ -178,7 +179,6 @@ const DynamicPage = ({
       </FilterTabs>
     </Layout>
     // </SWRConfig>
-    
   )
 }
 
@@ -192,7 +192,11 @@ export async function getServerSideProps(context) {
     preview = null,
   } = context
   const globalLocale = await getGlobalData(locale)
-  const session = await unstable_getServerSession(context.req, context.res, options) 
+  const session = await unstable_getServerSession(
+    context.req,
+    context.res,
+    options
+  )
   console.log("session brandy", session)
   // Fetch pages. Include drafts if preview mode is on
   // const pageData = await getCaseData({
@@ -202,14 +206,14 @@ export async function getServerSideProps(context) {
 
   // })
 
-
-  
-  const PageData = await getPageData({
-    slug: "cases",
-    locale,
-    preview,
-  }, session)
-
+  const PageData = await getPageData(
+    {
+      slug: "cases",
+      locale,
+      preview,
+    },
+    session
+  )
 
   // const pageData = await getCollectionList("cases", session)
   // console.log('pageDAta', pageData)
@@ -220,7 +224,6 @@ export async function getServerSideProps(context) {
   // }
 
   // We have the required page data, pass it to the page component
-
 
   const pageContext = {
     locale,

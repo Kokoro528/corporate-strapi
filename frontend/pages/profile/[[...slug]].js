@@ -21,7 +21,7 @@ const Login = ({ signup }) => {
   //   email: "",
   //   password: "",
   // })
-  const formFields = {identifier: "", password: ""}
+  const formFields = { identifier: "", password: "" }
   const handleSubmit = useCallback((e) => {
     e.preventDefault()
 
@@ -30,7 +30,7 @@ const Login = ({ signup }) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         /* Form data */
-        ...value
+        ...value,
       }),
     }).then((res) => {
       // Do a fast client-side transition to the already prefetched dashboard page
@@ -40,7 +40,8 @@ const Login = ({ signup }) => {
   return (
     <div className="container">
       <div className="block mx-auto my-10 p-6 rounded-lg shadow-lg bg-white max-w-md">
-        <Formik  initialValues={formFields}
+        <Formik
+          initialValues={formFields}
           // validationSchema={LeadSchema}
           onSubmit={async (values, { setSubmitting, setErrors }) => {
             setLoading(true)
@@ -64,7 +65,7 @@ const Login = ({ signup }) => {
             // .catch(e => {
             //     setErrors({ api: e.message })
             //     console.log("e", e)
-            
+
             // })
 
             // try {
@@ -83,22 +84,19 @@ const Login = ({ signup }) => {
             // } catch (err) {
             //   setErrors({ api: err.message })
             // }
-
-            
           }}
         >
-          
           <Form>
-          <div className="form-group mb-6">
-            <label
-              htmlFor="exampleInputEmail2"
-              className="form-label inline-block mb-2 text-gray-700"
-            >
-              {signup.email}
-            </label>
-            <Field
-              type="email"
-              className="form-control
+            <div className="form-group mb-6">
+              <label
+                htmlFor="exampleInputEmail2"
+                className="form-label inline-block mb-2 text-gray-700"
+              >
+                {signup.email}
+              </label>
+              <Field
+                type="email"
+                className="form-control
         block
         w-full
         px-3
@@ -113,28 +111,28 @@ const Login = ({ signup }) => {
         ease-in-out
         m-0
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-              id="exampleInputEmail2"
-              name="identifier"
-              aria-describedby="emailHelp"
-              placeholder="Enter email"
-            />
-          </div>
-          <div className="form-group mb-6">
-            <label
-              htmlFor="exampleInputPassword2"
-              className="form-label inline-block mb-2 text-gray-700"
-            >
-              {signup.password}
-            </label>
-            <Field
-              type="password"
-              // onChange={(e) => {
-              //   setFormFields(
-              //     Object.assign({}, formFields, { password: e.target.value })
-              //   )
-              // }}
-              name="password"
-              className="form-control block
+                id="exampleInputEmail2"
+                name="identifier"
+                aria-describedby="emailHelp"
+                placeholder="Enter email"
+              />
+            </div>
+            <div className="form-group mb-6">
+              <label
+                htmlFor="exampleInputPassword2"
+                className="form-label inline-block mb-2 text-gray-700"
+              >
+                {signup.password}
+              </label>
+              <Field
+                type="password"
+                // onChange={(e) => {
+                //   setFormFields(
+                //     Object.assign({}, formFields, { password: e.target.value })
+                //   )
+                // }}
+                name="password"
+                className="form-control block
         w-full
         px-3
         py-1.5
@@ -148,39 +146,39 @@ const Login = ({ signup }) => {
         ease-in-out
         m-0
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-              id="exampleInputPassword2"
-              placeholder="Password"
-            />
-          </div>
-          <div className="flex justify-between items-center mb-6">
-            <div className="form-group form-check">
-              <Field
-                type="checkbox"
-                // onChange={(e) => {
-                //   setFormFields(
-                //     Object.assign({}, formFields, { rememberMe: true })
-                //   )
-                // }}
-                className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                id="exampleCheck2"
+                id="exampleInputPassword2"
+                placeholder="Password"
               />
-              <label
-                className="form-check-label inline-block text-gray-800"
-                htmlFor="exampleCheck2"
-              >
-                {signup.rememberMe}
-              </label>
             </div>
-            {/* <a
+            <div className="flex justify-between items-center mb-6">
+              <div className="form-group form-check">
+                <Field
+                  type="checkbox"
+                  // onChange={(e) => {
+                  //   setFormFields(
+                  //     Object.assign({}, formFields, { rememberMe: true })
+                  //   )
+                  // }}
+                  className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                  id="exampleCheck2"
+                />
+                <label
+                  className="form-check-label inline-block text-gray-800"
+                  htmlFor="exampleCheck2"
+                >
+                  {signup.rememberMe}
+                </label>
+              </div>
+              {/* <a
               href="#!"
               className="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out"
             >
               {signup.forgotPassword}
             </a> */}
-          </div>
-          <button
-            type="submit"
-            className="
+            </div>
+            <button
+              type="submit"
+              className="
       w-full
       px-6
       py-2.5
@@ -198,20 +196,20 @@ const Login = ({ signup }) => {
       transition
       duration-150
       ease-in-out"
-          >
-            {signup.signin}
-          </button>
-          <p className="text-gray-800 mt-6 text-center">
-            {signup.notAMember}{" "}
-            <a
-              href="#!"
-              className="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out"
             >
-              {signup.register}
-            </a>
-          </p>
-        </Form>
-          </Formik>
+              {signup.signin}
+            </button>
+            <p className="text-gray-800 mt-6 text-center">
+              {signup.notAMember}{" "}
+              <a
+                href="#!"
+                className="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out"
+              >
+                {signup.register}
+              </a>
+            </p>
+          </Form>
+        </Formik>
         {/* <form>
           <div className="form-group mb-6">
             <label
