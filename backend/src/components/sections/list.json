@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_sections_lists",
+  "info": {
+    "displayName": "List",
+    "icon": "arrows-alt"
+  },
+  "options": {},
+  "attributes": {
+    "Downloads": {
+      "displayName": "Software List Item",
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.software-list-item"
+    }
+  }
+}

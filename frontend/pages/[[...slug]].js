@@ -6,6 +6,8 @@ import { useRouter } from "next/router"
 import Layout from "@/components/layout"
 import { getLocalizedPaths } from "utils/localize"
 import FilterTabs from "@/components/filter-tabs"
+// import { options } from "./api/auth/[...nextauth]"
+// import { unstable_getServerSession } from "next-auth"
 
 // The file is called [[...slug]].js because we're using Next's
 // optional catch all routes feature. See the related docs:
@@ -22,9 +24,9 @@ const DynamicPage = ({
   const router = useRouter()
 
   // Check if the required data was provided
-  if (!router.isFallback && !sections?.length) {
-    return <ErrorPage statusCode={404} />
-  }
+  // if (!router.isFallback && !sections?.length) {
+  //   return <ErrorPage statusCode={404} />
+  // }
 
   // Loading screen (only possible in preview mode)
   if (router.isFallback) {
@@ -97,7 +99,10 @@ export async function getStaticPaths(context) {
 export async function getStaticProps(context) {
   const { params, locale, locales, defaultLocale, preview = null } = context
 
+  
+
   const globalLocale = await getGlobalData(locale)
+  // const session = await unstable_getServerSession(context.req, context.res, options) 
   // Fetch pages. Include drafts if preview mode is on
   const pageData = await getPageData({
     slug: (!params.slug ? [""] : params.slug).join("/"),

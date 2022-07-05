@@ -17,7 +17,7 @@ const ModelStructure = ({ data }) => {
             )}
             key={`mc-${modelComponent.name}`}
           >
-            <h2 className="text-2xl">{modelComponent.chineseTitle}</h2>
+            <h2 className="text-2xl white-space-nowrap">{modelComponent.chineseTitle}</h2>
             <span>{modelComponent.name}</span>
             <p className={classNames("mt-4 text-sm")}>
               {modelComponent.description}

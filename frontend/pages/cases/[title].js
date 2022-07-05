@@ -23,9 +23,9 @@ const DynamicPage = ({
   const router = useRouter()
 
   // Check if the required data was provided
-  if (!router.isFallback && !sections?.length) {
-    return <ErrorPage statusCode={404} />
-  }
+  // if (!router.isFallback && !sections?.length) {
+  //   return <ErrorPage statusCode={404} />
+  // }
 
   // Loading screen (only possible in preview mode)
   if (router.isFallback) {
@@ -61,14 +61,13 @@ export async function getServerSideProps(context) {
     preview = null,
     resolvedUrl,
   } = context
-  // console.log("jj", context.resolvedUrl)
 
   const globalLocale = await getGlobalData(locale)
   // Fetch pages. Include drafts ifgetCase preview mode is on
   const pageData = await getSingleDoc({
     // slug: (!params.slug ? [""] : params.slug).join("/"),
-    title: params.rest ? params.rest[0] : null,
-    pluralName: "products",
+    title: params.title ? params.title : null,
+    pluralName: "cases",
     locale,
     preview,
   })
@@ -76,6 +75,7 @@ export async function getServerSideProps(context) {
     // Giving the page no props will trigger a 404 page
     return { props: {} }
   }
+  console.log("pageData", pageData)
 
   // We have the required page data, pass it to the page component
   const {

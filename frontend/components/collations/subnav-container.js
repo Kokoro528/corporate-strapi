@@ -53,7 +53,7 @@ const Subnav = (props) => {
       return (
         <div
           className="
-        mega-menu w-full -mt-3 hidden bg-white absolute left-0 top-full
+        mega-menu w-full -mt-3 hidden bg-white absolute left-0 top-full z-20
         "
           aria-labelledby={`subNav${navLink.text}`}
         >
@@ -69,7 +69,7 @@ const Subnav = (props) => {
                     >
                       {navLink.nestedLinks.map((e1) => (
                         <li
-                          className="nav-item flex-grow text-center"
+                          className="nav-item flex-grow text-center hover:border-r-4 "
                           key={`tab-${e1.url}`}
                           role="presentation"
                           onMouseOver={(e) => {

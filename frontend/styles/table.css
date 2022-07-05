@@ -1,0 +1,45 @@
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    display: block;
+    overflow: auto;
+    word-break: normal;
+    word-break: keep-all;
+  }
+  
+  table th {
+    font-weight: bold;
+  }
+  
+  table th,
+  table td {
+    padding: 6px 13px;
+    border: 1px solid #ddd;
+  }
+  
+  table tr {
+    background-color: #fff;
+    border-top: 1px solid #ccc;
+  }
+  
+  table tr .odd {
+    background-color: #f8f8f8;
+  }
+  
+  table tr .fail {
+    background-color:#f9f2f4;
+    color:#c7254e;
+    font-weight:bold;
+  }
+  
+  table tr .pass {
+    background-color:#dff0d8;
+    color:#468847;
+    font-weight:bold;
+  }
+  
+  table tr .warn {
+    background-color:#fcf8e3;
+    color:#ec971f;
+    font-weight:bold;
+  }

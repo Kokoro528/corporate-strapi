@@ -8,14 +8,14 @@ const FeatureGroup = ({ data }) => {
       <h3 className="text-center text-[30px] leading-relaxed font-semibold p-4">
         {data.subtitle}
       </h3>
-      <div className="flex flex-col ">
+      {/* <div className="flex flex-col prose "> */}
         {data.features?.map((feature) => (
           <div
-            className="flex flex-col self-stretch justify-center justify-self-center align-self-center w-1/2   text-lg p-3"
+            className="prose max-w-screen-lg py-12 flex flex-col "
             key={feature.id}
           >
-            <div className="w-100">
-              <NextImage media={feature.media} />
+            <div className="flex-shrink-0 w-full mt-6 md:mt-0">
+              <NextImage media={feature.media}  />
             </div>
             {/* <h3 className="font-bold mt-4 mb-4">{feature.title}</h3> */}
             <div className="my-3 mx-4">
@@ -24,7 +24,7 @@ const FeatureGroup = ({ data }) => {
           </div>
         ))}
       </div>
-    </div>
+    // </div>
   )
 }
 

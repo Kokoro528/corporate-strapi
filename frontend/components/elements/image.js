@@ -4,6 +4,7 @@ import PropTypes from "prop-types"
 import { mediaPropTypes } from "utils/types"
 
 const NextImage = ({ media, ...props }) => {
+
   if (!media || !media.data) {
     return (
       <img className="bg-gradient-to-r from-cyan-500 to-blue-500 h-full w-full" />

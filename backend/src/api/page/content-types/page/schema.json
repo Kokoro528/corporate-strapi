@@ -42,6 +42,7 @@
       "type": "dynamiczone",
       "components": [
         "sections.bottom-actions",
+        "sections.cards",
         "sections.feature-columns-group",
         "sections.feature-rows-group",
         "sections.hero",
@@ -49,12 +50,12 @@
         "sections.lead-form",
         "sections.media-features",
         "sections.pricing",
+        "sections.rich-content-section",
         "sections.rich-text",
         "sections.solution-list",
         "sections.testimonials-group",
-        "sections.cards",
-        "sections.rich-content-section",
-        "sections.top-heading"
+        "sections.top-heading",
+        "sections.list"
       ],
       "pluginOptions": {
         "i18n": {

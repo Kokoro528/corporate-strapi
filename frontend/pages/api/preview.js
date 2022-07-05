@@ -38,6 +38,6 @@ export default preview
 
 // You can view Preview pages with URLs like this:
 // http://localhost:3000/api/preview?secret=<preview-secret>&slug=<slug>
-// where <preview-secret> is the secret token defined in your .env config
-// and where <slug> is the slug you entered in Strapi for your page
-// The slug must match the current locale
+// where <preview-secret> 
+
+

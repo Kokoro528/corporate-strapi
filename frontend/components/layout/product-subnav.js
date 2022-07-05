@@ -65,7 +65,7 @@ const ProductSubcontainer = (props) => {
   return (
     <div
       className="
-      mega-menu w-full -mt-3 hidden bg-white absolute left-0 top-full
+      mega-menu w-full -mt-3 hidden bg-white absolute left-0 top-full z-20
       "
       aria-labelledby={`subNav`}
     >

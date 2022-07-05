@@ -15,10 +15,15 @@ import { getLocalizedPaths } from "utils/localize"
 import Link from "next/link"
 import NextImage from "@/components/elements/image"
 import FilterTabs from "@/components/filter-tabs"
+import { unstable_getServerSession } from "next-auth"
+import { options } from "pages/api/auth/[...nextauth]"
+import fetcher from "utils/fetcher"
+import useSWR,{ SWRConfig } from "swr"
+import { useState, useEffect } from "react"
 
-const CaseList = ({ data, page }) => {
+const CaseList = ({ data, page, router }) => {
   // console.log(data)
-  const products = data
+  const cases = data
 
   const getPictureSrc = (attr) => {
     let res = null
@@ -41,16 +46,15 @@ const CaseList = ({ data, page }) => {
   // }
 
   return (
-    <div className="container grid grid-cols-1 gap-4  sm: grid-cols-3 md:grid-cols-4">
-      {products.map(({ id, attributes }) => (
-        <Link
-          href={`/products/${attributes.title}`}
-          key={"products-" + id}
-          passHref
-        >
+    <div className="container grid grid-cols-1 gap-4  sm: grid-cols-3 md:grid-cols-3">
+      {cases?.map(({ id, attributes }) => (
+        <Link href={`${router.pathname}/${attributes.title}`} key={"case-" + id} passHref>
           <div className="flex-1 text-lg" key={id}>
-            <div className="">
-              <NextImage media={getPictureSrc(attributes)} />
+            <div>
+              <NextImage
+                media={getPictureSrc(attributes)}
+                className="hover:opacity-40"
+              />
             </div>
             <h3 className="font-bold mt-4 mb-4">{attributes.title}</h3>
             {/* <p>{attributes.title}</p> */}
@@ -82,7 +86,7 @@ const CaseList = ({ data, page }) => {
 // https://nextjs.org/docs/routing/dynamic-routes#optional-catch-all-routes
 
 const DynamicPage = ({
-  data,
+  // data,
   page,
   metadata,
   preview,
@@ -91,11 +95,13 @@ const DynamicPage = ({
   title,
 }) => {
   const router = useRouter()
+  // if (!router.asPath.includes("cases") && !router.asPath.includes("libraries") && !router.asPath.includes("solutions"))
+  // return null
 
   // Check if the required data was provided
-  //   if (!router.isFallback) {
-  //     return <ErrorPage statusCode={404} />
-  //   }
+      // if ( !data || !data.length) {
+      //   return <ErrorPage statusCode={404} />
+      // }
   // Loading screen (only possible in preview mode)
   if (router.isFallback) {
     return <div className="container">Loading...</div>
@@ -112,8 +118,41 @@ const DynamicPage = ({
 
   const category = router.query.category
 
+  // const { data, error } = useSWR(`/api/collection`)
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch("/api/collection" + router.asPath)
+      const json = await res.json()
+      console.log("kok", router.asPath, router.pathname, json.data)
+      if (json.data) {
+        
+        setData(json.data)
+      }
+    }
+    fetchData()
+  }, [])
+ 
+  
+
+  // useEffect(() => {
+  //   // setLoading(true)
+  //   console.log("lllt")
+  //   fetch(`/api/collection${router.asPath}`)
+  // // .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log("slk", data)
+  //       setData(data)
+  //     }).catch(e => {
+  //       console.error(e)
+  //     })
+  // }, [])
+  // console.log("nnn", data, router.asPath)
+
   return (
-    <Layout global={global} pageContext={pageContext}>
+    // <SWRConfig value= {{}}>
+      <Layout global={global} pageContext={pageContext}>
       {/* Add meta tags for SEO*/}
       {/* <Seo metadata={metadataWithDefaults} /> */}
       {/* Display content sections */}
@@ -121,19 +160,21 @@ const DynamicPage = ({
       {/* <Sections sections={sections} preview={preview} /> */}
 
       <FilterTabs
-        enumColumn={"products"}
         menubar={global?.attributes?.navbar.links.find((e) =>
-          e.url.includes("products")
+          e.url.includes(router.asPath.split("?")[0])
         )}
       >
-        {/* <CaseList
+        <CaseList
           data={data?.filter((e) =>
             category ? e.attributes.category === category : true
           )}
           page={page}
-        ></CaseList> */}
+          router={router}
+        ></CaseList>
       </FilterTabs>
     </Layout>
+    // </SWRConfig>
+    
   )
 }
 
@@ -147,6 +188,8 @@ export async function getServerSideProps(context) {
     preview = null,
   } = context
   const globalLocale = await getGlobalData(locale)
+  const session = await unstable_getServerSession(context.req, context.res, options) 
+ 
   // Fetch pages. Include drafts if preview mode is on
   // const pageData = await getCaseData({
   //   category: query?.type,
@@ -155,26 +198,25 @@ export async function getServerSideProps(context) {
 
   // })
 
+
+  
   const PageData = await getPageData({
-    slug: "products",
+    slug: "cases",
     locale,
     preview,
-  })
+  }, session)
 
-  // console.log("spi", pageData )
-  // const pageData = await getCollectionList("products")
+
+  // const pageData = await getCollectionList("cases", session)
+  // console.log('pageDAta', pageData)
+
   // if (pageData == null) {
   //   // Giving the page no props will trigger a 404 page
   //   return { props: {} }
   // }
 
   // We have the required page data, pass it to the page component
-  //   const {
-  //     contentSections,
-  //     // metadata,
-  //     localizations,
-  //     title
-  //   } = pageData.attributes
+
 
   const pageContext = {
     locale,

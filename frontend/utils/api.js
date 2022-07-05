@@ -1,4 +1,5 @@
 import qs from "qs"
+// import { unstable_getServerSession } from "next-auth"
 
 export function getStrapiURL(path) {
   return `${process.env.NEXT_PUBLIC_STRAPI_API_URL || "http://localhost:1337"
@@ -40,6 +41,7 @@ export async function fetchAPI(path, urlParamsObject = {}, options = {}) {
   return data
 }
 
+
 /**
  *
  * @param {Object} options
@@ -48,12 +50,15 @@ export async function fetchAPI(path, urlParamsObject = {}, options = {}) {
  * @param {boolean} options.preview router isPreview value
  */
 export async function getPageData({ slug, locale, preview }) {
+  // const session = await unstable_getServerSession();
+  // const session = {}
   // Find the pages that match this slug
   const gqlEndpoint = getStrapiURL("/graphql")
   const pagesRes = await fetch(gqlEndpoint, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      // "Authorization": "Bearer " + session?.accessToken
     },
     body: JSON.stringify({
       query: `
@@ -244,7 +249,18 @@ export async function getPageData({ slug, locale, preview }) {
                     subtitle
                     title
                     media {
-                      ... FileParts
+                      data {
+                        id
+                        attributes {
+                          name
+                          alternativeText
+                          width
+                          height
+                          mime
+                          url
+                          formats
+                        }
+                      }
                     }
                   }
                   ... on ComponentSectionsPricing {
@@ -310,18 +326,21 @@ export async function getPageData({ slug, locale, preview }) {
   return pagesData.data.pages.data[0]
 }
 
-export async function getCollectionList(pluralName) {
+export async function getCollectionList(pluralName, session) {
   if (!pluralName) return {};
   const endpoint = getStrapiURL(`/api/${pluralName}?populate=*`)
-  const caseList = await fetch(endpoint, {
+  console.log("sessionsd", session?.accessToken)
+  const collectionList = await fetch(endpoint, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
+      // "Authorization": "Bearer " + session?. 
     }
 
   })
-  const casesData = await caseList.json()
-  return casesData
+  const collections = await collectionList.json()
+  console.log("caseda", collections)
+  return collections
 }
 
 export async function getSingleDoc({ pluralName, title, slug }) {
@@ -337,6 +356,7 @@ export async function getSingleDoc({ pluralName, title, slug }) {
   })
 
   const casesData = await caseList.json()
+  console.log("asda", casesData)
 
   return casesData.data
 }

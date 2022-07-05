@@ -6,9 +6,23 @@ import { DefaultSeo } from "next-seo"
 import { getStrapiMedia } from "utils/media"
 import { getGlobalData } from "utils/api"
 import "@/styles/index.css"
+import { SessionProvider } from 'next-auth/react';
+import { useSession } from "next-auth/react"
 // import "@/styles/nav.css"
+// import "@/styles/table.css"
 
-const MyApp = ({ Component, pageProps }) => {
+const Auth = ({ children }) => {
+  // if `{ required: true }` is supplied, `status` can only be "loading" or "authenticated"
+  const { data:session,  status } = useSession()
+
+
+  // if (status === "loading") {
+  //   return <div>Loading...</div>
+  // }
+
+  return children
+} 
+const MyApp = ({ Component, pageProps:{session, ...pageProps} }) => {
   // Extract the data we need
   const { global } = pageProps
   if (global == null) {
@@ -18,13 +32,15 @@ const MyApp = ({ Component, pageProps }) => {
   const { metadata, favicon, metaTitleSuffix } = global.attributes
 
   return (
-    <>
+    <SessionProvider session={session}>
       {/* Favicon */}
       <Head>
         <link
           rel="shortcut icon"
           href={getStrapiMedia(favicon.data.attributes.url)}
         />
+        <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.7/dist/flowbite.min.css" />
+        <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
         <link
           href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
           rel="stylesheet"
@@ -55,8 +71,11 @@ const MyApp = ({ Component, pageProps }) => {
         }}
       />
       {/* Display the content */}
-      <Component {...pageProps} />
-    </>
+      <Auth>
+        <Component {...pageProps} />
+      </Auth>
+
+    </SessionProvider>
   )
 }
 

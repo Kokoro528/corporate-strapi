@@ -8,14 +8,20 @@ import { useCallback, useState } from "react"
 import Layout from "@/components/layout"
 import { getLocalizedPaths } from "utils/localize"
 import Products from "@/components/global/products"
+import LeadForm from "@/components/sections/lead-form"
+import { Formik, Form, Field } from "formik"
+import { signIn } from "next-auth/react"
+// import {signIn} from "next-auth/react"
 
 const Login = ({ signup }) => {
   const router = useRouter()
-  const [formFields, setFormFields] = useState({
-    username: "",
-    email: "",
-    password: "",
-  })
+  const [loading, setLoading] = useState(false)
+  // const [formFields, setFormFields] = useState({
+  //   username: "",
+  //   email: "",
+  //   password: "",
+  // })
+  const formFields = {identifier: "", password: ""}
   const handleSubmit = useCallback((e) => {
     e.preventDefault()
 
@@ -24,6 +30,7 @@ const Login = ({ signup }) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         /* Form data */
+        ...value
       }),
     }).then((res) => {
       // Do a fast client-side transition to the already prefetched dashboard page
@@ -33,7 +40,179 @@ const Login = ({ signup }) => {
   return (
     <div className="container">
       <div className="block mx-auto my-10 p-6 rounded-lg shadow-lg bg-white max-w-md">
-        <form>
+        <Formik  initialValues={formFields}
+          // validationSchema={LeadSchema}
+          onSubmit={async (values, { setSubmitting, setErrors }) => {
+            setLoading(true)
+            console.log("helloos")
+            signIn("credentials", values)
+            // fetch("/api/auth/local",{
+            //   method: "POST",
+            //   headers: { "Content-Type": "application/json" },
+            //   body: JSON.stringify({
+            //     /* Form data */
+            //     ...values
+            //   }),
+            // }).then((res) => {
+            //   // Do a fast client-side transition to the already prefetched dashboard page
+            //   console.log("sd", res)
+            //   // if (res.ok) router.push("/products")
+            //   setLoading(false)
+            // setSubmitting(false)
+
+            // })
+            // .catch(e => {
+            //     setErrors({ api: e.message })
+            //     console.log("e", e)
+            
+            // })
+
+            // try {
+            //   setErrors({ api: null })
+            //   await fetchAPI(
+            //     "/lead-form-submissions",
+            //     {},
+            //     {
+            //       method: "POST",
+            //       body: JSON.stringify({
+            //         email: values.email,
+            //         location: data.location,
+            //       }),
+            //     }
+            //   )
+            // } catch (err) {
+            //   setErrors({ api: err.message })
+            // }
+
+            
+          }}
+        >
+          
+          <Form>
+          <div className="form-group mb-6">
+            <label
+              htmlFor="exampleInputEmail2"
+              className="form-label inline-block mb-2 text-gray-700"
+            >
+              {signup.email}
+            </label>
+            <Field
+              type="email"
+              className="form-control
+        block
+        w-full
+        px-3
+        py-1.5
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              id="exampleInputEmail2"
+              name="identifier"
+              aria-describedby="emailHelp"
+              placeholder="Enter email"
+            />
+          </div>
+          <div className="form-group mb-6">
+            <label
+              htmlFor="exampleInputPassword2"
+              className="form-label inline-block mb-2 text-gray-700"
+            >
+              {signup.password}
+            </label>
+            <Field
+              type="password"
+              // onChange={(e) => {
+              //   setFormFields(
+              //     Object.assign({}, formFields, { password: e.target.value })
+              //   )
+              // }}
+              name="password"
+              className="form-control block
+        w-full
+        px-3
+        py-1.5
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              id="exampleInputPassword2"
+              placeholder="Password"
+            />
+          </div>
+          <div className="flex justify-between items-center mb-6">
+            <div className="form-group form-check">
+              <Field
+                type="checkbox"
+                // onChange={(e) => {
+                //   setFormFields(
+                //     Object.assign({}, formFields, { rememberMe: true })
+                //   )
+                // }}
+                className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                id="exampleCheck2"
+              />
+              <label
+                className="form-check-label inline-block text-gray-800"
+                htmlFor="exampleCheck2"
+              >
+                {signup.rememberMe}
+              </label>
+            </div>
+            {/* <a
+              href="#!"
+              className="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out"
+            >
+              {signup.forgotPassword}
+            </a> */}
+          </div>
+          <button
+            type="submit"
+            className="
+      w-full
+      px-6
+      py-2.5
+      bg-blue-600
+      text-white
+      font-medium
+      text-xs
+      leading-tight
+      uppercase
+      rounded
+      shadow-md
+      hover:bg-blue-700 hover:shadow-lg
+      focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+      active:bg-blue-800 active:shadow-lg
+      transition
+      duration-150
+      ease-in-out"
+          >
+            {signup.signin}
+          </button>
+          <p className="text-gray-800 mt-6 text-center">
+            {signup.notAMember}{" "}
+            <a
+              href="#!"
+              className="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out"
+            >
+              {signup.register}
+            </a>
+          </p>
+        </Form>
+          </Formik>
+        {/* <form>
           <div className="form-group mb-6">
             <label
               htmlFor="exampleInputEmail2"
@@ -153,7 +332,7 @@ const Login = ({ signup }) => {
               {signup.register}
             </a>
           </p>
-        </form>
+        </form> */}
       </div>
     </div>
   )
@@ -361,7 +540,6 @@ export async function getServerSideProps(context) {
   const globalLocale = await getGlobalData(locale)
   // Fetch pages. Include drafts ifgetCase preview mode is on
   const pageData = await getFormField({ locale })
-  console.log("lanf", pageData)
   if (pageData == null) {
     // Giving the page no props will trigger a 404 page
     return { props: {} }
