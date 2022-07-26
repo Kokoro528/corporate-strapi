@@ -44,13 +44,13 @@ const Navbar = ({ navbar, pageContext, global }) => {
             <ul className="hidden  list-none sm:flex md:flex flex-row md:gap-4 items-baseline ml-10">
               {navbar.links.map((navLink) => (
                 <li
-                  className=" hoverable "
+                  className="z-40 hoverable "
                   key={navLink.id}
                   onMouseOver={() => {
                     setSelectedNavItem(navLink.url)
                   }}
                 >
-                  <CustomLink link={navLink} locale={router.locale}>
+                  <CustomLink link={navLink}>
                     <div
                       id={"subNav" + navLink.text}
                       data-bs-toggle="dropdown"

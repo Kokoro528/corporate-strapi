@@ -70,7 +70,7 @@ const Subnav = (props) => {
                       {navLink.nestedLinks.map((e1) => (
                         <li
                           className="nav-item flex-grow text-center hover:border-r-4 "
-                          key={`tab-${e1.url}`}
+                          key={`tab-${Math.random()}`}
                           role="presentation"
                           onMouseOver={(e) => {
                             // e.preventDefault();
@@ -106,7 +106,7 @@ const Subnav = (props) => {
                   </div>
                 </div>
               </div>
-              <div
+              <ul
                 className="col grid grid-cols-2 gap-4 p-4"
                 id="tabs-tabContentVertical"
               >
@@ -120,7 +120,7 @@ const Subnav = (props) => {
                         ))
                   )
                   .map((e) => (
-                    <li key={`${e.attributes.category}-${pluralName}-${e.id}`}>
+                    <li key={`${Math.random()}-${pluralName}-${e.id}`}>
                       <CustomLink
                         link={{ url: `${pluralName}/${e.attributes.title}` }}
                       >
@@ -128,7 +128,7 @@ const Subnav = (props) => {
                       </CustomLink>
                     </li>
                   ))}
-              </div>
+              </ul>
             </div>
           </div>
         </div>
@@ -137,7 +137,7 @@ const Subnav = (props) => {
       return (
         <div
           className="
-        mega-menu w-full -mt-3 hidden bg-white absolute left-0 top-full
+        mega-menu w-full -mt-3 hidden bg-white absolute left-0 top-full z-40
         "
           aria-labelledby={`subNav${navLink.text}`}
         >

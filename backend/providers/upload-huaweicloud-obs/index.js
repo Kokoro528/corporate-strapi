@@ -25,7 +25,7 @@ module.exports = {
             let prefix = providerOptions.prefix || "";
             prefix = prefix.trim() === "/" ? "" : prefix.trim(); // prefix only if not root
             const path = file.path ? `${file.path}/` : "";
-            return `${prefix}${path}${file.name}`;
+            return `${prefix}${path}${file.name.replace(/\s/g, '')}`;
         }
 
 

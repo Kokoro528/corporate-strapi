@@ -5,7 +5,10 @@ import CustomLink from "./custom-link"
 
 const Footer = ({ footer }) => {
   return (
-    <footer className="pt-12 bg-gray-100">
+    <footer
+      className="pt-12 "
+      style={{ background: `url('/svg/footer.svg'), #084D92` }}
+    >
       <div className="container flex flex-col lg:flex-row lg:justify-between">
         <div>
           {footer.logo && (
@@ -18,16 +21,18 @@ const Footer = ({ footer }) => {
               key={footerColumn.id}
               className="mt-10 lg:mt-0 w-6/12 lg:w-auto"
             >
-              <p className="uppercase tracking-wide font-semibold">
+              <span className="uppercase tracking-wide font-semibold text-gray-200 text-xl">
                 {footerColumn.title}
-              </p>
+              </span>
               <ul className="mt-2">
                 {footerColumn.links.map((link) => (
-                  <li
-                    key={link.id}
-                    className="text-gray-700 -mx-1 hover:text-gray-900"
-                  >
-                    <CustomLink link={link}>{link.text}</CustomLink>
+                  <li key={link.id} className="-mx-1">
+                    <CustomLink
+                      className="text-gray-100  hover:text-gray-100 active:text-gray-100"
+                      link={link}
+                    >
+                      {link.text}
+                    </CustomLink>
                   </li>
                 ))}
               </ul>
@@ -35,7 +40,7 @@ const Footer = ({ footer }) => {
           ))}
         </nav>
       </div>
-      <div className="text-sm bg-gray-200 py-6 text-gray-700">
+      <div className="text-sm bg-transparent py-6 text-gray-100">
         <div className="container">{footer.smallText}</div>
       </div>
     </footer>

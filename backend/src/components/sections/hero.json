@@ -3,7 +3,8 @@
   "info": {
     "name": "Hero",
     "displayName": "Hero",
-    "icon": "heading"
+    "icon": "heading",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -17,12 +18,12 @@
       "type": "string"
     },
     "picture": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
-      "required": false
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
     },
     "smallTextWithLink": {
       "type": "richtext"
@@ -31,6 +32,26 @@
       "type": "component",
       "repeatable": true,
       "component": "links.button-link"
+    },
+    "background": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "dark",
+        "white-outline",
+        "white",
+        "dark-outline"
+      ]
     }
   }
 }

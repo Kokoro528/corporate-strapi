@@ -43,19 +43,23 @@
       "components": [
         "sections.bottom-actions",
         "sections.cards",
+        "sections.carousel",
         "sections.feature-columns-group",
         "sections.feature-rows-group",
         "sections.hero",
+        "sections.highlighting-points",
         "sections.large-video",
         "sections.lead-form",
+        "sections.list",
         "sections.media-features",
         "sections.pricing",
         "sections.rich-content-section",
         "sections.rich-text",
-        "sections.solution-list",
         "sections.testimonials-group",
+        "sections.timeline",
         "sections.top-heading",
-        "sections.list"
+        "sections.mega-carousel",
+        "sections.carousel-section"
       ],
       "pluginOptions": {
         "i18n": {

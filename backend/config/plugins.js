@@ -41,6 +41,8 @@ module.exports = ({ env }) => ({
   //       localServer: {
   //         maxage: 300000
   //       },
+  //       basePath: "http://localhost:1337",
+  //       dynamicallyPrefixed: true
   //     },
   //   },
   // }

@@ -1,0 +1,64 @@
+{
+  "name": "react-grid-carousel",
+  "version": "1.0.1",
+  "description": "React resposive carousel component w/ grid layout",
+  "homepage": "https://react-grid-carousel.now.sh/",
+  "keywords": [
+    "react",
+    "carousel",
+    "slider",
+    "gallery",
+    "image",
+    "grid",
+    "responsive",
+    "react-component",
+    "react-carousel",
+    "react-slider",
+    "react-image",
+    "react-grid"
+  ],
+  "repository": {
+    "url": "git@github.com:x3388638/react-grid-carousel.git",
+    "type": "git"
+  },
+  "main": "dist/bundle.js",
+  "scripts": {
+    "dev": "npm run build && webpack-dev-server --config examples/webpack.config.js",
+    "build": "rollup -c",
+    "prettier:check": "prettier --check \"./**/*.{js,json,css}\" && echo \"✅ Prettier validated\"",
+    "prettier:write": "prettier --write \"./**/*.{js,json,css}\"",
+    "stylelint": "stylelint \"./{src,examples,stories}/**/*.js\" && echo \"✅ Stylelint validated\"",
+    "lint": "eslint \"./**/*.js\"",
+    "lint:fix": "eslint \"./**/*.js\" --fix",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "deploy:now": "webpack --config examples/webpack.config.js && now examples/ -n react-grid-carousel --prod"
+  },
+  "author": "YY",
+  "license": "MIT",
+  "dependencies": {
+    "lodash.debounce": "^4.0.8",
+    "prop-types": "^15.7.2",
+    "smoothscroll-polyfill": "^0.4.4",
+    "styled-components": "^4.4.1"
+  },
+  "peerDependencies": {
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
+  "lint-staged": {
+    "*.{js,json,css}": [
+      "npm run prettier:check"
+    ],
+    "*.js": [
+      "npm run stylelint",
+      "npm run lint"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "yalcSig": "7a2775b99cdf47edfd29711a965ad6c5"
+}

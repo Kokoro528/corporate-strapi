@@ -8,7 +8,7 @@ import classNames from "classnames"
 
 const SolutionFeature = ({ data }) => {
   return (
-    <section className=" flex flex-col  items-center justify-between py-6  bg-primary-50">
+    <section className=" flex flex-col  items-center justify-between py-6  bg-sky-100">
       {/* Left column for content */}
 
       {/* <div className="flex-1 sm:pr-8"> */}
@@ -16,7 +16,7 @@ const SolutionFeature = ({ data }) => {
       {/* <p className="uppercase tracking-wide font-semibold">{data.label}</p> */}
       {/* Big title */}
       <div className="container">
-        <h1 className="title mt-2 sm:mt-0 mb-4 sm:mb-2 text-center text-lg">
+        <h1 className="mt-2 sm:mt-0 mb-4 sm:mb-2 text-center font-bold text-4xl">
           {data.title}
         </h1>
         {/* Description paragraph */}
@@ -47,10 +47,12 @@ const SolutionFeature = ({ data }) => {
               >
                 {/* Text section */}
                 <div className="w-full lg:w-6/12 lg:pr-6 text-lg ">
-                  <h3 className="text-[30px] font-semibold leading-relaxed ">
+                  <h3 className="text-3xl font-semibold leading-relaxed ">
                     {feature.title}
                   </h3>
-                  <p className="my-6">{feature.description}</p>
+                  <Markdown className="prose max-w-none">
+                    {feature.description}
+                  </Markdown>
                   {/* <CustomLink link={feature.link}>
               <div className="text-blue-600 with-arrow hover:underline">
                 {feature.link.text}
@@ -58,18 +60,18 @@ const SolutionFeature = ({ data }) => {
             </CustomLink> */}
                 </div>
                 {/* Media section */}
-                <div className="w-full sm:9/12 lg:w-8/12 max-h-full">
+                <div className="w-full sm:9/12 lg:w-8/12 ">
                   {/* Images */}
                   {feature.icon.data.attributes.mime.startsWith("image") && (
-                    <div className="w-full ">
-                      <NextImage media={feature.icon} />
+                    <div className=" rounded bg-neutral-100 ">
+                      <NextImage media={feature.icon} className="rounded p-2" />
                     </div>
                   )}
                   {/* Videos */}
                   {feature.icon.data.attributes.mime.startsWith("video") && (
                     <Video
                       media={feature.icon}
-                      className="w-full h-auto"
+                      className="w-full"
                       autoPlay
                       controls={false}
                     />

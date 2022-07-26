@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_sections_carousel_sections",
+  "info": {
+    "displayName": "Carousel Section",
+    "icon": "id-card"
+  },
+  "options": {},
+  "attributes": {
+    "contentCards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.rich-content-section"
+    }
+  }
+}

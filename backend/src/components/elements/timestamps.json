@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_elements_timestamps",
+  "info": {
+    "displayName": "Timestamps",
+    "icon": "clock"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subtimestamps": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.feature-column"
+    }
+  }
+}

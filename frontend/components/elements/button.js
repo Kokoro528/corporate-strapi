@@ -16,7 +16,7 @@ const Button = ({
       <div
         className={classNames(
           // Common classes
-          "flex w-full justify-center lg:w-auto text-center uppercase tracking-wide font-semibold text-base md:text-sm border-2 rounded-md",
+          "flex w-full justify-center lg:w-auto text-center uppercase tracking-wide font-semibold text-base md:text-sm border-1 rounded-md",
           // Full-size button
           {
             "px-8 py-4": compact === false,
@@ -27,17 +27,15 @@ const Button = ({
           },
           // Specific to when the button is fully dark
           {
-            "bg-primary-600 text-white border-primary-600":
-              appearance === "dark",
+            "bg-sky-700 text-white border-sky-700": appearance === "dark",
           },
           // Specific to when the button is dark outlines
           {
-            "text-primary-600 border-primary-600":
-              appearance === "dark-outline",
+            "text-sky-700 border-sky-700": appearance === "dark-outline",
           },
           // Specific to when the button is fully white
           {
-            "bg-white text-primary-600 border-white": appearance === "white",
+            "bg-white text-sky-700 border-white": appearance === "white",
           },
           // Specific to when the button is white outlines
           {

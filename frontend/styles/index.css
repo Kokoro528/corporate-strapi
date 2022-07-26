@@ -1,19 +1,26 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities;
+
 
 html {
   font-size: 13px;
-  @apply text-gray-900 ;
-  counter-reset: card; 
+  @apply text-gray-900;
+  counter-reset: card;
 }
 
-p, div, h1, h2, h3, h4, h5, h6 {
+p,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   @apply tracking-wider;
 }
 
-.prose-headings {
-  @apply text-primary-500 text-center
+.headings {
+  @apply text-primary-100 text-center inline-flex border-l-4 border-solid;
 }
 
 @media screen and (min-width: 640px) {
@@ -82,23 +89,63 @@ p, div, h1, h2, h3, h4, h5, h6 {
   position: static;
 }
 
-.hoverable:hover .mega-menu, 
+.hoverable:hover .mega-menu,
 .mega-menu:hover {
   display: flex;
-  z-index: 1000;
-  position: absolute;
+  z-index: 500 !important;
+  /* position: absolute; */
   transition: 1000ms !important;
 }
 
-.background-with-number {
-  
-  /* counter-increment: card;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1'> <text x='0' y='15' fill='alice-blue' font-size='20'>"  counter(card)  "</text> </svg>");  */
-  
+.carousel {
+  @apply relative;
+  .carousel-text {
+    @apply absolute top-1/2 left-1/2;
+    transform: translate(-50%, -50%);
+  }
 }
-.background-with-number::after {
- /* @apply text-secondary-100; */
-  
-    
-  
+
+.indexedStep {
+  color: white;
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+  background-color: rgba(211, 211, 211, 0.8);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.indexedStep.accomplished {
+  background-color: rgba(0, 116, 217, 1);
+}
+
+.counter {
+  counter-reset: section;
+}
+.counter  li  {
+  counter-increment: section;
+  display: flex;
+  position: relative;
+  @apply rounded-md border-solid shadow-md m-4 bg-white;
+
+  min-height: 8rem;
+}
+.counter  li::before {
+  width: 50%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  /* left: 0; */
+  font-size: 4rem;
+  /* height: 100%; */
+  /* display: inline-block; */
+  /* transform: scale(2); */
+  /* text-align: center; */
+  @apply text-[#F4F7F9];
+  /* z-index: -10; */
+
+  content: counter(section, decimal-leading-zero);
+}
+@tailwind utilities;

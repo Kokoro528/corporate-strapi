@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_sections_timelines",
+  "info": {
+    "displayName": "Timeline",
+    "icon": "clock"
+  },
+  "options": {},
+  "attributes": {
+    "timestamps": {
+      "displayName": "Timestamps",
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.timestamps"
+    }
+  }
+}

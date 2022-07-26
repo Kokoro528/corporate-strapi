@@ -17,40 +17,73 @@ import ModelStructure from "./sections/model-structure"
 import SimpleFeatures from "./sections/simple-features"
 import RichContent from "./sections/rich-content-section"
 import InfoCards from "./sections/info-cards"
+import Carousel from "./sections/carousel"
+import Timeline from "./sections/timeline"
+import Features from "./sections/features"
+import dynamic from "next/dynamic"
+import CarouselSection from "./sections/carousel-sections"
 
 // Map Strapi sections to section components
 const sectionComponents = {
-  ComponentSectionsHero: Hero,
-  ComponentSectionsLargeVideo: LargeVideo,
+  ComponentSectionsHero: dynamic(() => import("@/components/sections/hero")),
+  ComponentSectionsLargeVideo: dynamic(() =>
+    import("@/components/sections/large-video")
+  ),
   ComponentSectionsFeatureColumnsGroup: FeatureColumnsGroup,
   ComponentSectionsFeatureRowsGroup: FeatureRowsGroup,
   ComponentSectionsBottomActions: BottomActions,
   ComponentSectionsTestimonialsGroup: TestimonialsGroup,
   ComponentSectionsRichText: RichText,
-  ComponentSectionsRichContentSection: RichContent,
-  ComponentSectionsMediaFeatures: FeatureGroup,
+  ComponentSectionsRichContentSection: dynamic(() =>
+    import("@/components/sections/rich-content-section")
+  ),
+  ComponentSectionsMediaFeatures: dynamic(() =>
+    import("@/components/sections/feature-group")
+  ),
   ComponentSectionsPricing: Pricing,
   ComponentSectionsLeadForm: LeadForm,
-  ComponentSectionsSolutionFeature: SolutionFeature,
-  ComponentSectionsTopHeading: TopHeading,
-  ComponentSectionsCards: InfoCards,
-
+  ComponentSectionsSolutionFeature: dynamic(() =>
+    import("@/components/sections/solution-feature")
+  ),
+  ComponentSectionsCarouselSection: CarouselSection,
+  ComponentSectionsTopHeading: dynamic(() =>
+    import("@/components/sections/top-heading")
+  ),
+  // ComponentSectionsCards: InfoCards,
+  ComponentSectionsCarousel: Carousel,
+  ComponentSectionsTimeline: Timeline,
+  ComponentSectionsHighlightingPoints: Features,
   // If getting dynamic zone using RESTful API
   "sections.rich-text": RichText,
   "sections.bottom-actions": BottomActions,
   "sections.feature-columns-group": FeatureColumnsGroup,
   "sections.feature-rows-group": FeatureRowsGroup,
-  "sections.hero": Hero,
-  "sections.large-video": LargeVideo,
+  "sections.hero": dynamic(() => import("@/components/sections/hero")),
+  "sections.large-video": dynamic(() =>
+    import("@/components/sections/large-video")
+  ),
   "sections.lead-form": LeadForm,
-  "sections.media-features": FeatureGroup,
+  "sections.media-features": dynamic(() =>
+    import("@/components/sections/feature-group")
+  ),
   "sections.pricing": Pricing,
   "sections.solution-list": SolutionList,
-  "sections.top-heading": TopHeading,
+  "sections.top-heading": dynamic(() =>
+    import("@/components/sections/top-heading")
+  ),
   "sections.model-structure": ModelStructure,
   "sections.simple-features": SimpleFeatures,
-  "sections.rich-content-section": RichContent,
-  "sections.cards": InfoCards,
+  "sections.rich-content-section": dynamic(() =>
+    import("@/components/sections/rich-content-section")
+  ),
+  // "sections.cards": InfoCards,
+  "sections.carousel": Carousel,
+  "sections.timeline": Timeline,
+  "sections.highlighting-points": Features,
+  "sections.solution-feature": dynamic(() =>
+    import("@/components/sections/solution-feature")
+  ),
+  "sections.carousel-section": CarouselSection,
 }
 
 // const ContextSection = () => {

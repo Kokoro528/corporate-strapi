@@ -17,7 +17,7 @@ const NextImage = ({ media, ...props }) => {
   }
 
   // The image has a fixed width and height
-  if (props.width && props.height) {
+  if ((props.width || width) && (props.height || height)) {
     return (
       <Image
         loader={loader}
@@ -25,10 +25,28 @@ const NextImage = ({ media, ...props }) => {
         alt={alternativeText || ""}
         width={width || props.width}
         height={height || props.height}
+        quality="100"
         {...props}
       />
     )
   }
+
+  // if (!props.width && !props.height) {
+  //   return (
+  //     <figure className="relative">
+  //       <Image
+  //       loader={loader}
+  //       layout="fill"
+  //       width={16}
+  //       height={9}
+  //       src={url}
+  //       alt={alternativeText || ""}
+  //       {...props}
+  //     />
+  //     </figure>
+
+  //   )
+  // }
 
   // if (url.endsWith("svg")) {
   //   return (
@@ -41,10 +59,11 @@ const NextImage = ({ media, ...props }) => {
     <Image
       loader={loader}
       layout="responsive"
-      width={props.width || width || 0}
-      height={props.height || height || 0}
-      objectFit="contain"
+      width={props.width || width || 16}
+      height={props.height || height || 9}
       src={url}
+      objectFit="contain"
+      quality={100}
       alt={alternativeText || ""}
       {...props}
     />

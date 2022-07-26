@@ -2,15 +2,31 @@
   "collectionName": "components_sections_cards",
   "info": {
     "displayName": "Cards",
-    "icon": "address-card"
+    "icon": "address-card",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "Cards": {
-      "displayName": "Info Card",
+    "buttons": {
       "type": "component",
       "repeatable": true,
-      "component": "elements.info-card"
+      "component": "links.button-link"
+    },
+    "title": {
+      "type": "string"
+    },
+    "avatar": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "description": {
+      "type": "richtext"
     }
   }
 }

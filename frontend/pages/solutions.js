@@ -50,7 +50,7 @@ const CaseList = ({ data, page, router }) => {
       {cases?.map(({ id, attributes }) => (
         <Link
           href={`${router.pathname}/${attributes.title}`}
-          key={"case-" + id}
+          key={"solutions-" + id}
           passHref
         >
           <div className="flex-1 text-lg" key={id}>

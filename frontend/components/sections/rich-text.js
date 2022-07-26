@@ -16,8 +16,11 @@ const RichText = ({ data, pageContext, global }) => {
           <Products {...products} />
         </div>
       )}
-      <div className="prose prose-lg py-12 flex flex-col justify-items-center">
-        <Markdown remarkPlugins={[remarkGfm, remarkImages]}>
+      <div className="py-12 flex flex-col justify-items-center">
+        <Markdown
+          className="prose prose-ol:counter prose-ol:grid lg:prose-ol:grid-cols-2 prose-headings:bg-sky-100 prose-headings:py-3 lg:prose-xl"
+          remarkPlugins={[remarkGfm, remarkImages]}
+        >
           {data.content}
         </Markdown>
       </div>

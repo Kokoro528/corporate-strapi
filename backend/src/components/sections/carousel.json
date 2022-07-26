@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_sections_carousels",
+  "info": {
+    "displayName": "Carousel",
+    "icon": "angle-double-right",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "cards": {
+      "displayName": "Carousel Card",
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.carousel-card"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "version": "v1",
+  "packages": {
+    "react-grid-carousel-w-selectbar": {
+      "signature": "93ecd13a67d44db4ac0609c65b3467c6",
+      "file": true
+    },
+    "react-grid-carousel": {
+      "signature": "7a2775b99cdf47edfd29711a965ad6c5",
+      "file": true,
+      "replaced": "^1.0.1"
+    }
+  }
+}

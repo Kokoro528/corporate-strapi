@@ -26,6 +26,7 @@
       "components": [
         "sections.hero",
         "sections.media-features",
+        "sections.rich-content-section",
         "sections.rich-text",
         "sections.solution-feature"
       ]
@@ -37,6 +38,19 @@
         }
       },
       "type": "string"
+    },
+    "category": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "enumeration",
+      "enum": [
+        "featuring",
+        "industrial",
+        "applicational"
+      ]
     }
   }
 }

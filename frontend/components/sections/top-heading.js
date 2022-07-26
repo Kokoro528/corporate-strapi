@@ -4,16 +4,15 @@ import { getButtonAppearance } from "utils/button"
 
 const TopHeading = ({ data }) => {
   const style = {
-    backgroundImage: "url(" + data?.backgroundImage?.data.attributes.url + ")",
+    backgroundImage: data.backgroundImage?.data?.attributes?.url
+      ? `url("${data.backgroundImage?.data?.attributes?.url}")`
+      : "blue",
     backgroundPosition: "center",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
   }
   return (
-    <section
-      className={classNames("bg-primary-800 py-20 text-center ")}
-      style={style}
-    >
+    <section className={classNames(" py-20 text-center ")} style={style}>
       <h2 className="title text-white mb-10">{data.title}</h2>
       {/* Buttons row */}
       <div className="container flex flex-row justify-center flex-wrap gap-4">

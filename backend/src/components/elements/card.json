@@ -1,0 +1,40 @@
+{
+  "collectionName": "components_elements_cards",
+  "info": {
+    "displayName": "Card",
+    "icon": "adjust",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "primary",
+        "sky"
+      ]
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "avatar": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "buttons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "links.button-link"
+    }
+  }
+}

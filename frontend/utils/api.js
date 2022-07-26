@@ -123,23 +123,34 @@ export async function getPageData({ slug, locale, preview }) {
                       description    
                     }
                   }
-                  ... on ComponentSectionsCards {
-                    Cards {
-                      id
+                  ... on ComponentSectionsHighlightingPoints{
+                    title
+                    bulletPoints {
+                      text
+                    }
+                  }
+                  ... on ComponentSectionsTimeline {
+                    timestamps {
                       title
-                      description
-                      logo {
-                        ...FileParts
+                      subtimestamps {
+                        title
+                        description
                       }
-                      buttons {
-                        id
+                    }                    
+                  }
+                  ... on ComponentSectionsCarousel {
+                    cards {
+                      title
+                      picture {
+                        ... FileParts
+                      }
+                      description
+                      link {
                         newTab
                         text
-                        type
                         url
-                      }
+                      } 
                     }
-                    
                   }
                   ... on ComponentSectionsBottomActions {
                     id
@@ -165,9 +176,13 @@ export async function getPageData({ slug, locale, preview }) {
                     description
                     label
                     smallTextWithLink
+                    background {
+                      ...FileParts
+                    }
                     picture {
                       ...FileParts
                     }
+                    type
                   }
                   ... on ComponentSectionsFeatureColumnsGroup {
                     id
@@ -248,6 +263,7 @@ export async function getPageData({ slug, locale, preview }) {
                     content
                     subtitle
                     title
+                    typeRCS: type
                     media {
                       data {
                         id
@@ -261,6 +277,9 @@ export async function getPageData({ slug, locale, preview }) {
                           formats
                         }
                       }
+                    }
+                    background {
+                      ...FileParts
                     }
                   }
                   ... on ComponentSectionsPricing {
@@ -290,23 +309,51 @@ export async function getPageData({ slug, locale, preview }) {
                     }
                     title
                   }
-                  ... on ComponentSectionsSolutionList {
+                ... on ComponentSectionsTopHeading {
+                  id
+                  title
+                  backgroundImage {
+                    ...FileParts
+                  }
+                  abstract
+                  buttons {
                     id
-                    # title
-                    solutions {
+                    newTab
+                    text
+                    type
+                    url
+                  }
+                
+                }
+                ... on ComponentSectionsCarouselSection {
+                  contentCards {
+                    title
+                    subtitle
+                    content
+                    background {
+                      ...FileParts
+                    }
+                    media {
                       data {
                         id
-                        
+                        attributes {
+                          name
+                          alternativeText
+                          width
+                          height
+                          mime
+                          url
+                          formats
+                        }
                       }
                     }
                   }
-
-                  
                 }
               }
             }
           }
         }
+      }
       `,
       variables: {
         slug,
@@ -361,7 +408,7 @@ export async function getSingleDoc({ pluralName, title, slug }) {
   return casesData.data
 }
 
-export async function getFormField({locale}) {
+export async function getFormField({ locale }) {
 
   const url = `/api/form-field?populate=deep&locale=${locale}`
   const endpoint = getStrapiURL(url)
@@ -376,10 +423,10 @@ export async function getFormField({locale}) {
   const res = await response.json()
 
   return res.data
-  
+
 }
 
-export async function getSingleType({ singularName}) {
+export async function getSingleType({ singularName }) {
   if (!singularName) return {};
   const url = `/api/${singularName}?populate=deep`
   const endpoint = getStrapiURL(url)
@@ -487,6 +534,7 @@ export async function getCaseData({ locale, preview, category, title }) {
                   picture {
                     ...FileParts
                   }
+                  type
                 }
                 
               }
@@ -584,13 +632,11 @@ export async function getSolutionData({ locale, preview }) {
                   picture {
                     ...FileParts
                   }
+                  type
                 }
                 ... on ComponentSectionsSolutionFeature {
                   id
                   title
-                  # media {
-                  #   FileParts
-                  # }
                   bulletPoints {
                     title
                     icon {
@@ -598,6 +644,31 @@ export async function getSolutionData({ locale, preview }) {
                     }
                     description
                   }
+                }
+                ... on ComponentSectionsRichContentSection {
+                  id
+                  content
+                  subtitle
+                  title
+                  typeRCS: type
+                  media {
+                    data {
+                      id
+                      attributes {
+                        name
+                        alternativeText
+                        width
+                        height
+                        mime
+                        url
+                        formats
+                      }
+                    }
+                  }
+                  background {
+                    ...FileParts
+                  }
+                  
                 }
                 ... on ComponentSectionsMediaFeatures {
                   id
@@ -610,9 +681,7 @@ export async function getSolutionData({ locale, preview }) {
                     description
                   }
                 }
-              }
-            
-              
+              }              
             }
           }
         }

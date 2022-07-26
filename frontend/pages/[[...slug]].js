@@ -34,17 +34,21 @@ const DynamicPage = ({
   }
 
   // Merge default site SEO settings with page specific SEO settings
-  if (metadata.shareImage?.data == null) {
-    delete metadata.shareImage
-  }
+  // if (metadata.shareImage?.data == null) {
+  //   delete metadata.shareImage
+  // }
   const metadataWithDefaults = {
     ...global.attributes.metadata,
     ...metadata,
   }
-  // console.log("asjdalk", router, slug)
+  console.log(metadataWithDefaults)
 
   return (
-    <Layout global={global} pageContext={pageContext}>
+    <Layout
+      global={global}
+      pageContext={pageContext}
+      metadata={metadataWithDefaults}
+    >
       {/* Add meta tags for SEO*/}
       {/* <Seo metadata={metadataWithDefaults} /> */}
       {/* Display content sections */}
@@ -114,12 +118,12 @@ export async function getStaticProps(context) {
   //   preview,
   // }
   // )
-  console.log(
-    "pageData",
-    "slug",
-    (!params.slug ? [""] : params.slug).join("/"),
-    pageData
-  )
+  // console.log(
+  //   "pageData",
+  //   "slug",
+  //   (!params.slug ? [""] : params.slug).join("/"),
+  //   JSON.stringify(pageData)
+  // )
   if (pageData == null) {
     // Giving the page no props will trigger a 404 page
     return { props: {} }

@@ -1,18 +1,48 @@
 const colors = require('tailwindcss/colors')
+const plugin = require('tailwindcss/plugin')
 
 module.exports = {
   mode: "jit", // see https://tailwindcss.com/docs/just-in-time-mode
   purge: ["./components/**/*.js", "./pages/**/*.js"],
   darkMode: false, // or "media" or "class"
-  theme: {    
+  theme: {
+    fontSize: {
+      'xs': '.75rem',
+      'sm': '.875rem',
+      'tiny': '.875rem',
+      'base': '1rem',
+      'lg': '1.125rem',
+      'xl': '1.25rem',
+      '2xl': '1.5rem',
+      '3xl': '1.875rem',
+      '4xl': '2.25rem',
+      '5xl': '3rem',
+      '6xl': '4rem',
+      '7xl': '5rem',
+    },
+    screens: {
+      'sm': '640px',
+      // => @media (min-width: 640px) { ... }
+
+      'md': '768px',
+      // => @media (min-width: 768px) { ... }
+
+      'lg': '1024px',
+      // => @media (min-width: 1024px) { ... }
+
+      'xl': '1280px',
+      // => @media (min-width: 1280px) { ... }
+
+      '2xl': '1536px',
+      // => @media (min-width: 1536px) { ... }
+    },
     extend: {
       typography: {
         DEFAULT: {
           css: {
             // color: '#333',
-            maxWidth: '80ch',
-            width: '1024px',
-            textAlign: 'justify',
+            // maxWidth: '80ch',
+            whiteSpace: 'pre-wrap',
             a: {
               color: '#3182ce',
               '&:hover': {
@@ -24,80 +54,22 @@ module.exports = {
             // },
             p: {
               '&::before': {
-                content: '  ' ,
-                // backgroundColor: '#FFBA10',
+                content: '  ',
+                backgroundColor: '#FFBA10',
               }
-              
-              
             },
-            
-          },
-          
-        },
 
+          },
+
+        },
       },
-      // typography: ({ theme }) => ({
-      //   pink: {
-      //     css: {
-      //       '--tw-prose-body': theme('colors.pink[800]'),
-      //       '--tw-prose-headings': theme('colors.pink[900]'),
-      //       '--tw-prose-lead': theme('colors.pink[700]'),
-      //       '--tw-prose-links': theme('colors.pink[900]'),
-      //       '--tw-prose-bold': theme('colors.pink[900]'),
-      //       '--tw-prose-counters': theme('colors.pink[600]'),
-      //       '--tw-prose-bullets': theme('colors.pink[400]'),
-      //       '--tw-prose-hr': theme('colors.pink[300]'),
-      //       '--tw-prose-quotes': theme('colors.pink[900]'),
-      //       '--tw-prose-quote-borders': theme('colors.pink[300]'),
-      //       '--tw-prose-captions': theme('colors.pink[700]'),
-      //       '--tw-prose-code': theme('colors.pink[900]'),
-      //       '--tw-prose-pre-code': theme('colors.pink[100]'),
-      //       '--tw-prose-pre-bg': theme('colors.pink[900]'),
-      //       '--tw-prose-th-borders': theme('colors.pink[300]'),
-      //       '--tw-prose-td-borders': theme('colors.pink[200]'),
-      //       '--tw-prose-invert-body': theme('colors.pink[200]'),
-      //       '--tw-prose-invert-headings': theme('colors.white'),
-      //       '--tw-prose-invert-lead': theme('colors.pink[300]'),
-      //       '--tw-prose-invert-links': theme('colors.white'),
-      //       '--tw-prose-invert-bold': theme('colors.white'),
-      //       '--tw-prose-invert-counters': theme('colors.pink[400]'),
-      //       '--tw-prose-invert-bullets': theme('colors.pink[600]'),
-      //       '--tw-prose-invert-hr': theme('colors.pink[700]'),
-      //       '--tw-prose-invert-quotes': theme('colors.pink[100]'),
-      //       '--tw-prose-invert-quote-borders': theme('colors.pink[700]'),
-      //       '--tw-prose-invert-captions': theme('colors.pink[400]'),
-      //       '--tw-prose-invert-code': theme('colors.white'),
-      //       '--tw-prose-invert-pre-code': theme('colors.pink[300]'),
-      //       '--tw-prose-invert-pre-bg': 'rgb(0 0 0 / 50%)',
-      //       '--tw-prose-invert-th-borders': theme('colors.pink[600]'),
-      //       '--tw-prose-invert-td-borders': theme('colors.pink[700]'),
-      //     },
-      //   },
-      // }),
       colors: {
         // primary: colors.indigo,
         orange: colors.orange,
+        tongyuan: {
+          100: "RGB(218,233,247, 92)"
+        },
         primary: {
-          // 900: "RGB(41,104,166)",
-          // 800: "RGB(55,111,166)",
-          // 700: "RGB(69,118,166)",
-          // 600: "RGB(83,125,166)",
-          // 500: "RGB(97,132,166)",
-          // 400: "RGB(110,138,166)",
-          // 300: "RGB(124,145,166)",
-          // 200: "RGB(138,152,166)",
-          // 100: "RGB(152,159,166)",
-          // 50: "RGB(166,166,166)",
-          // 900: "RGB(41, 104, 166)",
-          // 800: "RGB(63, 123, 175)",
-          // 700: "RGB(86, 137, 184)",
-          // 600: "RGB(118, 152, 193)",
-          // 500: "RGB(118, 168, 203)",
-          // 400: "RGB(139, 179, 212)",
-          // 300: "RGB(160, 189, 221)",
-          // 200: "RGB(184, 200, 233)",
-          // 100: "RGB(210, 213, 242)",
-          // 50: "RGB(240, 240, 244)"
           900: "RGB(43.0,25.0,76.0)",
           800: "RGB(41.0,47.0,98.0)",
           700: "RGB(39.0,69.0,121.0)",
@@ -109,7 +81,7 @@ module.exports = {
           100: "RGB(198.0,193.0,244.0)",
           50: "RGB(217.0,213.0,248.0)",
         },
-        
+
       },
       container: {
         center: true,
@@ -137,5 +109,42 @@ module.exports = {
   //     })
   //   }
   // },
-  plugins: [require("@tailwindcss/typography"), require("flowbite/plugin")],
+  plugins: [require("@tailwindcss/typography"), require("flowbite/plugin"), plugin(function ({ addUtilities }) {
+    addUtilities({
+      '.content-auto': {
+        'content-visibility': 'auto',
+      },
+      '.content-hidden': {
+        'content-visibility': 'hidden',
+      },
+      '.content-visible': {
+        'content-visibility': 'visible',
+      },
+      '.counter': {
+        'counter-reset': 'section',
+        '> li': {
+          'counter-increment': 'section',
+          'display': 'flex',
+          'position': 'relative',
+          '@apply rounded-md border-solid shadow-md m-4 p-3 bg-white': true,
+          'min-height': '8rem',
+          'z-index': '-10'
+        },
+        '> li::before': {
+          'width': '50%',
+          'position': 'absolute',
+          'top': 0,
+          'bottom': 0,
+          'font-size': '4rem',
+          'content': 'counter(section, decimal-leading-zero)',
+          '@apply text-[#F4F7F9]': true,
+          'z-index':'-20'
+        }
+
+      }
+    })
+  })],
+  content: [
+    'node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}'
+  ]
 }
