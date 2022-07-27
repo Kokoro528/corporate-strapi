@@ -9,8 +9,8 @@ const CustomLink = (props) => {
   // For internal links, use the Next.js Link component
   if (isInternalLink) {
     return (
-      <Link href={link.url} {...props}>
-        <a>{children}</a>
+      <Link href={link.url} >
+        <a {...props}>{children}</a>
       </Link>
     )
   }

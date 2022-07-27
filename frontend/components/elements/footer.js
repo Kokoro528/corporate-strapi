@@ -21,14 +21,14 @@ const Footer = ({ footer }) => {
               key={footerColumn.id}
               className="mt-10 lg:mt-0 w-6/12 lg:w-auto"
             >
-              <span className="uppercase tracking-wide font-semibold text-gray-200 text-xl">
+              <span className="uppercase text-center tracking-wide font-semibold text-gray-200 text-xl">
                 {footerColumn.title}
               </span>
-              <ul className="mt-2">
+              <ul className="mt-2 mx-2">
                 {footerColumn.links.map((link) => (
                   <li key={link.id} className="-mx-1">
                     <CustomLink
-                      className="text-gray-100  hover:text-gray-100 active:text-gray-100"
+                      className="text-gray-100  hover:text-gray-100 active:text-gray-100 visited:text-sky-100"
                       link={link}
                     >
                       {link.text}

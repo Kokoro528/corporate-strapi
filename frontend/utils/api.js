@@ -386,7 +386,7 @@ export async function getCollectionList(pluralName, session) {
 
   })
   const collections = await collectionList.json()
-  console.log("caseda", collections)
+  // console.log("caseda", collections)
   return collections
 }
 

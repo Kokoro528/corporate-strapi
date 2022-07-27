@@ -42,6 +42,8 @@ module.exports = {
           css: {
             // color: '#333',
             // maxWidth: '80ch',
+
+            textAlign: 'justify',
             whiteSpace: 'pre-wrap',
             a: {
               color: '#3182ce',
