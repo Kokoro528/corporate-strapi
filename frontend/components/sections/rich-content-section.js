@@ -27,8 +27,8 @@ const RichContent = ({ data, pageContext, global }) => {
           "container mb-6 mt-4 prose max-w-screen-xl flex flex-col items-center mt-4",
           { "prose-invert": data.typeRCS === "dark" }
         )}
-      >      
-      {data.title && (
+      >
+        {data.title && (
           <h1 className="my-5 text-3xl text-center">{data.title}</h1>
         )}
         {data.subtitle && <h1>{data.subtitle}</h1>}
@@ -38,7 +38,6 @@ const RichContent = ({ data, pageContext, global }) => {
             { "prose-invert": data.typeRCS === "dark" }
           )}
         >
-          
           <Markdown
             className=" text-align prose-headings:text-primary-400 xl:prose-h1:text-center xl:prose-h3:text-center xl:prose-h2:text-center prose-th:border prose-td:border prose-table:text-center prose-table:table-auto"
             remarkPlugins={[remarkGfm, remarkImages]}

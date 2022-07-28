@@ -60,23 +60,28 @@ const SolutionFeature = ({ data }) => {
             </CustomLink> */}
                 </div>
                 {/* Media section */}
-                <div className="w-full sm:9/12 lg:w-8/12 ">
-                  {/* Images */}
-                  {feature.icon.data.attributes.mime.startsWith("image") && (
-                    <div className=" rounded bg-neutral-100 ">
-                      <NextImage media={feature.icon} className="rounded p-2" />
-                    </div>
-                  )}
-                  {/* Videos */}
-                  {feature.icon.data.attributes.mime.startsWith("video") && (
-                    <Video
-                      media={feature.icon}
-                      className="w-full"
-                      autoPlay
-                      controls={false}
-                    />
-                  )}
-                </div>
+                {feature.icon.data && (
+                  <div className="w-full sm:9/12 lg:w-8/12 ">
+                    {/* Images */}
+                    {feature.icon.data.attributes.mime.startsWith("image") && (
+                      <div className=" rounded bg-neutral-100 ">
+                        <NextImage
+                          media={feature.icon}
+                          className="rounded p-2"
+                        />
+                      </div>
+                    )}
+                    {/* Videos */}
+                    {feature.icon.data.attributes.mime.startsWith("video") && (
+                      <Video
+                        media={feature.icon}
+                        className="w-full"
+                        autoPlay
+                        controls={false}
+                      />
+                    )}
+                  </div>
+                )}
               </div>
             ))}
           </div>

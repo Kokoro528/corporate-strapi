@@ -10,7 +10,7 @@
   "attributes": {
     "title": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "icon": {
       "type": "media",
