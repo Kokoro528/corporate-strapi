@@ -10,17 +10,6 @@
     "title": {
       "type": "string"
     },
-    "media": {
-      "type": "media",
-      "multiple": true,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
     "bulletPoints": {
       "type": "component",
       "repeatable": true,

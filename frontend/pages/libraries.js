@@ -20,6 +20,7 @@ import { options } from "pages/api/auth/[...nextauth]"
 import fetcher from "utils/fetcher"
 import useSWR, { SWRConfig } from "swr"
 import { useState, useEffect } from "react"
+import List from "@/components/collations/collation-list"
 
 const CaseList = ({ data, page, router }) => {
   // console.log(data)
@@ -169,13 +170,13 @@ const DynamicPage = ({
           e.url.includes(router.asPath.split("?")[0])
         )}
       >
-        <CaseList
+        <List
           data={data?.filter((e) =>
             category ? e.attributes.category === category : true
           )}
           page={page}
           router={router}
-        ></CaseList>
+        ></List>
       </FilterTabs>
     </Layout>
     // </SWRConfig>

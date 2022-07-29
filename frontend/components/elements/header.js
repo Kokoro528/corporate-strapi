@@ -7,7 +7,7 @@ const Header = ({ title }) => {
       className={classNames(
         // Common classes
         "text-white text-2xl px-2 py-3",
-        "sticky top-20",
+        "sticky top-20 z-20",
         {
           // Apply theme based on notification type
           //   "bg-blue-600": type === "info",

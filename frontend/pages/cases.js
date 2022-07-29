@@ -20,74 +20,9 @@ import { options } from "pages/api/auth/[...nextauth]"
 import fetcher from "utils/fetcher"
 import useSWR, { SWRConfig } from "swr"
 import { useState, useEffect } from "react"
+import List from "@/components/collations/collation-list"
 
-const CaseList = ({ data, page, router }) => {
-  // console.log(data)
-  const cases = data
 
-  const getPictureSrc = (attr) => {
-    let res = null
-    attr.contentSections.forEach((element) => {
-      if (!!element.backgroundImage) {
-        const attributes = element.backgroundImage.data.attributes.formats.small
-
-        res = { data: { attributes } }
-      }
-    })
-    if (!res) {
-      res = attr.articlePicture
-    }
-    return res
-  }
-
-  // const getDefaultSrc = (attr) => {
-  //   let res = {}
-  //   attr.
-  // }
-
-  return (
-    <div className="container grid grid-cols-1 gap-4  sm: grid-cols-3 md:grid-cols-3">
-      {cases?.map(({ id, attributes }) => (
-        <Link
-          href={`${router.pathname}/${attributes.title}`}
-          key={"case-" + id}
-          passHref
-        >
-          <div className="flex-1 text-lg" key={id}>
-            <div>
-              <NextImage
-                media={getPictureSrc(attributes)}
-                className="hover:opacity-40"
-              />
-            </div>
-            <h3 className="font-bold mt-4 mb-4">{attributes.title}</h3>
-            {/* <p>{attributes.title}</p> */}
-          </div>
-        </Link>
-      ))}
-    </div>
-  )
-}
-
-// SolutionList.PropTypes = {
-//   solutions: PropTypes.arrayOf(PropTypes.shape({
-//     data: PropTypes.shape({
-//       id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-//     attributes: PropTypes.shape({
-//       title: PropTypes.string,
-//       caseBackground: PropTypes.shape({
-//         id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-//         content: PropTypes.string,
-//       })
-//     }),
-//     })
-//   })),
-//   title: PropTypes.string
-// }
-
-// The file is called [[...slug]].js because we're using Next's
-// optional catch all routes feature. See the related docs:
-// https://nextjs.org/docs/routing/dynamic-routes#optional-catch-all-routes
 
 const DynamicPage = ({
   // data,
@@ -138,19 +73,7 @@ const DynamicPage = ({
 
   // const { data, error } = useSWR(`/api/collection`)
 
-  // useEffect(() => {
-  //   // setLoading(true)
-  //   console.log("lllt")
-  //   fetch(`/api/collection${router.asPath}`)
-  // // .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log("slk", data)
-  //       setData(data)
-  //     }).catch(e => {
-  //       console.error(e)
-  //     })
-  // }, [])
-  // console.log("nnn", data, router.asPath)
+  
 
   return (
     // <SWRConfig value= {{}}>
@@ -166,13 +89,13 @@ const DynamicPage = ({
           e.url.includes(router.asPath.split("?")[0])
         )}
       >
-        <CaseList
+        <List
           data={data?.filter((e) =>
             category ? e.attributes.category === category : true
           )}
           page={page}
           router={router}
-        ></CaseList>
+        ></List>
       </FilterTabs>
     </Layout>
     // </SWRConfig>

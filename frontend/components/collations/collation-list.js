@@ -2,9 +2,9 @@ import PropTypes from "prop-types"
 import NextImage from "../elements/image"
 import Link from "next/link"
 
-const SolutionList = ({ data }) => {
+const List = ({ data, router }) => {
   // console.log(data)
-  const solutions = data
+
   // console.log(solutions)
   // const {solutions}= data;
   // return null;
@@ -23,9 +23,9 @@ const SolutionList = ({ data }) => {
 
   return (
     <div className="container grid grid-cols-1 gap-4  sm: grid-cols-3 md:grid-cols-4">
-      {Array.isArray(solutions) &&
-        solutions.map(({ id, attributes }) => (
-          <Link href={`/solutions/${id}`} key={"solution-" + id} passHref>
+      {Array.isArray(data) &&
+        data.map(({ id, attributes }) => (
+          <Link href={`${router.pathname}/${attributes.title}`} key={"card-" + id} passHref>
             <div className="flex-1 text-lg" key={id}>
               <div className="">
                 <NextImage media={getPictureSrc(attributes)} />
@@ -54,4 +54,4 @@ const SolutionList = ({ data }) => {
 //   title: PropTypes.string,
 // }
 
-export default SolutionList
+export default List

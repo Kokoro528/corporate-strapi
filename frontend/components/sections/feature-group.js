@@ -11,7 +11,7 @@ const FeatureGroup = ({ data }) => {
       <div className="grid grid-cols-1 lg:grid-cols-2 auto-rows-max ">
         {data.features?.map((feature) => (
           <div className="prose  py-12 flex flex-col " key={feature.id}>
-            <div className="flex-shrink-0 w-full mt-6 md:mt-0 aspect-video relative">
+            <div className="flex-shrink-0 w-full mt-6 md:mt-0 aspect-video -z-10 relative">
               <NextImage
                 media={feature.media}
                 width="16"

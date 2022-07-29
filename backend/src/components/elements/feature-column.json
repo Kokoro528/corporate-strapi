@@ -9,13 +9,11 @@
   "options": {},
   "attributes": {
     "title": {
-      "type": "string",
-      "required": false
+      "type": "string"
     },
     "icon": {
       "type": "media",
       "multiple": false,
-      "required": false,
       "allowedTypes": [
         "images"
       ]

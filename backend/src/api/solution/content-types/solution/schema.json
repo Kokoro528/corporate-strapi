@@ -48,7 +48,6 @@
       "type": "enumeration",
       "enum": [
         "featuring",
-        "industrial",
         "applicational"
       ]
     }

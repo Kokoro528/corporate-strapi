@@ -12,7 +12,7 @@ import SolutionFeature from "./sections/solution-feature"
 import TopHeading from "./sections/top-heading"
 import Context from "./context"
 import FeatureGroup from "./sections/feature-group"
-import SolutionList from "./collations/solution-list"
+// import SolutionList from "./collations/collation-list"
 import ModelStructure from "./sections/model-structure"
 import SimpleFeatures from "./sections/simple-features"
 import RichContent from "./sections/rich-content-section"
@@ -67,7 +67,7 @@ const sectionComponents = {
     import("@/components/sections/feature-group")
   ),
   "sections.pricing": Pricing,
-  "sections.solution-list": SolutionList,
+  // "sections.solution-list": SolutionList,
   "sections.top-heading": dynamic(() =>
     import("@/components/sections/top-heading")
   ),
