@@ -27,7 +27,7 @@
     "products": {
       "displayName": "Product Card",
       "type": "component",
-      "repeatable": true,
+      "repeatable": false,
       "component": "panels.product-card"
     }
   }

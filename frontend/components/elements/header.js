@@ -13,7 +13,7 @@ const Header = ({ title }) => {
           //   "bg-blue-600": type === "info",
           //   "bg-orange-600": type === "warning",
           //   "bg-red-600": type === "alert",
-          "bg-primary-800": true,
+          "bg-sky-800": true,
         }
       )}
     >

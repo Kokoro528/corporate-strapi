@@ -7,10 +7,13 @@
   },
   "options": {},
   "attributes": {
-    "link": {
+    "links": {
       "type": "component",
-      "repeatable": false,
+      "repeatable": true,
       "component": "links.link-with-icon"
+    },
+    "title": {
+      "type": "string"
     }
   }
 }

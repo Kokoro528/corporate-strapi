@@ -24,15 +24,14 @@ const ProductSubcontainer = (props) => {
     fetchCollection()
   }, [])
 
-  console.log("data", data)
 
-  const Mworks = cardWrapper(() => <p>{data?.Mworks?.description}</p>)
+  const Mworks = cardWrapper(() => <p className="pt-3">{data?.Mworks?.description}</p>)
 
   const GetStarted = cardWrapper(() => (
     <ul>
       {data?.getStarted?.links.map((link, i) => {
         return (
-          <li key={`subnav-link-${i}`}>
+          <li key={`subnav-link-${i}`} className="pt-2 pl-3">
             <CustomLink link={link}>{link.text}</CustomLink>
           </li>
         )
@@ -42,18 +41,18 @@ const ProductSubcontainer = (props) => {
 
   const ProductList = cardWrapper(() => (
     <div className="grid grid-flow-col grid-cols-3 grid-rows-2">
-      {data?.products?.map((e, i) => {
+      {data?.products?.links.map((e, i) => {
         return (
           <div
             key={`subnav-product-${i}`}
             className=" flex flex-col  items-start py-4 px-4 flex-1"
           >
-            <CustomLink link={e.link}>
+            <CustomLink link={e}>
               <>
-                <div className="w-20 h-20">
-                  <NextImage media={e.link.icon} />
+                <div className="w-28 h-24">
+                  <NextImage media={e.icon} />
                 </div>
-                <p className="text-sm ">{e.link.title}</p>
+                <p className="text-sm ">{e.title}</p>
               </>
             </CustomLink>
           </div>
@@ -74,11 +73,11 @@ const ProductSubcontainer = (props) => {
           className="grid grid-cols-3 gap-4 p-4"
           id="tabs-tabContentVertical"
         >
-          <div className="col-span-1">
+          <div className="col-span-1 ">
             <Mworks {...data.Mworks} />
             <GetStarted {...data.getStarted} />
           </div>
-          <div className="col-span-2 ">
+          <div className="col-span-2 py-2">
             <ProductList {...data.products} />
           </div>
           {/* {
@@ -102,8 +101,8 @@ export default ProductSubcontainer
 const cardWrapper = (Component) => {
   const MyComp = (prop) => {
     return (
-      <div className="flex flex-col px-2 py-3 divide-y divide-slate-200 ">
-        <h1 className="font-bold text-slate-200 ">{prop.title}</h1>
+      <div className="flex flex-col px-2 py-3 divide-y divide-neutral-300 ">
+        <h1 className="font-bold text-neutral-300 ">{prop.title}</h1>
         <div className="my-3">
           <Component />
         </div>
