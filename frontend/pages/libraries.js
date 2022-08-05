@@ -17,58 +17,11 @@ import NextImage from "@/components/elements/image"
 import FilterTabs from "@/components/filter-tabs"
 import { unstable_getServerSession } from "next-auth"
 import { options } from "pages/api/auth/[...nextauth]"
+import { useSession } from "next-auth/react"
 import fetcher from "utils/fetcher"
 import useSWR, { SWRConfig } from "swr"
 import { useState, useEffect } from "react"
 import List from "@/components/collations/collation-list"
-
-const CaseList = ({ data, page, router }) => {
-  // console.log(data)
-  const cases = data
-
-  const getPictureSrc = (attr) => {
-    let res = null
-    attr.contentSections.forEach((element) => {
-      if (!!element.backgroundImage) {
-        const attributes = element.backgroundImage.data.attributes.formats.small
-
-        res = { data: { attributes } }
-      }
-    })
-    if (!res) {
-      res = attr.articlePicture
-    }
-    return res
-  }
-
-  // const getDefaultSrc = (attr) => {
-  //   let res = {}
-  //   attr.
-  // }
-
-  return (
-    <div className="container grid grid-cols-1 gap-4  sm: grid-cols-3 md:grid-cols-3">
-      {cases?.map(({ id, attributes }) => (
-        <Link
-          href={`${router.pathname}/${attributes.title}`}
-          key={"case-" + id}
-          passHref
-        >
-          <div className="flex-1 text-lg" key={id}>
-            <div>
-              <NextImage
-                media={getPictureSrc(attributes)}
-                className="hover:opacity-40"
-              />
-            </div>
-            <h3 className="font-bold mt-4 mb-4">{attributes.title}</h3>
-            {/* <p>{attributes.title}</p> */}
-          </div>
-        </Link>
-      ))}
-    </div>
-  )
-}
 
 // SolutionList.PropTypes = {
 //   solutions: PropTypes.arrayOf(PropTypes.shape({
@@ -103,19 +56,31 @@ const DynamicPage = ({
   //   if (!router.asPath.includes("cases") && !router.asPath.includes("libraries") && !router.asPath.includes("solutions"))
   //   return null
 
-  const [data, setData] = useState([])
+  // const [data, setData] = useState([])
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch("/api/collection" + router.asPath)
-      const json = await res.json()
-      console.log("kok", router.asPath, json.data)
-      if (json.data) {
-        setData(json.data)
-      }
-    }
-    fetchData()
-  }, [])
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const res = await fetch("/api/collection" + router.asPath)
+  //     const json = await res.json()
+  //     console.log("kok", router.asPath, json.data)
+  //     if (json.data) {
+  //       setData(json.data)
+  //     }
+  //   }
+  //   fetchData()
+  // }, [])
+
+  // const { data: session } = useSession()
+  // const { data, error } = useSWR(['/api/collection' + router.asPath,
+  // {
+  //   headers: {
+  //     "Authorization": "Bearer " + session?.accessToken,
+  //     "Content-Type": "application/json"
+  //   },
+
+  //   // body: JSON.stringify({session})
+  // }
+  // ])
 
   // Check if the required data was provided
   // if ( !data || !data.length) {
@@ -153,8 +118,6 @@ const DynamicPage = ({
   // }, [])
   // console.log("nnn", data, router.asPath)
 
-  console.log("koda", router.asPath.split("?")[0])
-
   return (
     // <SWRConfig value= {{}}>
     <Layout global={global} pageContext={pageContext}>
@@ -170,13 +133,7 @@ const DynamicPage = ({
           e.url.includes(router.asPath.split("?")[0])
         )}
       >
-        <List
-          data={data?.filter((e) =>
-            category ? e.attributes.category === category : true
-          )}
-          page={page}
-          router={router}
-        ></List>
+        <List category={category} page={page} router={router}></List>
       </FilterTabs>
     </Layout>
     // </SWRConfig>

@@ -3263,10 +3263,10 @@ natural-compare@^1.4.0:
   resolved "https://registry.npmmirror.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==
 
-next-auth@^4.6.1:
-  version "4.7.0"
-  resolved "https://registry.npmmirror.com/next-auth/-/next-auth-4.7.0.tgz#2d42b44729fde77d9e98a88612daf0ee853b9641"
-  integrity sha512-boXSIzHvCyNq1Jthi24LLnx12iKBsqsMxUKm5qq9alkfhVMeIRUR/wKP0FPSGc1s9WcGXMS3NmKQfADCEb0wow==
+next-auth@^4.10.2:
+  version "4.10.2"
+  resolved "https://registry.npmmirror.com/next-auth/-/next-auth-4.10.2.tgz#6893f1bf4b3e5281bd340a6bcd3c331225c5e2be"
+  integrity sha512-9XeP3faA5M3LneNJuzZCrmyR1ONYVH+pNQTozLBlpzXSkVRCgy+PTLAojOGkCo5v5MWcCZNTNHUOQL6gIcYwEQ==
   dependencies:
     "@babel/runtime" "^7.16.3"
     "@panva/hkdf" "^1.0.1"
@@ -4052,10 +4052,16 @@ react-fast-compare@^2.0.1:
   resolved "https://registry.npmmirror.com/react-fast-compare/-/react-fast-compare-2.0.4.tgz#e84b4d455b0fec113e0402c329352715196f81f9"
   integrity sha512-suNP+J1VU1MWFKcyt7RtjiSWUjvidmQSlqu+eHslq+342xCbGTYmC0mEhPCOHxlW0CywylOC1u2DFAT+bv4dBw==
 
-react-grid-carousel@^1.0.1:
+"react-grid-carousel-w-selectbar@file:.yalc/react-grid-carousel-w-selectbar":
   version "1.0.1"
-  resolved "https://registry.npmmirror.com/react-grid-carousel/-/react-grid-carousel-1.0.1.tgz#eb10d002ba7a6980ecd6bb22396f5f5de25d65e3"
-  integrity sha512-YC0WJe45v9Kxsne09VBlK4ewwtROSo3F42UEXZfN1nvAo2q0lbvB7HIHdhK/D4DhVnsnjPQnBWyXQSDBb1g9IQ==
+  dependencies:
+    lodash.debounce "^4.0.8"
+    prop-types "^15.7.2"
+    smoothscroll-polyfill "^0.4.4"
+    styled-components "^4.4.1"
+
+"react-grid-carousel@file:.yalc/react-grid-carousel":
+  version "1.0.1"
   dependencies:
     lodash.debounce "^4.0.8"
     prop-types "^15.7.2"

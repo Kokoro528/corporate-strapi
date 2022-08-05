@@ -5,6 +5,7 @@ import { getSingleType } from "utils/api"
 import CustomLink from "../elements/custom-link"
 import classNames from "classnames"
 import NextImage from "../elements/image"
+import { eachDayOfInterval } from "date-fns"
 
 const ProductSubcontainer = (props) => {
   const [data, setData] = useState({})
@@ -24,8 +25,9 @@ const ProductSubcontainer = (props) => {
     fetchCollection()
   }, [])
 
-
-  const Mworks = cardWrapper(() => <p className="pt-3">{data?.Mworks?.description}</p>)
+  const Mworks = cardWrapper(() => (
+    <p className="pt-3">{data?.Mworks?.description}</p>
+  ))
 
   const GetStarted = cardWrapper(() => (
     <ul>
@@ -47,7 +49,7 @@ const ProductSubcontainer = (props) => {
             key={`subnav-product-${i}`}
             className=" flex flex-col  items-start py-4 px-4 flex-1"
           >
-            <CustomLink link={e}>
+            <CustomLink link={{ id: e.id, text: e.title, url: e.url }}>
               <>
                 <div className="w-28 h-24">
                   <NextImage media={e.icon} />

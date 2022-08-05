@@ -22,8 +22,6 @@ import useSWR, { SWRConfig } from "swr"
 import { useState, useEffect } from "react"
 import List from "@/components/collations/collation-list"
 
-
-
 const DynamicPage = ({
   // data,
   page,
@@ -37,19 +35,16 @@ const DynamicPage = ({
 
   const [data, setData] = useState([])
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch("/api/collection" + router.asPath)
-      const json = await res.json()
-      if (json.data) {
-        setData(json.data)
-      }
-    }
-    fetchData()
-  }, [])
-
-  // if (!router.asPath.includes("cases") && !router.asPath.includes("libraries") && !router.asPath.includes("solutions"))
-  // return null
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const res = await fetch("/api/collection" + router.asPath)
+  //     const json = await res.json()
+  //     if (json.data) {
+  //       setData(json.data)
+  //     }
+  //   }
+  //   fetchData()
+  // }, [])
 
   // Check if the required data was provided
   // if ( !data || !data.length) {
@@ -73,8 +68,6 @@ const DynamicPage = ({
 
   // const { data, error } = useSWR(`/api/collection`)
 
-  
-
   return (
     // <SWRConfig value= {{}}>
     <Layout global={global} pageContext={pageContext}>
@@ -90,9 +83,10 @@ const DynamicPage = ({
         )}
       >
         <List
-          data={data?.filter((e) =>
-            category ? e.attributes.category === category : true
-          )}
+          // data={data?.filter((e) =>
+          //   category ? e.attributes.category === category : true
+          // )}
+          category={category}
           page={page}
           router={router}
         ></List>

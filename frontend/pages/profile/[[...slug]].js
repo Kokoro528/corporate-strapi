@@ -11,7 +11,6 @@ import Products from "@/components/global/products"
 import LeadForm from "@/components/sections/lead-form"
 import { Formik, Form, Field } from "formik"
 import { signIn } from "next-auth/react"
-// import {signIn} from "next-auth/react"
 
 const Login = ({ signup }) => {
   const router = useRouter()
@@ -45,7 +44,6 @@ const Login = ({ signup }) => {
           // validationSchema={LeadSchema}
           onSubmit={async (values, { setSubmitting, setErrors }) => {
             setLoading(true)
-            console.log("helloos")
             signIn("credentials", values)
             // fetch("/api/auth/local",{
             //   method: "POST",

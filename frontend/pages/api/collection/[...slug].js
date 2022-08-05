@@ -1,24 +1,47 @@
 import { getCollectionList } from "utils/api"
 import { parseCookies } from "utils/parse-cookies"
-
+// import { getSession } from "next-auth/react"
+import { unstable_getServerSession, getSession } from "next-auth"
+import { options } from "../auth/[...nextauth]"
+import { getStrapiURL } from "utils/api"
 export default async (req, res) => {
-  console.log("inside")
   // Check the secret and next parameters
   // This secret should only be known to this API route and the CMS
-  //   if (req.query.secret !== (process.env.PREVIEW_SECRET || "secret-token")) {
-  //     return res.status(401).json({ message: "Invalid token" })
-  //   }
+  //
 
   //   const cookies = parseCookies(req)
 
+  // const session = await  unstable_getServerSession(req, res, options)
   // Fetch the headless CMS to check if the provided `slug` exists
-  const pageData = await getCollectionList(req.query.slug[0])
-  // If the slug doesn't exist prevent preview mode from being enabled
-  if (!pageData) {
-    return res.status(401).json({ message: "Invalid slug" })
-  }
+  // const pageData = await getCollectionList(req.query.slug[0], session)
+  const pluralName = req.query.slug[0]
 
-  return res.status(200).json(pageData)
+  if (!pluralName) return {}
+  const endpoint = getStrapiURL(`/api/${pluralName}?populate=*`)
+
+  const collectionList = await fetch(endpoint, {
+    method: "GET",
+    headers: req.headers,
+    // {
+    //   "Content-Type": "application/json",
+    //   "Authorization": req.headers.authorization
+    // }
+  })
+
+  // console.log("caseda", pageData)
+  // If the slug doesn't exist prevent preview mode from being enabled
+  // if (!collectionList.ok) {
+  //   const error = new Error('An error occurred while fetching the data.')
+  //   // Attach extra info to the error object.
+  //   error.info = await collectionList.json()
+  //   console.log("error.info", error.info)
+  //   error.status = collectionList.status
+  //   // throw error
+  //   return res.status(error.status).json(error.info)
+  // }
+
+  const resp = await collectionList.json()
+  return res.status(collectionList.status).json(resp)
   // Enable Preview Mode by setting the cookies
   //   res.setPreviewData({})
 

@@ -46,7 +46,7 @@ const Layout = ({ children, global, pageContext, metadata }) => {
           {/* <Context.Provider value={{ global, pageContext }}> */}
           <Navbar navbar={navbar} pageContext={pageContext} global={global} />
           {/* </Context.Provider> */}
-          <div>
+          <div className="overflow-visible">
             <Context.Provider value={{ global, pageContext }}>
               {children}
             </Context.Provider>

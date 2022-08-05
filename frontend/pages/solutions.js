@@ -18,57 +18,10 @@ import FilterTabs from "@/components/filter-tabs"
 import { unstable_getServerSession } from "next-auth"
 import { options } from "pages/api/auth/[...nextauth]"
 import fetcher from "utils/fetcher"
-import useSWR, { SWRConfig } from "swr"
+import useSWR, { useSWRConfig } from "swr"
 import { useState, useEffect } from "react"
 import List from "@/components/collations/collation-list"
-
-const CaseList = ({ data, page, router }) => {
-  // console.log(data)
-  const cases = data
-
-  const getPictureSrc = (attr) => {
-    let res = null
-    attr.contentSections.forEach((element) => {
-      if (!!element.backgroundImage) {
-        const attributes = element.backgroundImage.data.attributes.formats.small
-
-        res = { data: { attributes } }
-      }
-    })
-    if (!res) {
-      res = attr.articlePicture
-    }
-    return res
-  }
-
-  // const getDefaultSrc = (attr) => {
-  //   let res = {}
-  //   attr.
-  // }
-
-  return (
-    <div className="container grid grid-cols-1 gap-4  sm: grid-cols-3 md:grid-cols-3">
-      {cases?.map(({ id, attributes }) => (
-        <Link
-          href={`${router.pathname}/${attributes.title}`}
-          key={"solutions-" + id}
-          passHref
-        >
-          <div className="flex-1 text-lg" key={id}>
-            <div>
-              <NextImage
-                media={getPictureSrc(attributes)}
-                className="hover:opacity-40"
-              />
-            </div>
-            <h3 className="font-bold mt-4 mb-4">{attributes.title}</h3>
-            {/* <p>{attributes.title}</p> */}
-          </div>
-        </Link>
-      ))}
-    </div>
-  )
-}
+import { useSession } from "next-auth/react"
 
 // SolutionList.PropTypes = {
 //   solutions: PropTypes.arrayOf(PropTypes.shape({
@@ -101,18 +54,31 @@ const DynamicPage = ({
 }) => {
   const router = useRouter()
   // const { data, error } = useSWR(`/api/collection`)
-  const [data, setData] = useState([])
+  // const [data, setData] = useState([])
+  const { data: session } = useSession()
+  const { data, error } = useSWR([
+    "/api/collection" + router.asPath,
+    // {
+    //   headers: {
+    //     "Authorization": "Bearer " + session?.accessToken,
+    //     "Content-Type": "application/json"
+    //   },
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch("/api/collection" + router.asPath)
-      const json = await res.json()
-      if (json.data) {
-        setData(json.data)
-      }
-    }
-    fetchData()
-  }, [])
+    //   // body: JSON.stringify({session})
+    // }
+  ])
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const res = await fetch("/api/collection" + router.asPath)
+  //     const json = await res.json()
+  //     if (json.data) {
+  //       setData(json.data)
+  //     }
+  //           console.log("session", session)
+  //   }
+  //   fetchData()
+  // }, [])
   //   if (!router.asPath.includes("cases") && !router.asPath.includes("libraries") && !router.asPath.includes("solutions"))
   //   return null
 
@@ -151,7 +117,6 @@ const DynamicPage = ({
   // console.log("nnn", data, router.asPath)
 
   return (
-    // <SWRConfig value= {{}}>
     <Layout global={global} pageContext={pageContext}>
       {/* Add meta tags for SEO*/}
       {/* <Seo metadata={metadataWithDefaults} /> */}
@@ -166,15 +131,15 @@ const DynamicPage = ({
         )}
       >
         <List
-          data={data?.filter((e) =>
+          data={data?.data?.filter((e) =>
             category ? e.attributes.category === category : true
           )}
+          category={category}
           page={page}
           router={router}
         ></List>
       </FilterTabs>
     </Layout>
-    // </SWRConfig>
   )
 }
 

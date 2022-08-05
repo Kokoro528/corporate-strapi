@@ -8,8 +8,29 @@ import { getGlobalData } from "utils/api"
 import "@/styles/index.css"
 import { SessionProvider } from "next-auth/react"
 import { useSession } from "next-auth/react"
+import { mutate, SWRConfig } from "swr"
+// import fetcher from "utils/fetcher"
 // import "@/styles/nav.css"
 // import "@/styles/table.css"
+
+const fetcher = (session) => (url) =>
+  fetch(
+    url,
+    Object.assign(
+      {},
+      {
+        headers: {
+          Authorization: "Bearer " + session?.accessToken,
+          "Content-Type": "application/json",
+        },
+      }
+    )
+  ).then((r) => {
+    if (!r.ok) {
+      throw new Error(r.status)
+    }
+    return r.json()
+  })
 
 const Auth = ({ children }) => {
   // if `{ required: true }` is supplied, `status` can only be "loading" or "authenticated"
@@ -19,7 +40,33 @@ const Auth = ({ children }) => {
   //   return <div>Loading...</div>
   // }
 
-  return children
+  return (
+    <SWRConfig
+      value={{
+        fetcher: fetcher(session),
+        provider: () => new Map(),
+
+        onErrorRetry: (err, key) => {
+          fetcher(key)
+        },
+        onError: (err, key, config) => {
+          // console.log('asjdk', key, err)
+        },
+        onSuccess: (data, key, config) => {
+          // console.log("asd", key, data)
+          if (data.data) {
+            const paragraph = key.split(",")[0]
+            const regex = /@\"(.*)\"/
+            const found = paragraph.replace(regex, "$1")
+
+            mutate(found, data)
+          }
+        },
+      }}
+    >
+      {children}
+    </SWRConfig>
+  )
 }
 const MyApp = ({ Component, pageProps: { session, ...pageProps } }) => {
   // Extract the data we need
@@ -33,47 +80,48 @@ const MyApp = ({ Component, pageProps: { session, ...pageProps } }) => {
   return (
     <SessionProvider session={session}>
       {/* Favicon */}
-      <Head>
-        <link
-          rel="shortcut icon"
-          href={getStrapiMedia(favicon.data.attributes.url)}
-        />
-        <link
-          rel="stylesheet"
-          href="https://unpkg.com/flowbite@1.4.7/dist/flowbite.min.css"
-        />
-        <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
-        <link
-          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-          rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-          crossOrigin="anonymous"
-        />
-        {/* <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/pixelbrackets/gfm-stylesheet/dist/gfm.min.css" /> */}
-      </Head>
-      {/* Global site metadata */}
-      <DefaultSeo
-        titleTemplate={`%s | ${metaTitleSuffix}`}
-        title="Page"
-        description={metadata.metaDescription}
-        openGraph={{
-          images: Object.values(
-            metadata.shareImage.data?.attributes.formats
-          ).map((image) => {
-            return {
-              url: getStrapiMedia(image.url),
-              width: image.width,
-              height: image.height,
-            }
-          }),
-        }}
-        twitter={{
-          cardType: metadata.twitterCardType,
-          handle: metadata.twitterUsername,
-        }}
-      />
       {/* Display the content */}
       <Auth>
+        <Head>
+          <link
+            rel="shortcut icon"
+            href={getStrapiMedia(favicon.data.attributes.url)}
+          />
+          <link
+            rel="stylesheet"
+            href="https://unpkg.com/flowbite@1.4.7/dist/flowbite.min.css"
+          />
+          <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
+          <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossOrigin="anonymous"
+          />
+          {/* <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/pixelbrackets/gfm-stylesheet/dist/gfm.min.css" /> */}
+        </Head>
+        {/* Global site metadata */}
+        <DefaultSeo
+          titleTemplate={`%s | ${metaTitleSuffix}`}
+          title="Page"
+          description={metadata.metaDescription}
+          openGraph={{
+            images: Object.values(
+              metadata.shareImage.data?.attributes.formats
+            ).map((image) => {
+              return {
+                url: getStrapiMedia(image.url),
+                width: image.width,
+                height: image.height,
+              }
+            }),
+          }}
+          twitter={{
+            cardType: metadata.twitterCardType,
+            handle: metadata.twitterUsername,
+          }}
+        />
+
         <Component {...pageProps} />
       </Auth>
     </SessionProvider>

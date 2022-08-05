@@ -10,7 +10,9 @@ const FeatureColumnsGroup = ({ data }) => {
           <div className="w-20 h-20">
             <NextImage media={feature.icon} />
           </div>
-          <h3 className="font-bold mt-4 mb-4">{feature.title || feature.titleFCG}</h3>
+          <h3 className="font-bold mt-4 mb-4">
+            {feature.title || feature.titleFCG}
+          </h3>
           <Markdown className="text-md text-center">
             {feature.description}
           </Markdown>

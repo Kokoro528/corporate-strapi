@@ -6,10 +6,22 @@ import { mediaPropTypes } from "utils/types"
 const NextImage = ({ media, ...props }) => {
   if (!media || !media.data) {
     return (
-      <img className="bg-gradient-to-r from-cyan-500 to-blue-500 h-full w-full" />
+      // <img src={'/svg/gumi327.svg'} />
+      // <div className="bg-[url('/svg/gumi327.svg')] h-full w-full object-cover object-center " />
+      // <div className="h-32 w-44"/>
+
+      <Image
+        loader={loader}
+        src={"/svg/gumi327.svg"}
+        alt={alternativeText || ""}
+        width={width || props.width}
+        height={height || props.height}
+        quality="100"
+        objectFit="cover"
+        {...props}
+      />
     )
   }
-
   const { url, alternativeText, width, height } = media.data.attributes
 
   const loader = ({ src, width }) => {

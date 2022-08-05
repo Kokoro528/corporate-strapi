@@ -6,6 +6,7 @@ import { useRouter } from "next/router"
 import Layout from "@/components/layout"
 import { getLocalizedPaths } from "utils/localize"
 import FilterTabs from "@/components/filter-tabs"
+import { useSWRConfig } from "swr"
 // import { options } from "./api/auth/[...nextauth]"
 // import { unstable_getServerSession } from "next-auth"
 
@@ -41,7 +42,7 @@ const DynamicPage = ({
     ...global.attributes.metadata,
     ...metadata,
   }
-  console.log(metadataWithDefaults)
+  // console.log(metadataWithDefaults)
 
   return (
     <Layout

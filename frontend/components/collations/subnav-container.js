@@ -5,12 +5,15 @@ import { getCollectionList } from "utils/api"
 import CustomLink from "../elements/custom-link"
 import classNames from "classnames"
 import ProductSubcontainer from "../layout/product-subnav"
+import useSWR, { mutate, useSWRConfig } from "swr"
+import { Router, useRouter } from "next/router"
+import { useSession } from "next-auth/react"
 const Subnav = (props) => {
   const { parentId, pluralName, enums, navLink, globals } = props
-  const [data, setData] = useState([])
+  // const [data, setData] = useState([])
   const [selectedSideTab, setSelectedSideTab] = useState(null)
-  const [displayList, setDisplayList] = useState(null)
-  // console.log(enums, "enums")
+  const router = useRouter()
+  const { data: session } = useSession()
 
   // const getSelectedNavLink = () => {
   //   return navbar.links.find(link => link.url === pluralName)
@@ -20,26 +23,10 @@ const Subnav = (props) => {
   //   setDisplayList(getSelectedNavLink().nestedLinks)
   // }, [pluralName])
 
-  useEffect(() => {
-    const fetchCollection = async () => {
-      try {
-        if (pluralName) {
-          const res = await getCollectionList(parentId)
-          if (res.data?.length) {
-            setData(res.data)
-          }
-        }
-      } catch (err) {
-        console.log("err: suanle")
-      }
-    }
-    fetchCollection()
-  }, [])
+  const { cache, mutate, ...restConfig } = useSWRConfig()
 
-  // const tab =
-  // useCallback(() => {
-
-  // })
+  const { data, error } = useSWR("/api/collection" + pluralName)
+  // mutate(data?.data)
 
   if (!navLink.nestedLinks || !navLink.nestedLinks.length) {
     return null
@@ -110,8 +97,8 @@ const Subnav = (props) => {
                 className="col grid grid-cols-2 gap-4 p-4"
                 id="tabs-tabContentVertical"
               >
-                {data
-                  .filter(
+                {data?.data
+                  ?.filter(
                     (e) =>
                       e.attributes.category ===
                       (selectedSideTab ||
@@ -122,7 +109,11 @@ const Subnav = (props) => {
                   .map((e) => (
                     <li key={`${Math.random()}-${pluralName}-${e.id}`}>
                       <CustomLink
-                        link={{ url: `${pluralName}/${e.attributes.title}` }}
+                        link={{
+                          id: `${pluralName.substring(1)}-link-${e.id}`,
+                          url: `${pluralName}/${e.attributes.title}`,
+                          text: `${e.attributes.title}`,
+                        }}
                       >
                         {e.attributes.title}
                       </CustomLink>

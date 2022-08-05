@@ -83,7 +83,7 @@ const Navbar = ({ navbar, pageContext, global }) => {
             )} */}
             {/* Hamburger menu on mobile */}
             <button
-              onClick={() => setMobileMenuIsShown(true)}
+              onClick={() => setMobileMenuIsShown(!mobileMenuIsShown)}
               className="p-1 block md:hidden"
             >
               <MdMenu className="h-8 w-auto" />

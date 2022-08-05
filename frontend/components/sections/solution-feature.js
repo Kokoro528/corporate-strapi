@@ -32,7 +32,7 @@ const SolutionFeature = ({ data }) => {
           ))} */}
           {/* <FeatureColumnGroup data={data.bulletPoints} /> */}
 
-          <div className=" flex flex-col gap-12 py-12">
+          <div className="w-full flex flex-col gap-12 py-12">
             {data.bulletPoints.map((feature, index) => (
               <div
                 className={classNames(
@@ -46,7 +46,7 @@ const SolutionFeature = ({ data }) => {
                 key={feature.id}
               >
                 {/* Text section */}
-                <div className="w-full lg:w-6/12 lg:pr-6 text-lg ">
+                <div className=" lg:w-6/12 text-lg ">
                   <h3 className="text-3xl font-semibold leading-relaxed ">
                     {feature.title}
                   </h3>
@@ -60,26 +60,29 @@ const SolutionFeature = ({ data }) => {
             </CustomLink> */}
                 </div>
                 {/* Media section */}
-                {feature.icon.data && <div className="w-full flex-shrink-0 sm:9/12 lg:w-8/12 ">
-                  {/* Images */}
-                  {feature.icon.data.attributes.mime.startsWith("image") && (
-                    <div className=" rounded bg-neutral-100  relative aspect-video">
-                      <NextImage media={feature.icon} className="rounded p-2 "
-                      width="9"
-                height="9"
-                layout="fill" />
-                    </div>
-                  )}
-                  {/* Videos */}
-                  {feature.icon.data.attributes.mime.startsWith("video") && (
-                    <Video
-                      media={feature.icon}
-                      className="w-full"
-                      autoPlay
-                      controls={false}
-                    />
-                  )}
-                </div>}
+                {feature.icon.data && (
+                  <div className=" flex-shrink-0 sm:9/12 lg:w-8/12 ">
+                    {/* Images */}
+                    {feature.icon.data.attributes.mime.startsWith("image") && (
+                      <div className=" rounded bg-neutral-100 relative aspect-video">
+                        <NextImage
+                          media={feature.icon}
+                          className="rounded p-2 "
+                          layout="fill"
+                        />
+                      </div>
+                    )}
+                    {/* Videos */}
+                    {feature.icon.data.attributes.mime.startsWith("video") && (
+                      <Video
+                        media={feature.icon}
+                        className="w-full"
+                        autoPlay
+                        controls={false}
+                      />
+                    )}
+                  </div>
+                )}
               </div>
             ))}
           </div>
