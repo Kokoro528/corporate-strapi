@@ -2,7 +2,6 @@ import Context from "./context"
 import { useRouter } from "next/router"
 import { Link } from "next/link"
 import classNames from "classnames"
-import { Dropdown } from "flowbite-react"
 import { MdMenu, MdArrowUpward } from "react-icons/md"
 
 const FilterTabs = ({ children, enumColumn, menubar }) => {
