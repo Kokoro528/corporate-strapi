@@ -1,4 +1,3 @@
-
 import Carousel from "react-grid-carousel-w-selectbar"
 import classNames from "classnames"
 import Markdown from "react-markdown"

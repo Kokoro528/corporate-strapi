@@ -19,14 +19,20 @@ export default async (req, res) => {
   if (!pluralName) return {}
   const endpoint = getStrapiURL(`/api/${pluralName}?populate=*`)
 
-  const collectionList = await fetch(endpoint, {
-    method: "GET",
-    headers: req.headers,
-    // {
-    //   "Content-Type": "application/json",
-    //   "Authorization": req.headers.authorization
-    // }
-  })
+  try {
+    const collectionList = await fetch(endpoint, {
+      method: "GET",
+      headers: req.headers,
+      // {
+      //   "Content-Type": "application/json",
+      //   "Authorization": req.headers.authorization
+      // }
+    })
+    const resp = await collectionList.json()
+    return res.status(collectionList.status).json(resp)
+  } catch (err) {
+    return res.status(500).json({ message: "Server Error" })
+  }
 
   // console.log("caseda", pageData)
   // If the slug doesn't exist prevent preview mode from being enabled
@@ -40,8 +46,6 @@ export default async (req, res) => {
   //   return res.status(error.status).json(error.info)
   // }
 
-  const resp = await collectionList.json()
-  return res.status(collectionList.status).json(resp)
   // Enable Preview Mode by setting the cookies
   //   res.setPreviewData({})
 
