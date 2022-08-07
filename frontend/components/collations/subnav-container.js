@@ -19,14 +19,13 @@ const Subnav = (props) => {
   //   return navbar.links.find(link => link.url === pluralName)
   // }
 
-  // useMemo(() => {
-  //   setDisplayList(getSelectedNavLink().nestedLinks)
-  // }, [pluralName])
+
 
   const { cache, mutate, ...restConfig } = useSWRConfig()
 
-  const { data, error } = useSWR("/api/collection" + pluralName)
-  // mutate(data?.data)
+  const key = "/api/collection" + pluralName
+  const { data, error } = useSWR(!cache.get(key)?key: null)
+  mutate(data?.data)
 
   if (!navLink.nestedLinks || !navLink.nestedLinks.length) {
     return null
@@ -40,11 +39,11 @@ const Subnav = (props) => {
       return (
         <div
           className="
-        mega-menu w-full -mt-3 hidden bg-white absolute left-0 top-full z-20
+        mega-menu w-full -mt-3 hidden bg-white absolute left-0 top-full z-30
         "
           aria-labelledby={`subNav${navLink.text}`}
         >
-          <div className="container z-40">
+          <div className="container ">
             <div className="row my-4">
               <div className="col-md-6 col-xl-3 mb-3 mb-xl-0">
                 <div className="pt-2">
@@ -97,7 +96,7 @@ const Subnav = (props) => {
                 className="col grid grid-cols-2 gap-4 p-4"
                 id="tabs-tabContentVertical"
               >
-                {data?.data
+                {cache.get(key)?.data
                   ?.filter(
                     (e) =>
                       e.attributes.category ===
@@ -128,11 +127,11 @@ const Subnav = (props) => {
       return (
         <div
           className="
-        mega-menu w-full -mt-3 hidden bg-white absolute left-0 top-full z-40
+        mega-menu w-full -mt-3 hidden bg-white absolute left-0  z-30
         "
           aria-labelledby={`subNav${navLink.text}`}
         >
-          <div className="container z-40">
+          <div className="container ">
             <div
               className="grid grid-cols-2 gap-4 p-4"
               id="tabs-tabContentVertical"

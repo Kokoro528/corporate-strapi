@@ -31,7 +31,7 @@ const Navbar = ({ navbar, pageContext, global }) => {
   return (
     <>
       {/* The actual navbar */}
-      <nav className="sticky z-30 h-20 top-0 navbar navbar-expand-lg z-10 shadow-lg py-2 bg-gray-50 relative flex items-center w-full justify-between border-gray-200 border-b-2 py-6 sm:py-2 ">
+      <nav className="sticky z-40 h-20 top-0 navbar navbar-expand-lg  shadow-lg py-2 bg-gray-50 relative flex items-center w-full justify-between border-gray-200 border-b-2 py-6 sm:py-2 ">
         <div className="container flex flex-row items-center justify-between">
           {/* Content aligned to the left */}
           <div className="flex flex-row items-center">
@@ -41,10 +41,10 @@ const Navbar = ({ navbar, pageContext, global }) => {
               </a>
             </Link>
             {/* List of links on desktop */}
-            <ul className="hidden  list-none sm:flex md:flex flex-row md:gap-4 items-baseline ml-10">
+            <ul className="hidden z-40 list-none sm:flex md:flex flex-row md:gap-4 items-baseline ml-10">
               {navbar.links.map((navLink) => (
                 <li
-                  className="z-40 hoverable "
+                  className="z-30 hoverable "
                   key={navLink.id}
                   onMouseOver={() => {
                     setSelectedNavItem(navLink.url)

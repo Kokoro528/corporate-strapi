@@ -53,7 +53,7 @@ const Auth = ({ children }) => {
           // console.log('asjdk', key, err)
         },
         onSuccess: (data, key, config) => {
-          // console.log("asd", key, data)
+          console.log("asd", key, data)
           if (data.data) {
             const paragraph = key.split(",")[0]
             const regex = /@\"(.*)\"/

@@ -22,7 +22,7 @@ const FilterTabs = ({ children, enumColumn, menubar }) => {
         const enums = global.attributes.enums[enumColumn]
         return (
           <>
-            <nav className="py-2 ">
+            <nav className=" ">
               {!!menubar.nestedLinks.length && (
                 <div className="container ">
                   <ul
