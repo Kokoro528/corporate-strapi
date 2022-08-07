@@ -8,7 +8,6 @@ const FilterTabs = ({ children, enumColumn, menubar }) => {
   const router = useRouter()
 
   const isActive = (url) => {
-    console.log("url", url, router.query.category)
     if (
       url.includes(router.query.category) ||
       (!router.query.category && !url)

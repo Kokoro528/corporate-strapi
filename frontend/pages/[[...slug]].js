@@ -6,7 +6,7 @@ import { useRouter } from "next/router"
 import Layout from "@/components/layout"
 import { getLocalizedPaths } from "utils/localize"
 import FilterTabs from "@/components/filter-tabs"
-import { useSWRConfig } from "swr"
+
 // import { options } from "./api/auth/[...nextauth]"
 // import { unstable_getServerSession } from "next-auth"
 
@@ -119,7 +119,7 @@ export async function getStaticProps(context) {
   //   preview,
   // }
   // )
- 
+
   if (pageData == null) {
     // Giving the page no props will trigger a 404 page
     return { props: {} }
