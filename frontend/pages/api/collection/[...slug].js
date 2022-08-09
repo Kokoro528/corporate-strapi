@@ -23,10 +23,10 @@ export default async (req, res) => {
     const collectionList = await fetch(endpoint, {
       method: "GET",
       headers: req.headers,
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": req.headers.authorization
-      }
+      // headers: {
+      //   "Content-Type": "application/json",
+      //   "Authorization": req.headers.authorization
+      // }
     })
     const resp = await collectionList.json()
     return res.status(collectionList.status).json(resp)

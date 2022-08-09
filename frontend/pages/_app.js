@@ -19,11 +19,11 @@ const fetcher = (session) => (url) =>
     Object.assign(
       {},
       {
-        headers: {
-          Authorization: "Bearer " + session?.accessToken,
+        headers: Object.assign( {
           "Content-Type": "application/json",
-        },
-      }
+        }, session?{Authorization: "Bearer " + session?.accessToken,}:{})
+      },
+
     )
   ).then((r) => {
     if (!r.ok) {

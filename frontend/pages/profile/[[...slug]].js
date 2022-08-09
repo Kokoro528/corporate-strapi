@@ -148,7 +148,7 @@ const Login = ({ signup }) => {
               />
             </div>
             <div className="flex justify-between items-center mb-6">
-              <div className="form-group form-check">
+              {/* <div className="form-group form-check">
                 <input
                   type="checkbox"
                   // onChange={(e) => {
@@ -167,14 +167,14 @@ const Login = ({ signup }) => {
 
                   {signup.rememberMe}
                 </label>
-              </div>
+              </div> */}
 
-              {/* <a
+              <a
               href="#!"
               className="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out"
             >
               {signup.forgotPassword}
-            </a> */}
+            </a>
             </div>
             <button
               type="submit"
@@ -360,7 +360,7 @@ const SignUp = ({ signup }) => {
               />
             </div>
             <div className="flex justify-between items-center mb-6">
-              <div className="form-group form-check">
+              {/* <div className="form-group form-check">
                 <input
                   type="checkbox"
                   // onChange={(e) => {
@@ -379,7 +379,7 @@ const SignUp = ({ signup }) => {
 
                   {signup.rememberMe}
                 </label>
-              </div>
+              </div> */}
 
               {/* <a
               href="#!"

@@ -53,8 +53,8 @@ const Navbar = ({ navbar, pageContext, global }) => {
   return (
     <>
       {/* The actual navbar */}
-      <nav className="sticky z-40 h-20 top-0 navbar navbar-expand-lg bg-white shadow py-2 relative flex items-center w-full justify-between border-gray-200 border-b-2 py-6 sm:py-2 ">
-        <div className="container flex flex-row items-center justify-between">
+      <nav className="sticky z-30 h-20 top-0 navbar navbar-expand-lg bg-white py-2 relative flex items-center w-full justify-between border-gray-200 border-b-2 py-6 sm:py-2 ">
+        <div className="container flex flex-wrap flex-row items-center justify-between">
           {/* Content aligned to the left */}
           <div className="flex flex-row items-center">
             <Link href="/">
@@ -80,7 +80,7 @@ const Navbar = ({ navbar, pageContext, global }) => {
                       className={`${routerContains(navLink)
                         ? `border-b-4 border-primary-400`
                         : ""
-                        } px-2 py-1  block pr-2 lg:px-2 py-2 text-gray-700   hover:font-bold focus:text-orange-700 transition duration-150 ease-in-out flex items-center whitespace-nowrap`}
+                        } px-2 py-1  block pr-2 lg:px-2 py-2 truncate text-gray-700   hover:font-bold focus:text-orange-700 transition duration-150 ease-in-out flex items-center whitespace-nowrap`}
                     >
                       {navLink.text}
                     </div>
