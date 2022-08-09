@@ -21,13 +21,14 @@ const DynamicPage = ({
   global,
   pageContext,
   slug,
+  session
 }) => {
   const router = useRouter()
 
   // Check if the required data was provided
-  // if (!router.isFallback && !sections?.length) {
-  //   return <ErrorPage statusCode={404} />
-  // }
+  if (!router.isFallback && !sections?.length) {
+    return <ErrorPage statusCode={404} />
+  }
 
   // Loading screen (only possible in preview mode)
   if (router.isFallback) {
@@ -49,6 +50,7 @@ const DynamicPage = ({
       global={global}
       pageContext={pageContext}
       metadata={metadataWithDefaults}
+      session={session}
     >
       {/* Add meta tags for SEO*/}
       {/* <Seo metadata={metadataWithDefaults} /> */}
@@ -112,13 +114,7 @@ export async function getStaticProps(context) {
     locale,
     preview,
   })
-  // const pageData = await getSingleDoc({
-  //   slug: (!params.slug ? [""] : params.slug).join("/"),
-  //   pluralName: "pages",
-  //   locale,
-  //   preview,
-  // }
-  // )
+  
 
   if (pageData == null) {
     // Giving the page no props will trigger a 404 page

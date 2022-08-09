@@ -6,6 +6,9 @@ module.exports = {
   purge: ["./components/**/*.js", "./pages/**/*.js"],
   darkMode: false, // or "media" or "class"
   theme: {
+    fontFamily: {
+      'sans': ["PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", "Helvetica Neue", "Arial"]
+    },
     fontSize: {
       'xs': '.75rem',
       'sm': '.875rem',

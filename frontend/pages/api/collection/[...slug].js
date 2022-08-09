@@ -23,28 +23,18 @@ export default async (req, res) => {
     const collectionList = await fetch(endpoint, {
       method: "GET",
       headers: req.headers,
-      // {
-      //   "Content-Type": "application/json",
-      //   "Authorization": req.headers.authorization
-      // }
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": req.headers.authorization
+      }
     })
     const resp = await collectionList.json()
     return res.status(collectionList.status).json(resp)
   } catch (err) {
-    return res.status(500).json({ message: "Server Error" })
+    return res.status(500).json({ message: "Page didn't find" })
   }
 
-  // console.log("caseda", pageData)
-  // If the slug doesn't exist prevent preview mode from being enabled
-  // if (!collectionList.ok) {
-  //   const error = new Error('An error occurred while fetching the data.')
-  //   // Attach extra info to the error object.
-  //   error.info = await collectionList.json()
-  //   console.log("error.info", error.info)
-  //   error.status = collectionList.status
-  //   // throw error
-  //   return res.status(error.status).json(error.info)
-  // }
+  
 
   // Enable Preview Mode by setting the cookies
   //   res.setPreviewData({})

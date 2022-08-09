@@ -5,14 +5,13 @@ import NotificationBanner from "./elements/notification-banner"
 import Products from "./global/products"
 import Context from "./context"
 import { DefaultSeo } from "next-seo"
-const Layout = ({ children, global, pageContext, metadata }) => {
-  const { navbar, footer, notificationBanner } = global.attributes
+const Layout = ({ children, global, pageContext, metadata, session }) => {
+  const { navbar, footer, notificationBanner, metaTitleSuffix } = global.attributes
   const {
     metaTitle,
     metaDescription,
     shareImage,
     twitterCardType,
-    metaTitleSuffix,
   } = metadata || {}
   const [bannerIsShown, setBannerIsShown] = useState(true)
   return (
@@ -44,10 +43,10 @@ const Layout = ({ children, global, pageContext, metadata }) => {
             />
           )}
           {/* <Context.Provider value={{ global, pageContext }}> */}
-          <Navbar navbar={navbar} pageContext={pageContext} global={global} />
+          <Navbar navbar={navbar} pageContext={pageContext} global={global} session={session} />
           {/* </Context.Provider> */}
           <div className="overflow-visible">
-            <Context.Provider value={{ global, pageContext }}>
+            <Context.Provider value={{ global, pageContext, session }}>
               {children}
             </Context.Provider>
           </div>

@@ -33,6 +33,8 @@ const DynamicPage = ({
 }) => {
   const router = useRouter()
 
+ 
+
   const [data, setData] = useState([])
 
   // useEffect(() => {
@@ -111,6 +113,7 @@ export async function getServerSideProps(context) {
     context.res,
     options
   )
+  console.log("globalLocale", globalLocale)
 
   // Fetch pages. Include drafts if preview mode is on
   // const pageData = await getCaseData({

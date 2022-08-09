@@ -2,7 +2,6 @@ import { NextResponse } from 'next/server'
 // import { getSession } from 'next-auth'
 // import {options} from './pages/api/auth/[...nextauth]'
 async function middleware(request) {
-    console.log("ashdaj")
     const response = NextResponse.next();
     // const session = await getSession();
     console.log("nextauth", request.nextauth)
@@ -10,7 +9,7 @@ async function middleware(request) {
     if (!!request.nextauth) {
         // response.setHeader("Authorization", "Bearer "+ request.nextauth.token.accessToken)
         response.nextauth = request.nextauth
-        console.log('amy')
+        
         return response
       
     }
@@ -36,11 +35,11 @@ export default withAuth(
   {
     callbacks: {
       authorized: function({ token }){
-        console.log("token", token)
-        return !!(token?.accessToken)
+        // return true
+        return !!(token?.accessToken) && (new Date(token?.expires).getTime() > new Date().getTime())
       },
     },
   }
 )
 
-export const config = { matcher: ["/solutions"] }
+export const config = { matcher: ['/solution'] }

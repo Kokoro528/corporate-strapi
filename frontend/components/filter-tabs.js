@@ -22,11 +22,11 @@ const FilterTabs = ({ children, enumColumn, menubar }) => {
         const enums = global.attributes.enums[enumColumn]
         return (
           <>
-            <nav className=" ">
+            <nav className="relative bg-slate-200 ">
               {!!menubar.nestedLinks.length && (
                 <div className="container ">
                   <ul
-                    className="hidden md:nav md:py-2 mb-3 md:max-w-screen-lg md:justify-center md:flex flex-col md:flex-row flex-wrap list-none border-b-0 pl-0 "
+                    className="hidden md:nav md:py-2  md:max-w-screen-lg md:justify-center md:flex flex-col md:flex-row flex-wrap list-none border-b-0 pl-0 w-screen  "
                     id="tabs-tabFill"
                     role="tablist"
                   >
@@ -34,8 +34,8 @@ const FilterTabs = ({ children, enumColumn, menubar }) => {
                       <a
                         href={menubar.url}
                         className={classNames(
-                          "nav-link text-sky-700  w-full block font-large text-md leading-tight  uppercase  border-t-0 border-r-2 border-primary-400 y-2",
-                          { "font-bold text-sky-900": isActive("") }
+                          "nav-link text-neutral-900  w-full block font-large text-md leading-tight  uppercase  border-t-0 border-r-2 border-primary-400 y-2",
+                          { "font-bold text-neutral-900": isActive("") }
                         )}
                       >
                         {menubar.text}
@@ -51,8 +51,8 @@ const FilterTabs = ({ children, enumColumn, menubar }) => {
                           href={`${e.url}`}
                           // onClick={() => {router.push({query: {type: e}})}}
                           className={classNames(
-                            "nav-link text-sky-700  w-full block font-large text-md leading-tight  uppercase  border-t-0 border-r-2 border-primary-400 y-2",
-                            { "font-bold text-sky-900": isActive(e.url) }
+                            "nav-link text-neutral-900  w-full block font-large text-md leading-tight  uppercase  border-t-0 border-r-2 border-primary-400 y-2",
+                            { "font-bold text-neutral-900": isActive(e.url) }
                           )}
                           id={"tabs-" + e.text}
                           data-bs-toggle="pill"
@@ -68,20 +68,20 @@ const FilterTabs = ({ children, enumColumn, menubar }) => {
                   </ul>
                 </div>
               )}
-
-              <div className="tab-content" id={"tabs-tabContent"}>
-                {/* {Object.keys(enums).map(e => { return */}
-                <div
-                  className="tab-pane fade show active"
-                  id={"tabs-" + ""}
-                  role="tabpanel"
-                  aria-labelledby={"tabs-" + "e"}
-                >
-                  {children}
-                </div>
-                {/* })} */}
-              </div>
             </nav>
+            <div className="tab-content" id={"tabs-tabContent"}>
+              {/* {Object.keys(enums).map(e => { return */}
+              <div
+                className="tab-pane fade show active"
+                id={"tabs-" + ""}
+                role="tabpanel"
+                aria-labelledby={"tabs-" + "e"}
+              >
+                {children}
+              </div>
+              {/* })} */}
+            </div>
+
 
             <div className="float-right sticky bottom-0">
               {!!menubar.nestedLinks.length && (
@@ -95,7 +95,7 @@ const FilterTabs = ({ children, enumColumn, menubar }) => {
                     </span>
                   </summary>
                   <ul
-                    className="opacity-100 whitespace-nowrap w-screen bg-gray-100 right-0 absolute bottom-12  md:nav md:py-2 mb-3 md:justify-center md:flex flex-col md:flex-row flex-wrap list-none border-b-0 pl-0 "
+                    className="opacity-100 whitespace-nowrap w-screen bg-gray-100 right-0 absolute bottom-12  md:nav md:py-2  md:justify-center md:flex flex-col md:flex-row flex-wrap list-none border-b-0 pl-0 "
                     id="tabs-tabFill"
                     role="tablist"
                   >

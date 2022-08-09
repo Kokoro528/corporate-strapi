@@ -66,7 +66,7 @@ const ProductSubcontainer = (props) => {
   return (
     <div
       className="
-      mega-menu w-full -mt-3 hidden bg-white absolute left-0 top-full z-30
+      mega-menu w-full -mt-3 hidden absolute left-0 top-full z-30
       "
       aria-labelledby={`subNav`}
     >
@@ -103,8 +103,8 @@ export default ProductSubcontainer
 const cardWrapper = (Component) => {
   const MyComp = (prop) => {
     return (
-      <div className="flex flex-col px-2 py-3 divide-y divide-neutral-300 ">
-        <h1 className="font-bold text-neutral-300 ">{prop.title}</h1>
+      <div className="flex flex-col px-2 py-3 divide-y divide-neutral-700 ">
+        <h1 className="font-bold text-neutral-700 ">{prop.title}</h1>
         <div className="my-3">
           <Component />
         </div>

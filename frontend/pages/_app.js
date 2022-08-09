@@ -40,6 +40,8 @@ const Auth = ({ children }) => {
   //   return <div>Loading...</div>
   // }
 
+  console.log("session", session)
+
   return (
     <SWRConfig
       value={{
@@ -50,7 +52,7 @@ const Auth = ({ children }) => {
           fetcher(key)
         },
         onError: (err, key, config) => {
-          // console.log('asjdk', key, err)
+          console.log('asjdk', key, err)
         },
         onSuccess: (data, key, config) => {
           console.log("asd", key, data)
@@ -75,7 +77,8 @@ const MyApp = ({ Component, pageProps: { session, ...pageProps } }) => {
     return <ErrorPage statusCode={404} />
   }
 
-  const { metadata, favicon, metaTitleSuffix } = global.attributes
+  const { metadata, favicon,  metaTitleSuffix} = global.attributes
+  console.log("global", global.attributes, metaTitleSuffix)
 
   return (
     <SessionProvider session={session}>

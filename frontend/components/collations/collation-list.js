@@ -16,8 +16,9 @@ const List = ({ router }) => {
 
   const { category } = router.query
 
+  const isExisted = () => cache.get("/api/collection" + router.pathname)
   const { data, error } = useSWR(
-    session ? "/api/collection" + router.pathname : null,
+    !isExisted() ? "/api/collection" + router.pathname : null,
     fetcher
     // {
     //   onErrorRetry: (err, key) => {
@@ -60,9 +61,8 @@ const List = ({ router }) => {
   }
 
   return (
-    <div className="container grid grid-cols-1 gap-4  md:grid-cols-3 lg:grid-cols-4 ">
-      {cache
-        .get("/api/collection" + router.route)
+    <div className="container grid grid-cols-1 gap-4 mt-12 mb-10 p-4 mx-auto  md:grid-cols-3 lg:grid-cols-4 ">
+      {isExisted()
         ?.data?.filter((e) =>
           category ? e.attributes.category === category : true
         )
@@ -84,7 +84,7 @@ const List = ({ router }) => {
                 }
               </div>
               <h3
-                className="font-bold py-2 bottom-0 bg-neutral-100 text-center
+                className="font-bold py-2 bottom-0 bg-zinc-100 text-center
                text-neutral-700 leading-8 rounded-bottom absolute min-h-min w-full h-20"
               >
                 {attributes.title}

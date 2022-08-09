@@ -13,7 +13,7 @@ const Subnav = (props) => {
   // const [data, setData] = useState([])
   const [selectedSideTab, setSelectedSideTab] = useState(null)
   const router = useRouter()
-  const { data: session } = useSession()
+  // const { data: session } = useSession()
 
   // const getSelectedNavLink = () => {
   //   return navbar.links.find(link => link.url === pluralName)
@@ -25,7 +25,9 @@ const Subnav = (props) => {
 
   const key = "/api/collection" + pluralName
   const { data, error } = useSWR(!cache.get(key)?key: null)
+  
   mutate(data?.data)
+  // console.log("data", data, cache)
 
   if (!navLink.nestedLinks || !navLink.nestedLinks.length) {
     return null
@@ -39,7 +41,7 @@ const Subnav = (props) => {
       return (
         <div
           className="
-        mega-menu w-full -mt-3 hidden bg-white absolute left-0 top-full z-30
+        mega-menu w-full -mt-3 hidden absolute left-0 top-full z-30
         "
           aria-labelledby={`subNav${navLink.text}`}
         >
@@ -55,7 +57,7 @@ const Subnav = (props) => {
                     >
                       {navLink.nestedLinks.map((e1) => (
                         <li
-                          className="nav-item flex-grow text-center hover:border-r-4 "
+                          className="nav-item flex-grow text-center hover:border-r-3"
                           key={`tab-${Math.random()}`}
                           role="presentation"
                           onMouseOver={(e) => {
@@ -78,7 +80,7 @@ const Subnav = (props) => {
           px-6
           py-3
           my-2
-          hover:border-transparent hover:bg-gray-100
+          hover:border-transparent hover:border-r-2 hover:border-yellow-300 border-solid
           focus:border-transparent
           active
         "
@@ -127,7 +129,7 @@ const Subnav = (props) => {
       return (
         <div
           className="
-        mega-menu w-full -mt-3 hidden bg-white absolute left-0  z-30
+        mega-menu w-full -mt-3 hidden absolute left-0  z-30
         "
           aria-labelledby={`subNav${navLink.text}`}
         >

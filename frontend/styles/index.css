@@ -87,14 +87,34 @@ h6 {
 
 .hoverable {
   position: static;
+  display: inline-block;
 }
 
 .hoverable:hover .mega-menu,
 .mega-menu:hover {
   display: flex;
-  z-index: 500 !important;
-  /* position: absolute; */
+  /* z-index: 500 !important; */
+  position: absolute;
+  width: 100vw;
+  /* left: auto; */
   transition: 1000ms !important;
+  @apply bg-gray-50
+}
+.hoverable > a {
+  position: relative;
+  @apply text-sky-300
+  
+}
+.hoverable:hover > a::after {
+  content: "";
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  border-width: 7px;
+  border-style: solid;
+  border-color: transparent;
+  @apply border-b-gray-50;
+
 }
 
 .carousel {
