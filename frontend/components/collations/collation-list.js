@@ -36,9 +36,9 @@ const List = ({ router }) => {
     //   }
     //   }
   )
-  console.log("router", router)
-  console.log("cache", cache)
-  console.log("data", data, error)
+  // console.log("router", router)
+  // console.log("cache", cache)
+  // console.log("data", data, error)
   // mutate(data?.data)
 
   // if (!data || data.data === null) {

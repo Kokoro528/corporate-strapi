@@ -367,7 +367,7 @@ export async function getPageData({ slug, locale, preview }) {
   if (pagesData.data?.pages == null || pagesData.data.pages.length === 0) {
     return null
   }
-  console.log("pagesData", pagesData.data)
+  // console.log("pagesData", pagesData.data)
   // Return the first item since there should only be one result per slug
   return pagesData.data.pages.data[0]
 }

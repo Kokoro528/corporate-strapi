@@ -78,7 +78,6 @@ const MyApp = ({ Component, pageProps: { session, ...pageProps } }) => {
   }
 
   const { metadata, favicon,  metaTitleSuffix} = global.attributes
-  console.log("global", global.attributes, metaTitleSuffix)
 
   return (
     <SessionProvider session={session}>
