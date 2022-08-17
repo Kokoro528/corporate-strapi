@@ -1,12 +1,7 @@
 "use strict"
 
 
-// const config = require('@strapi/strapi/lib/core/registries/config');
-// 引入obs库
-// 使用npm安装
 const ObsClient = require('esdk-obs-nodejs');
-var fs = require('fs');
-
 // 创建ObsClient实例
 
 module.exports = {
@@ -25,7 +20,7 @@ module.exports = {
             let prefix = providerOptions.prefix || "";
             prefix = prefix.trim() === "/" ? "" : prefix.trim(); // prefix only if not root
             const path = file.path ? `${file.path}/` : "";
-            return `${prefix}${path}${file.name.replace(/\s/g, '')}`;
+            return `${prefix}${path}${file.name.replace(/\s+/g, '')}`;
         }
 
 

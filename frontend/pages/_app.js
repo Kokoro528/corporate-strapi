@@ -19,11 +19,13 @@ const fetcher = (session) => (url) =>
     Object.assign(
       {},
       {
-        headers: Object.assign( {
-          "Content-Type": "application/json",
-        }, session?{Authorization: "Bearer " + session?.accessToken,}:{})
-      },
-
+        headers: Object.assign(
+          {
+            "Content-Type": "application/json",
+          },
+          session ? { Authorization: "Bearer " + session?.accessToken } : {}
+        ),
+      }
     )
   ).then((r) => {
     if (!r.ok) {
@@ -52,7 +54,7 @@ const Auth = ({ children }) => {
           fetcher(key)
         },
         onError: (err, key, config) => {
-          console.log('asjdk', key, err)
+          console.log("asjdk", key, err)
         },
         onSuccess: (data, key, config) => {
           console.log("asd", key, data)
@@ -77,7 +79,7 @@ const MyApp = ({ Component, pageProps: { session, ...pageProps } }) => {
     return <ErrorPage statusCode={404} />
   }
 
-  const { metadata, favicon,  metaTitleSuffix} = global.attributes
+  const { metadata, favicon, metaTitleSuffix } = global.attributes
 
   return (
     <SessionProvider session={session}>

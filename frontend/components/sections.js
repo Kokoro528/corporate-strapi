@@ -18,10 +18,10 @@ import SimpleFeatures from "./sections/simple-features"
 import RichContent from "./sections/rich-content-section"
 import InfoCards from "./sections/info-cards"
 import Carousel from "./sections/carousel"
-import Timeline from "./sections/timeline"
 import Features from "./sections/features"
 import dynamic from "next/dynamic"
 import CarouselSection from "./sections/carousel-sections"
+import Culture from "./sections/culture"
 
 // Map Strapi sections to section components
 const sectionComponents = {
@@ -29,9 +29,11 @@ const sectionComponents = {
   ComponentSectionsLargeVideo: dynamic(() =>
     import("@/components/sections/large-video")
   ),
+  ComponentInstanceCulture: Culture,
   ComponentSectionsFeatureColumnsGroup: FeatureColumnsGroup,
   ComponentSectionsFeatureRowsGroup: FeatureRowsGroup,
   ComponentSectionsBottomActions: BottomActions,
+  ComponentSectionsCards: InfoCards,
   ComponentSectionsTestimonialsGroup: TestimonialsGroup,
   ComponentSectionsRichText: RichText,
   ComponentSectionsRichContentSection: dynamic(() =>
@@ -51,7 +53,6 @@ const sectionComponents = {
   ),
   // ComponentSectionsCards: InfoCards,
   ComponentSectionsCarousel: Carousel,
-  ComponentSectionsTimeline: Timeline,
   ComponentSectionsHighlightingPoints: Features,
   // If getting dynamic zone using RESTful API
   "sections.rich-text": RichText,
@@ -76,25 +77,15 @@ const sectionComponents = {
   "sections.rich-content-section": dynamic(() =>
     import("@/components/sections/rich-content-section")
   ),
-  // "sections.cards": InfoCards,
+  "sections.cards": InfoCards,
   "sections.carousel": Carousel,
-  "sections.timeline": Timeline,
   "sections.highlighting-points": Features,
   "sections.solution-feature": dynamic(() =>
     import("@/components/sections/solution-feature")
   ),
   "sections.carousel-section": CarouselSection,
+  "instance.culture": Culture,
 }
-
-// const ContextSection = () => {
-//   return (
-//     <Context.Consumer>
-//       {({pageContext}) => {
-
-//       }}
-//     </Context.Consumer>
-//   )
-// }
 
 // Display a section individually
 const Section = ({ sectionData }) => {

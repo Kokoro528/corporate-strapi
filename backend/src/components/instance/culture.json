@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_instance_cultures",
+  "info": {
+    "displayName": "Culture",
+    "icon": "apple-alt",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "coreValues": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.feature-column"
+    },
+    "cultureEpitome": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.feature-column"
+    },
+    "background": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "title": {
+      "type": "string"
+    }
+  }
+}

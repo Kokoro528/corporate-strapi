@@ -3,17 +3,25 @@ import classNames from "classnames"
 import NextImage from "../elements/image"
 import ButtonLink from "../elements/button-link"
 import { getButtonAppearance } from "utils/button"
+import Markdown from "react-markdown"
 const InfoCards = ({ data }) => {
   return (
-    <div className="container py-12">
-      <h1 className="text-4xl text-center">{data.title}</h1>,
-      <div className="grid  grid-flow-col flex-col md:flex-row gap-4 md:justify-center mt-6">
-        {data.Cards.map((card) => (
+    <div className="container py-20">
+      <Markdown className="top-heading">{data.richtext}</Markdown>
+      <div className="grid mx-12 grid-cols-6 gap-4 grid-flow-dense flex-col md:flex-row md:gap-12 md:justify-center mt-6">
+        {data.cards.map((card, idx) => (
           <div
             className={classNames(
               // Common classes
-              "rounded-md border-1 flex flex-col items-center py-4 px-4 flex-1 md:w-lg",
-              "bg-gradient-to-t from-sky-100 via-sky-50 to-slate-50"
+              "rounded-md  col-span-6 md:col-span-2  flex flex-col items-center flex-1 md:w-lg",
+              "bg-gradient-to-t from-sky-100 via-sky-50 to-slate-50 ",
+              {
+                "md:col-start-2 md:col-end-4": idx % 5 === 0,
+                "md:col-start-4 md:col-end-6": idx % 5 === 1,
+                "md:col-start-3 md:col-end-5": idx % 5 === 3,
+                "md:col-start-1 md:col-end-3": idx % 5 === 2,
+                "md:col-start-5 md:col-end-7 ": idx % 5 === 4,
+              }
               // Normal plan
               //   {
               //     "bg-gray-100 text-gray-900 border-gray-300":
@@ -27,21 +35,28 @@ const InfoCards = ({ data }) => {
             )}
             key={card.id}
           >
-            {card.logo && card.logo.data && (
-              <div className="w-32 h-32">
-                <NextImage media={card.logo} />
+            {card.picture && (
+              <div className="w-full rounded-t aspect-video relative">
+                <NextImage
+                  media={card.picture}
+                  layout="fill"
+                  width="16"
+                  height="12"
+                  className="rounded-t-md object-cover"
+                />
               </div>
             )}
             <h2 className="text-xl font-bold text-neutral-600">{card.title}</h2>
-            <p
-              className={classNames("my-4 text-md", {
+            <Markdown
+              className={classNames("info-card", {
                 // "text-primary-700": plan.isRecommended,
                 // "text-gray-700": !plan.isRecommended,
                 "flex-auto": true,
+                "border-1": true,
               })}
             >
               {card.description}
-            </p>
+            </Markdown>
             <div className="flex flex-none flex-row  flex-wrap ">
               {card.buttons.map((button) => (
                 <ButtonLink

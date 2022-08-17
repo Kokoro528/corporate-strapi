@@ -6,7 +6,7 @@ import { backgroundImage } from "../../utils/text-background"
 
 const SimpleFeatures = ({ data }) => {
   return (
-    <div className="container  ">
+    <div className="container  mt-3">
       <h1 className="title text-center font-lg xl:font-xl">{data.title}</h1>
       <div className="grid mx-6 md:grid-cols-2  grid-cols-1 max-w-screen-lg gap-12 py-12 mx-auto">
         {data.features.map((feature, index) => (
@@ -19,19 +19,23 @@ const SimpleFeatures = ({ data }) => {
               //   "lg:flex-row": index % 2 === 0,
               //   "lg:flex-row-reverse": index % 2 === 1,
               // }
-              "bg-gradient-to-br from-primary-50 to-white"
+              // "bg-gradient-to-br from-primary-50 "
+              "bg-stripe-2 bg-cover bg-center bg-blend-saturate bg-amber-300",
+              "animate-[fadeIn_3s_ease_3s_1] "
             )}
             key={`simpleF${index}-${feature.title}`}
-            style={{
-              // backgroundImage: `url("${backgroundImage(index)}")`,
-              backgroundSize: "100% 100%",
-            }}
+            style={
+              {
+                // backgroundImage: `url("${backgroundImage(index)}")`,
+                // backgroundSize: "100% 100%",
+              }
+            }
           >
             {/* Text section */}
             {/* {backgroundImage(index)} */}
-            <div className=" lg:pr-6 text-lg">
+            <div className=" lg:pr-6 text-lg ">
               <h3 className="text-md font-bold">{feature.title}</h3>
-              <p className="my-6">{feature.description}</p>
+              <p className="my-6 px-2 text-sm">{feature.description}</p>
             </div>
             {/* Media section */}
             {/* <div className="w-full sm:9/12 lg:w-4/12 max-h-full"> */}

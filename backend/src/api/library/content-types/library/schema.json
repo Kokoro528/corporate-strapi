@@ -36,7 +36,6 @@
         "sections.feature-columns-group",
         "sections.feature-rows-group",
         "sections.hero",
-        "sections.hero-2",
         "sections.large-video",
         "sections.lead-form",
         "sections.media-features",
@@ -63,6 +62,37 @@
         "energy",
         "aviation"
       ]
+    },
+    "articlePicture": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "icon": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }

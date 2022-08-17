@@ -34,8 +34,6 @@ export default async (req, res) => {
     return res.status(500).json({ message: "Page didn't find" })
   }
 
-  
-
   // Enable Preview Mode by setting the cookies
   //   res.setPreviewData({})
 

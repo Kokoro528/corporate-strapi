@@ -1,23 +1,52 @@
 import classNames from "classnames"
 import ButtonLink from "../elements/button-link"
 import { getButtonAppearance } from "utils/button"
+import Markdown from "react-markdown"
+import { proseStyle } from "@/styles/prose/utils"
+import NextImage from "../elements/image"
 
 const TopHeading = ({ data }) => {
   const style = {
-    backgroundImage: data.backgroundImage?.data?.attributes?.url
-      ? `url("${data.backgroundImage?.data?.attributes?.url}")`
-      : "blue",
-    backgroundPosition: "center",
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
+    // backgroundImage: data.backgroundImage?.data?.attributes?.url
+    //   ? `url("${data.backgroundImage?.data?.attributes?.url}")`
+    //   : "blue",
+    // backgroundPosition: "center",
+    // backgroundSize: "contain",
+    // backgroundRepeat: "no-repeat",
   }
   return (
-    <section className={classNames(" py-20 text-center ")} style={style}>
-      <h2 className="title text-white mb-10">{data.title}</h2>
-      {/* Buttons row */}
-      <div className="container flex flex-row justify-center flex-wrap gap-4">
-        <p className=" text-white mb-10 mx-40">{data.abstract}</p>
-
+    <section className={classNames("  relative text-center")} style={style}>
+      <div
+        className={classNames("w-full h-full absolute", {
+          "bg-[url('/svg/dark-layer.svg')]": data.style === "dark",
+        })}
+      >
+        <NextImage
+          media={data.backgroundImage}
+          layout="fill"
+          width="4"
+          height="3"
+          priority
+          className={classNames("object-cover", {
+            "bg-[url('/svg/dark-layer.svg')] -z-10": data.style === "dark",
+          })}
+        />
+      </div>
+      <div className={classNames("container relative")}>
+        {data.title && <h2 className="title text-white my-5">{data.title}</h2>}
+        <Markdown
+          className={classNames(
+            "top-heading text-center",
+            "max-w-prose",
+            {
+              "prose-invert ": data.style === "dark",
+              "prose-lg": !data.narrow,
+            },
+            proseStyle(data.style)
+          )}
+        >
+          {data.abstract}
+        </Markdown>
         {data.buttons &&
           data.buttons.map((button) => (
             <ButtonLink

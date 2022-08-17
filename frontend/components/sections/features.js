@@ -8,7 +8,7 @@ const Features = ({ data }) => {
         <ul className="counter md:grid md:grid-cols-3">
           {data.bulletPoints.map((e, i) => (
             <li key={`bullet-point-${i}`} className="py-8 px-4">
-              <Markdown className="z-30">{e.text}</Markdown>
+              <Markdown className="z-30 prose">{e.text}</Markdown>
             </li>
           ))}
         </ul>

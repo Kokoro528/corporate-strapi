@@ -7,26 +7,14 @@
   },
   "options": {},
   "attributes": {
-    "buttons": {
+    "richtext": {
+      "type": "richtext"
+    },
+    "cards": {
+      "displayName": "Info Card",
       "type": "component",
       "repeatable": true,
-      "component": "links.button-link"
-    },
-    "title": {
-      "type": "string"
-    },
-    "avatar": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "type": "media",
-      "multiple": false
-    },
-    "description": {
-      "type": "richtext"
+      "component": "elements.info-card"
     }
   }
 }

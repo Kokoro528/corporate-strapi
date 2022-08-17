@@ -20,23 +20,10 @@ const Navbar = ({ navbar, pageContext, global }) => {
   const router = useRouter()
   const [mobileMenuIsShown, setMobileMenuIsShown] = useState(false)
   const [selectedNavItem, setSelectedNavItem] = useState("/")
-  const account = navbar.button;
+  const account = navbar.button
   account.text = <AiOutlineUser className="h-6 w-auto" />
-  
-  const {data: session, error} = useSession()
-  // useEffect(() => {
-  //   if (session?.accessToken) {
-  //     if (new Date(session?.expires).getTime() > new Date().getTime()) {
-  //       signOut()
-  //     }
-  //   }
-  // }, session)
 
-  // useCallback(() => {
-
-
-    
-  // })
+  const { data: session, error } = useSession()
 
   const routerContains = (navLink) => {
     const pathSlug = router.asPath.substring(1)
@@ -47,55 +34,52 @@ const Navbar = ({ navbar, pageContext, global }) => {
     )
   }
 
-
-
-
   return (
     <>
       {/* The actual navbar */}
       <nav className="sticky z-30 h-20 top-0 navbar navbar-expand-lg bg-white py-2 relative flex items-center w-full justify-between border-gray-200 border-b-2 py-6 sm:py-2 ">
         <div className="container flex flex-wrap flex-row items-center justify-between">
           {/* Content aligned to the left */}
-          <div className="flex flex-row items-center">
-            <Link href="/">
-              <a className="h-8 w-32">
-                <NextImage media={navbar.logo} />
-              </a>
-            </Link>
-            {/* List of links on desktop */}
-            <ul className="hidden z-40 list-none sm:flex md:flex flex-row md:gap-4 items-baseline ml-10">
-              {navbar.links.map((navLink) => (
-                <li
-                  className="z-30 hoverable "
-                  key={navLink.id}
-                  onMouseOver={() => {
-                    setSelectedNavItem(navLink.url)
-                  }}
-                >
-                  <CustomLink link={navLink}>
-                    <div
-                      id={"subNav" + navLink.text}
-                      data-bs-toggle="dropdown"
-                      // data-bs-target={"#subNav"+navLink.text}
-                      className={`${routerContains(navLink)
+          {/* <div className="flex flex-row justify-between"> */}
+          <Link href="/" className="flex-none">
+            <a className="h-8 w-32  flex-none">
+              <NextImage media={navbar.logo} />
+            </a>
+          </Link>
+          {/* List of links on desktop */}
+          <ul className="hidden z-40 list-none text-ellipsis grow sm:flex md:flex flex-row lg:gap-4 items-baseline ml-10">
+            {navbar.links.map((navLink) => (
+              <li
+                className="z-30 hoverable "
+                key={navLink.id}
+                onMouseOver={() => {
+                  setSelectedNavItem(navLink.url)
+                }}
+              >
+                <CustomLink link={navLink}>
+                  <div
+                    id={"subNav" + navLink.text}
+                    data-bs-toggle="dropdown"
+                    // data-bs-target={"#subNav"+navLink.text}
+                    className={`${
+                      routerContains(navLink)
                         ? `border-b-4 border-primary-400`
                         : ""
-                        } px-2 py-1  block pr-2 lg:px-2 py-2 truncate text-gray-700   hover:font-bold focus:text-orange-700 transition duration-150 ease-in-out flex items-center whitespace-nowrap`}
-                    >
-                      {navLink.text}
-                    </div>
-                  </CustomLink>
-                  <Subnav
-                    parentId={navLink.url.substring(1)}
-                    enums={global?.attributes.enums}
-                    navLink={navLink}
-                    pluralName={navLink.url}
-                  />
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="flex">
+                    } px-2 py-1  block lg:gap-2 lg:px-2 py-2  text-gray-700 truncate  hover:font-bold focus:text-orange-700 transition duration-150 ease-in-out flex items-center whitespace-nowrap`}
+                  >
+                    {navLink.text}
+                  </div>
+                </CustomLink>
+                <Subnav
+                  parentId={navLink.url.substring(1)}
+                  enums={global?.attributes.enums}
+                  navLink={navLink}
+                  pluralName={navLink.url}
+                />
+              </li>
+            ))}
+          </ul>
+          <div className="flex flex-none">
             {/* Locale Switch Mobile */}
             {/* {pageContext.localizedPaths && (
               <div className="md:hidden">
@@ -111,16 +95,14 @@ const Navbar = ({ navbar, pageContext, global }) => {
             </button>
             {/* CTA button on desktop */}
             {navbar.button && (
-              <div className="hidden md:block">
+              <div className="hidden md:inline-flex">
                 <ButtonLink
                   button={account}
                   appearance={"white"}
                   compact
-                // children={navbar.button}
-                // link={navbar.button}
-                >
-
-                </ButtonLink>
+                  // children={navbar.button}
+                  // link={navbar.button}
+                ></ButtonLink>
               </div>
             )}
             {/* Locale Switch Desktop */}
@@ -131,6 +113,8 @@ const Navbar = ({ navbar, pageContext, global }) => {
             )} */}
           </div>
         </div>
+
+        {/* </div> */}
       </nav>
 
       {/* Mobile navigation menu panel */}

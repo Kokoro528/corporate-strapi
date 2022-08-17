@@ -23,7 +23,7 @@ export async function fetchAPI(path, urlParamsObject = {}, options = {}) {
 
   // Build request URL
   const queryString = qs.stringify(urlParamsObject)
-  
+
   const requestUrl = `${getStrapiURL(
     `/api${path}${queryString ? `?${queryString}` : ""}`
   )}`
@@ -111,6 +111,22 @@ export async function getPageData({ slug, locale, preview }) {
                 }
                 contentSections {
                   __typename
+                  ... on ComponentSectionsCards {
+                    id
+                    cards {
+                      picture {
+                        ...FileParts
+                      }
+                      buttons {
+                        url
+                        text 
+                        type
+                        newTab
+                      }
+                      description
+                    }
+                    richtext  
+                  }
                   ... on ComponentSectionsMediaFeatures {
                     id
                     title
@@ -122,20 +138,25 @@ export async function getPageData({ slug, locale, preview }) {
                       description    
                     }
                   }
-                  ... on ComponentSectionsHighlightingPoints{
+                  ... on ComponentInstanceCulture {
                     title
-                    bulletPoints {
-                      text
+                    background {
+                      ...FileParts
                     }
-                  }
-                  ... on ComponentSectionsTimeline {
-                    timestamps {
+                    coreValues {
                       title
-                      subtimestamps {
-                        title
-                        description
+                      icon {
+                        ...FileParts
                       }
-                    }                    
+                      description
+                    }
+                    cultureEpitome {
+                      title
+                      icon {
+                        ...FileParts
+                      }
+                      description
+                    }
                   }
                   ... on ComponentSectionsCarousel {
                     cards {
@@ -262,6 +283,7 @@ export async function getPageData({ slug, locale, preview }) {
                     content
                     subtitle
                     title
+                    narrow
                     typeRCS: type
                     media {
                       data {
@@ -322,9 +344,13 @@ export async function getPageData({ slug, locale, preview }) {
                     type
                     url
                   }
-                
+                  style
                 }
+                
                 ... on ComponentSectionsCarouselSection {
+                  background {
+                    ...FileParts
+                  }
                   contentCards {
                     title
                     subtitle
@@ -332,6 +358,8 @@ export async function getPageData({ slug, locale, preview }) {
                     background {
                       ...FileParts
                     }
+                    type
+                    narrow
                     media {
                       data {
                         id
@@ -357,6 +385,7 @@ export async function getPageData({ slug, locale, preview }) {
       variables: {
         slug,
         publicationState: preview ? "PREVIEW" : "LIVE",
+        
         locale,
       },
     }),
@@ -450,7 +479,7 @@ export async function getCaseData({ locale, preview, category, title }) {
 
 
   const vars = `${!!category ? '$category: String' : ''} \n ${!!title ? '$title: String' : ''}`
-  
+
   const caseRes = await fetch(gqlEndpoint, {
     method: "POST",
     headers: {
@@ -514,6 +543,7 @@ export async function getCaseData({ locale, preview, category, title }) {
                     text
                     type
                     url
+                    style
                   }
                 }
                 ... on ComponentSectionsHero {

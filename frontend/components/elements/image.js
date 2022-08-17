@@ -8,19 +8,17 @@ const NextImage = ({ media, ...props }) => {
     return getStrapiMedia(src)
   }
   if (!media || !media.data) {
-    return (    
-      props.width && props.height?
+    return props.width && props.height ? (
       <Image
-        
         src={"/svg/gumi327.svg"}
         alt={""}
         width={props.width}
-        height={props.height }
+        height={props.height}
         quality="100"
         objectFit="cover"
         {...props}
-      />: null
-    )
+      />
+    ) : null
   }
   const { url, alternativeText, width, height } = media.data.attributes
 
@@ -34,6 +32,7 @@ const NextImage = ({ media, ...props }) => {
         width={width || props.width}
         height={height || props.height}
         quality="100"
+        layout={props.layout || "intrinsic"}
         {...props}
       />
     )

@@ -50,7 +50,7 @@
     "@tailwindcss/forms": "^0.5.0",
     "@tailwindcss/line-clamp": "^0.3.1",
     "@tailwindcss/typography": "^0.5.2",
-    "autoprefixer": "^10.4.4",
+    "autoprefixer": "^10.4.8",
     "eslint": "^7.30.0",
     "eslint-config-next": "^11.0.1",
     "eslint-config-prettier": "^8.3.0",
@@ -66,5 +66,16 @@
   "browser": {
     "crypto": false,
     "querystring": false
+  },
+  "browserslist": {
+    "production": [">0.2%",
+    "not dead",
+    "not op_mini all"],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version",
+      "last 1 edge version"
+    ]
   }
 }

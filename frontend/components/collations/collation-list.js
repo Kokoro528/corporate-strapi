@@ -14,27 +14,17 @@ const List = ({ router }) => {
   const { data: session } = useSession()
   const { cache, fetcher, ...restConfig } = useSWRConfig()
 
-  const { category } = router.query
+  let plural = router.pathname
+  let { category } = router.query
+  if (router.asPath.toLowerCase().includes("library")) {
+    plural = "/libraries"
+    // category = global.enums.libraries.
+  }
 
-  const isExisted = () => cache.get("/api/collection" + router.pathname)
+  const isExisted = () => cache.get("/api/collection" + plural)
   const { data, error } = useSWR(
-    !isExisted() ? "/api/collection" + router.pathname : null,
+    !isExisted() ? "/api/collection" + plural : null,
     fetcher
-    // {
-    //   onErrorRetry: (err, key) => {
-    //     fetcher(key)
-    //   },
-    //   onError: (err, key, config) => {
-    //     console.log('asjdk', key, err)
-    //   },
-    //   onSuccess: (data, key, config) => {
-    //     console.log("asd", key, data)
-    //     if (data) {
-    //       mutate(key, data)
-
-    //     }
-    //   }
-    //   }
   )
   // console.log("router", router)
   // console.log("cache", cache)

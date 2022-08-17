@@ -45,11 +45,13 @@ import List from "@/components/collations/collation-list"
 
 const DynamicPage = ({
   // data,
+  sections,
   page,
   metadata,
   preview,
   global,
   pageContext,
+
   title,
 }) => {
   const router = useRouter()
@@ -104,28 +106,12 @@ const DynamicPage = ({
 
   // const { data, error } = useSWR(`/api/collection`)
 
-  // useEffect(() => {
-  //   // setLoading(true)
-  //   console.log("lllt")
-  //   fetch(`/api/collection${router.asPath}`)
-  // // .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log("slk", data)
-  //       setData(data)
-  //     }).catch(e => {
-  //       console.error(e)
-  //     })
-  // }, [])
-  // console.log("nnn", data, router.asPath)
-
   return (
-    // <SWRConfig value= {{}}>
     <Layout global={global} pageContext={pageContext}>
       {/* Add meta tags for SEO*/}
-      {/* <Seo metadata={metadataWithDefaults} /> */}
+      <Seo metadata={metadataWithDefaults} />
       {/* Display content sections */}
       {/* <Header title={title} ></Header> */}
-      {/* <Sections sections={sections} preview={preview} /> */}
 
       <FilterTabs
         enumColumn={""}
@@ -133,10 +119,10 @@ const DynamicPage = ({
           e.url.includes(router.asPath.split("?")[0])
         )}
       >
+        <Sections sections={sections} preview={preview} />
         <List category={category} page={page} router={router}></List>
       </FilterTabs>
     </Layout>
-    // </SWRConfig>
   )
 }
 
@@ -155,34 +141,26 @@ export async function getServerSideProps(context) {
     context.res,
     options
   )
-  console.log("session brandy", session)
+  // console.log("session brandy", session)
   // Fetch pages. Include drafts if preview mode is on
-  // const pageData = await getCaseData({
+  // const pageData = await getCollectionLis({
   //   category: query?.type,
   //   locale,
   //   preview,
 
   // })
 
-  const PageData = await getPageData(
+  const pageData = await getPageData(
     {
-      slug: "cases",
+      slug: "products/Library",
       locale,
       preview,
     },
     session
   )
 
-  // const pageData = await getCollectionList("cases", session)
-  // console.log('pageDAta', pageData)
-
-  // if (pageData == null) {
-  //   // Giving the page no props will trigger a 404 page
-  //   return { props: {} }
-  // }
-
   // We have the required page data, pass it to the page component
-
+  const { contentSections, metadata, localizations, slug } = pageData.attributes
   const pageContext = {
     locale,
     locales,
@@ -196,9 +174,9 @@ export async function getServerSideProps(context) {
   return {
     props: {
       preview,
-      //   sections: contentSections,
+      sections: contentSections,
       // data: pageData.data,
-      page: PageData,
+      page: pageData,
       //   title,
       //   metadata,
       global: globalLocale,

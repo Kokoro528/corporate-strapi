@@ -2,11 +2,14 @@ import Context from "./context"
 import { useRouter } from "next/router"
 import { Link } from "next/link"
 import classNames from "classnames"
-import { MdMenu, MdArrowUpward } from "react-icons/md"
+import { MdMenu, MdArrowUpward, MdArrowDownward } from "react-icons/md"
 
+import { useState } from "react"
+import { transparent } from "tailwindcss/colors"
 const FilterTabs = ({ children, enumColumn, menubar }) => {
   const router = useRouter()
 
+  const [showCategory, setShowCategory] = useState(false)
   const isActive = (url) => {
     if (
       url.includes(router.query.category) ||
@@ -22,53 +25,55 @@ const FilterTabs = ({ children, enumColumn, menubar }) => {
         const enums = global.attributes.enums[enumColumn]
         return (
           <>
-            <nav className="relative bg-slate-200 ">
-              {!!menubar.nestedLinks.length && (
-                <div className="container ">
-                  <ul
-                    className="hidden md:nav md:py-2  md:max-w-screen-lg md:justify-center md:flex flex-col md:flex-row flex-wrap list-none border-b-0 pl-0 w-screen  "
-                    id="tabs-tabFill"
-                    role="tablist"
-                  >
-                    <li className="nav-item text-center " key="page-title">
-                      <a
-                        href={menubar.url}
-                        className={classNames(
-                          "nav-link text-neutral-900  w-full block font-large text-md leading-tight  uppercase  border-t-0 border-r-2 border-primary-400 y-2",
-                          { "font-bold text-neutral-900": isActive("") }
-                        )}
-                      >
-                        {menubar.text}
-                      </a>
-                    </li>
-                    {menubar.nestedLinks.map((e) => (
-                      <li
-                        className="nav-item  text-center"
-                        role="presentation"
-                        key={e.text}
-                      >
+            {menubar && (
+              <nav className="relative bg-slate-200 ">
+                {!!menubar.nestedLinks.length && (
+                  <div className="container ">
+                    <ul
+                      className="hidden md:nav md:py-2  md:max-w-screen-lg md:justify-center md:flex flex-col md:flex-row flex-wrap list-none border-b-0 pl-0 w-screen  "
+                      id="tabs-tabFill"
+                      role="tablist"
+                    >
+                      <li className="nav-item text-center " key="page-title">
                         <a
-                          href={`${e.url}`}
-                          // onClick={() => {router.push({query: {type: e}})}}
+                          href={menubar.url}
                           className={classNames(
                             "nav-link text-neutral-900  w-full block font-large text-md leading-tight  uppercase  border-t-0 border-r-2 border-primary-400 y-2",
-                            { "font-bold text-neutral-900": isActive(e.url) }
+                            { "font-bold text-neutral-900": isActive("") }
                           )}
-                          id={"tabs-" + e.text}
-                          data-bs-toggle="pill"
-                          data-bs-target={"#tabs-" + e.text}
-                          role="tab"
-                          aria-controls={"tabs-" + e.text}
-                          aria-selected="true"
                         >
-                          {e.text}
+                          {menubar.text}
                         </a>
                       </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </nav>
+                      {menubar.nestedLinks.map((e) => (
+                        <li
+                          className="nav-item  text-center"
+                          role="presentation"
+                          key={e.text}
+                        >
+                          <a
+                            href={`${e.url}`}
+                            // onClick={() => {router.push({query: {type: e}})}}
+                            className={classNames(
+                              "nav-link text-neutral-900  w-full block font-large text-md leading-tight  uppercase  border-t-0 border-r-2 border-primary-400 y-2",
+                              { "font-bold text-neutral-900": isActive(e.url) }
+                            )}
+                            id={"tabs-" + e.text}
+                            data-bs-toggle="pill"
+                            data-bs-target={"#tabs-" + e.text}
+                            role="tab"
+                            aria-controls={"tabs-" + e.text}
+                            aria-selected="true"
+                          >
+                            {e.text}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </nav>
+            )}
             <div className="tab-content" id={"tabs-tabContent"}>
               {/* {Object.keys(enums).map(e => { return */}
               <div
@@ -82,20 +87,41 @@ const FilterTabs = ({ children, enumColumn, menubar }) => {
               {/* })} */}
             </div>
 
+            <div className=" sticky bottom-0">
+              {!!menubar?.nestedLinks.length && (
+                <div
+                  className={classNames(
+                    " flex flex-col-reverse items-end  bottom-0",
+                    { "bg-gray-100": showCategory },
+                    "md:hidden "
+                  )}
+                >
+                  <button
+                    onClick={() => setShowCategory(!showCategory)}
+                    className={classNames(
+                      "bg-transparent relative float-right block p-2 text-primary-500",
+                      { "bg-inherit": showCategory }
+                    )}
+                  >
+                    <span className="block ">
+                      {showCategory ? (
+                        <MdArrowDownward className=" w-auto h-12 " />
+                      ) : (
+                        <MdArrowUpward className="w-auto h-12 " />
+                      )}
+                    </span>
+                  </button>
 
-            <div className="float-right sticky bottom-0">
-              {!!menubar.nestedLinks.length && (
-                <details className=" flex flex-col-reverse items-end float-right bottom-0  md:hidden ">
-                  <summary className=" bg-transparent block p-2 text-orange-300">
-                    <span className="block open:hidden">
-                      <MdMenu className=" w-auto h-12 " />
-                    </span>
-                    <span className="hidden open:block">
-                      <MdArrowUpward className="w-auto h-12 " />
-                    </span>
-                  </summary>
                   <ul
-                    className="opacity-100 whitespace-nowrap w-screen bg-gray-100 right-0 absolute bottom-12  md:nav md:py-2  md:justify-center md:flex flex-col md:flex-row flex-wrap list-none border-b-0 pl-0 "
+                    className={classNames(
+                      "opacity-100 whitespace-nowrap",
+                      "w-screen bg-gray-100 right-0 relative",
+                      //  "animate-[wiggle_1s_ease-in-out_infinite]",
+                      //  "transform-y-full",
+                      "p-1",
+                      "md:nav md:py-2  md:justify-center md:flex flex-col md:flex-row flex-wrap list-none ",
+                      { hidden: !showCategory }
+                    )}
                     id="tabs-tabFill"
                     role="tablist"
                   >
@@ -139,8 +165,7 @@ const FilterTabs = ({ children, enumColumn, menubar }) => {
                       </li>
                     ))}
                   </ul>
-                </details>
-                // </div>
+                </div>
               )}
             </div>
           </>

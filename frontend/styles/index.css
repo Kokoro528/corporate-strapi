@@ -1,12 +1,15 @@
+@import "./prose.css";
 @tailwind base;
 @tailwind components;
-
+@tailwind utilities;
 
 html {
   font-size: 13px;
   @apply text-gray-900;
   counter-reset: card;
 }
+
+
 
 p,
 div,
@@ -98,12 +101,11 @@ h6 {
   width: 100vw;
   /* left: auto; */
   transition: 1000ms !important;
-  @apply bg-gray-50
+  @apply bg-gray-50;
 }
 .hoverable > a {
   position: relative;
-  @apply text-sky-300
-  
+  @apply text-sky-300;
 }
 .hoverable:hover > a::after {
   content: "";
@@ -114,7 +116,6 @@ h6 {
   border-style: solid;
   border-color: transparent;
   @apply border-b-gray-50;
-
 }
 
 .carousel {
@@ -144,7 +145,7 @@ h6 {
 .counter {
   counter-reset: section;
 }
-.counter  li  {
+.counter li {
   counter-increment: section;
   display: flex;
   position: relative;
@@ -152,7 +153,7 @@ h6 {
 
   min-height: 8rem;
 }
-.counter  li::before {
+.counter li::before {
   width: 50%;
   position: absolute;
   top: 0;
@@ -170,6 +171,3 @@ h6 {
 }
 
 
-
-
-@tailwind utilities;

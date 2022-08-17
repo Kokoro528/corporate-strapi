@@ -70,9 +70,9 @@ const ProductSubcontainer = (props) => {
       "
       aria-labelledby={`subNav`}
     >
-      <div className="container">
+      <div className="container overflow-hidden">
         <div
-          className="grid grid-cols-3 gap-4 p-4"
+          className="grid grid-cols-3 gap-4 my-2"
           id="tabs-tabContentVertical"
         >
           <div className="col-span-1 ">

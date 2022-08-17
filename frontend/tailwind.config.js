@@ -1,3 +1,4 @@
+const { blue } = require('tailwindcss/colors')
 const colors = require('tailwindcss/colors')
 const plugin = require('tailwindcss/plugin')
 
@@ -7,7 +8,7 @@ module.exports = {
   darkMode: false, // or "media" or "class"
   theme: {
     fontFamily: {
-      'sans': ["PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", "Helvetica Neue", "Arial"]
+      'sans': ['"PingFang SC"', '"Hiragino Sans GB"', '"Microsoft YaHei"', '"WenQuanYi Micro Hei"', '"Helvetica Neue"', 'Arial']
     },
     fontSize: {
       'xs': '.75rem',
@@ -40,6 +41,11 @@ module.exports = {
       // => @media (min-width: 1536px) { ... }
     },
     extend: {
+
+      inset: {
+        '2/1': '200%',
+        '3/2': '150%'
+      },
       typography: {
         DEFAULT: {
           css: {
@@ -68,26 +74,7 @@ module.exports = {
 
         },
       },
-      colors: {
-        // primary: colors.indigo,
-        orange: colors.orange,
-        tongyuan: {
-          100: "RGB(218,233,247, 92)"
-        },
-        primary: {
-          900: "RGB(43.0,25.0,76.0)",
-          800: "RGB(41.0,47.0,98.0)",
-          700: "RGB(39.0,69.0,121.0)",
-          600: "RGB(43.0,93.0,151.0)",
-          500: "RGB(62.0,111.0,184.0)",
-          400: "RGB(102.0,132.0,211.0)",
-          300: "RGB(147.0,152.0,229.0)",
-          200: "RGB(179.0,173.0,239.0)",
-          100: "RGB(198.0,193.0,244.0)",
-          50: "RGB(217.0,213.0,248.0)",
-        },
 
-      },
       container: {
         center: true,
         padding: {
@@ -106,14 +93,67 @@ module.exports = {
   variants: {
     extend: {},
   },
-  // theme: {
-  //   extend: {
-  //     backgroundImage: theme => ({
-  //       'hero-pattern': "url('/img/hero-pattern.svg')",
-  //       'footer-texture': "url('/img/footer-texture.png')",
-  //     })
-  //   }
-  // },
+  theme: {
+
+    
+    extend: {
+      colors: {
+        // primary: colors.indigo,
+        ...colors,
+        tongyuan: {
+          100: "RGB(218,233,247, 92)",
+          'blue': "RGB(27,112, 182, 100)"
+        },
+        primary: {
+          900: "RGB(43.0,25.0,76.0)",
+          800: "RGB(41.0,47.0,98.0)",
+          700: "RGB(39.0,69.0,121.0)",
+          600: "RGB(43.0,93.0,151.0)",
+          500: "RGB(62.0,111.0,184.0)",
+          400: "RGB(102.0,132.0,211.0)",
+          300: "RGB(147.0,152.0,229.0)",
+          200: "RGB(179.0,173.0,239.0)",
+          100: "RGB(198.0,193.0,244.0)",
+          50: "RGB(217.0,213.0,248.0)",
+        },
+  
+      },
+      keyframes: {
+        wiggle: {
+          '0%, 100%': { transform: 'rotate(-3deg)' },
+          '50%': { transform: 'rotate(3deg)' },
+        },
+        shiftup: {
+          '0%': {
+            transform: 'translateY(100%)'
+          },
+          '100%': {
+            transform: 'translateY(0%)'
+          },
+
+
+
+        },
+        fadeIn: {
+          'from': {
+            opacity: "0.5",
+          },
+          'to': {
+            opacity: "1"
+          }
+        }
+      },
+
+      backgroundImage: theme => ({
+        // 'hero-pattern': "url('/img/hero-pattern.svg')",
+        // 'footer-texture': "url('/img/footer-texture.png')",
+        'grid': "url(\"data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(15 23 42 / 0.04)'><path d='M0 .5H31.5V32'/></svg>\")",
+        'stripe-1': "url('/svg/gumi88pure.svg')",
+        'stripe-2': "url('/svg/gumi95.svg')"
+
+      })
+    }
+  },
   plugins: [require("@tailwindcss/typography"), require("flowbite/plugin"), plugin(function ({ addUtilities }) {
     addUtilities({
       '.content-auto': {
@@ -124,6 +164,12 @@ module.exports = {
       },
       '.content-visible': {
         'content-visibility': 'visible',
+      },
+      '.writing-vertical-lr': {
+        'writing-mode': 'vertical-lr'
+      },
+      '.writing-lr': {
+        'writing-mode': 'lr'
       },
       '.counter': {
         'counter-reset': 'section',
@@ -143,12 +189,14 @@ module.exports = {
           'font-size': '4rem',
           'content': 'counter(section, decimal-leading-zero)',
           '@apply text-[#F4F7F9]': true,
-          'z-index':'-20'
+          'z-index': '-20'
         }
 
-      }
+      },
+
     })
-  })],
+  })
+  ],
   content: [
     'node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}'
   ]

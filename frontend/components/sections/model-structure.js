@@ -5,7 +5,7 @@ const ModelStructure = ({ data }) => {
 
   // return null
   return (
-    <div className="container py-12">
+    <div className="container py-12 bg-grid bg-gray-50">
       <h1 className="text-4xl text-center">{data.title}</h1>
       <div className="flex flex-col lg:grid lg:grid-cols-6 gap-4 lg:justify-center lg:w-lg max-w-screen-lg mx-auto  mt-6">
         {data.modelComponents.map((modelComponent) => (

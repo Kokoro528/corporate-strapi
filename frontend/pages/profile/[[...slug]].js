@@ -170,11 +170,11 @@ const Login = ({ signup }) => {
               </div> */}
 
               <a
-              href="#!"
-              className="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out"
-            >
-              {signup.forgotPassword}
-            </a>
+                href="#!"
+                className="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out"
+              >
+                {signup.forgotPassword}
+              </a>
             </div>
             <button
               type="submit"
@@ -210,7 +210,6 @@ const Login = ({ signup }) => {
             </p>
           </Form>
         </Formik>
-
       </div>
     </div>
   )
@@ -221,8 +220,6 @@ const SignUp = ({ signup }) => {
   return (
     <div className="container">
       <div className="block mx-auto my-10 p-6 rounded-lg shadow-lg bg-white max-w-md">
-        
-      
         <Formik
           initialValues={signupFields}
           // validationSchema={LeadSchema}
@@ -271,7 +268,6 @@ const SignUp = ({ signup }) => {
         >
           <Form>
             <div className="form-group mb-6">
-
               <label
                 htmlFor="username"
                 className="form-label inline-block mb-2 text-gray-700"
@@ -301,7 +297,6 @@ const SignUp = ({ signup }) => {
               />
             </div>
             <div className="form-group mb-6">
-
               <label
                 htmlFor="exampleInputEmail2"
                 className="form-label inline-block mb-2 text-gray-700"
@@ -339,7 +334,6 @@ const SignUp = ({ signup }) => {
               </label>
               <Field
                 type="password"
-
                 name="password"
                 className="form-control block
         w-full
@@ -356,7 +350,7 @@ const SignUp = ({ signup }) => {
         m-0
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                 id="exampleInputPassword2"
-              // placeholder="Password"
+                // placeholder="Password"
               />
             </div>
             <div className="flex justify-between items-center mb-6">
@@ -422,9 +416,7 @@ const SignUp = ({ signup }) => {
             </p>
           </Form>
         </Formik>
-
       </div>
-
     </div>
   )
 }

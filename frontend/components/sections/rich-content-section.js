@@ -5,6 +5,7 @@ import remarkImages from "remark-images"
 import Products from "../global/products"
 import NextImage from "../elements/image"
 import classNames from "classnames"
+import { proseStyle } from "@/styles/prose/utils"
 
 const RichContent = ({ data, pageContext, global }) => {
   let products = {}
@@ -25,17 +26,21 @@ const RichContent = ({ data, pageContext, global }) => {
       <div
         className={classNames(
           "container mb-6 mt-4 prose max-w-screen-xl flex flex-col items-center mt-4",
-          { "prose-invert": data.typeRCS === "dark" }
+          proseStyle(data.typeRCS)
         )}
       >
         {data.title && (
           <h1 className="my-5 text-3xl text-center">{data.title}</h1>
         )}
-        {data.subtitle && <h1>{data.subtitle}</h1>}
+        {data.subtitle && <h2>{data.subtitle}</h2>}
         <div
           className={classNames(
-            "prose max-w-screen-lg lg:prose-lg prose-table:table-auto  prose-table:border-separate prose-img:rounded-xl prose-em:text-center py-12 flex flex-col  ",
-            { "prose-invert": data.typeRCS === "dark" }
+            "prose lg:prose-lg prose-table:table-auto  prose-table:border-separate prose-img:rounded-xl prose-em:text-center py-12 flex flex-col  ",
+            // "max-w-prose",
+            {
+              "prose-invert": data.typeRCS === "dark",
+              "max-w-screen-md": !data.narrow,
+            }
           )}
         >
           <Markdown

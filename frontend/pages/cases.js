@@ -33,8 +33,6 @@ const DynamicPage = ({
 }) => {
   const router = useRouter()
 
- 
-
   const [data, setData] = useState([])
 
   // useEffect(() => {

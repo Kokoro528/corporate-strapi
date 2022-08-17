@@ -1,19 +1,17 @@
 {
-  "collectionName": "components_sections_hero_2s",
+  "collectionName": "components_elements_info_cards",
   "info": {
-    "displayName": "Hero 2",
-    "icon": "bowling-ball",
-    "description": ""
+    "displayName": "Info Card",
+    "icon": "air-freshener"
   },
   "options": {},
   "attributes": {
-    "title": {
-      "type": "string"
+    "buttons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "links.button-link"
     },
-    "label": {
-      "type": "string"
-    },
-    "smallTextWithLinks": {
+    "description": {
       "type": "richtext"
     },
     "picture": {

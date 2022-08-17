@@ -21,7 +21,7 @@ const DynamicPage = ({
   global,
   pageContext,
   slug,
-  session
+  session,
 }) => {
   const router = useRouter()
 
@@ -43,8 +43,8 @@ const DynamicPage = ({
     ...global.attributes.metadata,
     ...metadata,
   }
-  // console.log(metadataWithDefaults)
 
+  console.log("slug", slug)
   return (
     <Layout
       global={global}
@@ -56,9 +56,8 @@ const DynamicPage = ({
       {/* <Seo metadata={metadataWithDefaults} /> */}
       {/* Display content sections */}
       <FilterTabs
-        // enumColumn={"cases"}
         menubar={global?.attributes?.navbar.links.find((e) =>
-          e.url.includes(slug.split("/")[0])
+          slug ? e.url.includes(slug.substring(1).split("/")[0]) : null
         )}
       >
         {/* <CaseList
@@ -114,7 +113,12 @@ export async function getStaticProps(context) {
     locale,
     preview,
   })
-  
+  console.log(
+    "slug",
+    params.slug,
+    (!params.slug ? [""] : params.slug).join("/"),
+    pageData
+  )
 
   if (pageData == null) {
     // Giving the page no props will trigger a 404 page

@@ -42,8 +42,14 @@
       "type": "enumeration",
       "enum": [
         "dark",
-        "white"
+        "white",
+        "timeline",
+        "prose-w-list",
+        "prose"
       ]
+    },
+    "narrow": {
+      "type": "boolean"
     }
   }
 }

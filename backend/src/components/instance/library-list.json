@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_instance_library_lists",
+  "info": {
+    "displayName": "Library List",
+    "icon": "retweet",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "libraries": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::library.library"
+    }
+  }
+}

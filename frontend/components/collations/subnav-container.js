@@ -19,13 +19,11 @@ const Subnav = (props) => {
   //   return navbar.links.find(link => link.url === pluralName)
   // }
 
-
-
   const { cache, mutate, ...restConfig } = useSWRConfig()
 
   const key = "/api/collection" + pluralName
-  const { data, error } = useSWR(!cache.get(key)?key: null)
-  
+  const { data, error } = useSWR(!cache.get(key) ? key : null)
+
   mutate(data?.data)
   // console.log("data", data, cache)
 
@@ -98,8 +96,9 @@ const Subnav = (props) => {
                 className="col grid grid-cols-2 gap-4 p-4"
                 id="tabs-tabContentVertical"
               >
-                {cache.get(key)?.data
-                  ?.filter(
+                {cache
+                  .get(key)
+                  ?.data?.filter(
                     (e) =>
                       e.attributes.category ===
                       (selectedSideTab ||
@@ -126,29 +125,24 @@ const Subnav = (props) => {
         </div>
       )
     } else {
+      console.log(selectedSideTab, "selected")
       return (
         <div
           className="
-        mega-menu w-full -mt-3 hidden absolute left-0  z-30
+        mega-menu w-full -mt-3 hidden absolute left-0 top-full z-30
         "
           aria-labelledby={`subNav${navLink.text}`}
         >
           <div className="container ">
             <div
-              className="grid grid-cols-2 gap-4 p-4"
+              className="grid grid-cols-2 gap-4 my-4 p-4"
               id="tabs-tabContentVertical"
             >
-              {selectedSideTab &&
-                selectedSideTab.length &&
-                data.map((e) => (
-                  <li key={`${e.attributes.title}-${pluralName}-${e.id}`}>
-                    <CustomLink
-                      link={{ url: `${pluralName}/${e.attributes.title}` }}
-                    >
-                      {e.attributes.title}
-                    </CustomLink>
-                  </li>
-                ))}
+              {navLink.nestedLinks?.map((e) => (
+                <li key={`${e.text}-${e.url}-${e.id}`}>
+                  <CustomLink link={{ url: `${e.url}` }}>{e.text}</CustomLink>
+                </li>
+              ))}
             </div>
           </div>
         </div>

@@ -28,6 +28,13 @@
       "type": "component",
       "repeatable": true,
       "component": "links.button-link"
+    },
+    "style": {
+      "type": "enumeration",
+      "enum": [
+        "dark",
+        "light"
+      ]
     }
   }
 }

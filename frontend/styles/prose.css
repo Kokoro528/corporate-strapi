@@ -1,0 +1,55 @@
+.timeline {
+    @apply md:grid md:grid-cols-8 flex flex-col md:grid-flow-dense md:gap-4;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply md:col-span-1 text-primary-700 font-bold text-right content-center flex-1;
+        + * {
+            @apply md:col-span-3 border-l-2 border-yellow-300 pl-3 text-justify prose prose-strong:text-yellow-300;
+        }
+    }
+}
+
+.top-heading {
+    @apply text-center prose mx-auto py-20;
+    h1,
+    h2,
+    h3,
+    h4 {
+        @apply font-normal underline underline-offset-8 ;
+    }
+    p {
+        @apply py-1;
+    }
+}
+
+.feature-group {
+    @apply prose mx-auto flex flex-col justify-start;
+    h1,h2 {
+        @apply font-medium text-2xl  my-2;
+    }
+    
+}
+
+.info-card {
+    @apply prose flex flex-col justify-start md:text-base text-sm mx-auto rounded-b-md;
+    h1, h2 {
+        @apply font-medium text-xl m-2;
+        ~* {
+            @apply p-2;
+        }
+    }
+}
+
+.prose-w-list {
+    @apply prose max-w-none;
+    ol, ul{
+        @apply grid grid-cols-2 list-none counter;
+        li {
+            @apply col-span-1 ;
+        }
+    }
+}
