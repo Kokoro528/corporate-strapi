@@ -2821,11 +2821,6 @@ next@^12.1.7-canary.50:
     "@next/swc-win32-ia32-msvc" "12.2.3"
     "@next/swc-win32-x64-msvc" "12.2.3"
 
-nextjs@^12.2.0:
-  version "0.0.3"
-  resolved "https://registry.npmmirror.com/nextjs/-/nextjs-0.0.3.tgz#4f4d1d6a257be920d9b9649d4d9522c724a4e543"
-  integrity sha512-mYbDUo4/sRAZ8TqK63PCpYnFiLg7BICG/ot9+guOrUKd4/Fo71ZmEQ41IZbH6nqbQvG7SXTBuofJXAIWfNho0w==
-
 node-releases@^2.0.6:
   version "2.0.6"
   resolved "https://registry.npmmirror.com/node-releases/-/node-releases-2.0.6.tgz#8a7088c63a55e493845683ebf3c828d8c51c5503"

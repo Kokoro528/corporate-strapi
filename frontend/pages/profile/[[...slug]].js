@@ -497,7 +497,7 @@ export async function getServerSideProps(context) {
     props: {
       preview,
       signup,
-      //   metadata,
+      // metadata,
       global: globalLocale,
       pageContext: {
         ...pageContext,

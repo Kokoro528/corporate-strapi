@@ -99,15 +99,17 @@ const Section = ({ sectionData }) => {
 
   // Display the section
   return (
-    <Context.Consumer>
-      {({ global, pageContext, className }) => (
-        <SectionComponent
-          data={sectionData}
-          global={global}
-          pageContext={pageContext}
-        />
-      )}
-    </Context.Consumer>
+    // <Context.Consumer>
+    //   {({ global, pageContext }) => (
+    // <>{JSON.stringify(sectionData)}
+    <SectionComponent
+      data={sectionData}
+      // global={global}
+      // pageContext={pageContext}
+    />
+    //     // </>
+    //   )}
+    // </Context.Consumer>
   )
 }
 

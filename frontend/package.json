@@ -25,7 +25,6 @@
     "next": "^12.1.7-canary.50",
     "next-auth": "^4.10.2",
     "next-seo": "^4.7.1",
-    "nextjs": "^12.2.0",
     "pinyin-pro": "^3.10.0",
     "postcss-import": "^14.0.2",
     "prop-types": "^15.7.2",
@@ -66,16 +65,6 @@
   "browser": {
     "crypto": false,
     "querystring": false
-  },
-  "browserslist": {
-    "production": [">0.2%",
-    "not dead",
-    "not op_mini all"],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version",
-      "last 1 edge version"
-    ]
   }
+ 
 }

@@ -9,6 +9,7 @@ module.exports = {
     domains: ['localhost', 'strapi.obs.cn-east-3.myhuaweicloud.com', 'tongyuan.cc'],
     // domains: ['localhost']
   },
+  reactStrictMode: false
 
   // webpack: (
   //   config,

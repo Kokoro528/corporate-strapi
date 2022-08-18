@@ -6,6 +6,7 @@ import { useRouter } from "next/router"
 import Layout from "@/components/layout"
 import { getLocalizedPaths } from "utils/localize"
 import FilterTabs from "@/components/filter-tabs"
+import Context from "@/components/context"
 
 // import { options } from "./api/auth/[...nextauth]"
 // import { unstable_getServerSession } from "next-auth"
@@ -41,35 +42,32 @@ const DynamicPage = ({
   // }
   const metadataWithDefaults = {
     ...global.attributes.metadata,
-    ...metadata,
+    ...(metadata || {}),
   }
 
-  console.log("slug", slug)
   return (
-    <Layout
-      global={global}
-      pageContext={pageContext}
-      metadata={metadataWithDefaults}
-      session={session}
-    >
-      {/* Add meta tags for SEO*/}
+    // {/* Add meta tags for SEO*/}
+    <>
       {/* <Seo metadata={metadataWithDefaults} /> */}
       {/* Display content sections */}
+
       <FilterTabs
         menubar={global?.attributes?.navbar.links.find((e) =>
           slug ? e.url.includes(slug.substring(1).split("/")[0]) : null
         )}
       >
-        {/* <CaseList
-          data={data?.filter((e) =>
-            category ? e.attributes.category === category : true
-          )}
-          page={page}
-        ></CaseList> */}
-
         <Sections sections={sections} preview={preview} />
       </FilterTabs>
-    </Layout>
+    </>
+  )
+}
+
+DynamicPage.getLayout = function getLayout(page) {
+  console.log("aik", page)
+  return (
+    <Context.Consumer>
+      {({ global }) => <Layout global={global}>{page}</Layout>}
+    </Context.Consumer>
   )
 }
 
