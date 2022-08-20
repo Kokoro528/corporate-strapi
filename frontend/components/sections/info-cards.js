@@ -22,16 +22,6 @@ const InfoCards = ({ data }) => {
                 "md:col-start-1 md:col-end-3": idx % 5 === 2,
                 "md:col-start-5 md:col-end-7 ": idx % 5 === 4,
               }
-              // Normal plan
-              //   {
-              //     "bg-gray-100 text-gray-900 border-gray-300":
-              //       !plan.isRecommended,
-              //   },
-              //   // Recommended plan
-              //   {
-              //     "bg-primary-100 text-primary-900 border-primary-300":
-              //       plan.isRecommended,
-              //   }
             )}
             key={card.id}
           >

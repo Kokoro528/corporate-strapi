@@ -22,6 +22,7 @@ import Features from "./sections/features"
 import dynamic from "next/dynamic"
 import CarouselSection from "./sections/carousel-sections"
 import Culture from "./sections/culture"
+import MworksIntros from "./instance/mworks-intro"
 
 // Map Strapi sections to section components
 const sectionComponents = {
@@ -30,6 +31,7 @@ const sectionComponents = {
     import("@/components/sections/large-video")
   ),
   ComponentInstanceCulture: Culture,
+  ComponentInstanceMworksIntros: MworksIntros,
   ComponentSectionsFeatureColumnsGroup: FeatureColumnsGroup,
   ComponentSectionsFeatureRowsGroup: FeatureRowsGroup,
   ComponentSectionsBottomActions: BottomActions,

@@ -5,8 +5,11 @@ import CustomLink from "../elements/custom-link"
 
 const FeatureRowsGroup = ({ data }) => {
   return (
-    <div className="container flex flex-col gap-12 py-12">
-      {data.features.map((feature, index) => (
+    
+    <div className=" relative bg-blue-100 flex flex-col gap-12 py-12">
+      <div className="absolute container   w-full h-full"></div>
+      <div className=" container relative">
+        {data.features.map((feature, index) => (
         <div
           className={classNames(
             // Common classes
@@ -19,8 +22,8 @@ const FeatureRowsGroup = ({ data }) => {
           key={feature.id}
         >
           {/* Text section */}
-          <div className="w-full lg:w-6/12 lg:pr-6 text-lg">
-            <h3 className="title">{feature.title}</h3>
+          <div className="w-full lg:w-6/12 lg:pr-6 text-base">
+            <h3 className="title text-base">{feature.title}</h3>
             <p className="my-6">{feature.description}</p>
             {feature.link && (
               <CustomLink link={feature.link}>
@@ -31,11 +34,11 @@ const FeatureRowsGroup = ({ data }) => {
             )}
           </div>
           {/* Media section */}
-          <div className="w-full sm:9/12 lg:w-4/12 max-h-full">
+          <div className="w-full sm:9/12 lg:w-4/12 max-h-full ">
             {/* Images */}
             {feature.media.data.attributes.mime.startsWith("image") && (
               <div className="w-full h-auto">
-                <NextImage media={feature.media} />
+                <NextImage media={feature.media}  />
               </div>
             )}
             {/* Videos */}
@@ -50,6 +53,8 @@ const FeatureRowsGroup = ({ data }) => {
           </div>
         </div>
       ))}
+      </div>
+      
     </div>
   )
 }

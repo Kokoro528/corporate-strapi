@@ -346,7 +346,28 @@ export async function getPageData({ slug, locale, preview }) {
                   }
                   style
                 }
-                
+                ... on ComponentInstanceMworksIntros {
+                  richtext
+                  learnings {
+                    url
+                    title
+                    newTab
+                    icon {
+                      ...FileParts
+                    }
+                  }
+                  links {
+                    id
+                    url
+                    newTab
+                    text
+                    type
+                  }
+                  isDark
+                  backgroundImage {
+                    ...FileParts
+                  }
+                }
                 ... on ComponentSectionsCarouselSection {
                   background {
                     ...FileParts

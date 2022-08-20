@@ -57,7 +57,8 @@
         "sections.carousel-section",
         "sections.cards",
         "instance.culture",
-        "instance.library-list"
+        "instance.library-list",
+        "instance.mworks-intros"
       ],
       "pluginOptions": {
         "i18n": {

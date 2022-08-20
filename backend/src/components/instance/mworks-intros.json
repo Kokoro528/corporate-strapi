@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_instance_mworks_intros",
+  "info": {
+    "displayName": "Mworks Intros",
+    "icon": "braille",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "learnings": {
+      "type": "component",
+      "repeatable": true,
+      "component": "links.link-with-icon"
+    },
+    "richtext": {
+      "type": "richtext"
+    },
+    "links": {
+      "type": "component",
+      "repeatable": true,
+      "component": "links.button-link"
+    },
+    "isDark": {
+      "type": "boolean"
+    },
+    "backgroundImage": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

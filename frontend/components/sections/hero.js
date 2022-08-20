@@ -30,7 +30,7 @@ const Hero = ({ data }) => {
           {/* Big title */}
           <h1
             className={classNames(
-              "text-5xl font-bold mt-2 sm:mt-0 mb-4 sm:mb-2",
+              "text-5xl text-yellow-500 font-bold mt-2 sm:mt-0 mb-4 sm:mb-2",
               { "text-white": data.type === "dark" }
             )}
           >
@@ -51,7 +51,7 @@ const Hero = ({ data }) => {
           </div>
           {/* Small rich text */}
           <div className="text-base md:text-sm mt-4 sm:mt-3 rich-text-hero">
-            <Markdown>{data.smallTextWithLink}</Markdown>
+            <Markdown className="rich-text-hero">{data.smallTextWithLink}</Markdown>
           </div>
         </div>
         {/* Right column for the image */}

@@ -63,7 +63,6 @@ const DynamicPage = ({
 }
 
 DynamicPage.getLayout = function getLayout(page) {
-  console.log("aik", page)
   return (
     <Context.Consumer>
       {({ global }) => <Layout global={global}>{page}</Layout>}
