@@ -48,7 +48,7 @@ h6 {
 }
 
 .title {
-  @apply text-4xl leading-snug font-semibold text-orange-600;
+  @apply text-4xl leading-snug font-semibold;
 }
 
 @media (min-width: 768px) {

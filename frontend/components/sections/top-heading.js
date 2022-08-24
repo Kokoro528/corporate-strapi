@@ -33,7 +33,7 @@ const TopHeading = ({ data }) => {
         />
       </div>
       <div className={classNames("container relative")}>
-        {data.title && <h2 className="title text-white my-5">{data.title}</h2>}
+        {data.title && <h2 className={classNames("text-5xl my-5 prose", {"prose-invert": data.style === 'dark'})}>{data.title}</h2>}
         <Markdown
           className={classNames(
             "top-heading text-center",

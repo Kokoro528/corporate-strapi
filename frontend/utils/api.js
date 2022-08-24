@@ -206,14 +206,20 @@ export async function getPageData({ slug, locale, preview }) {
                   }
                   ... on ComponentSectionsFeatureColumnsGroup {
                     id
+                    isFlex
                     features {
                       id
                       description
                       icon {
                         ...FileParts
                       }
+                      url
                       titleFCG: title
                     }
+                    backgroundImage{
+                      ...FileParts
+                    }
+                    brief
                   }
                   ... on ComponentSectionsFeatureRowsGroup {
                     id

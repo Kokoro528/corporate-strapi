@@ -17,7 +17,7 @@ const Hero = ({ data }) => {
     >
       <main
         className={classNames(
-          "container  lg:max-w-sreen-lg flex flex-col md:flex-row items-center justify-between py-20",
+          "container min-h-300px lg:max-w-sreen-lg flex flex-col md:flex-row items-center justify-between py-20",
           {
             "text-white": data.type === "dark",
           }

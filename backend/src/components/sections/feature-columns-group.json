@@ -15,6 +15,23 @@
     },
     "title": {
       "type": "string"
+    },
+    "isFlex": {
+      "type": "boolean"
+    },
+    "backgroundImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "brief": {
+      "type": "richtext"
     }
   }
 }

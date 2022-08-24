@@ -14,12 +14,16 @@
     "icon": {
       "type": "media",
       "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
       ]
     },
     "description": {
       "type": "richtext"
+    },
+    "url": {
+      "type": "string"
     }
   }
 }
