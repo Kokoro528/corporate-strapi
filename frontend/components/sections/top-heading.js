@@ -33,20 +33,30 @@ const TopHeading = ({ data }) => {
         />
       </div>
       <div className={classNames("container relative")}>
-        {data.title && <h2 className={classNames("text-5xl font-bold my-5 prose", {"prose-invert": data.style === 'dark'})}>{data.title}</h2>}
-        {data.abstract && <Markdown
-          className={classNames(
-            "top-heading text-center",
-            "max-w-prose",
-            {
-              "prose-invert ": data.style === "dark",
-              "prose-lg": !data.narrow,
-            },
-            proseStyle(data.style)
-          )}
-        >
-          {data.abstract}
-        </Markdown>}
+        {data.title && (
+          <h2
+            className={classNames("text-5xl font-bold my-5 prose", {
+              "prose-invert": data.style === "dark",
+            })}
+          >
+            {data.title}
+          </h2>
+        )}
+        {data.abstract && (
+          <Markdown
+            className={classNames(
+              "top-heading text-center",
+              "max-w-prose",
+              {
+                "prose-invert ": data.style === "dark",
+                "prose-lg": !data.narrow,
+              },
+              proseStyle(data.style)
+            )}
+          >
+            {data.abstract}
+          </Markdown>
+        )}
         {data.buttons &&
           data.buttons.map((button) => (
             <ButtonLink

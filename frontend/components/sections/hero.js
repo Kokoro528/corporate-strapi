@@ -51,7 +51,9 @@ const Hero = ({ data }) => {
           </div>
           {/* Small rich text */}
           <div className="text-base md:text-sm mt-4 sm:mt-3 rich-text-hero">
-            <Markdown className="rich-text-hero">{data.smallTextWithLink}</Markdown>
+            <Markdown className="rich-text-hero">
+              {data.smallTextWithLink}
+            </Markdown>
           </div>
         </div>
         {/* Right column for the image */}

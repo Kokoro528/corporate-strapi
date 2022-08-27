@@ -17,10 +17,13 @@ import { getStrapiURL } from "utils/api"
 import { set } from "date-fns"
 
 const Input = ({ name, label, ...props }) => {
-  const [field, meta] = useField(name);
+  const [field, meta] = useField(name)
   return (
     <div className="mb-4">
-      <label className="block text-gray-700 text-sm font-bold" for={field.name}>
+      <label
+        className="block text-gray-700 text-sm font-bold"
+        htmlFor={field.name}
+      >
         {label}
       </label>
       <input
@@ -36,8 +39,8 @@ const Input = ({ name, label, ...props }) => {
         className="text-red-500 text-xs"
       />
     </div>
-  );
-};
+  )
+}
 
 const Login = ({ signup }) => {
   const router = useRouter()
@@ -73,7 +76,6 @@ const Login = ({ signup }) => {
           onSubmit={async (values, { setSubmitting, setErrors }) => {
             setLoading(true)
             signIn("credentials", values)
-          
           }}
         >
           <Form>
@@ -206,82 +208,83 @@ const Login = ({ signup }) => {
   )
 }
 
-const register = async(values, failure, success) => {
+const register = async (values, failure, success) => {
   const endpoint = getStrapiURL(`/api/auth/local/register`)
-    const signUpRes = await fetch(endpoint, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(values)
-    })
-    
-    if (!signUpRes.ok) {
-      console.error(signUpRes)
-      
+  const signUpRes = await fetch(endpoint, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(values),
+  })
+
+  if (!signUpRes.ok) {
+    console.error(signUpRes)
+  }
+  const resp = await signUpRes.json()
+  if (!signUpRes.ok) {
+    if (resp.error.message) {
+      // console.log(resp.error.message)
+      failure(resp.error.message)
     }
-    const resp = await signUpRes.json()
-    if (!signUpRes.ok) {
-      if (resp.error.message) {
-        // console.log(resp.error.message)
-        failure(resp.error.message)
-  
-      }
-      
-    }
-    else {
-      success()
-    }
+  } else {
+    success()
+  }
 }
 
 const SignUp = ({ signup }) => {
-
   const router = useRouter()
   const [loading, setLoading] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [failureMsg, setFailureMsg] = useState("")
-  const [signupFields, setSignUpFields] = useState({ email: "", username: "", password: "" })
+  const [signupFields, setSignUpFields] = useState({
+    email: "",
+    username: "",
+    password: "",
+  })
   const [succeeded, setSuccess] = useState(false)
-  const failure  = useCallback((msg) => {
-    setFailureMsg(msg)
-  }, [failureMsg])
+  const failure = useCallback(
+    (msg) => {
+      setFailureMsg(msg)
+    },
+    [failureMsg]
+  )
   const success = useCallback(() => {
     setSuccess(true)
   }, [succeeded])
 
   if (succeeded) {
-    signIn("credentials", Object.assign(signupFields, {identifier: signupFields.email}))
+    signIn(
+      "credentials",
+      Object.assign(signupFields, { identifier: signupFields.email })
+    )
   }
-  
+
   return (
     <div className="container">
-      
       <div className="block mx-auto my-10 p-6 rounded-lg shadow-lg bg-white max-w-md">
         <Formik
           initialValues={signupFields}
           // validationSchema={LeadSchema}
           validate={(values) => {
-            let errors = {};
+            let errors = {}
             // setLoading(true);
             if (!values.email) {
-              errors.email = "Required";
+              errors.email = "Required"
             }
             if (!values.password) {
               errors.password = "Qing"
             }
-            
 
-            return errors;
+            return errors
           }}
-          onSubmit={async (values, {setFailureMsg }) => {
+          onSubmit={async (values, { setFailureMsg }) => {
             setSignUpFields(values)
             setLoading(true)
             if (!values.username) {
               values.username = values.email
             }
             register(values, failure, success)
-
-
           }}
         >
           {({ errors, touched }) => (
@@ -351,7 +354,8 @@ const SignUp = ({ signup }) => {
                 </a>
               </p>
               {failureMsg && <p className="text-red-700">{failureMsg}</p>}
-            </Form>)}
+            </Form>
+          )}
         </Formik>
       </div>
     </div>

@@ -50,34 +50,34 @@ const Navbar = ({ navbar, pageContext, global }) => {
           <ul className="hidden z-40 list-none text-ellipsis grow sm:flex md:flex flex-row lg:gap-4 items-baseline ml-10">
             {navbar.links.map((navLink) => (
               <>
-              <li
-                className="z-30 hoverable "
-                key={navLink.id}
-                onMouseOver={() => {
-                  setSelectedNavItem(navLink.url)
-                }}
-              >
-                <CustomLink link={navLink}>
-                  <div
-                    id={"subNav" + navLink.text}
-                    data-bs-toggle="dropdown"
-                    // data-bs-target={"#subNav"+navLink.text}
-                    className={`${
-                      routerContains(navLink)
-                        ? `border-b-4 border-primary-400`
-                        : ""
-                    } px-2 py-1  block lg:gap-2 lg:px-2 py-2  text-gray-700 truncate  hover:font-bold focus:text-orange-700 transition duration-150 ease-in-out flex items-center whitespace-nowrap`}
-                  >
-                    {navLink.text}
-                  </div>
-                </CustomLink>
-                <Subnav
-                  parentId={navLink.url.substring(1)}
-                  enums={global?.attributes.enums}
-                  navLink={navLink}
-                  pluralName={navLink.url}
-                />
-              </li>
+                <li
+                  className="z-30 hoverable "
+                  key={navLink.id}
+                  onMouseOver={() => {
+                    setSelectedNavItem(navLink.url)
+                  }}
+                >
+                  <CustomLink link={navLink}>
+                    <div
+                      id={"subNav" + navLink.text}
+                      data-bs-toggle="dropdown"
+                      // data-bs-target={"#subNav"+navLink.text}
+                      className={`${
+                        routerContains(navLink)
+                          ? `border-b-4 border-primary-400`
+                          : ""
+                      } px-2 py-1  block lg:gap-2 lg:px-2 py-2  text-gray-700 truncate  hover:font-bold focus:text-orange-700 transition duration-150 ease-in-out flex items-center whitespace-nowrap`}
+                    >
+                      {navLink.text}
+                    </div>
+                  </CustomLink>
+                  <Subnav
+                    parentId={navLink.url.substring(1)}
+                    enums={global?.attributes.enums}
+                    navLink={navLink}
+                    pluralName={navLink.url}
+                  />
+                </li>
               </>
             ))}
           </ul>

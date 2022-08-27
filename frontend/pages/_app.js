@@ -14,7 +14,6 @@ import Context from "@/components/context"
 // import "@/styles/nav.css"
 // import "@/styles/table.css"
 
-
 const fetcher = (session) => (url, body) =>
   fetch(
     url,
@@ -27,7 +26,6 @@ const fetcher = (session) => (url, body) =>
           },
           session ? { Authorization: "Bearer " + session?.accessToken } : {}
         ),
-
       },
       { body }
     )
@@ -47,31 +45,32 @@ const Auth = ({ children }) => {
 
   console.log("session", session)
 
-  return (<SWRConfig
-    value={{
-      fetcher: fetcher(session),
-      provider: () => new Map(),
-      onErrorRetry: (err, key) => {
-        fetcher(key)
-      },
-      onError: (err, key, config) => {
-        // console.log("asjdk", key, err)
-      },
-      onSuccess: (data, key, config) => {
-        // console.log("asd", key, data)
-        if (data.data) {
-          const paragraph = key.split(",")[0]
-          const regex = /@\"(.*)\"/
-          const found = paragraph.replace(regex, "$1")
+  return (
+    <SWRConfig
+      value={{
+        fetcher: fetcher(session),
+        provider: () => new Map(),
+        onErrorRetry: (err, key) => {
+          fetcher(key)
+        },
+        onError: (err, key, config) => {
+          // console.log("asjdk", key, err)
+        },
+        onSuccess: (data, key, config) => {
+          // console.log("asd", key, data)
+          if (data.data) {
+            const paragraph = key.split(",")[0]
+            const regex = /@\"(.*)\"/
+            const found = paragraph.replace(regex, "$1")
 
-          mutate(found, data)
-        }
-      },
-    }}
-  >
-    {children}
-  </SWRConfig>)
-
+            mutate(found, data)
+          }
+        },
+      }}
+    >
+      {children}
+    </SWRConfig>
+  )
 }
 
 const MyApp = ({ Component, pageProps: { session, ...pageProps } }) => {
@@ -129,9 +128,9 @@ const MyApp = ({ Component, pageProps: { session, ...pageProps } }) => {
       />
 
       <Auth>
-      <Context.Provider value={{ global: pageProps.global }}>
-        {getLayout(<Component {...pageProps} />)}
-      </Context.Provider>
+        <Context.Provider value={{ global: pageProps.global }}>
+          {getLayout(<Component {...pageProps} />)}
+        </Context.Provider>
       </Auth>
     </SessionProvider>
   )

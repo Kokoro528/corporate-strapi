@@ -31,7 +31,7 @@ const Subnav = (props) => {
     !isExisted() ? "/api/collection" + pluralName : null,
     fetcher
   )
-  
+
   mutate(data?.data)
 
   if (!navLink.nestedLinks || !navLink.nestedLinks.length) {
@@ -60,7 +60,7 @@ const Subnav = (props) => {
                       id="tabs-tabVertical"
                       role="tablist border-r-1"
                     >
-                      {navLink.nestedLinks.map((e1,idx) => (
+                      {navLink.nestedLinks.map((e1, idx) => (
                         <li
                           className="nav-item flex-grow text-center hover:border-r-3"
                           key={`tab-${Math.random()}`}
@@ -104,10 +104,10 @@ const Subnav = (props) => {
                 id="tabs-tabContentVertical"
               >
                 {isExisted()
-                  ?.data?.filter(
-                    (e) =>
-                      (selectedSideTab? e.attributes.category === selectedSideTab: true)
-                       
+                  ?.data?.filter((e) =>
+                    selectedSideTab
+                      ? e.attributes.category === selectedSideTab
+                      : true
                   )
                   .map((e) => (
                     <li key={`${Math.random()}-${pluralName}-${e.id}`}>

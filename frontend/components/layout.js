@@ -8,10 +8,7 @@ import { DefaultSeo } from "next-seo"
 import { SWRConfig } from "swr"
 import { useSession } from "next-auth/react"
 
-
-
 const Layout = ({ children, global, metadata }) => {
- 
   const { navbar, footer, notificationBanner, metaTitleSuffix } =
     global.attributes
   const { metaTitle, metaDescription, shareImage, twitterCardType } =

@@ -14,7 +14,6 @@ export default async (req, res) => {
   // const session = await  unstable_getServerSession(req, res, options)
   // Fetch the headless CMS to check if the provided `slug` exists
   // const pageData = await getCollectionList(req.query.slug[0], session)
- 
 
   const endpoint = getStrapiURL(`/auth/local/register`)
 
@@ -26,8 +25,7 @@ export default async (req, res) => {
       //   "Content-Type": "application/json",
       //   "Authorization": req.headers.authorization
       // }
-      body: req.body
-      
+      body: req.body,
     })
     const resp = await signUpRes.json()
 
