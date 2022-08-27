@@ -38,7 +38,8 @@ const RichContent = ({ data, pageContext, global }) => {
             "prose lg:prose-lg prose-table:table-auto  prose-table:border-separate prose-img:rounded-xl prose-em:text-center py-12 flex flex-col  ",
             // "max-w-prose",
             {
-              "prose-invert": data.typeRCS === "dark",
+              "prose-invert": data.theme === "dark",
+              "prose-w-list": data.typeRCS === "prose_w_list",
               "max-w-screen-md": !data.narrow,
             }
           )}

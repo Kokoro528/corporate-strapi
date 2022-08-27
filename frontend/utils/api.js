@@ -214,6 +214,7 @@ export async function getPageData({ slug, locale, preview }) {
                         ...FileParts
                       }
                       url
+                      span
                       titleFCG: title
                     }
                     backgroundImage{
@@ -816,6 +817,7 @@ export async function getGlobalData(locale) {
                     text
                     url
                     nestedLinks {
+                      id
                       text
                       url
                       newTab

@@ -5,23 +5,26 @@ import CustomLink from "../elements/custom-link"
 
 const FeatureColumnsGroup = ({ data }) => {
   return (
-    <div className=" py-12"
-    style={{
-      backgroundImage: data.backgroundImage?.data?.attributes?.url
-        ? `url("${data.backgroundImage?.data?.attributes?.url}")`
-        : "blue",
-      backgroundRepeat: "no-repeat",
-      backgroundSize: "cover",
-    }}
+    <div className="relative"
+    // style={{
+    //   backgroundImage: data.backgroundImage?.data?.attributes?.url
+    //     ? `url("${data.backgroundImage?.data?.attributes?.url}")`
+    //     : "blue",
+    //   backgroundRepeat: "no-repeat",
+    //   backgroundSize: "cover",
+    // }}
     >
-      <div className="container flex flex-col lg:flex-row lg:flex-wrap gap-12 align-top">
+      <div className="absolute w-full h-full -z-10">
+        <NextImage media={data.backgroundImage} layout="fill" className=""></NextImage>
+      </div>
+      <div className="container py-12 flex flex-col lg:flex-row lg:flex-wrap gap-12 align-top">
         {data.title&&<h1>{data.title}</h1>}
       {data.brief && <Markdown className="prose">{data.brief}</Markdown>}
       <div
         className={classNames(
           {
-          "md:grid-cols-8 grid w-full": data.features.length % 4 === 0 && !data.isFlex,
-          "md:grid-cols-6 grid ": data.features.length % 4 !== 0 && !data.isFlex,
+          "md:grid w-full": data.features.length % 4 === 0 && !data.isFlex,
+          "md:grid ": data.features.length % 4 !== 0 && !data.isFlex,
           "md:flex md:flex-nowrap": data.isFlex,
         })}
       >
@@ -33,7 +36,11 @@ const FeatureColumnsGroup = ({ data }) => {
               {
                 "md:col-start-2":
                   data.features.length % 4 !== 0 && idx % 4 === 3 && !data.isFlex,
-              }
+                "md:col-span-2":!feature.span,
+                
+                
+              },
+              {[`md:col-span-${feature.span}`]: feature.span}
             )}
             key={feature.id}
           >

@@ -110,12 +110,12 @@ export async function getStaticProps(context) {
     locale,
     preview,
   })
-  console.log(
-    "slug",
-    params.slug,
-    (!params.slug ? [""] : params.slug).join("/"),
-    pageData
-  )
+  // console.log(
+  //   "slug",
+  //   params.slug,
+  //   (!params.slug ? [""] : params.slug).join("/"),
+  //   pageData
+  // )
 
   if (pageData == null) {
     // Giving the page no props will trigger a 404 page

@@ -49,6 +49,7 @@ const Navbar = ({ navbar, pageContext, global }) => {
           {/* List of links on desktop */}
           <ul className="hidden z-40 list-none text-ellipsis grow sm:flex md:flex flex-row lg:gap-4 items-baseline ml-10">
             {navbar.links.map((navLink) => (
+              <>
               <li
                 className="z-30 hoverable "
                 key={navLink.id}
@@ -77,6 +78,7 @@ const Navbar = ({ navbar, pageContext, global }) => {
                   pluralName={navLink.url}
                 />
               </li>
+              </>
             ))}
           </ul>
           <div className="flex flex-none">

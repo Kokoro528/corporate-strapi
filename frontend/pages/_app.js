@@ -14,6 +14,66 @@ import Context from "@/components/context"
 // import "@/styles/nav.css"
 // import "@/styles/table.css"
 
+
+const fetcher = (session) => (url, body) =>
+  fetch(
+    url,
+    Object.assign(
+      {},
+      {
+        headers: Object.assign(
+          {
+            "Content-Type": "application/json",
+          },
+          session ? { Authorization: "Bearer " + session?.accessToken } : {}
+        ),
+
+      },
+      { body }
+    )
+  ).then((r) => {
+    if (!r.ok) {
+      throw new Error(r.status)
+    }
+    return r.json()
+  })
+
+const Auth = ({ children }) => {
+  // if `{ required: true }` is supplied, `status` can only be "loading" or "authenticated"
+  const { data: session, status } = useSession()
+  if (status === "loading") {
+    return <div>Loading...</div>
+  }
+
+  console.log("session", session)
+
+  return (<SWRConfig
+    value={{
+      fetcher: fetcher(session),
+      provider: () => new Map(),
+      onErrorRetry: (err, key) => {
+        fetcher(key)
+      },
+      onError: (err, key, config) => {
+        // console.log("asjdk", key, err)
+      },
+      onSuccess: (data, key, config) => {
+        // console.log("asd", key, data)
+        if (data.data) {
+          const paragraph = key.split(",")[0]
+          const regex = /@\"(.*)\"/
+          const found = paragraph.replace(regex, "$1")
+
+          mutate(found, data)
+        }
+      },
+    }}
+  >
+    {children}
+  </SWRConfig>)
+
+}
+
 const MyApp = ({ Component, pageProps: { session, ...pageProps } }) => {
   // Extract the data we need
   const { global } = pageProps
@@ -68,11 +128,11 @@ const MyApp = ({ Component, pageProps: { session, ...pageProps } }) => {
         }}
       />
 
-      {/* <Auth> */}
+      <Auth>
       <Context.Provider value={{ global: pageProps.global }}>
         {getLayout(<Component {...pageProps} />)}
       </Context.Provider>
-      {/* </Auth> */}
+      </Auth>
     </SessionProvider>
   )
 }

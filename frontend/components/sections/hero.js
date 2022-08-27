@@ -30,7 +30,7 @@ const Hero = ({ data }) => {
           {/* Big title */}
           <h1
             className={classNames(
-              "text-5xl text-yellow-500 font-bold mt-2 sm:mt-0 mb-4 sm:mb-2",
+              "text-5xl text-slate-500 font-bold mt-2 sm:mt-0 mb-4 sm:mb-2",
               { "text-white": data.type === "dark" }
             )}
           >

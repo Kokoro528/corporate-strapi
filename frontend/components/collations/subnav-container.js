@@ -19,13 +19,20 @@ const Subnav = (props) => {
   //   return navbar.links.find(link => link.url === pluralName)
   // }
 
-  const { cache, mutate, ...restConfig } = useSWRConfig()
+  useEffect(() => {
+    return () => {
+      setSelectedSideTab("")
+    }
+  })
+  const { cache, mutate, fetcher, ...restConfig } = useSWRConfig()
 
-  const key = "/api/collection" + pluralName
-  const { data, error } = useSWR(!cache.get(key) ? key : null)
-
+  const isExisted = () => cache.get("/api/collection" + pluralName)
+  const { data, error } = useSWR(
+    !isExisted() ? "/api/collection" + pluralName : null,
+    fetcher
+  )
+  
   mutate(data?.data)
-  // console.log("data", data, cache)
 
   if (!navLink.nestedLinks || !navLink.nestedLinks.length) {
     return null
@@ -53,7 +60,7 @@ const Subnav = (props) => {
                       id="tabs-tabVertical"
                       role="tablist border-r-1"
                     >
-                      {navLink.nestedLinks.map((e1) => (
+                      {navLink.nestedLinks.map((e1,idx) => (
                         <li
                           className="nav-item flex-grow text-center hover:border-r-3"
                           key={`tab-${Math.random()}`}
@@ -96,15 +103,11 @@ const Subnav = (props) => {
                 className="col grid grid-cols-2 gap-4 p-4"
                 id="tabs-tabContentVertical"
               >
-                {cache
-                  .get(key)
+                {isExisted()
                   ?.data?.filter(
                     (e) =>
-                      e.attributes.category ===
-                      (selectedSideTab ||
-                        navLink.nestedLinks[0].url?.substring(
-                          navLink.nestedLinks[0].url.indexOf("=") + 1
-                        ))
+                      (selectedSideTab? e.attributes.category === selectedSideTab: true)
+                       
                   )
                   .map((e) => (
                     <li key={`${Math.random()}-${pluralName}-${e.id}`}>
@@ -125,7 +128,7 @@ const Subnav = (props) => {
         </div>
       )
     } else {
-      console.log(selectedSideTab, "selected")
+      // console.log(selectedSideTab, "selected")
       return (
         <div
           className="

@@ -9,8 +9,35 @@ import Layout from "@/components/layout"
 import { getLocalizedPaths } from "utils/localize"
 import Products from "@/components/global/products"
 import LeadForm from "@/components/sections/lead-form"
-import { Formik, Form, Field } from "formik"
+import { Formik, Form, Field, ErrorMessage, useField } from "formik"
 import { signIn } from "next-auth/react"
+import useSWR, { useSWRConfig } from "swr"
+import { redirect } from "next/dist/server/api-utils"
+import { getStrapiURL } from "utils/api"
+import { set } from "date-fns"
+
+const Input = ({ name, label, ...props }) => {
+  const [field, meta] = useField(name);
+  return (
+    <div className="mb-4">
+      <label className="block text-gray-700 text-sm font-bold" for={field.name}>
+        {label}
+      </label>
+      <input
+        className={`${
+          meta.error && meta.touched ? "border-red-500" : ""
+        } shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline`}
+        {...field}
+        {...props}
+      />
+      <ErrorMessage
+        name={field.name}
+        component="span"
+        className="text-red-500 text-xs"
+      />
+    </div>
+  );
+};
 
 const Login = ({ signup }) => {
   const router = useRouter()
@@ -46,43 +73,7 @@ const Login = ({ signup }) => {
           onSubmit={async (values, { setSubmitting, setErrors }) => {
             setLoading(true)
             signIn("credentials", values)
-            // fetch("/api/auth/local",{
-            //   method: "POST",
-            //   headers: { "Content-Type": "application/json" },
-            //   body: JSON.stringify({
-            //     /* Form data */
-            //     ...values
-            //   }),
-            // }).then((res) => {
-            //   // Do a fast client-side transition to the already prefetched dashboard page
-            //   console.log("sd", res)
-            //   // if (res.ok) router.push("/products")
-            //   setLoading(false)
-            // setSubmitting(false)
-
-            // })
-            // .catch(e => {
-            //     setErrors({ api: e.message })
-            //     console.log("e", e)
-
-            // })
-
-            // try {
-            //   setErrors({ api: null })
-            //   await fetchAPI(
-            //     "/lead-form-submissions",
-            //     {},
-            //     {
-            //       method: "POST",
-            //       body: JSON.stringify({
-            //         email: values.email,
-            //         location: data.location,
-            //       }),
-            //     }
-            //   )
-            // } catch (err) {
-            //   setErrors({ api: err.message })
-            // }
+          
           }}
         >
           <Form>
@@ -215,146 +206,91 @@ const Login = ({ signup }) => {
   )
 }
 
+const register = async(values, failure, success) => {
+  const endpoint = getStrapiURL(`/api/auth/local/register`)
+    const signUpRes = await fetch(endpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(values)
+    })
+    
+    if (!signUpRes.ok) {
+      console.error(signUpRes)
+      
+    }
+    const resp = await signUpRes.json()
+    if (!signUpRes.ok) {
+      if (resp.error.message) {
+        // console.log(resp.error.message)
+        failure(resp.error.message)
+  
+      }
+      
+    }
+    else {
+      success()
+    }
+}
+
 const SignUp = ({ signup }) => {
-  const signupFields = { email: "", username: "", password: "" }
+
+  const router = useRouter()
+  const [loading, setLoading] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [failureMsg, setFailureMsg] = useState("")
+  const [signupFields, setSignUpFields] = useState({ email: "", username: "", password: "" })
+  const [succeeded, setSuccess] = useState(false)
+  const failure  = useCallback((msg) => {
+    setFailureMsg(msg)
+  }, [failureMsg])
+  const success = useCallback(() => {
+    setSuccess(true)
+  }, [succeeded])
+
+  if (succeeded) {
+    signIn("credentials", Object.assign(signupFields, {identifier: signupFields.email}))
+  }
+  
   return (
     <div className="container">
+      
       <div className="block mx-auto my-10 p-6 rounded-lg shadow-lg bg-white max-w-md">
         <Formik
           initialValues={signupFields}
           // validationSchema={LeadSchema}
-          onSubmit={async (values, { setSubmitting, setErrors }) => {
+          validate={(values) => {
+            let errors = {};
+            // setLoading(true);
+            if (!values.email) {
+              errors.email = "Required";
+            }
+            if (!values.password) {
+              errors.password = "Qing"
+            }
+            
+
+            return errors;
+          }}
+          onSubmit={async (values, {setFailureMsg }) => {
+            setSignUpFields(values)
             setLoading(true)
-            // signIn("credentials", values)
+            if (!values.username) {
+              values.username = values.email
+            }
+            register(values, failure, success)
 
-            // fetch("/api/auth/local",{
-            //   method: "POST",
-            //   headers: { "Content-Type": "application/json" },
-            //   body: JSON.stringify({
-            //     /* Form data */
-            //     ...values
-            //   }),
-            // }).then((res) => {
-            //   // Do a fast client-side transition to the already prefetched dashboard page
-            //   console.log("sd", res)
-            //   // if (res.ok) router.push("/products")
-            //   setLoading(false)
-            // setSubmitting(false)
 
-            // })
-            // .catch(e => {
-            //     setErrors({ api: e.message })
-            //     console.log("e", e)
-
-            // })
-
-            // try {
-            //   setErrors({ api: null })
-            //   await fetchAPI(
-            //     "/lead-form-submissions",
-            //     {},
-            //     {
-            //       method: "POST",
-            //       body: JSON.stringify({
-            //         email: values.email,
-            //         location: data.location,
-            //       }),
-            //     }
-            //   )
-            // } catch (err) {
-            //   setErrors({ api: err.message })
-            // }
           }}
         >
-          <Form>
-            <div className="form-group mb-6">
-              <label
-                htmlFor="username"
-                className="form-label inline-block mb-2 text-gray-700"
-              >
-                {signup.username}
-              </label>
-              <Field
-                type="text"
-                className="form-control
-        block
-        w-full
-        px-3
-        py-1.5
-        text-base
-        font-normal
-        text-gray-700
-        bg-white bg-clip-padding
-        border border-solid border-gray-300
-        rounded
-        transition
-        ease-in-out
-        m-0
-        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                id="username"
-                name="identifier"
-                aria-describedby="emailHelp"
-              />
-            </div>
-            <div className="form-group mb-6">
-              <label
-                htmlFor="exampleInputEmail2"
-                className="form-label inline-block mb-2 text-gray-700"
-              >
-                {signup.email}
-              </label>
-              <Field
-                type="email"
-                className="form-control
-        block
-        w-full
-        px-3
-        py-1.5
-        text-base
-        font-normal
-        text-gray-700
-        bg-white bg-clip-padding
-        border border-solid border-gray-300
-        rounded
-        transition
-        ease-in-out
-        m-0
-        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                id="exampleInputEmail2"
-                name="identifier"
-                aria-describedby="emailHelp"
-              />
-            </div>
-            <div className="form-group mb-6">
-              <label
-                htmlFor="exampleInputPassword2"
-                className="form-label inline-block mb-2 text-gray-700"
-              >
-                {signup.password}
-              </label>
-              <Field
-                type="password"
-                name="password"
-                className="form-control block
-        w-full
-        px-3
-        py-1.5
-        text-base
-        font-normal
-        text-gray-700
-        bg-white bg-clip-padding
-        border border-solid border-gray-300
-        rounded
-        transition
-        ease-in-out
-        m-0
-        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                id="exampleInputPassword2"
-                // placeholder="Password"
-              />
-            </div>
-            <div className="flex justify-between items-center mb-6">
-              {/* <div className="form-group form-check">
+          {({ errors, touched }) => (
+            <Form>
+              <Input name="username" label={signup.username} />
+              <Input name="email" label={signup.email} type="email" />
+              <Input name="password" label={signup.password} type="password" />
+              <div className="flex justify-between items-center mb-6">
+                {/* <div className="form-group form-check">
                 <input
                   type="checkbox"
                   // onChange={(e) => {
@@ -375,16 +311,16 @@ const SignUp = ({ signup }) => {
                 </label>
               </div> */}
 
-              {/* <a
+                {/* <a
               href="#!"
               className="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out"
             >
               {signup.forgotPassword}
             </a> */}
-            </div>
-            <button
-              type="submit"
-              className="
+              </div>
+              <button
+                type="submit"
+                className="
       w-full
       px-6
       py-2.5
@@ -402,19 +338,20 @@ const SignUp = ({ signup }) => {
       transition
       duration-150
       ease-in-out"
-            >
-              {signup.signup}
-            </button>
-            <p className="text-gray-800 mt-6 text-center">
-              {signup.alreadyAMember}{" "}
-              <a
-                href="/profile/login"
-                className="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out"
               >
-                {signup.signin}
-              </a>
-            </p>
-          </Form>
+                {signup.signup}
+              </button>
+              <p className="text-gray-800 mt-6 text-center">
+                {signup.alreadyAMember}{" "}
+                <a
+                  href="/profile/login"
+                  className="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out"
+                >
+                  {signup.signin}
+                </a>
+              </p>
+              {failureMsg && <p className="text-red-700">{failureMsg}</p>}
+            </Form>)}
         </Formik>
       </div>
     </div>

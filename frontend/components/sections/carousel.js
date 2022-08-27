@@ -2,7 +2,6 @@ import NextImage from "../elements/image"
 import Carousel from "react-grid-carousel"
 
 const Gallery = ({ data }) => {
-  console.log("data", data)
   return (
     <div className="container flex flex-col lg:flex-row  gap-12 align-top py-12 w-full  flex place-content-center">
       <Carousel

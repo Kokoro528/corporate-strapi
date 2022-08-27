@@ -24,6 +24,12 @@
     },
     "url": {
       "type": "string"
+    },
+    "span": {
+      "type": "integer",
+      "required": false,
+      "unique": false,
+      "default": 2
     }
   }
 }
