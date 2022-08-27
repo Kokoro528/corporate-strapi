@@ -42,7 +42,7 @@ const MworksIntros = ({ data }) => {
                             "bg-gradient-to-t from-sky-100 via-sky-50 to-slate-50 ",
 
                         )}
-                        key={learning.id}
+                        key={"learning-" + idx}
                     >
                         <div className="h-32 w-auto relative mt-3">
                             {learning.icon && (
