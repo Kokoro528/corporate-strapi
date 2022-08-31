@@ -7,9 +7,10 @@ module.exports = [
         useDefaults: true,
         directives: {
           'connect-src': ["'self'", 'https:'],
-          'img-src': ["'self'", 'data:', 'blob:', 'strapi.obs.cn-east-3.myhuaweicloud.com', 'dl.airtable.com','tongyuan.cc'],
+          'img-src': ["'self'", 'data:', 'blob:', 'strapi.obs.cn-east-3.myhuaweicloud.com', 'dl.airtable.com', 'tongyuan.cc'],
           'media-src': ["'self'", 'data:', 'blob:', 'strapi.obs.cn-east-3.myhuaweicloud.com', 'tongyuan.cc'],
-          upgradeInsecureRequests: null,
+          "script-src": ["'self'", "https:", "http:"],
+          "frame-src": ["'self'", "https:", "http:"]
         },
       },
     },

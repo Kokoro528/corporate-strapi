@@ -14,202 +14,14 @@ import { signIn } from "next-auth/react"
 import useSWR, { useSWRConfig } from "swr"
 import { redirect } from "next/dist/server/api-utils"
 import { getStrapiURL } from "utils/api"
-import { set } from "date-fns"
-
-const Input = ({ name, label, ...props }) => {
-  const [field, meta] = useField(name)
-  return (
-    <div className="mb-4">
-      <label
-        className="block text-gray-700 text-sm font-bold"
-        htmlFor={field.name}
-      >
-        {label}
-      </label>
-      <input
-        className={`${
-          meta.error && meta.touched ? "border-red-500" : ""
-        } shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline`}
-        {...field}
-        {...props}
-      />
-      <ErrorMessage
-        name={field.name}
-        component="span"
-        className="text-red-500 text-xs"
-      />
-    </div>
-  )
-}
-
-const Login = ({ signup }) => {
-  const router = useRouter()
-  const [loading, setLoading] = useState(false)
-  // const [formFields, setFormFields] = useState({
-  //   username: "",
-  //   email: "",
-  //   password: "",
-  // })
-  const formFields = { identifier: "", password: "" }
-
-  // const handleSubmit = useCallback((e) => {
-  //   e.preventDefault()
-
-  //   fetch("/api/login", {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify({
-  //       /* Form data */
-  //       ...value,
-  //     }),
-  //   }).then((res) => {
-  //     // Do a fast client-side transition to the already prefetched dashboard page
-  //     if (res.ok) router.push("/products")
-  //   })
-  // }, [])
-  return (
-    <div className="container">
-      <div className="block mx-auto my-10 p-6 rounded-lg shadow-lg bg-white max-w-md">
-        <Formik
-          initialValues={formFields}
-          // validationSchema={LeadSchema}
-          onSubmit={async (values, { setSubmitting, setErrors }) => {
-            setLoading(true)
-            signIn("credentials", values)
-          }}
-        >
-          <Form>
-            <div className="form-group mb-6">
-              <label
-                htmlFor="exampleInputEmail2"
-                className="form-label inline-block mb-2 text-gray-700"
-              >
-                {signup.email}
-              </label>
-              <Field
-                type="email"
-                className="form-control
-        block
-        w-full
-        px-3
-        py-1.5
-        text-base
-        font-normal
-        text-gray-700
-        bg-white bg-clip-padding
-        border border-solid border-gray-300
-        rounded
-        transition
-        ease-in-out
-        m-0
-        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                id="exampleInputEmail2"
-                name="identifier"
-                aria-describedby="emailHelp"
-              />
-            </div>
-            <div className="form-group mb-6">
-              <label
-                htmlFor="exampleInputPassword2"
-                className="form-label inline-block mb-2 text-gray-700"
-              >
-                {signup.password}
-              </label>
-              <Field
-                type="password"
-                // onChange={(e) => {
-                //   setFormFields(
-                //     Object.assign({}, formFields, { password: e.target.value })
-                //   )
-                // }}
-                name="password"
-                className="form-control block
-        w-full
-        px-3
-        py-1.5
-        text-base
-        font-normal
-        text-gray-700
-        bg-white bg-clip-padding
-        border border-solid border-gray-300
-        rounded
-        transition
-        ease-in-out
-        m-0
-        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                id="exampleInputPassword2"
-              />
-            </div>
-            <div className="flex justify-between items-center mb-6">
-              {/* <div className="form-group form-check">
-                <input
-                  type="checkbox"
-                  // onChange={(e) => {
-                  //   console.log("asjdalskd")
-                  //   setFormFields(
-                  //     Object.assign({}, formFields, { rememberMe: true })
-                  //   )
-                  // }}
-                  className="form-check-input  h-4 w-4 border border-gray-300 rounded-sm checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                  id="remember"
-                />
-                <label
-                  className="form-check-label inline-block text-gray-800"
-                  htmlFor="remember"
-                >
-
-                  {signup.rememberMe}
-                </label>
-              </div> */}
-
-              <a
-                href="#!"
-                className="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out"
-              >
-                {signup.forgotPassword}
-              </a>
-            </div>
-            <button
-              type="submit"
-              className="
-      w-full
-      px-6
-      py-2.5
-      bg-blue-600
-      text-white
-      font-medium
-      text-xs
-      leading-tight
-      uppercase
-      rounded
-      shadow-md
-      hover:bg-blue-700 hover:shadow-lg
-      focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
-      active:bg-blue-800 active:shadow-lg
-      transition
-      duration-150
-      ease-in-out"
-            >
-              {signup.signin}
-            </button>
-            <p className="text-gray-800 mt-6 text-center">
-              {signup.notAMember}{" "}
-              <a
-                href="/profile/signup"
-                className="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out"
-              >
-                {signup.register}
-              </a>
-            </p>
-          </Form>
-        </Formik>
-      </div>
-    </div>
-  )
-}
+import Input from "@/components/forms/input"
+import { data } from "autoprefixer"
 
 const register = async (values, failure, success) => {
   const endpoint = getStrapiURL(`/api/auth/local/register`)
+  // if (values.firstname && values.lastname) {
+  values.username = [values.firstname, values.lastname].join(" ")
+  // }
   const signUpRes = await fetch(endpoint, {
     method: "POST",
     headers: {
@@ -232,26 +44,20 @@ const register = async (values, failure, success) => {
   }
 }
 
-const SignUp = ({ signup }) => {
+
+const Me = ({ signup }) => {
   const router = useRouter()
+  const {fetcher} = useSWRConfig()
   const [loading, setLoading] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [failureMsg, setFailureMsg] = useState("")
   const [signupFields, setSignUpFields] = useState({
     email: "",
-    username: "",
+    firstname: "",
+    lastname: "",
     password: "",
   })
   const [succeeded, setSuccess] = useState(false)
-  const failure = useCallback(
-    (msg) => {
-      setFailureMsg(msg)
-    },
-    [failureMsg]
-  )
-  const success = useCallback(() => {
-    setSuccess(true)
-  }, [succeeded])
 
   if (succeeded) {
     signIn(
@@ -259,6 +65,24 @@ const SignUp = ({ signup }) => {
       Object.assign(signupFields, { identifier: signupFields.email })
     )
   }
+
+  // const register = useCallback(() => {
+  const {
+    data,
+    error,
+    isValidating,
+    mutate,
+  } = useSWR( ["/api/auth/me"] , fetcher, {
+    onSuccess: (data) => {
+      router.push("/profile/me")
+    },
+    onError: () => {
+      console.log("cokk")
+      router.push("/profile/login")
+    }
+  })
+  // if (error) failure(error.message)
+  // })
 
   return (
     <div className="container">
@@ -279,82 +103,23 @@ const SignUp = ({ signup }) => {
             return errors
           }}
           onSubmit={async (values, { setFailureMsg }) => {
+
             setSignUpFields(values)
+            setSubmitting(true)
             setLoading(true)
-            if (!values.username) {
-              values.username = values.email
-            }
-            register(values, failure, success)
+
+            // if (!values.username) {
+            //   values.username = values.email
+            // }
+            // register(values, failure, success)
           }}
         >
           {({ errors, touched }) => (
-            <Form>
-              <Input name="username" label={signup.username} />
-              <Input name="email" label={signup.email} type="email" />
-              <Input name="password" label={signup.password} type="password" />
-              <div className="flex justify-between items-center mb-6">
-                {/* <div className="form-group form-check">
-                <input
-                  type="checkbox"
-                  // onChange={(e) => {
-                  //   console.log("asjdalskd")
-                  //   setFormFields(
-                  //     Object.assign({}, formFields, { rememberMe: true })
-                  //   )
-                  // }}
-                  className="form-check-input  h-4 w-4 border border-gray-300 rounded-sm checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                  id="remember"
-                />
-                <label
-                  className="form-check-label inline-block text-gray-800"
-                  htmlFor="remember"
-                >
-
-                  {signup.rememberMe}
-                </label>
-              </div> */}
-
-                {/* <a
-              href="#!"
-              className="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out"
-            >
-              {signup.forgotPassword}
-            </a> */}
+              <div>
+                {JSON.stringify(data)}
+              <h1 className="text-red-500 font-bold">这一页可否请致幻设计一下</h1>
               </div>
-              <button
-                type="submit"
-                className="
-      w-full
-      px-6
-      py-2.5
-      bg-blue-600
-      text-white
-      font-medium
-      text-xs
-      leading-tight
-      uppercase
-      rounded
-      shadow-md
-      hover:bg-blue-700 hover:shadow-lg
-      focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
-      active:bg-blue-800 active:shadow-lg
-      transition
-      duration-150
-      ease-in-out"
-              >
-                {signup.signup}
-              </button>
-              <p className="text-gray-800 mt-6 text-center">
-                {signup.alreadyAMember}{" "}
-                <a
-                  href="/profile/login"
-                  className="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out"
-                >
-                  {signup.signin}
-                </a>
-              </p>
-              {failureMsg && <p className="text-red-700">{failureMsg}</p>}
-            </Form>
+              
           )}
         </Formik>
       </div>
@@ -396,8 +161,7 @@ const DynamicPage = ({
       {/* Add meta tags for SEO*/}
       <Seo metadata={metadataWithDefaults} />
       {/* Display content sections */}
-      {router.asPath.includes("signup") && <SignUp signup={signup} />}
-      {router.asPath.includes("login") && <Login signup={signup} />}
+      <Me signup={signup} />
     </Layout>
   )
 }

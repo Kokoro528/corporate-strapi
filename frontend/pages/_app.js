@@ -31,7 +31,7 @@ const fetcher = (session) => (url, body) =>
     )
   ).then((r) => {
     if (!r.ok) {
-      throw new Error(r.status)
+      throw new Error(r.statusText)
     }
     return r.json()
   })

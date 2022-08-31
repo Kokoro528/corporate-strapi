@@ -15,8 +15,12 @@ export default async (req, res) => {
   // Fetch the headless CMS to check if the provided `slug` exists
   // const pageData = await getCollectionList(req.query.slug[0], session)
 
-  const endpoint = getStrapiURL(`/auth/local/register`)
-
+  const endpoint = getStrapiURL(`/api/auth/local/register`)
+  const { email, password, ...names } = req.body
+  if (!names.username) {
+    names.username = [names.firstname, names.lastname].join(" ")
+  }
+  console.log("req.body", req.body)
   try {
     const signUpRes = await fetch(endpoint, {
       method: "POST",
@@ -25,12 +29,17 @@ export default async (req, res) => {
       //   "Content-Type": "application/json",
       //   "Authorization": req.headers.authorization
       // }
-      body: req.body,
+      body: JSON.stringify({ username: names.username, email, password }),
     })
     const resp = await signUpRes.json()
 
     return res.status(signUpRes.status).json(resp)
   } catch (err) {
+    // switch (err.name) {
+    //   case "ApplicationError":
+    //     return resp
+    // }
+    // return resp
     return res.status(500).json({ message: signUpRes.body() })
   }
 
