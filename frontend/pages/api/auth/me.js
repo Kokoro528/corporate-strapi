@@ -27,7 +27,7 @@ export default async (req, res) => {
       // headers: req.headers,
       headers: {
         "Content-Type": "application/json",
-        "Authorization": req.headers.authorization
+        Authorization: req.headers.authorization,
       },
       // body: JSON.stringify({ username: names.username, email, password }),
     })

@@ -44,10 +44,9 @@ const register = async (values, failure, success) => {
   }
 }
 
-
 const Me = ({ signup }) => {
   const router = useRouter()
-  const {fetcher} = useSWRConfig()
+  const { fetcher } = useSWRConfig()
   const [loading, setLoading] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [failureMsg, setFailureMsg] = useState("")
@@ -67,20 +66,19 @@ const Me = ({ signup }) => {
   }
 
   // const register = useCallback(() => {
-  const {
-    data,
-    error,
-    isValidating,
-    mutate,
-  } = useSWR( ["/api/auth/me"] , fetcher, {
-    onSuccess: (data) => {
-      router.push("/profile/me")
-    },
-    onError: () => {
-      console.log("cokk")
-      router.push("/profile/login")
+  const { data, error, isValidating, mutate } = useSWR(
+    ["/api/auth/me"],
+    fetcher,
+    {
+      onSuccess: (data) => {
+        router.push("/profile/me")
+      },
+      onError: () => {
+        console.log("cokk")
+        router.push("/profile/login")
+      },
     }
-  })
+  )
   // if (error) failure(error.message)
   // })
 
@@ -103,7 +101,6 @@ const Me = ({ signup }) => {
             return errors
           }}
           onSubmit={async (values, { setFailureMsg }) => {
-
             setSignUpFields(values)
             setSubmitting(true)
             setLoading(true)
@@ -115,11 +112,12 @@ const Me = ({ signup }) => {
           }}
         >
           {({ errors, touched }) => (
-              <div>
-                {JSON.stringify(data)}
-              <h1 className="text-red-500 font-bold">这一页可否请致幻设计一下</h1>
-              </div>
-              
+            <>
+              <div className="flex">{JSON.stringify(data)}</div>
+              <h1 className="text-red-500 font-bold">
+                这一页可否请致幻设计一下
+              </h1>
+            </>
           )}
         </Formik>
       </div>
