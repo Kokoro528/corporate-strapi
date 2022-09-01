@@ -21,8 +21,7 @@ const Subnav = (props) => {
 
   useEffect(() => {
     return () => {
-      if (navLink.nestedLinks.length)
-        setSelectedSideTab("")
+      if (navLink.nestedLinks.length) setSelectedSideTab("")
     }
   }, [])
   const { cache, mutate, fetcher, ...restConfig } = useSWRConfig()
@@ -67,7 +66,7 @@ const Subnav = (props) => {
                           key={`tab-${Math.random()}`}
                           role="presentation"
                           onMouseOver={(e) => {
-                            e.preventDefault();
+                            e.preventDefault()
                             setSelectedSideTab(
                               e1.url.substring(e1.url.indexOf("=") + 1)
                             )

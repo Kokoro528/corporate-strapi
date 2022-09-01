@@ -42,4 +42,4 @@ export default withAuth(
   }
 )
 
-export const config = { matcher: ['/:path'] }
+export const config = { matcher: ['/solutions/:path*'] }

@@ -30,7 +30,11 @@ const MobileNavMenu = ({ navbar, closeSelf, router }) => {
           <ul className="flex flex-1 flex-col list-none items-baseline text-xl mb-10 divide-y">
             {navbar.links?.map((navLink) => (
               <li key={navLink.id} className=" w-full">
-                <CustomLink link={navLink} locale={router.locale}>
+                <CustomLink
+                  link={navLink}
+                  locale={router.locale}
+                  onClick={closeSelf}
+                >
                   <div className="hover:text-primary-700 py-3 mx-2 flex flex-row justify-between items-center">
                     <span className="flex-1 font-semibold">{navLink.text}</span>
                     <MdChevronRight className="h-8 w-auto" />

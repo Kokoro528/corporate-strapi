@@ -23,6 +23,26 @@
           "localized": true
         }
       }
+    },
+    "signout": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "links.button-link"
+    },
+    "logout": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "links.button"
     }
   }
 }
