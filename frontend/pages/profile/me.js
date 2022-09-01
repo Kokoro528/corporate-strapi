@@ -128,7 +128,7 @@ const DynamicPage = ({
   const router = useRouter()
 
   // Check if the required data was provided
-  if (!router.isFallback & !data) {
+  if (!router.isFallback && !data.logout) {
     return <ErrorPage statusCode={404} />
   }
 

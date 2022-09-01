@@ -292,6 +292,7 @@ export async function getPageData({ slug, locale, preview }) {
                     title
                     narrow
                     typeRCS: type
+                    theme
                     media {
                       data {
                         id
@@ -706,6 +707,7 @@ export async function getSolutionData({ locale, preview }) {
                   content
                   subtitle
                   title
+                  theme
                   typeRCS: type
                   media {
                     data {

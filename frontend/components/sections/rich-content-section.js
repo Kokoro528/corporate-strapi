@@ -45,7 +45,13 @@ const RichContent = ({ data, pageContext, global }) => {
           )}
         >
           <Markdown
-            className=" text-align prose-headings:text-primary-400 xl:prose-h1:text-center xl:prose-h3:text-center xl:prose-h2:text-center prose-th:border prose-td:border prose-table:text-center prose-table:table-auto"
+            className={classNames(
+              {
+                "prose-invert": data.theme === "dark",
+                "prose-w-list": data.typeRCS === "prose_w_list",
+                "max-w-screen-md": !data.narrow,
+              },
+              " text-align  xl:prose-h1:text-center xl:prose-h3:text-center xl:prose-h2:text-center prose-th:border prose-td:border prose-table:text-center prose-table:table-auto")}
             remarkPlugins={[remarkGfm, remarkImages]}
           >
             {data.content}
