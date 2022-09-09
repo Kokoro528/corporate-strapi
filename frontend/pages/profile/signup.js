@@ -76,22 +76,6 @@ const SignUp = ({ signup }) => {
     password: "",
   })
   const [succeeded, setSuccess] = useState(false)
-  const failure = useCallback(
-    (msg) => {
-      setFailureMsg(msg)
-    },
-    [failureMsg]
-  )
-  const success = useCallback(() => {
-    setSuccess(true)
-  }, [succeeded])
-
-  if (succeeded) {
-    signIn(
-      "credentials",
-      Object.assign(signupFields, { identifier: signupFields.email })
-    )
-  }
 
   // const register = useCallback(() => {
   const {
@@ -107,8 +91,6 @@ const SignUp = ({ signup }) => {
       )
     },
   })
-  // if (error) failure(error.message)
-  // })
 
   return (
     <div className="container">

@@ -41,7 +41,6 @@
     "contentSections": {
       "type": "dynamiczone",
       "components": [
-        "sections.bottom-actions",
         "sections.carousel",
         "sections.feature-columns-group",
         "sections.feature-rows-group",
@@ -58,7 +57,11 @@
         "sections.cards",
         "instance.culture",
         "instance.library-list",
-        "instance.mworks-intros"
+        "instance.mworks-intros",
+        "sections.rich-text-group",
+        "instance.software-list",
+        "instance.case-listing",
+        "sections.bottom-actions"
       ],
       "pluginOptions": {
         "i18n": {

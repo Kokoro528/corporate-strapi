@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_sections_rich_text_groups",
+  "info": {
+    "displayName": "RichText Group",
+    "icon": "campground",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "contentList": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.rich-text"
+    },
+    "background": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "dark": {
+      "type": "boolean"
+    }
+  }
+}

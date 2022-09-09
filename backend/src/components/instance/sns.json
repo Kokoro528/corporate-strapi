@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_instance_sns",
+  "info": {
+    "displayName": "SNS",
+    "icon": "user-friends",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "platforms": {
+      "type": "component",
+      "repeatable": true,
+      "component": "links.link-with-icon"
+    }
+  }
+}

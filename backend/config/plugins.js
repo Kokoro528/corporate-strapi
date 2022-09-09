@@ -14,6 +14,12 @@ module.exports = ({ env }) => ({
     }
 
   },
+  meilisearch: {
+    config: {
+      host: "http://localhost:7700",
+      // apiKey: "masterKey"
+    }
+  },
   deepl: {
     enabled: true,
     config: {

@@ -9,7 +9,7 @@ import { SWRConfig } from "swr"
 import { useSession } from "next-auth/react"
 
 const Layout = ({ children, global, metadata }) => {
-  const { navbar, footer, notificationBanner, metaTitleSuffix } =
+  const { navbar, footer, notificationBanner, metaTitleSuffix, sns } =
     global.attributes
   const { metaTitle, metaDescription, shareImage, twitterCardType } =
     metadata || {}
@@ -34,7 +34,7 @@ const Layout = ({ children, global, metadata }) => {
             <Navbar navbar={navbar} global={global} />
 
             {children}
-            <Footer footer={footer} />
+            <Footer footer={footer} sns={sns} />
           </div>
         </div>
       </div>

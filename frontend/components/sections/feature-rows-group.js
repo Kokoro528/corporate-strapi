@@ -5,7 +5,7 @@ import CustomLink from "../elements/custom-link"
 
 const FeatureRowsGroup = ({ data }) => {
   return (
-    <div className=" relative bg-blue-100 flex flex-col gap-12 py-12">
+    <div className="relative flex flex-col gap-12 py-12">
       <div className="absolute container   w-full h-full"></div>
       <div className=" container relative">
         {data.features.map((feature, index) => (
@@ -26,14 +26,14 @@ const FeatureRowsGroup = ({ data }) => {
               <p className="my-6">{feature.description}</p>
               {feature.link && (
                 <CustomLink link={feature.link}>
-                  <div className="text-blue-600 with-arrow hover:underline">
+                  <div className="text-primary-500 with-arrow hover:underline">
                     {feature.link?.text}
                   </div>
                 </CustomLink>
               )}
             </div>
             {/* Media section */}
-            <div className="w-full sm:9/12 lg:w-4/12 max-h-full ">
+            <div className="w-full sm:9/12  max-h-full ">
               {/* Images */}
               {feature.media.data.attributes.mime.startsWith("image") && (
                 <div className="w-full h-auto">

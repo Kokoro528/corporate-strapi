@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_instance_case_listings",
+  "info": {
+    "displayName": "Case Listing",
+    "icon": "allergies"
+  },
+  "options": {},
+  "attributes": {
+    "case": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::case.case"
+    }
+  }
+}

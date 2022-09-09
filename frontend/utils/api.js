@@ -5,6 +5,10 @@ export function getStrapiURL(path) {
     }${path}`
 }
 
+export function getMeiliURL(path) {
+  return `${process.env.NEXT_MEILISEARCH_API_URL || "http://localhost:7700"}${path}` 
+}
+
 /**
  * Helper to make GET requests to Strapi API endpoints
  * @param {string} path Path of the API route
@@ -56,8 +60,7 @@ export async function getPageData({ slug, locale, preview }) {
   const pagesRes = await fetch(gqlEndpoint, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
-      // "Authorization": "Bearer " + session?.accessToken
+      "Content-Type": "application/json"
     },
     body: JSON.stringify({
       query: `
@@ -127,6 +130,109 @@ export async function getPageData({ slug, locale, preview }) {
                     }
                     richtext  
                   }
+                  ... on ComponentInstanceLibraryList {
+                    id
+                    backgroundImage{
+                      ...FileParts
+                    }
+                    title
+                    libraries {
+                      data {
+                        id
+                        attributes {
+                          
+                          title
+                          formalName
+                          slug
+                          snippet
+                          icon {
+                            ...FileParts
+                          }
+                          downloads {
+                            id
+                            newTab
+                            url
+                            text
+                            type
+                          }
+                        }
+                      }
+                    }
+                    
+                    
+                    
+                  }
+                  ... on ComponentInstanceSoftwareList {
+                    id 
+                    software {
+                      data{
+                        attributes {
+                        productId
+                          icon {
+                            ...FileParts
+                          }
+                          intro {
+                            __typename
+                            ... on ComponentSectionsTopHeading {
+                              id
+                              title
+                              backgroundImage {
+                                ...FileParts
+                              }
+                              abstract
+                              buttons {
+                                id
+                                newTab
+                                text
+                                type
+                                url
+                              }
+                              style
+                            }
+                            ... on ComponentSectionsRichTextGroup {
+                              id
+                              title 
+                              contentList {
+                                content
+                              }
+                              background {
+                                ...FileParts
+                              }
+                            }
+                            
+                            ... on ComponentSectionsRichContentSection {
+                              id
+                              content
+                              subtitle
+                              title
+                              narrow
+                              typeRCS: type
+                              theme
+                              media {
+                                data {
+                                  id
+                                  attributes {
+                                    name
+                                    alternativeText
+                                    width
+                                    height
+                                    mime
+                                    url
+                                    formats
+                                  }
+                                }
+                              }
+                              background {
+                                ...FileParts
+                              }
+                            }
+                            
+                          }
+                        }
+                      }
+                      
+                    }
+                  }
                   ... on ComponentSectionsMediaFeatures {
                     id
                     title
@@ -149,6 +255,9 @@ export async function getPageData({ slug, locale, preview }) {
                         ...FileParts
                       }
                       description
+                      span
+                      spanstart
+                      selfAlign
                     }
                     cultureEpitome {
                       title
@@ -156,6 +265,9 @@ export async function getPageData({ slug, locale, preview }) {
                         ...FileParts
                       }
                       description
+                      span
+                      spanstart
+                      selfAlign
                     }
                   }
                   ... on ComponentSectionsCarousel {
@@ -170,17 +282,6 @@ export async function getPageData({ slug, locale, preview }) {
                         text
                         url
                       } 
-                    }
-                  }
-                  ... on ComponentSectionsBottomActions {
-                    id
-                    title
-                    buttons {
-                      id
-                      newTab
-                      text
-                      type
-                      url
                     }
                   }
                   ... on ComponentSectionsHero {
@@ -207,6 +308,7 @@ export async function getPageData({ slug, locale, preview }) {
                   ... on ComponentSectionsFeatureColumnsGroup {
                     id
                     isFlex
+                    showUrlLink
                     features {
                       id
                       description
@@ -215,12 +317,15 @@ export async function getPageData({ slug, locale, preview }) {
                       }
                       url
                       span
+                      spanstart
+                      selfAlign
                       titleFCG: title
                     }
                     backgroundImage{
                       ...FileParts
                     }
                     brief
+                    zigzag
                   }
                   ... on ComponentSectionsFeatureRowsGroup {
                     id
@@ -284,6 +389,16 @@ export async function getPageData({ slug, locale, preview }) {
                   ... on ComponentSectionsRichText {
                     id
                     content
+                  }
+                  ... on ComponentSectionsRichTextGroup {
+                    id
+                    title 
+                    contentList {
+                      content
+                    }
+                    background {
+                      ...FileParts
+                    }
                   }
                   ... on ComponentSectionsRichContentSection {
                     id
@@ -380,6 +495,7 @@ export async function getPageData({ slug, locale, preview }) {
                   background {
                     ...FileParts
                   }
+                  title
                   contentCards {
                     title
                     subtitle
@@ -414,7 +530,7 @@ export async function getPageData({ slug, locale, preview }) {
       variables: {
         slug,
         publicationState: preview ? "PREVIEW" : "LIVE",
-        
+
         locale,
       },
     }),
@@ -433,13 +549,13 @@ export async function getPageData({ slug, locale, preview }) {
 export async function getCollectionList(pluralName, session) {
   if (!pluralName) return {};
   const endpoint = getStrapiURL(`/api/${pluralName}?populate=*`)
-  console.log("sessionsd", session)
   const collectionList = await fetch(endpoint, {
     method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": "Bearer " + session?.accessToken
-    }
+    headers: Object.assign({
+      "Content-Type": "application/json"
+    }, session.accessToken ? { "Authorization": "Bearer " + session?.accessToken } : {}
+    )
+
 
   })
   const collections = await collectionList.json()
@@ -500,129 +616,7 @@ export async function getSingleType({ singularName }) {
 }
 
 
-export async function getCaseData({ locale, preview, category, title }) {
-  const gqlEndpoint = getStrapiURL("/graphql")
 
-  const param = `${(!!category || !!title) ? (`filters: { ${(!!category ? `category: { eq: $category }` : ``)}
-  ${(!!title ? `title: {eq: $title}` : ``)}}`) : ''}`
-
-
-  const vars = `${!!category ? '$category: String' : ''} \n ${!!title ? '$title: String' : ''}`
-
-  const caseRes = await fetch(gqlEndpoint, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      query: `
-      fragment FileParts on UploadFileEntityResponse {
-        data {
-          id
-          attributes {
-            alternativeText
-            width
-            height
-            mime
-            url
-            formats
-          }
-        }
-      }
-      query GetCases(
-        $publicationState: PublicationState!
-        $locale: I18NLocaleCode!
-        ${vars}
-      ) {        
-        cases(
-          publicationState: $publicationState
-          locale: $locale
-          ${param}
-        ) {
-          data {
-            id
-            attributes {
-              locale
-              localizations {
-                data {
-                  id
-                  attributes {
-                    locale
-                  }
-                }
-              }
-              title
-              category
-              contentSections {
-                __typename
-                ... on ComponentSectionsRichText {
-                  id
-                  content
-                }
-                ... on ComponentSectionsTopHeading {
-                  id
-                  title
-                  backgroundImage {
-                    ...FileParts
-                  }
-                  abstract
-                  buttons {
-                    id
-                    newTab
-                    text
-                    type
-                    url
-                    style
-                  }
-                }
-                ... on ComponentSectionsHero {
-                  id
-                  buttons {
-                    id
-                    newTab
-                    text
-                    type
-                    url
-                  }
-                  title
-                  description
-                  label
-                  smallTextWithLink
-                  picture {
-                    ...FileParts
-                  }
-                  type
-                }
-                
-              }
-            
-              
-            }
-          }
-        }
-      }      
-      `,
-      variables: {
-        publicationState: preview ? "PREVIEW" : "LIVE",
-        locale,
-        category,
-        title
-      },
-    })
-  })
-
-
-
-
-  const casesData = await caseRes.json()
-  // Make sure we found something, otherwise return null
-  if (casesData.data?.cases == null) {
-    return null
-  }
-
-  // Return the first item since there should only be one result per slug
-  return casesData.data.cases.data
-}
 
 export async function getSolutionData({ locale, preview }) {
   const gqlEndpoint = getStrapiURL("/graphql")
@@ -846,6 +840,17 @@ export async function getGlobalData(locale) {
                       url
                       newTab
                       text
+                    }
+                  }
+                }
+                sns {
+                  platforms{
+                    id
+                    url
+                    newTab
+                    title
+                    icon {
+                      ...FileParts
                     }
                   }
                 }

@@ -95,7 +95,7 @@ module.exports = {
   },
   theme: {
 
-    
+
     extend: {
       colors: {
         // primary: colors.indigo,
@@ -108,7 +108,8 @@ module.exports = {
           900: "RGB(43.0,25.0,76.0)",
           800: "RGB(41.0,47.0,98.0)",
           700: "RGB(39.0,69.0,121.0)",
-          600: "RGB(43.0,93.0,151.0)",
+          // 600: "RGB(43.0,93.0,151.0)",
+          600: "RGB(43, 134, 216)",
           500: "RGB(62.0,111.0,184.0)",
           400: "RGB(102.0,132.0,211.0)",
           300: "RGB(147.0,152.0,229.0)",
@@ -116,7 +117,7 @@ module.exports = {
           100: "RGB(198.0,193.0,244.0)",
           50: "RGB(217.0,213.0,248.0)",
         },
-  
+
       },
       keyframes: {
         wiggle: {
@@ -130,9 +131,6 @@ module.exports = {
           '100%': {
             transform: 'translateY(0%)'
           },
-
-
-
         },
         fadeIn: {
           'from': {
@@ -154,50 +152,53 @@ module.exports = {
       })
     }
   },
-  plugins: [require("@tailwindcss/typography"), require("flowbite/plugin"), plugin(function ({ addUtilities }) {
-    addUtilities({
-      '.content-auto': {
-        'content-visibility': 'auto',
-      },
-      '.content-hidden': {
-        'content-visibility': 'hidden',
-      },
-      '.content-visible': {
-        'content-visibility': 'visible',
-      },
-      '.writing-vertical-lr': {
-        'writing-mode': 'vertical-lr'
-      },
-      '.writing-lr': {
-        'writing-mode': 'lr'
-      },
-      '.counter': {
-        'counter-reset': 'section',
-        '> li': {
-          'counter-increment': 'section',
-          'display': 'flex',
-          'position': 'relative',
-          '@apply rounded-md border-solid shadow-md m-4 p-3 bg-white': true,
-          'min-height': '8rem',
-          'z-index': '-10'
+  plugins: [
+    require("@tailwindcss/typography"),
+    require("flowbite/plugin"), plugin(function ({ addUtilities }) {
+      addUtilities({
+        '.content-auto': {
+          'content-visibility': 'auto',
         },
-        '> li::before': {
-          'width': '50%',
-          'position': 'absolute',
-          'top': 0,
-          'bottom': 0,
-          'font-size': '4rem',
-          'content': 'counter(section, decimal-leading-zero)',
-          '@apply text-[#F4F7F9]': true,
-          'z-index': '-20'
-        }
+        '.content-hidden': {
+          'content-visibility': 'hidden',
+        },
+        '.content-visible': {
+          'content-visibility': 'visible',
+        },
+        '.writing-vertical-lr': {
+          'writing-mode': 'vertical-lr'
+        },
+        '.writing-lr': {
+          'writing-mode': 'lr'
+        },
+        '.counter': {
+          'counter-reset': 'section',
+          '> li': {
+            'counter-increment': 'section',
+            'display': 'flex',
+            'position': 'relative',
+            '@apply rounded-md border-solid shadow-md m-4 p-3 bg-white': true,
+            'min-height': '8rem',
+            'z-index': '-10'
+          },
+          '> li::before': {
+            'width': '50%',
+            'position': 'absolute',
+            'top': 0,
+            'bottom': 0,
+            'font-size': '4rem',
+            'content': 'counter(section, decimal-leading-zero)',
+            '@apply text-[#F4F7F9]': true,
+            'z-index': '-20'
+          }
 
-      },
+        },
 
+      })
     })
-  })
   ],
   content: [
-    'node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}'
+    'node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}',
+    "./node_modules/flowbite/**/*.js"
   ]
 }

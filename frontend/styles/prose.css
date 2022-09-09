@@ -45,11 +45,12 @@
 }
 
 .prose-w-list {
-    @apply prose max-w-none;
+    @apply prose max-w-none ;
     ol, ul{
         @apply grid grid-cols-2 list-none counter;
         li {
-            @apply col-span-1 ;
+            @apply col-span-2 md:col-span-1 text-center bg-white indent-4 align-middle px-12 py-12;
+            
         }
     }
 }

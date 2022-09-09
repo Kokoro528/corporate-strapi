@@ -95,10 +95,8 @@ h6 {
 .hoverable:hover .mega-menu,
 .mega-menu:hover {
   display: flex;
-  /* z-index: 500 !important; */
   position: absolute;
   width: 100vw;
-  /* left: auto; */
   transition: 1000ms !important;
   @apply bg-gray-50;
 }
@@ -117,6 +115,39 @@ h6 {
   @apply border-b-gray-50;
 }
 
+.qrcode-container{
+  position: relative;
+  @apply inline-flex;
+  .qrcode {
+    @apply p-2;
+  }
+}
+
+.qrcode-container:hover .qrcode {
+  display: flex;
+  content: "";
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  border-width: 7px;
+  border-style: solid;
+  border-color: transparent;
+  /* @apply border-b-gray-50; */
+}
+
+
+.card:hover .download {
+  /* display: flex; */
+  position: absolute;
+  background-color: black;
+  opacity: .9;
+  z-index: 39;
+  @apply h-full w-full;
+}
+
+.card .download {
+  @apply hidden;
+}
 .carousel {
   @apply relative;
   .carousel-text {

@@ -48,7 +48,7 @@ const InfoCards = ({ data }) => {
               {card.description}
             </Markdown>
             <div className="flex flex-none flex-row  flex-wrap ">
-              {card.buttons.map((button) => (
+              {card.buttons?.map((button) => (
                 <ButtonLink
                   button={button}
                   appearance={getButtonAppearance(button.type, "light")}

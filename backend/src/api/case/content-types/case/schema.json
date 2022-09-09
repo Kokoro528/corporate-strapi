@@ -39,17 +39,6 @@
       "type": "string",
       "unique": true
     },
-    "seo": {
-      "displayName": "Seo",
-      "type": "component",
-      "repeatable": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "meta.seo"
-    },
     "category": {
       "pluginOptions": {
         "i18n": {
@@ -79,6 +68,16 @@
           "localized": true
         }
       }
+    },
+    "snippet": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "elements.feature-row"
     }
   }
 }

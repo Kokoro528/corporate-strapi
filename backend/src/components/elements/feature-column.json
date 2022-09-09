@@ -30,6 +30,22 @@
       "required": false,
       "unique": false,
       "default": 2
+    },
+    "spanstart": {
+      "type": "integer",
+      "max": 12,
+      "min": 1
+    },
+    "selfAlign": {
+      "type": "enumeration",
+      "enum": [
+        "left",
+        "center"
+      ],
+      "default": "left"
+    },
+    "smallTextBelowIcon": {
+      "type": "string"
     }
   }
 }

@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_instance_software_lists",
+  "info": {
+    "displayName": "Software List",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "software": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::software.software"
+    }
+  }
+}

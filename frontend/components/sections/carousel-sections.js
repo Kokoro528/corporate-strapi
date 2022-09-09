@@ -27,7 +27,7 @@ const Page = ({ data }) => {
 
   return (
     <section
-      className=" flex flex-col lg:flex-row  gap-12 align-top py-12 w-full  flex place-content-center"
+      className=" flex flex-col lg:flex-row  gap-12 align-top py-12 w-full  place-content-center"
       style={{
         backgroundImage: data.background?.data?.attributes?.url
           ? `url("${data.background?.data?.attributes?.url}")`
@@ -41,6 +41,7 @@ const Page = ({ data }) => {
           "bg-blue-300": data?.background?.data?.attribute?.url === null,
         })}
       >
+        {data.title && <h1>{data.title}</h1>}
         <Carousel
           hideArrow
           containerClassName={"px-3"}
@@ -53,7 +54,7 @@ const Page = ({ data }) => {
           autoplay={3000}
           loop
         >
-          {data.contentCards.map((e) => (
+          {data.contentCards?.map((e) => (
             <Carousel.Item key={"carousel-item-" + e.id}>
               <div className="md:px-8 carousel">
                 {/* <img className="bg-gradient-to-r from-violet-500 to-fuchsia-500 w-full h-[32rem]" /> */}

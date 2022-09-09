@@ -32,6 +32,13 @@
     },
     "brief": {
       "type": "richtext"
+    },
+    "zigzag": {
+      "type": "integer",
+      "default": 0
+    },
+    "showUrlLink": {
+      "type": "boolean"
     }
   }
 }

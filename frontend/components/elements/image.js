@@ -10,7 +10,7 @@ const NextImage = ({ media, ...props }) => {
   if (!media || !media.data) {
     return props.width && props.height ? (
       <Image
-        src={"/svg/gumi327.svg"}
+        src={"/svg/dark-layer.svg"}
         alt={""}
         width={props.width}
         height={props.height}

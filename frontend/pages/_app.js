@@ -14,21 +14,17 @@ import Context from "@/components/context"
 // import "@/styles/nav.css"
 // import "@/styles/table.css"
 
-const fetcher = (session) => (url, body) =>
+const fetcher = (session) => (url) =>
   fetch(
     url,
-    Object.assign(
-      {},
-      {
-        headers: Object.assign(
-          {
-            "Content-Type": "application/json",
-          },
-          session ? { Authorization: "Bearer " + session?.accessToken } : {}
-        ),
-      },
-      { body }
-    )
+    Object.assign({
+      headers: Object.assign(
+        {
+          "Content-Type": "application/json",
+        },
+        session ? { Authorization: "Bearer " + session?.accessToken } : {}
+      ),
+    })
   ).then((r) => {
     if (!r.ok) {
       throw new Error(r.statusText)
@@ -42,8 +38,6 @@ const Auth = ({ children }) => {
   if (status === "loading") {
     return <div>Loading...</div>
   }
-
-  console.log("session", session)
 
   return (
     <SWRConfig
@@ -97,6 +91,7 @@ const MyApp = ({ Component, pageProps: { session, ...pageProps } }) => {
           href="https://unpkg.com/flowbite@1.4.7/dist/flowbite.min.css"
         />
         <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
+        {/* <script src="../node_modules/flowbite/dist/flowbite.js"></script> */}
         <link
           href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
           rel="stylesheet"

@@ -43,7 +43,8 @@
       "enum": [
         "timeline",
         "prose-w-list",
-        "prose"
+        "prose",
+        "prose-w-list-wide"
       ]
     },
     "narrow": {

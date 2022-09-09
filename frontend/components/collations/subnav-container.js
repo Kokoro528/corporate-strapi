@@ -21,7 +21,7 @@ const Subnav = (props) => {
 
   useEffect(() => {
     return () => {
-      if (navLink.nestedLinks.length) setSelectedSideTab("")
+      if (navLink.nestedLinks.length) setSelectedSideTab(null)
     }
   }, [])
   const { cache, mutate, fetcher, ...restConfig } = useSWRConfig()

@@ -12,27 +12,43 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "version": {
+    "product": {
       "type": "string"
     },
-    "snapshot": {
-      "type": "text"
+    "productId": {
+      "type": "uid",
+      "targetField": "product"
     },
-    "content": {
-      "type": "richtext"
-    },
-    "product": {
-      "type": "enumeration",
-      "enum": [
-        "Mworks.Syslink",
-        "Mworks.Sysplorer",
-        "Mworks.Syslab"
-      ]
-    },
-    "downloadButtons": {
+    "gotolinks": {
       "type": "component",
       "repeatable": true,
       "component": "links.button-link"
+    },
+    "intro": {
+      "type": "dynamiczone",
+      "components": [
+        "sections.top-heading",
+        "sections.rich-content-section",
+        "sections.rich-text-group"
+      ]
+    },
+    "attachedSections": {
+      "type": "dynamiczone",
+      "components": [
+        "sections.rich-content-section",
+        "sections.rich-text-group"
+      ]
+    },
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     }
   }
 }

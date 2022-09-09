@@ -23,9 +23,13 @@ import dynamic from "next/dynamic"
 import CarouselSection from "./sections/carousel-sections"
 import Culture from "./sections/culture"
 import MworksIntros from "./instance/mworks-intro"
+import RichtextGroup from "./sections/richtext-group"
+import SoftwareList from "./instance/software-list"
+import Swiper from "swiper"
+import LibraryList from "./instance/library-list"
 
 // Map Strapi sections to section components
-const sectionComponents = {
+export const sectionComponents = {
   ComponentSectionsHero: dynamic(() => import("@/components/sections/hero")),
   ComponentSectionsLargeVideo: dynamic(() =>
     import("@/components/sections/large-video")
@@ -36,7 +40,10 @@ const sectionComponents = {
   ComponentSectionsFeatureRowsGroup: FeatureRowsGroup,
   ComponentSectionsBottomActions: BottomActions,
   ComponentSectionsCards: InfoCards,
+  ComponentInstanceSoftwareList: SoftwareList,
+  ComponentInstanceLibraryList: LibraryList,
   ComponentSectionsTestimonialsGroup: TestimonialsGroup,
+  ComponentSectionsRichTextGroup: RichtextGroup,
   ComponentSectionsRichText: RichText,
   ComponentSectionsRichContentSection: dynamic(() =>
     import("@/components/sections/rich-content-section")
@@ -46,6 +53,7 @@ const sectionComponents = {
   ),
   ComponentSectionsPricing: Pricing,
   ComponentSectionsLeadForm: LeadForm,
+  ComponentInstanceSoftwareList: SoftwareList,
   ComponentSectionsSolutionFeature: dynamic(() =>
     import("@/components/sections/solution-feature")
   ),
@@ -56,6 +64,7 @@ const sectionComponents = {
   // ComponentSectionsCards: InfoCards,
   ComponentSectionsCarousel: Carousel,
   ComponentSectionsHighlightingPoints: Features,
+  ComponentSectionsSwipers: Swiper,
   // If getting dynamic zone using RESTful API
   "sections.rich-text": RichText,
   "sections.bottom-actions": BottomActions,

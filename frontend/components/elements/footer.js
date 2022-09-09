@@ -2,18 +2,20 @@ import PropTypes from "prop-types"
 import { linkPropTypes, mediaPropTypes } from "utils/types"
 import NextImage from "./image"
 import CustomLink from "./custom-link"
+import SNS from "../global/sns"
 
-const Footer = ({ footer }) => {
+const Footer = ({ footer, sns }) => {
   return (
     <footer
       className="pt-12 "
       style={{ background: `url('/svg/footer.svg'), #084D92` }}
     >
       <div className="container flex flex-col lg:flex-row lg:justify-between">
-        <div>
+        <div className="block">
           {footer.logo && (
             <NextImage width="200" height="200" media={footer.logo} />
           )}
+          <SNS data={sns} />
         </div>
         <nav className="flex flex-wrap flex-row lg:gap-20 items-start lg:justify-end mb-10">
           {footer.columns.map((footerColumn) => (

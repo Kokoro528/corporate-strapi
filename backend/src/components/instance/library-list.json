@@ -11,6 +11,20 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::library.library"
+    },
+    "backgroundImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "title": {
+      "type": "string"
     }
   }
 }

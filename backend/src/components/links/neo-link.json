@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_links_neo_links",
+  "info": {
+    "displayName": "Neo Link",
+    "icon": "arrow-right"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    }
+  }
+}

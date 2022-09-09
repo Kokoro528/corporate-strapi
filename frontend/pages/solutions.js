@@ -158,7 +158,6 @@ export async function getServerSideProps(context) {
     context.res,
     options
   )
-  console.log("session brandy", session)
   // Fetch pages. Include drafts if preview mode is on
   // const pageData = await getCaseData({
   //   category: query?.type,

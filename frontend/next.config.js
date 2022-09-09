@@ -9,13 +9,20 @@ module.exports = {
     domains: ['localhost', 'strapi.obs.cn-east-3.myhuaweicloud.com', 'tongyuan.cc'],
     // domains: ['localhost']
   },
-  reactStrictMode: false
+  reactStrictMode: false,
 
-  // webpack: (
-  //   config,
-  //   { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }
-  // ) => {
-  //   // Important: return the modified config
-  //   return config
-  // },
+  webpack: (
+    config,
+    { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }
+  ) => {
+    // Important: return the modified config
+    // webpack(config) {
+      config.module.rules.push({
+        test: /\.svg$/i,
+        issuer: /\.[jt]sx?$/,
+        use: ["@svgr/webpack"],
+      })
+  
+    return config
+  },
 }
