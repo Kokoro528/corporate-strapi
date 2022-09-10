@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_instance_large_search_bars",
+  "info": {
+    "displayName": "Large Search Bar",
+    "icon": "search"
+  },
+  "options": {},
+  "attributes": {
+    "defaultSearchText": {
+      "type": "string"
+    }
+  }
+}

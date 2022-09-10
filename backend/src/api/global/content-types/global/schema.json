@@ -117,6 +117,16 @@
         }
       },
       "component": "instance.sns"
+    },
+    "fourohfour": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "links.link"
     }
   }
 }

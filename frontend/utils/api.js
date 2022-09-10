@@ -309,6 +309,7 @@ export async function getPageData({ slug, locale, preview }) {
                     id
                     isFlex
                     showUrlLink
+                    align
                     features {
                       id
                       description
@@ -374,6 +375,9 @@ export async function getPageData({ slug, locale, preview }) {
                       link
                     }
                     title
+                  }
+                  ... on ComponentInstanceLargeSearchBar {
+                    defaultSearchText
                   }
                   ... on ComponentSectionsLargeVideo {
                     id

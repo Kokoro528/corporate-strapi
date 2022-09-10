@@ -61,7 +61,8 @@
         "sections.rich-text-group",
         "instance.software-list",
         "instance.case-listing",
-        "sections.bottom-actions"
+        "sections.bottom-actions",
+        "instance.large-search-bar"
       ],
       "pluginOptions": {
         "i18n": {

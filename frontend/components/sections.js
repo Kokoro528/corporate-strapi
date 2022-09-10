@@ -27,6 +27,7 @@ import RichtextGroup from "./sections/richtext-group"
 import SoftwareList from "./instance/software-list"
 import Swiper from "swiper"
 import LibraryList from "./instance/library-list"
+import LargeSearchBar from "./instance/large-search-bar"
 
 // Map Strapi sections to section components
 export const sectionComponents = {
@@ -45,6 +46,7 @@ export const sectionComponents = {
   ComponentSectionsTestimonialsGroup: TestimonialsGroup,
   ComponentSectionsRichTextGroup: RichtextGroup,
   ComponentSectionsRichText: RichText,
+  ComponentInstanceLargeSearchBar: LargeSearchBar,
   ComponentSectionsRichContentSection: dynamic(() =>
     import("@/components/sections/rich-content-section")
   ),

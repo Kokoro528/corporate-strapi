@@ -4,15 +4,33 @@ import Markdown from "react-markdown"
 import CustomLink from "./custom-link"
 
 const FeatureColumn = ({ data, className, showUrlLink }) => {
+  const tmpClass = classNames(
+    "flex flex-col align-center w-full",
+    "col-span-2",
+    className,
+    {
+      // [`md:col-span-${data.span}`]: data.span,
+      // [`md:col-start-${data.spanstart}`]: data.spanstart,
+      // [`text-${data.selfAlign}`]: data.selfAlign,
+    }
+  )
   const content = (
     <>
-      <div className="w-28 h-28 flex-initial">
-        <NextImage media={data.icon} className="w-full h-full" />
+      <div className={"w-full h-full relative flex-initial basis-24"}>
+        {/* <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"> */}
+        {/* <div className="w-full h-full"> */}
+        <NextImage
+          media={data.icon}
+          quality="100"
+          layout="fill"
+          className="absolute object-center object-scale-down "
+        />
+        {/* </div> */}
+
+        {/* </div> */}
       </div>
-      <h2 className="text-lg font-semibold flex-none">
-        {data.title || data.titleFCG}
-      </h2>
-      <div className="flex-1 mt-1">
+      <h2 className="text-lg font-semibold ">{data.title || data.titleFCG}</h2>
+      <div className="flex-1 mt-1 mx-auto">
         <Markdown className="prose">{data.description}</Markdown>
       </div>
       {/* {data.url && (
@@ -27,7 +45,7 @@ const FeatureColumn = ({ data, className, showUrlLink }) => {
   if (data.url) {
     if (data.showUrlLink) {
       return (
-        <>
+        <div className={tmpClass}>
           {content}
           <CustomLink
             link={{ url: data.url, text: "更多", id: data.id }}
@@ -35,34 +53,19 @@ const FeatureColumn = ({ data, className, showUrlLink }) => {
           >
             <div className="text-sky-400 ">更多</div>
           </CustomLink>
-        </>
+        </div>
       )
     } else {
       return (
         <CustomLink
           link={{ url: data.url, text: "更多", id: data.id }}
-          className={classNames("flex flex-col align-center", className, {
-            [`md:col-span-${data.span}`]: data.span,
-            [`md:col-start-${data.spanstart}`]: data.spanstart,
-            [`md:items-${data.selfAlign}`]: data.selfAlign,
-          })}
+          className={tmpClass}
         >
-          {" "}
-          {content}{" "}
+          {content}
         </CustomLink>
       )
     }
   }
-  return (
-    <div
-      className={classNames("flex flex-col align-center", className, {
-        [`md:col-span-${data.span}`]: data.span,
-        [`md:col-start-${data.spanstart}`]: data.spanstart,
-        [`md:items-${data.selfAlign}`]: data.selfAlign,
-      })}
-    >
-      {content}
-    </div>
-  )
+  return <div className={tmpClass}>{content}</div>
 }
 export default FeatureColumn

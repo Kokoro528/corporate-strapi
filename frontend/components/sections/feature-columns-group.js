@@ -23,14 +23,18 @@ const FeatureColumnsGroup = ({ data }) => {
           className=""
         ></NextImage>
       </div>
-      <div className="container max-w-screen-lg py-12 flex flex-col lg:flex-row lg:flex-wrap gap-12 align-top">
+      <div className="container  py-12 flex flex-col lg:flex-row lg:flex-wrap gap-12 align-top">
         {data.title && <h1>{data.title}</h1>}
         {data.brief && <Markdown className="prose">{data.brief}</Markdown>}
         <div
           className={classNames("w-full", {
-            "md:grid grid-cols-8 ": data.zigzag === 7 && !data.isFlex,
+            "grid grid-cols-2": !data.isFlex,
+            "md:grid-cols-8  sm:grid-cols-6 ":
+              data.zigzag === 7 && !data.isFlex,
+            [`md:grid-rows-${Math.ceil(data.features.length / 4)}`]:
+              data.zigzag === 7,
             "md:grid grid-cols-6": data.zigzag === 5 && !data.isFlex,
-            "md:flex md:flex-nowrap ": data.isFlex,
+            "md:flex ": data.isFlex,
           })}
         >
           {data.features.map((feature, idx) => (
@@ -74,7 +78,9 @@ const FeatureColumnsGroup = ({ data }) => {
               key={`fc-${Math.random()}`}
               data={feature}
               showUrlLink={data.showUrlLink}
-              className=" mx-auto my-4  px-4 "
+              className={classNames(" mx-auto my-4  px-4 ", {
+                [`items-${data.align}`]: data.align,
+              })}
             />
           ))}
         </div>
