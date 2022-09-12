@@ -7,6 +7,7 @@ import { useRouter } from "next/router"
 import Layout from "@/components/layout"
 import { getLocalizedPaths } from "utils/localize"
 import Products from "@/components/global/products"
+import TopHeading from "@/components/sections/top-heading"
 
 // The file is called [[...slug]].js because we're using Next's
 // optional catch all routes feature. See the related docs:
@@ -47,6 +48,7 @@ const DynamicPage = ({
       {/* <Seo metadata={metadataWithDefaults} /> */}
       {/* Display content sections */}
       <Header title={title}></Header>
+      <TopHeading data={{title}} />
       <Sections sections={sections} preview={preview} />
     </Layout>
   )

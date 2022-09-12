@@ -148,8 +148,9 @@ module.exports = {
         'grid': "url(\"data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(15 23 42 / 0.04)'><path d='M0 .5H31.5V32'/></svg>\")",
         'stripe-1': "url('/svg/gumi88pure.svg')",
         'stripe-2': "url('/svg/gumi95.svg')",
-        'page-default': "url('/svg/default-page')",
-        '404': "url('/svg/404')"
+        'page-default': "url('/svg/default-page.svg')",
+        '404': "url('/svg/404.svg')",
+        'case-header': "url('/svg/case-header.svg')"
 
       })
     }
