@@ -27,19 +27,19 @@ const FilterTabs = ({ children, enumColumn, menubar }) => {
     <div>
       {menubar && (
         <>
-          <nav className="relative bg-slate-200 ">
+          <nav className="relative bg-primary-100" >
             {!!menubar.nestedLinks.length && (
-              <div className="container ">
+              <div className="container text-left">
                 <ul
                   className="hidden md:nav md:py-2  md:max-w-screen-lg md:justify-center md:flex flex-col md:flex-row flex-wrap list-none border-b-0 pl-0 w-screen  "
                   id="tabs-tabFill"
                   role="tablist"
                 >
-                  <li className="nav-item text-center " key="page-title">
+                  <li className="nav-item text-center block font-large text-md leading-tight" key="page-title">
                     <a
                       href={menubar.url}
                       className={classNames(
-                        "nav-link text-neutral-900  w-full block font-large text-md leading-tight  uppercase  border-t-0 border-r-2 border-primary-400 y-2",
+                        "nav-link text-neutral-900  w-full  uppercase  border-t-0 border-r-2 border-neutral-900 y-2",
                         { "font-bold text-neutral-900": isActive("") }
                       )}
                     >
@@ -56,7 +56,7 @@ const FilterTabs = ({ children, enumColumn, menubar }) => {
                         href={`${e.url}`}
                         // onClick={() => {router.push({query: {type: e}})}}
                         className={classNames(
-                          "nav-link text-neutral-900  w-full block font-large text-md leading-tight  uppercase  border-t-0 border-r-2 border-primary-400 y-2",
+                          "nav-link text-neutral-900  w-full block font-large text-md leading-tight  uppercase  y-2",
                           { "font-bold text-neutral-900": isActive(e.url) }
                         )}
                         id={"tabs-" + e.text}
@@ -128,7 +128,7 @@ const FilterTabs = ({ children, enumColumn, menubar }) => {
                 <a
                   href={menubar.url}
                   className={classNames(
-                    "nav-link text-sky-700  w-full block font-large text-md leading-tight  uppercase  border-t-0 border-r-2 border-primary-400 y-2",
+                  "nav-link text-sky-700  w-full block font-large text-md leading-tight  uppercase  y-2",
                     { "font-bold text-sky-900 bg-white": isActive("") }
                   )}
                 >
@@ -145,7 +145,7 @@ const FilterTabs = ({ children, enumColumn, menubar }) => {
                     href={`${e.url}`}
                     // onClick={() => {router.push({query: {type: e}})}}
                     className={classNames(
-                      "nav-link text-sky-700  w-full block font-large text-md leading-tight  uppercase  border-t-0 border-r-2 border-primary-400 y-2",
+                      "nav-link text-sky-700  w-full block font-large text-md leading-tight  uppercase  y-2",
                       {
                         "font-bold text-sky-900 bg-white": isActive(e.url),
                       }

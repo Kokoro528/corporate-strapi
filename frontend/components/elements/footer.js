@@ -11,7 +11,7 @@ const Footer = ({ footer, sns }) => {
       style={{ background: `url('/svg/footer.svg'), #084D92` }}
     >
       <div className="container flex flex-col lg:flex-row lg:justify-between">
-        <div className="block">
+        <div className="flex flex-col">
           {footer.logo && (
             <NextImage width="200" height="200" media={footer.logo} />
           )}
@@ -40,6 +40,7 @@ const Footer = ({ footer, sns }) => {
               </ul>
             </div>
           ))}
+          
         </nav>
       </div>
       <div className="text-sm bg-transparent py-6 text-gray-100">

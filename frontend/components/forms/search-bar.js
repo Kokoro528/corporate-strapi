@@ -37,14 +37,14 @@ const SearchBar = () => {
   }
   return (
     <formik onSubmit={formik.onSubmit}>
-      <div className="inline-flex ">
+      <div className="inline-flex ml-2 pl-3">
         <label
           htmlFor="defaultSearch"
           className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-gray-300"
         >
           Search
         </label>
-        <div className="relative">
+        <div className="relative py-1">
           <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
             <svg
               aria-hidden="true"

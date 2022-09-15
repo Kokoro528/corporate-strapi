@@ -8,6 +8,7 @@ import Layout from "@/components/layout"
 import { getLocalizedPaths } from "utils/localize"
 import Products from "@/components/global/products"
 import TopHeading from "@/components/sections/top-heading"
+import FilterTabs from "@/components/filter-tabs"
 
 // The file is called [[...slug]].js because we're using Next's
 // optional catch all routes feature. See the related docs:
@@ -47,9 +48,17 @@ const DynamicPage = ({
       {/* Add meta tags for SEO*/}
       {/* <Seo metadata={metadataWithDefaults} /> */}
       {/* Display content sections */}
+      <FilterTabs
+        menubar={global?.attributes?.navbar.links.find((e) =>
+          e.url.includes("cases")
+        )}
+      >
       <Header title={title}></Header>
-      <TopHeading data={{title}} />
+      <div className="bg-case-header w-full py-24">
+        <h2 className="text-center text-4xl text-white">{title}</h2>
+      </div>
       <Sections sections={sections} preview={preview} />
+      </FilterTabs>
     </Layout>
   )
 }

@@ -63,18 +63,19 @@ const List = ({ router }) => {
             passHref
           >
             <div className="flex text-lg relative" key={id}>
-              <div className=" w-68 h-52 bg-indigo-100 rounded">
+              <div className=" w-68 h-52 bg-indigo-100 rounded-bottom">
                 {
                   <NextImage
                     media={getPictureSrc(attributes)}
                     width="1"
                     height="1"
                     layout="fill"
+                    className="rounded-bottom "
                   />
                 }
               </div>
               <h3
-                className="font-bold py-2 bottom-0 bg-zinc-100 text-center
+                className="font-bold py-2 bottom-0 bg-primary-100 shadow-md text-center
                text-neutral-700 leading-8 rounded-bottom absolute min-h-min w-full h-20"
               >
                 {attributes.title}

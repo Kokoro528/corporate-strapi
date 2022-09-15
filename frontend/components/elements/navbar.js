@@ -38,7 +38,7 @@ const Navbar = ({ navbar, pageContext, global }) => {
     <>
       {/* The actual navbar */}
       <nav className="sticky z-30 h-20 top-0 navbar navbar-expand-lg bg-white py-2 relative flex items-center w-full justify-between border-gray-200 border-b-2 py-6 sm:py-2 ">
-        <div className="container flex flex-wrap flex-row items-center justify-between">
+        <div className="container flex flex-nowrap flex-row items-center justify-between">
           {/* Content aligned to the left */}
           {/* <div className="flex flex-row justify-between"> */}
           <Link href="/" className="flex-none h-8 w-32">
@@ -81,7 +81,7 @@ const Navbar = ({ navbar, pageContext, global }) => {
               </>
             ))}
           </ul>
-          <div className="flex flex-none">
+          <div className="flex flex-1 ml-3">
             {/* Locale Switch Mobile */}
             {/* {pageContext.localizedPaths && (
               <div className="md:hidden">
