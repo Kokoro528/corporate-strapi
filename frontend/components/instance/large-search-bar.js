@@ -13,6 +13,15 @@ const LargeSearchBar = () => {
     )
   )
 
+  const onKeyDown = (e) => {
+    if (e.which === 13) {
+      // e.preventDefault()
+      // e.stopPropagation()
+      alert("under construction")
+      formik.handleSubmit(formik.values)
+    }
+  }
+
   return (
     <section className=" container mt-20 ">
       <formik onSubmit={formik.onSubmit}>
@@ -42,9 +51,9 @@ const LargeSearchBar = () => {
             <input
               type="search"
               id="supportSearch"
-              onKeyDown={formik.handleSubmit}
+              onKeyDown={onKeyDown}
               onChange={formik.handleChange}
-              value={formik.values.defaultSearch}
+              value={formik.values.supportSearch}
               className="block py-2 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder=""
               required

@@ -31,7 +31,7 @@ const FilterTabs = ({ children, enumColumn, menubar }) => {
             {!!menubar.nestedLinks.length && (
               <div className="container text-left">
                 <ul
-                  className="hidden md:nav md:py-2  md:max-w-screen-lg md:justify-center md:flex flex-col md:flex-row flex-wrap list-none border-b-0 pl-0 w-screen  "
+                  className="hidden md:nav md:py-2  md:max-w-screen-lg md:justify-start md:flex flex-col md:flex-row flex-wrap list-none border-b-0 pl-0 w-screen  "
                   id="tabs-tabFill"
                   role="tablist"
                 >

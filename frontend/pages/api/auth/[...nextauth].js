@@ -44,7 +44,7 @@ const callbacks = {
     return false
   },
   async redirect({ url, baseUrl }) {
-    console.log("hino", url, baseUrl)
+    // console.log("hino", url, baseUrl)
     return baseUrl
   },
   async session({ session, user, token }) {

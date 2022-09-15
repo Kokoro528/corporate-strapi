@@ -1,24 +1,15 @@
 import { useFormik } from "formik"
 export const formikConf = {
   onSubmit: (values) => {
-    // console.log("ranhoune")
     alert(JSON.stringify(values, null, 2))
     return false
-  },
-  onKeyDown: (e) => {
-    if (e.which === 13) {
-      e.preventDefault()
-      e.stopPropagation()
-      alert("goback")
-      this.onSubmit()
-    }
-  },
+  }
 }
 
 const SearchBar = () => {
   const formik = useFormik(
     Object.assign(
-      {},
+      
       {
         initialValues: {
           defaultSearch: "",
@@ -29,8 +20,8 @@ const SearchBar = () => {
   )
   const onKeyDown = (e) => {
     if (e.which === 13) {
-      e.preventDefault()
-      e.stopPropagation()
+      // e.preventDefault()
+      // e.stopPropagation()
       alert("goback")
       formik.handleSubmit(formik.values)
     }
