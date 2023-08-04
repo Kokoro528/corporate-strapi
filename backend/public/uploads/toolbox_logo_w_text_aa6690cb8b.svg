@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="157" height="94.458" viewBox="0 0 157 94.458">
+  <defs>
+    <linearGradient id="linear-gradient" x1="-103.28" y1="81.051" x2="-102.611" y2="82.248" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#cfd1d2"/>
+      <stop offset="0.124" stop-color="#cdcecf" stop-opacity="0.996"/>
+      <stop offset="0.214" stop-color="#cac5c6" stop-opacity="0.984"/>
+      <stop offset="0.293" stop-color="#c4b6b7" stop-opacity="0.969"/>
+      <stop offset="0.366" stop-color="#bca1a2" stop-opacity="0.941"/>
+      <stop offset="0.435" stop-color="#b18686" stop-opacity="0.91"/>
+      <stop offset="0.501" stop-color="#a46465" stop-opacity="0.867"/>
+      <stop offset="0.563" stop-color="#943d3d" stop-opacity="0.82"/>
+      <stop offset="0.586" stop-color="#8e2d2d" stop-opacity="0.8"/>
+      <stop offset="0.823" stop-color="#8e2d2d" stop-opacity="0.8"/>
+      <stop offset="0.907" stop-color="#8e2d2d" stop-opacity="0.878"/>
+      <stop offset="1" stop-color="#8e2d2d"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="-123.315" y1="57.022" x2="-122.363" y2="58.04" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#cfd1d2"/>
+      <stop offset="0.085" stop-color="#cdcdce" stop-opacity="0.996"/>
+      <stop offset="0.17" stop-color="#c9c2c2" stop-opacity="0.98"/>
+      <stop offset="0.254" stop-color="#c1afb0" stop-opacity="0.961"/>
+      <stop offset="0.338" stop-color="#b79495" stop-opacity="0.925"/>
+      <stop offset="0.422" stop-color="#a97373" stop-opacity="0.886"/>
+      <stop offset="0.505" stop-color="#994a4a" stop-opacity="0.835"/>
+      <stop offset="0.557" stop-color="#8e2d2d" stop-opacity="0.8"/>
+      <stop offset="0.823" stop-color="#8e2d2d" stop-opacity="0.8"/>
+      <stop offset="0.907" stop-color="#8e2d2d" stop-opacity="0.878"/>
+      <stop offset="1" stop-color="#8e2d2d"/>
+    </linearGradient>
+    <filter id="路径_34" x="86.046" y="0" width="32.959" height="51.53" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="0.168" result="blur"/>
+      <feFlood flood-opacity="0.4"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="路径_35" x="62.16" y="12.357" width="28.217" height="39.173" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="0.168" result="blur-2"/>
+      <feFlood flood-opacity="0.4"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="路径_36" x="37.995" y="23.84" width="24.47" height="27.691" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="0.168" result="blur-3"/>
+      <feFlood flood-opacity="0.4"/>
+      <feComposite operator="in" in2="blur-3"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="组_63" data-name="组 63" transform="translate(-1184.099 -1004.138)">
+    <text id="MWORKS.Toolbox" transform="translate(1184.099 1093.596)" fill="#4d4d4d" font-size="20.206" font-family="MyriadPro-Semibold, Myriad Pro" font-weight="600"><tspan x="0" y="0">MWORKS.</tspan><tspan y="0" fill="#a54a66">Toolbox</tspan></text>
+    <g id="组_62" data-name="组 62">
+      <path id="路径_32" data-name="路径 32" d="M1260.081,1055.163l-14.022-26.68H1232.5l14.264,26.68Z" opacity="0.5" fill="url(#linear-gradient)"/>
+      <path id="路径_33" data-name="路径 33" d="M1273.97,1017l10.239,38.163h-13.559l-10-38.163Z" opacity="0.5" fill="url(#linear-gradient-2)"/>
+      <g transform="matrix(1, 0, 0, 1, 1184.1, 1004.14)" filter="url(#路径_34)">
+        <path id="路径_34-2" data-name="路径 34" d="M1289.041,1004.643l-18.391,50.52h13.559l18.39-50.52Z" transform="translate(-1184.1 -1004.14)" fill="#cfd1d2"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 1184.1, 1004.14)" filter="url(#路径_35)">
+        <path id="路径_35-2" data-name="路径 35" d="M1260.653,1017l-13.89,38.163h13.317L1273.97,1017Z" transform="translate(-1184.1 -1004.14)" fill="#a54a66"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 1184.1, 1004.14)" filter="url(#路径_36)">
+        <path id="路径_36-2" data-name="路径 36" d="M1232.5,1028.483l-9.9,26.68h13.558l9.9-26.68Z" transform="translate(-1184.1 -1004.14)" fill="#a54a66"/>
+      </g>
+    </g>
+  </g>
+</svg>

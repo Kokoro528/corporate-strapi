@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="152" height="93.124" viewBox="0 0 152 93.124">
+  <defs>
+    <linearGradient id="linear-gradient" x1="-18.042" y1="0.904" x2="-16.983" y2="-0.043" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ced0d1"/>
+      <stop offset="0.184" stop-color="#cecece" stop-opacity="0.996"/>
+      <stop offset="0.281" stop-color="#cecac7" stop-opacity="0.988"/>
+      <stop offset="0.358" stop-color="#cfc3ba" stop-opacity="0.973"/>
+      <stop offset="0.425" stop-color="#d0b8a8" stop-opacity="0.949"/>
+      <stop offset="0.484" stop-color="#d2ab90" stop-opacity="0.922"/>
+      <stop offset="0.539" stop-color="#d49a73" stop-opacity="0.886"/>
+      <stop offset="0.589" stop-color="#d78751" stop-opacity="0.847"/>
+      <stop offset="0.635" stop-color="#da712b" stop-opacity="0.8"/>
+      <stop offset="0.823" stop-color="#da712b" stop-opacity="0.8"/>
+      <stop offset="0.883" stop-color="#da712b" stop-opacity="0.851"/>
+      <stop offset="0.99" stop-color="#da712b" stop-opacity="0.984"/>
+      <stop offset="1" stop-color="#da712b"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="-0.56" y1="0.917" x2="0.483" y2="-0.039" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ced0d1"/>
+      <stop offset="0.264" stop-color="#d5ab8f"/>
+      <stop offset="0.458" stop-color="#dc905c"/>
+      <stop offset="0.7" stop-color="#db8147"/>
+      <stop offset="1" stop-color="#da712b"/>
+    </linearGradient>
+  </defs>
+  <g id="组_214" data-name="组 214" transform="translate(-884.5 -1005.583)">
+    <g id="组_60" data-name="组 60">
+      <path id="路径_26" data-name="路径 26" d="M937.264,1055.24l-15.744-24.949,13.224.1,15.744,24.95Z" fill="#ced0d1"/>
+      <path id="路径_27" data-name="路径 27" d="M969.115,1055.482l-31.487-49.9,13.224.1,31.487,49.9Z" opacity="0.5" fill="url(#linear-gradient)"/>
+      <path id="路径_28" data-name="路径 28" d="M937.633,1005.583l-16.112,24.708,13.224.1,16.1-24.708Z" fill="#da712b"/>
+      <path id="路径_29" data-name="路径 29" d="M950.492,1055.341l32.207-49.415-13.224-.1-32.207,49.415Z" fill="url(#linear-gradient-2)"/>
+      <path id="路径_30" data-name="路径 30" d="M982.727,1005.91l15.752,24.95-13.224-.1-15.744-24.95Z" fill="#da712b"/>
+      <path id="路径_31" data-name="路径 31" d="M982.376,1055.568l16.1-24.707-13.224-.1-16.1,24.707Z" fill="#ced0d1"/>
+    </g>
+    <text id="MWORKS.SysLink" transform="translate(884.5 1093.707)" fill="#4d4d4d" font-size="20" font-family="MyriadPro-Semibold, Myriad Pro" font-weight="600"><tspan x="0" y="0">MWORKS.</tspan><tspan y="0" fill="#d18e10">SysLink</tspan></text>
+  </g>
+</svg>

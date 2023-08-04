@@ -47,12 +47,19 @@ const ProductSubcontainer = (props) => {
         return (
           <div
             key={`subnav-product-${i}`}
-            className=" flex flex-col  items-start py-4 px-4 flex-1"
+            className=" flex flex-col items-start py-4  flex-1"
           >
-            <CustomLink link={{ id: e.id, text: e.title, url: e.url }}>
+            <CustomLink
+              link={{ id: e.id, text: e.title, url: e.url }}
+              className="relative w-94"
+            >
               <>
-                <div className="w-28 h-24">
-                  <NextImage media={e.icon} />
+                <div className="w-full h-28 relative items-center">
+                  <NextImage
+                    media={e.icon}
+                    className="object-center w-full h-full"
+                    layout="fill"
+                  />
                 </div>
                 <p className="text-sm ">{e.title}</p>
               </>
@@ -62,7 +69,6 @@ const ProductSubcontainer = (props) => {
       })}
     </div>
   ))
-
   return (
     <div
       className="
@@ -82,16 +88,6 @@ const ProductSubcontainer = (props) => {
           <div className="col-span-2 py-2">
             <ProductList {...data.products} />
           </div>
-          {/* {
-            data?.map((e) => (
-                <li key={`${e.attributes.title}-${pluralName}-${e.id}`}>
-                  <CustomLink
-                    link={{ url: `${pluralName}/${e.attributes.title}` }}
-                  >
-                    {e.attributes.title}
-                  </CustomLink>
-                </li>
-              ))} */}
         </div>
       </div>
     </div>

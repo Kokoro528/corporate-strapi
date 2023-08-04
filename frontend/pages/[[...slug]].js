@@ -96,26 +96,27 @@ export async function getStaticPaths(context) {
     }
   })
 
+  console.log("pages", pages, paths)
   return { paths, fallback: true }
 }
 
 export async function getStaticProps(context) {
   const { params, locale, locales, defaultLocale, preview = null } = context
-
+  console.log("alli", locale, defaultLocale)
   const globalLocale = await getGlobalData(locale)
   // const session = await unstable_getServerSession(context.req, context.res, options)
   // Fetch pages. Include drafts if preview mode is on
   const pageData = await getPageData({
     slug: (!params.slug ? [""] : params.slug).join("/"),
-    locale,
+    locale: defaultLocale,
     preview,
   })
-  // console.log(
-  //   "slug",
-  //   params.slug,
-  //   (!params.slug ? [""] : params.slug).join("/"),
-  //   pageData
-  // )
+  console.log(
+    "slug",
+    params.slug,
+    (!params.slug ? [""] : params.slug).join("/"),
+    pageData
+  )
 
   if (pageData == null) {
     // Giving the page no props will trigger a 404 page

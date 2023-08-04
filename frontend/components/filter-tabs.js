@@ -27,7 +27,7 @@ const FilterTabs = ({ children, enumColumn, menubar }) => {
     <div>
       {menubar && (
         <>
-          <nav className="relative bg-primary-100" >
+          <nav className="relative bg-primary-100">
             {!!menubar.nestedLinks.length && (
               <div className="container text-left">
                 <ul
@@ -35,7 +35,10 @@ const FilterTabs = ({ children, enumColumn, menubar }) => {
                   id="tabs-tabFill"
                   role="tablist"
                 >
-                  <li className="nav-item text-center block font-large text-md leading-tight" key="page-title">
+                  <li
+                    className="nav-item text-center block font-large text-md leading-tight"
+                    key="page-title"
+                  >
                     <a
                       href={menubar.url}
                       className={classNames(
@@ -128,7 +131,7 @@ const FilterTabs = ({ children, enumColumn, menubar }) => {
                 <a
                   href={menubar.url}
                   className={classNames(
-                  "nav-link text-sky-700  w-full block font-large text-md leading-tight  uppercase  y-2",
+                    "nav-link text-sky-700  w-full block font-large text-md leading-tight  uppercase  y-2",
                     { "font-bold text-sky-900 bg-white": isActive("") }
                   )}
                 >

@@ -16,8 +16,11 @@ export function localizePath(page) {
     return `/${slug}`
   }
 
+  console.log('cho',`/${locale}/${slug}`)
   // The slug should have a localePrefix
-  return `/${locale}/${slug}`
+  // return `/${locale}/${slug}`
+  // // 无论浏览器预设语言
+  return `/${slug}`
 }
 
 export function getLocalizedPaths(page) {

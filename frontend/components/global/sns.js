@@ -18,6 +18,7 @@ const icons = {
 
 const SNS = ({ data }) => {
   // alert(JSON.stringify(data))
+  if (!data) return <div></div>
   const { platforms } = data
   // const icon = dynamic((platform) => import(`@/components/icons/sns/${platform.title}.svg`))
   return (
@@ -25,42 +26,37 @@ const SNS = ({ data }) => {
       {/* <span className="uppercase text-center tracking-wide font-semibold text-gray-200 text-xl">
         关注我们
       </span> */}
-        <ul className="flex relative ">
-          {
-            platforms.map((platform) => {
-              const Icon = icons[platform.title]
-              return platform.url ? (
-                <CustomLink
-                  key={`sns-${Math.random()}`}
-                  className="p-2"
-                  link={platform}
-                >
-                  {/* {icon} */}
-                  {/* {platform.title} */}
-                  <div className="relative rounded-full  bg-gray-200 p-2">
-                    <Icon className="text-white" />
-                  </div>
+      <ul className="flex relative ">
+        {platforms.map((platform) => {
+          const Icon = icons[platform.title]
+          return platform.url ? (
+            <CustomLink
+              key={`sns-${Math.random()}`}
+              className="p-2"
+              link={platform}
+            >
+              {/* {icon} */}
+              {/* {platform.title} */}
+              <div className="relative rounded-full  bg-gray-200 p-2">
+                <Icon className="text-white" />
+              </div>
 
-                  {/* {icon} */}
-                </CustomLink>
-              ) : (
-                <a key={`sns-${Math.random()}`} className=" qrcode-container p-2">
-                 <div className="absolute  qrcode">
-                    {/* <div className=" w-20 h-20"> */}
-                      <NextImage media={platform.icon} />
-                    {/* </div> */}
-                  </div>
-                  <div className=" rounded-full bg-gray-200 p-2 qrcode-icon">
-                    <Icon className="text-white" />
-                  </div>
-                   
-                </a>
-
-              )
-            })}
-        </ul>
-
-
+              {/* {icon} */}
+            </CustomLink>
+          ) : (
+            <a key={`sns-${Math.random()}`} className=" qrcode-container p-2">
+              <div className="absolute  qrcode">
+                {/* <div className=" w-20 h-20"> */}
+                <NextImage media={platform.icon} />
+                {/* </div> */}
+              </div>
+              <div className=" rounded-full bg-gray-200 p-2 qrcode-icon">
+                <Icon className="text-white" />
+              </div>
+            </a>
+          )
+        })}
+      </ul>
     </div>
   )
 }

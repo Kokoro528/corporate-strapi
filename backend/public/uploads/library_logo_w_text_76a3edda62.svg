@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="149" height="92.651" viewBox="0 0 149 92.651">
+  <defs>
+    <linearGradient id="linear-gradient" x1="-374.021" y1="47.79" x2="-373.382" y2="46.559" gradientUnits="objectBoundingBox">
+      <stop offset="0.251" stop-color="#dcdddd" stop-opacity="0.898"/>
+      <stop offset="0.324" stop-color="#b6c0be" stop-opacity="0.922"/>
+      <stop offset="0.424" stop-color="#899e9a" stop-opacity="0.945"/>
+      <stop offset="0.529" stop-color="#64827c" stop-opacity="0.965"/>
+      <stop offset="0.636" stop-color="#486c65" stop-opacity="0.98"/>
+      <stop offset="0.747" stop-color="#345d54" stop-opacity="0.992"/>
+      <stop offset="0.865" stop-color="#27534b" stop-opacity="0.996"/>
+      <stop offset="1" stop-color="#245148"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="-374.021" y1="49.008" x2="-373.382" y2="47.777" xlink:href="#linear-gradient"/>
+  </defs>
+  <g id="组_65" data-name="组 65" transform="translate(-1490.697 -1004.294)">
+    <g id="组_64" data-name="组 64">
+      <path id="路径_37" data-name="路径 37" d="M1558,1043.588l35.878-19.647v12.621L1558,1056.209Z" opacity="0.6" fill="url(#linear-gradient)"/>
+      <path id="路径_38" data-name="路径 38" d="M1558,1023.941l35.878-19.647v12.621L1558,1036.562Z" opacity="0.6" fill="url(#linear-gradient-2)"/>
+      <rect id="矩形_32" data-name="矩形 32" width="35.878" height="12.621" transform="translate(1593.883 1056.209) rotate(180)" fill="#cfd1d2"/>
+      <rect id="矩形_33" data-name="矩形 33" width="35.878" height="12.621" transform="translate(1593.883 1036.562) rotate(180)" fill="#40968a"/>
+      <rect id="矩形_34" data-name="矩形 34" width="57.372" height="12.6" transform="translate(1593.883 1016.894) rotate(180)" fill="#40968a"/>
+      <rect id="矩形_35" data-name="矩形 35" width="12.66" height="51.879" transform="translate(1549.171 1056.173) rotate(180)" fill="#40968a"/>
+    </g>
+    <text id="MWORKS.Library" transform="translate(1490.697 1091.945)" fill="#4d4d4d" font-size="20.206" font-family="MyriadPro-Semibold, Myriad Pro" font-weight="600"><tspan x="0" y="0">MWORKS.</tspan><tspan y="0" fill="#40968a">Library</tspan></text>
+  </g>
+</svg>

@@ -1,8 +1,9 @@
 module.exports = {
   i18n: {
     // locales: ['en', 'zh','fr'],
-    locales: ['zh', 'en'],
-    defaultLocale: 'zh',
+    locales: ['en', 'zh'],
+    defaultLocale: 'en',
+    localeDetection: false
   },
   // future: { webpack5: true },
   images: {

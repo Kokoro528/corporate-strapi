@@ -40,7 +40,6 @@ const Footer = ({ footer, sns }) => {
               </ul>
             </div>
           ))}
-          
         </nav>
       </div>
       <div className="text-sm bg-transparent py-6 text-gray-100">

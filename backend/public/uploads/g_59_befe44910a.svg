@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="142" height="96.976" viewBox="0 0 142 96.976">
+  <defs>
+    <linearGradient id="linear-gradient" y1="0.5" x2="1" y2="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#f3922c"/>
+      <stop offset="0.062" stop-color="#e88529"/>
+      <stop offset="0.277" stop-color="#c95e20"/>
+      <stop offset="0.474" stop-color="#b3421a"/>
+      <stop offset="0.647" stop-color="#a53117"/>
+      <stop offset="0.777" stop-color="#a12c16"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" y1="0.5" x2="1" y2="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#94c9ee"/>
+      <stop offset="0.153" stop-color="#7db2dd"/>
+      <stop offset="0.545" stop-color="#477eb6"/>
+      <stop offset="0.84" stop-color="#265e9e"/>
+      <stop offset="1" stop-color="#1a5295"/>
+    </linearGradient>
+  </defs>
+  <g id="组_59" data-name="组 59" transform="translate(-586.902 -1000.007)">
+    <g id="组_213" data-name="组 213">
+      <text id="MWORKS.Syslab" transform="translate(586.902 1091.983)" fill="#4d4d4d" font-size="20" font-family="MyriadPro-Semibold, Myriad Pro" font-weight="600"><tspan x="0" y="0">MWORKS.</tspan><tspan y="0" fill="#c45400">Syslab</tspan></text>
+      <g id="组_58" data-name="组 58">
+        <path id="路径_23" data-name="路径 23" d="M631.715,1055.386a79.8,79.8,0,0,1,51.375,0l6.816-10.77a92.241,92.241,0,0,0-65.008,0Q628.306,1050,631.715,1055.386Z" fill="url(#linear-gradient)"/>
+        <path id="路径_24" data-name="路径 24" d="M650.787,1000.007h13.23l-32.3,55.379-6.87-10.854,25.972-44.526" fill="url(#linear-gradient-2)"/>
+        <path id="路径_25" data-name="路径 25" d="M663.988,1000.007l25.972,44.526-6.87,10.854-32.3-55.379h13.23" fill="url(#linear-gradient-2)"/>
+      </g>
+    </g>
+  </g>
+</svg>

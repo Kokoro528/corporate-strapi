@@ -3,13 +3,12 @@ export const formikConf = {
   onSubmit: (values) => {
     alert(JSON.stringify(values, null, 2))
     return false
-  }
+  },
 }
 
 const SearchBar = () => {
   const formik = useFormik(
     Object.assign(
-      
       {
         initialValues: {
           defaultSearch: "",

@@ -53,11 +53,11 @@ const DynamicPage = ({
           e.url.includes("cases")
         )}
       >
-      <Header title={title}></Header>
-      <div className="bg-case-header w-full py-24">
-        <h2 className="text-center text-4xl text-white">{title}</h2>
-      </div>
-      <Sections sections={sections} preview={preview} />
+        <Header title={title}></Header>
+        <div className="bg-case-header w-full py-24">
+          <h2 className="text-center text-4xl text-white">{title}</h2>
+        </div>
+        <Sections sections={sections} preview={preview} />
       </FilterTabs>
     </Layout>
   )
